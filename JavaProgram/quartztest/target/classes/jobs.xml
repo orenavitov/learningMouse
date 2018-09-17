@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<quartz xmlns="http://www.opensymphony.com/quartz/JobSchedulingData"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.opensymphony.com/quartz/JobSchedulingData
+       http://www.opensymphony.com/quartz/xml/job_scheduling_data_1_5.xsd"
+        version="1.5">
+    <job>
+        <job-detail>
+            <name>ScanDirectory1</name>
+            <group>DEFAULT</group>
+            <description>
+                A job that scans a directory for files
+            </description>
+            <job-class>
+                com.vista.quartz.ScanDirectoryJob
+            </job-class>
+            <volatility>false</volatility>
+            <durability>false</durability>
+            <recover>false</recover>
+
+            <job-data-map allows-transient-data="true">
+                <entry>
+                    <key>SCAN_DIR</key>
+                    <value>D:\dyk\Java\Tomcat\conf</value>
+                </entry>
+            </job-data-map>
+        </job-detail>
+        <trigger>
+            <simple>
+                <name>scanTrigger1</name>
+                <group>DEFAULT</group>
+                <job-name>ScanDirectory1</job-name>
+                <job-group>DEFAULT</job-group>
+                <start-time>2018-09-03T15:00:10</start-time>
+                <!-- repeat indefinitely every 10 seconds -->
+                <repeat-count>-1</repeat-count>
+                <repeat-interval>10000</repeat-interval>
+            </simple>
+        </trigger>
+    </job>
+    <job>
+        <job-detail>
+            <name>ScanDirectory2</name>
+            <group>DEFAULT</group>
+            <description>
+                A job that scans a directory for files
+            </description>
+            <job-class>
+                com.vista.quartz.ScanDirectoryJob
+            </job-class>
+            <volatility>false</volatility>
+            <durability>false</durability>
+            <recover>false</recover>
+            <job-data-map allows-transient-data="true">
+                <entry>
+                    <key>SCAN_DIR</key>
+                    <value>D:\dyk\Java\Tomcat\webapps\MyTest\WEB-INF</value>
+                </entry>
+            </job-data-map>
+        </job-detail>
+        <trigger>
+            <simple>
+                <name>scanTrigger2</name>
+                <group>DEFAULT</group>
+                <job-name>ScanDirectory2</job-name>
+                <job-group>DEFAULT</job-group>
+                <start-time>2018-09-03T15:00:20</start-time>
+                <!-- repeat indefinitely every 15 seconds -->
+                <repeat-count>-1</repeat-count>
+                <repeat-interval>15000</repeat-interval>
+            </simple>
+        </trigger>
+    </job>
+</quartz>

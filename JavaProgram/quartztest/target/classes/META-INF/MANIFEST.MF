@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1511834789404
+Build-Jdk: 1.8.0_60
+Built-By: ￧ﾱﾳ￦ﾘﾊ
+Bundle-ManifestVersion: 2
+Bundle-Name: quartz-test
+Bundle-SymbolicName: mih.quartz-test
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.mih;uses:="mih,org.quartz";version="1.0.0"
+Import-Package: mih;version="[1.0,2)",org.quartz;version="[2.2,3)",org.q
+ uartz.impl;version="[2.2,3)",org.quartz.impl.triggers;version="[2.2,3)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.3.0.201609221906
