@@ -198,7 +198,7 @@ int* dijkstra(algGraph* graph, int startNodeNum);
 int accessible(algGraph* graph);
 
 //最小生成树, Prim算法
-algGraph* prim(algGraph* graph);
+algGraph* prim(algGraph* graph, int startNodeNum);
 
 //最小生成树, Kruskal算法
 algGraph* kruskal(algGraph* graph);

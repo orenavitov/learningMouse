@@ -2,6 +2,11 @@
     "files.associations": {
         "stdarg.h": "c",
         "stdlib.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "pcap.h": "c",
+        "pcap-stdinc.h": "c",
+        "windows.h": "c",
+        "winver.h": "c",
+        "stdio.h": "c"
     }
 }

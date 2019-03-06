@@ -321,3 +321,31 @@ void DFS(algGraph* graph, int* visited, int vertexlab) {
         currentArcNodeTable = currentArcNodeTable -> next;
     }
 }
+
+//最小生成树, Prim算法
+algGraph* prim(algGraph* graph, int startNodeNum) {
+    algGraph* primGraph = (algGraph* )malloc(sizeof(algGraph));
+    vNode** originalVertexes = (vNode** )malloc(sizeof(vNode* ) * V_NUM);
+    memcpy(originalVertexes, graph -> vertexes, _msize(graph -> vertexes));
+    vNode** targetVertexes = (vNode** )malloc(sizeof(vNode* ) * V_NUM);
+    
+
+    for (int i = 1; i < V_NUM; i ++) {
+        vNode* startVertexNode = originalVertexes[startNodeNum - START_NUMBER]; 
+        LNode* arcNodeTable = startVertexNode -> arcNodeTable;
+        LNode* currentArcNodeTable = arcNodeTable;
+
+        int targetVNodeLab = startNodeNum;
+        int weight = ACCESSIBLE;
+        while(currentArcNodeTable != NULL) {
+            
+            currentArcNodeTable = currentArcNodeTable -> next;
+        }
+    }
+    return primGraph;
+}
+
+//最小生成树, Kruskal算法
+algGraph* kruskal(algGraph* graph) {
+
+}

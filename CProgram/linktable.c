@@ -1,9 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
+#include<string.h>
 #include".\mihInclude\mihdatastruct.h"
 #define TEST 0
+#define TEST_1 0
+#define TEST_2 0
+#define TEST_3 0
 
-
+#define TEST_4 1
+#define TEST_5 1
+#define TEST_6 1
+#define TEST_7 1
+#define TEST_8 1
 /*
  初始化单向链表
  */
@@ -303,46 +312,112 @@ void printLinktable(LNode* node, int flag_1) {
     putchar('\n');
 }
 
-#if TEST
+LNode* findLastNode(LNode* head) {
+    while(head -> next != NULL){
+        head = head -> next;
+    }
+    return head;
+}
+
+//单链表逆序
+LNode* reserveLNode(LNode* head) {
+    if(head -> next != NULL) {
+        reserveLNode(head -> next) -> next = head;
+    } 
+    head -> next = NULL;
+    return head;
+}
+
+//实现n的阶乘
+int test1_1(int n) {
+    if (n > 1) {
+        n = n * test1_1(n - 1);
+        return n;
+    } else {
+        return 1;
+    }
+}
+
+//计算1-x+x^2/2!-x^3/3!+...+x^n/n!，x是单浮点数，n是整数
+float test1(float x, int n) {
+    float result = 1.0;
+    while (n >= 1) {
+        int ns = test1_1(n);
+        if (n % 2 == 0) {
+            result = result + pow(x, n) / ns;
+        } else {
+            result = result + (- pow(x, n)) / ns;
+        }
+        n -= 1;
+        
+    }
+    return result;
+}
+
+//file1的内容全部复制到file2中，且在file2的每一行都要加上行号，最后返回file1中的字符个数
+#define BUFF_SIZE 100
+void copyFile(char* srcFile, char* dstFile) {
+    FILE* src = fopen(srcFile, "rw");
+    FILE* dst = fopen(dstFile, "rw");
+    while(/* condition */){
+        /* code */
+    }
+    
+    fread()
+}
+
+//字符串逆序
+char* reserveString(char* str) {
+    int stringSize = strlen(str);
+    char temp;
+    for (int i = stringSize - 1, j = 0; i > j; i--, j ++) {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+    }
+    return str;
+}
+
 int main(int argc, char const *argv[])
 {
-    int* numbers = (int* )malloc(100 * sizeof(int));
-    int** numbersAddress = (int** )malloc(100 * sizeof(int* ));
-    for (int i = 0; i < 100; i++) {
+    #if TEST_1
+    int* numbers = (int* )malloc(5 * sizeof(int));
+    int** numbersAddress = (int** )malloc(5 * sizeof(int* ));
+    for (int i = 0; i < 5; i++) {
         numbers[i] = i;
         numbersAddress[i] = &numbers[i];
     }
-    // LNode* withHeadLinkTable = (LNode* )malloc(sizeof(LNode));
-    // withHeadLinkTable -> element = NULL;
-    // withHeadLinkTable -> next = NULL;
-    LNode* noheadLinkTable = NULL;
+    LNode* head = getLLinkTable(numbersAddress, WITH_NO_HEAD, NO_LOOP);
+    LNode* lastNode = findLastNode(head);
+    reserveLNode(head);
+    printLinktable(lastNode, WITH_NO_HEAD);
+    #endif 
 
-    // puts("start print:");
-    
-    // llinkTableAppend(withHeadLinkTable, numbersAddress[3], WITH_HEAD);
-    // llinkTableAppend(withHeadLinkTable, numbersAddress[4], WITH_HEAD);
-    // llinkTableAppend(withHeadLinkTable, numbersAddress[23], WITH_HEAD);
-    // llinkTableAppend(withHeadLinkTable, numbersAddress[34], WITH_HEAD);
+    #if TEST_2
+    float x;
+    int n;
+    float result;
+    printf("please input x and n\n");
+    printf("x:");
+    scanf("%f", &x);
 
-    // printLinktable(withHeadLinkTable, WITH_HEAD);
+    printf("n:");
+    scanf("%d", &n);
 
-    // deleteLLinkTableNode(withHeadLinkTable, 1, WITH_HEAD);
-    // printLinktable(withHeadLinkTable, WITH_HEAD);
+    result = test1(x, n);
+    #endif
 
+    #if TEST_3
+    char* str = (char* )malloc(30* sizeof(char));
+    printf("input string:");
+    scanf("%s", str);
+    str = reserveString(str);
+    printf("the reserve string is:%s", str);
+    #endif
 
-    puts("start print:\n");
+    #if TEST_4
 
-    noheadLinkTable = llinkTableAppend(noheadLinkTable, numbersAddress[3], WITH_NO_HEAD);
-    noheadLinkTable = llinkTableAppend(noheadLinkTable, numbersAddress[4], WITH_NO_HEAD);
-    noheadLinkTable = llinkTableAppend(noheadLinkTable, numbersAddress[23], WITH_NO_HEAD);
-    noheadLinkTable = llinkTableAppend(noheadLinkTable, numbersAddress[34], WITH_NO_HEAD);
-    printLinktable(noheadLinkTable, WITH_NO_HEAD);
-
-    noheadLinkTable = deleteLLinkTableNode(noheadLinkTable, 0, WITH_NO_HEAD);
-    printLinktable(noheadLinkTable, WITH_NO_HEAD);
-
+    #endif
     getchar();
     return 0;
 }
-#endif 
-

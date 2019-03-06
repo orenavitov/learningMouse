@@ -8,12 +8,15 @@
             "type": "shell",
             "command": "gcc",
             "args": [
-                "./mihInclude/mihdatastruct.h",
-                "./graph.c",
-                "./linktable.c",
-                "./queue.c",
+                "E:/mihCode/learningMouse/CProgram/winpcap_test_2.c",
+                "-L",
+                "E:/mihCode/learningMouse/CProgram/mihLib/wpcap",
+                // "-I",
+                // "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include",
+                // "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include/pcap",
+                "-lwpcap",
                 "-o",
-                "E:/Cexe/graph.exe",
+                "E:/Cexe/winpcap_test2.exe",
                 "-g"
             ],
             "problemMatcher": [
@@ -21,13 +24,29 @@
             ]
         },
         {
-            "label": "mihTest",
+            "label": "hello",
             "type": "shell",
             "command": "gcc",
             "args": [
+                "./helloWorld_.c",
+                "./helloWorld_1.c",
+                "-o",
+                "E:/Cexe/hello.exe",
+                "-g"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "suanfa",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "E:/mihCode/learningMouse/CProgram/linktable.c",
                 
                 "-o",
-                "E:/",
+                "E:/Cexe/linktable.exe",
                 "-g"
             ],
             "problemMatcher": [

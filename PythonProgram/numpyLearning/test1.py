@@ -3,6 +3,7 @@ from numpy import *
 import operator
 import matplotlib
 import matplotlib.pylab as plt
+from os import listdir
 
 
 def createDataSet():
@@ -17,7 +18,7 @@ def createDataSet():
 
 
 # inX表示输入向量
-def classsify0(inX, dataSet, labels, k):
+def classify0(inX, dataSet, labels, k):
     # shape[0]表示返回矩阵第一个维度元素的数量
     dataSetSize = dataSet.shape[0]
     # tile将inX向量在行上重复dataSetSize次， 在列上重复1次
@@ -92,10 +93,10 @@ def datingClassTest():
     numTestVecs = int(m * hoRatio)
     errorCount = 0.0
     for i in range(numTestVecs):
-        classifierResult = classsify0(normMat[i, :],
-                                      normMat[numTestVecs:m, :],
-                                      datingLabels[numTestVecs:m],
-                                      3)
+        classifierResult = classify0(normMat[i, :],
+                                     normMat[numTestVecs:m, :],
+                                     datingLabels[numTestVecs:m],
+                                     3)
         print("the classifier came back with: %d, the real answer is: %d"
               % (classifierResult, datingLabels[i]))
         if (classifierResult != datingLabels[i]):
@@ -111,3 +112,42 @@ def draw(returnMat, classLabelVector):
     # 15.0 * array(classLabelVector)设置每个散列点的颜色
     ax.scatter(returnMat[:, 1], returnMat[:, 2], 15.0 * array(classLabelVector), 15.0 * array(classLabelVector))
     plt.show()
+
+
+def img2vector(filename):
+    returnVect = zeros((1, 1024))
+    fr = open(filename)
+    for i in range(32):
+        lineStr = fr.readline()
+        for j in range(32):
+            returnVect[i, 32 * i + j] = int(lineStr[j])
+    return returnVect
+
+
+def handwritingClassTest():
+    hwLabels = []
+    # listdir(path) 返回Path指定路径下的文件名称
+    trainingFileList = listdir('')
+    m = len(trainingFileList)
+    trainingMat = zeros((m, 1024))
+    for i in range(m):
+        fileNameStr = trainingFileList[i]
+        fileStr = fileNameStr.split('.')[0]
+        classNumStr = int(fileStr.split('_')[0])
+        hwLabels.append(classNumStr)
+        trainingMat[i, :] = img2vector('trainingDigits/%s' % (fileNameStr))
+
+    testFileList = listdir('testDigits')
+    errorCount = 0.0
+    mTest = len(testFileList)
+    for i in range(testFileList):
+        fileNameStr = testFileList[i]
+        fileStr = fileNameStr.split('.')[0]
+        classNumStr = int(fileStr.split('_'))[0]
+        vectorUnderTest = img2vector('testDigits/%s' % (fileNameStr))
+    classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
+    print("the classifier came back with:%d, the real answer is %d" % (classifierResult, classNumStr))
+    if (classifierResult != classNumStr):
+        errorCount += 1.0
+    print("\nthe total number of error is: %d" % (errorCount))
+    print("\nthe total error rate is: %f" % (errorCount / float(mTest)))
