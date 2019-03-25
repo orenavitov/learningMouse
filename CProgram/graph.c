@@ -12,7 +12,7 @@ arcNode* arcnode 弧节点
 #include<stdlib.h>
 #include<string.h>
 #include<stdarg.h>
-#include".\mihInclude\mihdatastruct.h"
+#include"mihdatastruct.h"
 
 #define TEST 0
 #define VISITED 1

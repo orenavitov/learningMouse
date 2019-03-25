@@ -1,6 +1,9 @@
 # 贝叶斯分类算法
-from numpy import *
 from math import log
+
+from numpy import *
+
+
 def loadDataSet():
     postingList = [
         ['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],
@@ -14,6 +17,7 @@ def loadDataSet():
     classVec = [0, 1, 0, 1, 0, 1]
     return postingList, classVec
 
+
 def createVocabList(dataSet):
     # 创建一个空的set
     vocabSet = set([])
@@ -23,6 +27,7 @@ def createVocabList(dataSet):
         vocabSet = vocabSet | set(document)
     return list(vocabSet)
 
+
 def setOfWords2Vec(vocabList, inputSet):
     #
     returnVec = [0] * len(vocabList)
@@ -31,7 +36,8 @@ def setOfWords2Vec(vocabList, inputSet):
             returnVec[vocabList.index(word)] = 1
         else:
             print("the word: %s is not in my vocabulary" % (word))
-    return  returnVec
+    return returnVec
+
 
 def bagOfWords2VecMN(vocabList, inputSet):
     returnVec = [0] * len(vocabList)
@@ -39,6 +45,8 @@ def bagOfWords2VecMN(vocabList, inputSet):
         if word in vocabList:
             returnVec[vocabList.index(word)] += 1
     return returnVec
+
+
 # 分别计算每个单词在侮辱性文件中出现的概率与在非侮辱性文件中出现的概率
 def trainNB0(trainMatrix, trainCategory):
     numTrainDocs = len(trainMatrix)
@@ -62,8 +70,8 @@ def trainNB0(trainMatrix, trainCategory):
     p0Vect = p0Num / p0Denom
     return p0Vect, p1Vect, pAbusive
 
-def classifyNB(vec2Classify, p0Vec, p1Vec, pClass1):
 
+def classifyNB(vec2Classify, p0Vec, p1Vec, pClass1):
     p1 = sum(vec2Classify * p1Vec) + log(pClass1)
     p0 = sum(vec2Classify * p0Vec) + log(1.0 - pClass1)
     if p1 > p0:
@@ -83,4 +91,3 @@ if __name__ == '__main__':
     testEntry = ['love', 'my', 'dalmation']
     thisDoc = array(setOfWords2Vec(myVocabList, testEntry))
     print('testEntry classified as:%d' % classifyNB(thisDoc, p0V, p1V, pAb))
-

@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include".\mihInclude\mihdatastruct.h"
+#include"mihdatastruct.h"
 #define TEST 0
 
 
@@ -95,50 +95,5 @@ void printLinkStack(linkStack* stack) {
     }
 }
 
-#if TEST
-int main(int argc, char const *argv[])
-{
-   
-    int* numbers = (int* )malloc(sizeof(int) * 100);
-    for (int index = 0; index < 100; index ++) {
-        numbers[index] = index + 1;
-    }
-    int **numbersAddress = (int **)malloc(100 * sizeof(int *));
-    for (int index = 0; index < 100; index++)
-    { 
-        numbersAddress[index] = &numbers[index];
-    }
 
-    linkStack* stack = initLinkStack();
-    linkStackpush(stack, numbersAddress[1]);
-    linkStackpush(stack, numbersAddress[2]);
-    linkStackpush(stack, numbersAddress[3]);
-    linkStackpush(stack, numbersAddress[4]);
-    linkStackpush(stack, numbersAddress[5]);
-    linkStackpush(stack, numbersAddress[6]);
-
-    printLinkStack(stack);
-    putchar('\n');
-    printf("top node is %d\n", *(int*)(getTopOfLinkStack(stack) -> element));
-
-    linkStackpop(stack);
-    printf("top node is %d\n", *(int*)(getTopOfLinkStack(stack) -> element));
-    printLinkStack(stack);
-    putchar('\n');
-
-    linkStackpop(stack);
-    printf("top node is %d\n", *(int*)(getTopOfLinkStack(stack) -> element));
-    printLinkStack(stack);
-    putchar('\n');
-
-    linkStackpush(stack, numbersAddress[33]);
-    printf("top node is %d\n", *(int*)(getTopOfLinkStack(stack) -> element));
-    printLinkStack(stack);
-
-    free(numbersAddress);
-    numbersAddress =NULL;
-    getchar();
-    return 0;
-}
-#endif
 

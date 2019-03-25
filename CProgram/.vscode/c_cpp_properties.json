@@ -4,13 +4,14 @@
             "name": "Win32",
             "browse": {
                 "path": [
-                    "${workspaceFolder}"
+                    "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include/*",
+                    "E:/mihCode/learningMouse/mihInclude/*"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
                 "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include/*",
-                "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include/pacp/*"
+                "E:/mihCode/learningMouse/mihInclude/*"
             ],
             "defines": [
                 "_DEBUG",

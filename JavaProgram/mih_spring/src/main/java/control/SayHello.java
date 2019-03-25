@@ -29,7 +29,7 @@ public class SayHello {
     @ApiOperation(value = "test", notes = "just a test!")
     @RequestMapping(value = "/sayhello", method = RequestMethod.GET)
     String sayHello() {
-        log.info("hello! everyone!");
+//        log.info("hello! everyone!");
         return "hello world";
 
     }

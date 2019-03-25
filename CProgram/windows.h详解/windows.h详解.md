@@ -1,5 +1,7 @@
 # 常用API
 
+https://blog.csdn.net/farmwang/article/details/50603608
+
 ## GetCursorPos WindowFromPoint
 ```
 #include<windows.h>
@@ -100,4 +102,29 @@ void test30()
     }
 }
 ```
+## OpenProcess && TerminateProcess
 
+![image text](./picture/p32.png)
+
+```
+void test32() {
+    PROCESSENTRY32 pe32;
+    pe32.dwSize = sizeof(pe32);
+    HANDLE hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    BOOL bMore = Process32First(hProcessSnap, &pe32);
+    while(bMore){
+        printf("%s\n", pe32.szExeFile);
+        if(strcmp("firefox.exe", pe32.szExeFile) == 0) {
+            printf("find firefox.exe\n");
+            HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pe32.th32ProcessID);
+            TerminateProcess(hProcess, 0);
+        }
+        bMore = Process32Next(hProcessSnap, &pe32);
+    }
+    
+}
+```
+
+## ReadProcessMemory
+
+![image text](./picture/p37.png)

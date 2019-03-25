@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include".\mihInclude\mihdatastruct.h"
-#define TEST 0
+#include"mihdatastruct.h"
+
 /*
  初始化队列
  未处理超过队列最大长度的情况， 未考虑循环标志
@@ -86,27 +86,3 @@ void printQueue(queue* que) {
     }
 }
 
-#if TEST
-int main(int argc, char const *argv[])
-{
-    int *numbers = (int *)malloc(100 * sizeof(int));
-    int **numbersAddress = (int **)malloc(100 * sizeof(int *));
-    for (int i = 0; i < 100; i++)
-    {
-        numbers[i] = i;
-        numbersAddress[i] = &numbers[i];
-    }
-    queue* que = initQueue();
-    inQueue(que, numbersAddress[10]);
-    inQueue(que, numbersAddress[12]);
-    inQueue(que, numbersAddress[14]);
-    inQueue(que, numbersAddress[23]);
-    inQueue(que, numbersAddress[45]);
-
-    outQueue(que);
-    outQueue(que);
-
-    printQueue(que);
-    return 0;
-}
-#endif

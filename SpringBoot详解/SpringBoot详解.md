@@ -1,0 +1,4 @@
+
+## Spring中的事件与监听
+
+Spring容器中的内置：ApplicationStartingEvent, ApplicationEnvironmentPreparedEvent, ContextStartedEvent, ApplicationReadyEvent, ApplicationFailedEvent

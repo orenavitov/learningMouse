@@ -1,0 +1,26 @@
+{
+
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "algorithms_build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "E:/mihCode/learningMouse/algorithms/link_algorithms.c",
+                "-I",
+                "E:/mihCode/learningMouse/mihInclude",
+                // "-L",
+                // "E:/mihCode/learningMouse/C_mihLib",
+                // "-shared",
+                // "-llinktable",
+                "-o",
+                "E:/Cexe/link_algorithms.exe",
+                "-g"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-#include "./mihInclude/mihstring.h"
+#include "mihstring.h"
 #include<string.h>
 #include<stdlib.h>
 #include<stdio.h>
@@ -6,6 +6,7 @@
 #define TEST 1
 #define MAX_STRING_SIZE 100
 
+//包括第end个字符
 char* stringslip(char* origin, int start, int end) {
     int stringlength = strlen(origin);
     if (start > end) {

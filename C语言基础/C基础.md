@@ -76,11 +76,57 @@
 
 ![image text](./picture/p16.png)
 
+## 常量
+
+首先使用const修饰的不能说是常量，因为const修饰的可以发生变化，如下：
+
+![image text](./picture/p17.png)
+
+如果是数值常量可以这么定义：
+
+```
+#define PI 3.1415926
+```
+
+如果是字符串常量只能是：char* str = "hello world!", 不能是char str[] = "hello world!"
+
+因为是在静态存储区的，而数组可以在静态存储区（全局变量）， 也可以在栈中（局部变量）
+
 ## int 
 
 1. 显示十进制， 八进制， 十六进制， 使用%d, %o, %x, 显示进制前缀， 使用%#d, %#o, %#x;
 
 2. 字符八进制， 十六进制表是： '\o', '\h';
+
+## 按位运算：&、|、~、^ ；逻辑运算：&&、||
+
+逻辑运算：输出结果1
+
+```
+int main(int argc, char const *argv[])
+{
+    int a = 8;
+    int b = 1;
+    int c = a || b;
+    printf("%d", c);
+    getchar();
+    return 0;
+}
+```
+
+按位运算：输出结果9
+
+```
+int main(int argc, char const *argv[])
+{
+    int a = 8;
+    int b = 1;
+    int c = a | b;
+    printf("%d", c);
+    getchar();
+    return 0;
+}
+```
 
 ## 字符串
 

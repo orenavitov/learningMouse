@@ -69,3 +69,5 @@ gdb只能调试可执行程序，在使用gcc生成可执行程序时要加上�
 
 ![image text](./picture/p8.png)
 
+## 反汇编
+
