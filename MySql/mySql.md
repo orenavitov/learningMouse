@@ -1,5 +1,15 @@
 # Mysql
 
+## SQL语言分类
+
+* DDL 数据定义语言
+
+* DML 数据操作语言
+
+* DQL 数据查询语言
+
+* DCL 数据控制语言
+
 ## MySql安装与配置（MySql-5.7.16）
 
 ![image text](./picture/p1.png)
@@ -67,12 +77,12 @@ TIMESTAMP:从1970年1月1日开始的秒数， 精度是秒， 使用4个字节�
 
 ## Mysql操作命令
 
-1. 登录
+* 登录
 ````
 mysql -h [host] -u[用户名] -p
 ````
 
-2. 数据库启动指令 && 数据库退出指令
+* 数据库启动指令 && 数据库退出指令
 
 ```
 net start MySql57(数据库服务名称)
@@ -87,12 +97,12 @@ net stop MySql57
 ![image text](./picture/p9.png)
 
 
-2. 退出
+* 退出
 ````
 quit
 ````
 
-3. 创建一个新的用户
+* 创建一个新的用户
 
 ````
 create user '用户名'@'登录ip' indentified by '密码'
@@ -101,7 +111,7 @@ indentified by '密码'可以不加，表示登录不需要密码
 
 @'ip'可用@'%'表示没有登录ip限制
 
-4. 给用户授权
+* 给用户授权
 
 ````
 grant 权限 on 数据库名.表明 to 'test'@'%' 
@@ -112,37 +122,37 @@ grant 权限 on 数据库名.表明 to 'test'@'%'
 grant 权限 on 数据库名.表名 to 'test'@'%' with grant option
 ````
 
-5. 查看用户权限
+* 查看用户权限
 
 ````
 show grants for 'test'@'%';
 ````
 
-6. 修改用户的权限
+* 修改用户的权限
 
 ````
 grant 权限 on 数据库名.表名 to 'test'@'%'
 ````
 
-7. 修改用户密码
+* 修改用户密码
 
 ````
 set password for 'test'@'%' = password('newpassword')
 ````
 
-8. 撤销用户权限
+* 撤销用户权限
 
 ````
 revoke 权限 on *.* from 'test'@'%';
 ````
 
-9. 删除用户
+* 删除用户
 
 ````
 drop user 'test'@'%';
 ````
 
-10. 载入数据
+* 载入数据
 
 ````
 load data infile './pet.txt' int table pet fields terminated by ' ' lines terminated by '\r\n';
@@ -154,13 +164,54 @@ lines terminated by指定每行数据以什么字符结尾；
 ./pet.text表示在Date文件下（默认数据路径）；
 pet.txt中如果每行数据有空值用“\N”表示；
 
-11. 更新数据
+* 更新数据
 
 ````
 update pet set birth = '1989-08-31' where name = 'xx'
 ````
 
-12. 条件查询
+* 查询一个表的属性有哪些
+
+```
+desc tablename;
+```
+
+* 创建索引
+
+直接在表上创建：
+
+create index indexName on table tableName;
+
+使用ALTER:
+
+alter table tableName add index indexName(xx1, xx2, xx3)
+
+在创建表时添加索引：
+
+create table tableName(
+    xx1 int,
+    xx2 char,
+    index indexName(xx1)
+);
+
+* 创建唯一索引
+
+在创建索引时在“index” 前加上“unique”
+
+* 查看索引
+
+show index on table tableName;
+
+* 删除索引
+
+alter table tableName drop index indexName;
+
+drop index indexName on table tableName;
+
+* 创建视图
+
+ 
+* 条件查询
 
 ````
 select * from pet where name = 'xx'
@@ -185,7 +236,7 @@ select name from pet order by birth, species desc (按照多个属性进行排�
 
 ````
 
-13. 多表查询
+* 多表查询
 
 ````
 select a.id, a.name, a.address, a.date, b.math, b.english, b.chinese from table1 as a, table2 as b where a.id = b.id;
@@ -195,7 +246,7 @@ select id, name, pwd from table1 UNION uid, price, date from table2; (union 会�
 select id, name, pwd from table1 ALL uid price, date from table2; (ALL 不会删除重复行)
 ````
 
-14. 分页查询
+* 分页查询
 
 ````
 select * from table1 limit start, size;(start表示其实位置， size表示页大小， 起始位置从0算起)
@@ -203,18 +254,23 @@ select * from table1 limit start, size;(start表示其实位置， size表示页
 select * from table1 limit size;
 ````
 
-15. 关联多个数据表查询（join）
+* 关联多个数据表查询（join）
 
 ```
 SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo FROM Persons INNER JOIN Orders ON Persons.Id_P = Orders.Id_P ORDER BY Persons.LastName
 ```
+其中Persons, Orders是表名
 
 不同的JOIN:
 
-JOIN: 如果表中有至少一个匹配，则返回行
-LEFT JOIN: 即使右表中没有匹配，也从左表返回所有的行
-RIGHT JOIN: 即使左表中没有匹配，也从右表返回所有的行
-FULL JOIN: 只要其中一个表中存在匹配，就返回行
+LEFT JOIN: 只有坐标中存在时才返回， 即如果legt join 右边的表中没有左边表中的某些数据， 不会返回右边表中的相应数据
+RIGHT JOIN: 同left join
+FULL JOIN: 左右表取并集
+inner join: 左右表取交集
+
+* group by
+
+按group by 规定的属性进行分组， 注意最后的查询结果只有规定属性的种类
 
 ### 添加外键
 
@@ -229,23 +285,23 @@ constraint 外键名 foreign key(id) references table1(id)
 ````
 ### alter操作
 
-1. change (与modify相比可以改名字)
+* change (与modify相比可以改名字)
 
 ````
 alter table t1 change col1 newCol1 bigint;
 ````
 
-2. modify (单独修改某一列的属性， 会丢掉原来的属性， 不能修改名字)
+* modify (单独修改某一列的属性， 会丢掉原来的属性， 不能修改名字)
 ````
 alter table t1 modify col1 bigint;
 ````
 
-3. drop (删除某一列， 如果一个表中只有一个列， 删除失败)
+* drop (删除某一列， 如果一个表中只有一个列， 删除失败)
 ````
 alter table table1 drop col1;
 ````
 
-4. add (添加列)
+* add (添加列)
 ````
 alter table table1 add col1 int;
 
@@ -258,7 +314,7 @@ alter table table1 add col1 int First;
 alter table table1 add col1 int After coln;
 ````
 
-5. 修改默认值
+* 修改默认值
 
 ````
 alter table table1 alter col1 set default n;
@@ -394,6 +450,9 @@ select count(*) from pet
 21. min()
 
 22. sum() 求和
+
+
+
 
 ## Question
 

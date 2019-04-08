@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.DeptEmp" table="dep_emp">
+        <composite-id>
+            <key-property name="empNo" column="emp_no" type="java.lang.Integer" length="11" />
+            <key-property name="deptNo" column="dept_no" type="java.lang.String" length="4" />
+        </composite-id>
+
+        <property name="fromDate" column="from_date" type="java.util.Date" />
+        <property name="toDate" column="to_date" type="java.util.Date" />
+    </class>
+</hibernate-mapping>

@@ -8,13 +8,10 @@
             "type": "shell",
             "command": "gcc",
             "args": [
-                "linktable.c",
-                "-I",
-                "E:/mihCode/learningMouse/mihInclude",
-                "-shared",
-                "-Wall",
+                "./hacker/demo_1.c",
                 "-o",
-                "E:/mihCode/learningMouse/C_mihLib/linktable.dll"
+                "D:/Cexe/demo_1.exe",
+                "-g"
             ],
             "problemMatcher": [
                 "$gcc"

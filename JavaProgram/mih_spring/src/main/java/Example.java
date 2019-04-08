@@ -12,12 +12,11 @@ import service.SpringStoppedListener;
 @EnableAutoConfiguration
 @Configuration
 @ComponentScan(basePackages = {
-        "control", "config", "dao", "service", "springfox.documentation.schema"})
+        "config", "dao.imp", "control", "springfox.documentation.schema"})
 public class Example {
     public static void main(String[] args) throws Exception {
         SpringApplication app = new SpringApplication(Example.class);
         app.addListeners(new SpringApplicationStartingListener(), new SpringStartedListener(), new SpringStoppedListener());
         app.run();
-
     }
 }

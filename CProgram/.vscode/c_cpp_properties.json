@@ -4,14 +4,12 @@
             "name": "Win32",
             "browse": {
                 "path": [
-                    "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include/*",
-                    "E:/mihCode/learningMouse/mihInclude/*"
+                    "D:/mingw64/x86_64-7.2.0-posix-seh-rt_v5-rev0/mingw64/include/*"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
-                "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/include/*",
-                "E:/mihCode/learningMouse/mihInclude/*"
+                "D:/mingw64/x86_64-7.2.0-posix-seh-rt_v5-rev0/mingw64/include/*"
             ],
             "defines": [
                 "_DEBUG",
@@ -19,7 +17,7 @@
                 "_UNICODE"
             ],
             
-            "compilerPath": "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe",
+            "compilerPath": "D:/mingw64/x86_64-7.2.0-posix-seh-rt_v5-rev0/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"

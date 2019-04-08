@@ -1,21 +1,18 @@
 package control;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import config.Connection;
+import dao.imp.DepartmentServiceApi;
+import dao.service.DepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import model.Form;
-import model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import model.Departments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -24,31 +21,19 @@ import org.springframework.web.bind.annotation.*;
 public class SayHello {
 
     @Autowired
-    private Connection connection;
-
-    @ApiOperation(value = "test", notes = "just a test!")
-    @RequestMapping(value = "/sayhello", method = RequestMethod.GET)
-    String sayHello() {
-//        log.info("hello! everyone!");
-        return "hello world";
-
-    }
+    private DepartmentService departmentApi;
 
     @ApiOperation(value = "create a user", notes = "input a user object")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "user", value = "User", required = true, dataType = "User")
     })
-    @RequestMapping(value = "/createuser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/getdepartments", method = RequestMethod.GET)
     @ResponseBody
-    String createUser(User user, BindingResult bindingResult) {
-        System.out.println("see there");
-        return "ok";
-    }
+    List<Departments> getDepartments() {
+        System.out.println("Get Departments.");
+        List<Departments> departments = departmentApi.getDepartemnts();
 
-    @RequestMapping(value = "/createform", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody Form createForm(@RequestBody Form form) {
-
-        return form;
+        return departments;
     }
 
 }

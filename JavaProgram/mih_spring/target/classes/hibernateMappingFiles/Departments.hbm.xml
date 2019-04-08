@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.Departments" table="departments">
+        <id name="deptNo" column="dept_no" type="java.lang.String">
+
+        </id>
+        <property name="deptName" column="dept_name" type="java.lang.String" />
+    </class>
+</hibernate-mapping>

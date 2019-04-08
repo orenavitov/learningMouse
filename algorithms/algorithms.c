@@ -103,3 +103,19 @@ int* quickSort(int* numbers, int low_, int high_) {
     quickSort(numbers + low + 1,  low + 1, high_);
     return numbers;
 }
+
+typedef struct map {
+    int key;
+    void* value;
+} map, *p_map;
+
+typedef struct way {
+    int num;
+    int count;
+} *way;
+
+p_map findwaystoresult(int* sortNumbers, int n) {
+    p_map maps = (p_map)malloc(n * sizeof(map));
+    
+
+}
