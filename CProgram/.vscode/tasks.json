@@ -8,9 +8,9 @@
             "type": "shell",
             "command": "gcc",
             "args": [
-                "./hacker/demo_1.c",
+                "./test.c",
                 "-o",
-                "D:/Cexe/demo_1.exe",
+                "D:/Cexe/test.exe",
                 "-g"
             ],
             "problemMatcher": [

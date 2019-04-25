@@ -67,6 +67,14 @@
             <version>5.0.6.RELEASE</version>
         </dependency>
 
+        <!-- Spring测试相关 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.1.5.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--hibernate相关-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -112,6 +120,18 @@
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
             <version>1.4.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--对象的equals, hashCode方法相关-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
         </dependency>
 
     </dependencies>

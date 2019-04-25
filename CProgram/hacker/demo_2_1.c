@@ -6,6 +6,7 @@ int main()
 {
     WSADATA wsaData;
     WORD sockVersion = MAKEWORD(2, 2);
+    //WSAStartup(sockVersion, &wsaData)用于加载Winsock库
     if (WSAStartup(sockVersion, &wsaData) != 0)
     {
 
@@ -39,6 +40,7 @@ int main()
      */
     struct sockaddr_in sin;
     sin.sin_family =AF_INET;
+    //转换成网络字节序
     sin.sin_port = htons(4500);
     sin.sin_addr.S_un.S_addr = INADDR_ANY;
     if (bind(sListen, (LPSOCKADDR)&sin, sizeof(sin)) == SOCKET_ERROR) {

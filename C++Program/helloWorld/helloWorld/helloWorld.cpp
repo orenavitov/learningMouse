@@ -4,9 +4,19 @@
 #include "pch.h"
 #include <iostream>
 
+using namespace std;
+
+void test1() {
+	int number;
+	cout << "input a number ";
+	cin >> number;
+	cout << "the input number is " << number;
+}
+
 int main()
 {
-    std::cout << "Hello World!\n"; 
+    cout << "Hello World!\n"; 
+	test1();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
