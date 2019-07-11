@@ -5,7 +5,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "D:/Cexe/test.exe",
+            "program": "D:/Cexe/demo_6.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

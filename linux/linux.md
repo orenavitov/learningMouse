@@ -158,6 +158,18 @@ head fileName 默认显示file的前10行内容， 使用“-n count”显示前
 
 3. ctrl + r将搜索之前使用的指令， 继续按ctrl + r将显示下一个匹配项， ctrl + j将搜索到的指令复制到终端， ctrl + c退出搜索
 
+* 三种引号："", '', `
+
+1. 双引号""将除了 `, $之外的字符均作为普通字符
+
+![imagetext](./pictures/p29.png)
+
+2. 单引号'', 将除了''之外的所有字符均作为普通字符
+
+![imagetext](./pictures/p30.png)
+
+3. ``命令替换符
+
 * id 获取用户身份标识的相关信息
 
 ![imagetext](./pictures/p21.png)
@@ -255,3 +267,34 @@ apt-get install packageName
 * 非库源下安装
 
 dpkg -install package_file
+
+# shell脚本
+
+一定注意shell脚本中保留字后面要有一个空格；
+
+## here文档
+
+![imagetext](./pictures/p31.png)
+
+![imagetext](./pictures/p32.png)
+
+## 函数 function
+
+![imagetext](./pictures/p33.png)
+
+![imagetext](./pictures/p34.png)
+
+## if分支语句 
+
+```(shell)
+#! /bin/bash
+
+x=5
+
+if [ $x=5 ]
+   then echo "x equals 5"
+else
+   echo "x not equals 5"
+fi
+
+```

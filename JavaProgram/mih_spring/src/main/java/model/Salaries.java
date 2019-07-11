@@ -3,16 +3,23 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 员工薪水信息
+ */
 public class Salaries implements Serializable {
 
     public Salaries() {}
 
+    //员工编号
     private int empNo;
 
+    //员工薪水
     private int salary;
 
+    //开始时间
     private Date fromDate;
 
+    //结束时间
     private Date toDate;
 
     public int getEmpNo() {

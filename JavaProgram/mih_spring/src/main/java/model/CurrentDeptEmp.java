@@ -2,16 +2,23 @@ package model;
 
 import java.util.Date;
 
+/**
+ * 员工所在部门
+ */
 public class CurrentDeptEmp {
 
     public CurrentDeptEmp() {}
 
+    //员工编号
     private int empNo;
 
+    //部门编号
     private String deptNo;
 
+    //员工所在该部门的开始时间
     private Date fromDate;
 
+    //员工离开该部门的时间
     private Date toDate;
 
     public int getEmpNo() {

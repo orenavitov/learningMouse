@@ -8,6 +8,7 @@
         "windows.h": "c",
         "winver.h": "c",
         "stdio.h": "c",
-        "mihdatastruct.h": "c"
+        "mihdatastruct.h": "c",
+        "winsock2.h": "c"
     }
 }

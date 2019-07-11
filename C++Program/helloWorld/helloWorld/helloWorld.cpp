@@ -7,16 +7,17 @@
 using namespace std;
 
 void test1() {
-	int number;
-	cout << "input a number ";
-	cin >> number;
-	cout << "the input number is " << number;
+	long number = 223323;
+	long* fellow;
+	(fellow) = &number;
+	cout << (*fellow);
 }
 
 int main()
 {
     cout << "Hello World!\n"; 
 	test1();
+	cin.get();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

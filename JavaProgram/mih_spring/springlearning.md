@@ -2,6 +2,10 @@
 
 ## 常用注解
 
+* @EnableAutoConfiguration
+会根据/META-INF/spring.factores中一个org.springframework.boot.autoconfigure.EnableAutoConfiguration作为key值扫描@Configuration
+配置的bean
+
 * @ComponentScan(basePackages = {"xxx", "xxx"...})
 
 been组件的查找范围， 如果没有basePackages则默认在当前包中进行查找
@@ -25,7 +29,23 @@ public CDPlayer(CompactDisc cd) {
 
 ## 自动装配
 
-使用@Component、@Autowired进行been注入
+### 使用@Component、@ComponentScan、@Autowired进行been注入
+
+1. 首先定义一个接口
+![imageText](./pictures/p1.png)
+
+2. 实现这个接口
+![imageText](./pictures/p2.png)
+
+3. 在一个带有@Config注解的POJO上添加@ComponentScan注解
+![imageText](./pictures/p4.png)
+
+3. 在一个restful接口中测试been
+![imageText](./pictures/p3.png)
+
+补充：
+1. @ComponentScan默认扫描的是同一个包下面的带有@Component等注解的POJO
+
 
 ## JAVA Config装配
 

@@ -11,6 +11,7 @@ import model.Departments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import service.service.Say;
 
 import java.util.List;
 
@@ -21,19 +22,18 @@ import java.util.List;
 public class SayHello {
 
     @Autowired
-    private DepartmentService departmentApi;
+    private Say say;
 
     @ApiOperation(value = "create a user", notes = "input a user object")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "user", value = "User", required = true, dataType = "User")
     })
-    @RequestMapping(value = "/getdepartments", method = RequestMethod.GET)
+    @RequestMapping(value = "/sayhello", method = RequestMethod.GET)
     @ResponseBody
-    List<Departments> getDepartments() {
-        System.out.println("Get Departments.");
-        List<Departments> departments = departmentApi.getDepartemnts();
+    String sayHello() {
+        say.sayHello();
+        return "hello!";
 
-        return departments;
     }
 
 }
