@@ -1,2 +1,20 @@
 ##ignore this file##
+*.iml
 /PythonProgram/.idea/
+/.vscode/
+/algorithms/.vscode/
+/C++Program/.vs/
+/CProgram/.vscode/
+/JSProgram/.idea/
+/mihInclude/.vscode/
+/JavaProgram/.idea/
+/JavaProgram/Design/.idea/
+/JavaProgram/HibernateDemo/target/
+/JavaProgram/javeTest/.idea/
+/JavaProgram/jerseyTest/.idea/
+/JavaProgram/jerseyTest/target/
+/JavaProgram/jerseyTest/out/
+/JavaProgram/jettyTest/.idea/
+/JavaProgram/jettyTest/target/
+/JavaProgram/jFinaltet/.idea/
+/JavaProgram/jFinaltet/target/
