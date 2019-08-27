@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as num
 from numpy.random import RandomState
-
+import time
 # y_代表准确值， y代表预测值
 
 def placeholderTest():
@@ -388,6 +388,65 @@ class new_demo_MNIST:
             #
             variables_to_restore = variable_averages.variables_to_restore()
             saver = tf.train.Saver(variables_to_restore)
+            while True:
+                with tf.Session as sess:
+                    ckpt = tf.train.get_checkpoint_state(self.MODEL_SAVE_PATH)
+                    if ckpt and ckpt.model_checkpoint_path:
+                        saver.restore(sess, ckpt.model_checkpoint_path)
+                        global_step = ckpt.model_checkpoint_path.split("/")[-1].split("-")[-1]
+                        accuracy_score = sess.run(accuracy, feed_dict=validate_feed)
+                        print('''After {0} training steps(s), validation accuracy = {1}'''
+                              .format(global_step, accuracy_score))
+                    else:
+                        print("no checkpoint file found")
+                    time.sleep(self.EVAL_INTERVAL_SECS)
+
+            
+def variables_to_restore_store_step():
+    v1 = tf.Variable(0, dtype=tf.float32, name="v1")
+    v2 = tf.Variable(0, dtype=tf.float32, name="v2")
+    ema = tf.train.ExponentialMovingAverage(0.99)
+    maintain_average_op = ema.apply(tf.all_variables())
+    saver = tf.train.Saver()
+    with tf.Session() as sess:
+        init_op = tf.initialize_all_variables()
+        sess.run(init_op)
+
+        sess.run(tf.assign(v1, 10))
+        sess.run(tf.assign(v2, 50))
+        sess.run(maintain_average_op)
+        saver.save(sess, r"C:\Users\mihao\Desktop\tensorflow_save\model.ckpt")
+        print(sess.run([v1, ema.average(v1)]))
+        print(sess.run([v2, ema.average(v2)]))
+
+# variables_to_restore() 直接读取保存的变量的滑动平均值
+def variables_to_restore_reload_step():
+    v1 = tf.Variable(0, dtype=tf.float32, name="v1")
+    v2 = tf.Variable(0, dtype=tf.float32, name="v2")
+    ema = tf.train.ExponentialMovingAverage(0.99)
+    print(ema.variables_to_restore())
+    saver = tf.train.Saver(ema.variables_to_restore())
+    with tf.Session() as sess:
+        saver.restore(sess, r"C:\Users\mihao\Desktop\tensorflow_save\model.ckpt")
+        print(sess.run(v1))
+        print(sess.run(v2))
+
+# add_to_collection()向当前计算图中添加张量
+# get_collection()在当前计算图中取出张量集合
+# tensorflow 中的collection 是list
+def collection_test():
+    v1 = tf.get_variable(name="v1", initializer=[1, 2, 3])
+    v2 = tf.get_variable(name="v2", initializer=[3, 2, 1])
+    tf.add_to_collection("v", v1)
+    tf.add_to_collection("v", v2)
+    with tf.Session() as sess:
+        sess.run(tf.initialize_all_variables())
+        v_collection = tf.get_collection("v")
+        print(sess.run(v_collection[0]))
+        print(sess.run(v_collection[1]))
+        print(type(v_collection))
+        print(type(v_collection[1]))
+        # add_n 将列表中的张量相加
+        print(sess.run(tf.add_n(v_collection)))
 if __name__ == '__main__':
-    # save_test()
-    MovingAverage_test()
+    collection_test()
