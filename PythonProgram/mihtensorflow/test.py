@@ -78,6 +78,103 @@ class demo_MNIST():
         # 滑动平均衰减率
         self.MOVING_AVERAGE_DECAY = 0.99
 
+        self.IMAGE_SIZE = 28
+        self.NUM_CHANNELS = 1
+        self.NUM_LABELS = 10
+        self.CONV1_DEEP = 32
+        self.CONV1_SIZE = 5
+        self.CONV2_DEEP = 64
+        self.CONV2_SIZE = 5
+        self.FC_SIZE = 512
+
+    def inference_LeNet_5(self, input_tensor, train, regularizer):
+
+        # 第一层卷积层
+        # 过滤器尺寸 5* 5 * 32
+        with tf.variable_scope("layer1-vonv1"):
+            conv1_weights = tf.get_variable(
+                "weight", [self.CONV1_SIZE, self.CONV1_SIZE, self.NUM_CHANNELS, self.CONV1_DEEP],
+                initializer = tf.truncated_normal_initializer(stddev = 0.1)
+            )
+            conv1_biases = tf.get_variable(
+                "bias", [self.CONV1_DEEP], initializer = tf.constant_initializer(0.0)
+            )
+            # 卷积层前向传播
+            # tensorflow 卷积层 & 池化层补零的方法
+            # 假设输入层矩阵： W * W
+            # Filter矩阵： F * F
+            # 步长： S
+            # 输出宽度、高度： new_height, new_width
+            # new_height = new_width = W / S
+            # pad_needed_height = (new_height - 1) * S + F - W
+            # pad_top = pad_needed_height / 2
+            # pad_down = pad_needed_height - pad_top
+            conv1 = tf.nn.conv2d(
+                input_tensor, conv1_weights, strides = [1, 1, 1, 1], padding="SAME"
+            )
+            relu1 = tf.nn.relu(tf.nn.bias_add(conv1, conv1_biases))
+
+            # 第二层池化层
+            # ksize表示尺寸， 列表中第一个和最后一个一般都为1， 中间两位表示尺寸
+            with tf.name_scope("layer2-pool1"):
+                pool1 = tf.nn.max_pool(
+                    relu1, ksize = [1, 2, 2, 1], strides = [1, 2, 2, 1], padding = "SAME"
+                )
+
+            # 第三层卷积层
+            with tf.variable_scope("layer3-conv2"):
+                conv2_weight = tf.get_variable(
+                    "weight", [self.CONV2_SIZE, self.CONV2_SIZE, self.CONV1_DEEP, self.CONV2_DEEP],
+                    tf.truncated_normal_initializer(stddev = 0.1))
+                conv2_biases = tf.get_variable(
+                    "bias", [self.CONV2_DEEP],
+                    initializer = tf.constant_initializer(0.0)
+                )
+                conv2 = tf.nn.conv2d(pool1, conv2_weight, strides = [1, 1, 1, 1], padding = "SAME")
+                relu2 = tf.nn.relu(tf.nn.bias_add(conv2, conv2_biases))
+
+            # 第四层池化层
+            with tf.name_scope("layer4-pool2"):
+                pool2 = tf.nn.max_pool(
+                    relu2, ksize = [1, 2, 2, 1], strides = [1, 2, 2, 1],
+                    padding = "SAME"
+                )
+            # pool_shape = [bitch_size, 7, 7,  64]
+            pool_shape = pool2.get_shape().as_list()
+            nodes = pool_shape[1] * pool_shape[2] * pool_shape[3]
+            reshaped = tf.reshape(pool2, [pool_shape[0], nodes])
+            # 第五层全连接层
+            with tf.variable_scope("layer5-fc1"):
+                fc1_weights = tf.get_variable(
+                    "weight", [nodes, self.FC_SIZE],
+                    initializer=tf.truncated_normal_initializer(stddev = 0.1))
+
+                if regularizer != None:
+                    tf.add_to_collection("loss", regularizer(fc1_weights))
+                fc1_biases = tf.get_variable(
+                    "bias", [self.FC_SIZE], tf.constant_initializer(0.1)
+                )
+                fc1 = tf.nn.relu(tf.matmul(reshaped, fc1_weights) + fc1_biases)
+                #
+                if train:
+                    fc1 = tf.nn.dropout(fc1, 0.5)
+
+            # 第六层全连接层
+            with tf.variable_scope("layer6-fc2"):
+                fc2_weight = tf.get_variable(
+                    "weight", [self.FC_SIZE, self.NUM_LABELS],
+                    initializer = tf.truncated_normal_initializer(stddev = 0.1)
+                )
+                if regularizer != None:
+                    tf.add_to_collection("loss", regularizer(fc2_weight))
+                fc2_biases = tf.get_variable(
+                    "bias", [self.NUM_LABELS], tf.constant_initializer(0.1)
+                )
+
+                logit = tf.matmul(fc1, fc2_weight) + fc2_biases
+
+            return  logit
+
     # 一个辅助函数， 给定神经网络的输入和所有参数， 计算神经网络的前向传播结果。
     # 在这里， 定义一个使用ReLU激活函数的三层（输入层， 一层隐藏层， 输出）全
     # 连接神经网络。 通过ReLU激活函数去线性化。 这个函数中也支持传入用于计算参数

@@ -1,13 +1,20 @@
 from math import hypot
-
+from array import array
 # 一个简单的二维向量类
 class Vector:
+    typecode = 'd'
     def __init__(self, x = 0, y = 0):
         self.x = x
         self.y = y
 
+    def __iter__(self):
+        return (i for i in (self.x, self.y))
+
     def __repr__(self):
         return "Vector(%r, %r)" %(self.x , self.y)
+
+    def __bytes__(self):
+        return (bytes([ord(self.typecode)]) + bytes(array(self.typecode, self)))
 
     def __abs__(self):
         # hypot 返回 sqrt(x^2 + y ^ 2)
@@ -23,6 +30,11 @@ class Vector:
     def __mul__(self, other):
         return Vector(self.x * other, self.y * other)
 
+    def __format__(self, format_spec):
+        components = ["{}".format(c, format_spec) for c in self]
+        result = ''
+        result.join(components)
+        return result
 
 class test():
     def __init__(self):
@@ -35,6 +47,5 @@ class test():
         return "str"
 
 if __name__ == '__main__':
-    a = test()
-    print(str(a))
-    print(repr(a))
+    v = Vector(2, 2)
+    print(format(v, ".2f"))

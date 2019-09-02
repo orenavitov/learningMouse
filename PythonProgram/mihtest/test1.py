@@ -179,5 +179,35 @@ def test():
     a = [1, 23, 4]
     print("a_ is None?{0}".format(a_() is None))
 
+# "__"开头的变量为私有变量
+# A类中的b为类变量， B类中的a, b为实例变量
+# 通常来讲类变量不会在__dict__中存储， 实例变量会
+# 如果将实例变量放在__slot__, __dict__中就不会存储
+class A():
+    __a = 1
+    b = 2
+    def __init__(self):
+        pass
+    def test(self):
+        pass
+
+class B(A):
+    '''
+    B
+    '''
+
+    __slots__ = ["a", "b"]
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+    def _test(self):
+        pass
+
 if __name__ == '__main__':
-    test()
+    print(A.__dict__)
+    print(B.__dict__)
+    a = A()
+    b = B(1, 2, 3)
+    print(a.__dict__)
+    print(b.__dict__)
