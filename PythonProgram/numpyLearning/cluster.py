@@ -1,3 +1,4 @@
+# 2019.9.2
 import numpy as num
 import random
 '''
