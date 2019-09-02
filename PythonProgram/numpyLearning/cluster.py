@@ -1,6 +1,7 @@
 # 2019.9.2
 import numpy as num
 import random
+from collections import namedtuple
 '''
 聚类算法：
 样本集: D = {x_1, x_2, ... , x_m} 每个样本都是无标记样本；
@@ -44,33 +45,49 @@ DI = Min(Min(d_min(Ci, Cj) / Max(diam(Cl))))
 class cluster:
 
 
-    def __init__(self, D, k):
+    def __init__(self, D, k, loop):
         self.D = D
         self.k = k
+        self.loop = loop
 
     # 根据现在的均值, 返回距离最近均值的索引
-    def find_max_dist(self, d, u):
-        index = 0
-        max_dist = 0
-        for d_u in u:
+    def find_min_dist(self, d, u):
+        index = 1
+        min_dist = 0
+        u_0 = u[0]
+        for value in d - u_0:
+            min_dist += value ** 2
+
+        for d_u in u[1:]:
             dist = 0
 
             # 计算距离
             for value in d - d_u:
                 dist += value ** 2
-            if dist > max_dist:
+            if dist < min_dist:
                 index += 1
-                max_dist = dist
-        print("the max dist is {0}".format(dist))
+                min_dist = dist
         return index
+
     def update_u(self, u, result):
-        values = result.values()
-        for value in values:
-            pass
+        i = 0
+        for C in result:
+            items = C.items
+            lenght = len(items)
+            if lenght > 0:
+                sum = [0, 0]
+                for item in items:
+                    sum = sum + item
+                average = sum / lenght
+                u[i] = average
+            C.items = []
+            i = i + 1
 
-    def k_means(self):
 
-        #
+
+    def k_means(self, ):
+
+        # 随机选择样本点作为聚类的中心点
         examples= []
         while(len(examples) < self.k):
             example = random.randint(0, 30)
@@ -81,32 +98,29 @@ class cluster:
 
         # 初始均值
         u = []
-        # 聚类结果
-        result = {}
+        # 聚类结果, 结果中的元素使用nametuple表示
+        result = []
+        Result_Item = namedtuple("result", ["type", "items"])
         i = 1
-        for example in examples:
-
-            u.append(self.D[example])
-            key = 'C_{0}'.format(i)
-            value = [self.D[example]]
-            result[key] = value
-            i += 1
-        #
-        i = 1
-        for d in self.D:
-
-            print("the {0} data is :{1}".format(i, d))
-            index = self.find_max_dist(d, u)
-            value = result.get('C_{0}'.format(index)).append(d)
-            # result.__setitem__('C_{0}'.format(index), value)
-            i += 1
+        time = 1
+        while(time <= self.loop):
+            for example in examples:
+                u.append(self.D[example])
+                type = 'C_{0}'.format(i)
+                item = Result_Item(type=type, items=[])
+                result.append(item)
+                i += 1
+            #
+            for d in self.D:
+                index = self.find_min_dist(d, u)
+                result[index - 1].items.append(d)
+            if (time != self.loop):
+                self.update_u(u, result)
         return result
 D = num.random.random(size = [30, 2])
 if __name__ == "__main__":
-
-    print("the source data is {0}".format(D))
-
-    test = cluster(D, 3)
+    print("the source data is\n {0}".format(D))
+    test = cluster(D, 3, 20)
     result = test.k_means()
+    print("-------------------------------------------------")
     print(result)
-    pass
