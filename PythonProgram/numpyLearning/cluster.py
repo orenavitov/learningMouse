@@ -63,6 +63,10 @@ class cluster:
                 max_dist = dist
         print("the max dist is {0}".format(dist))
         return index
+    def update_u(self, u, result):
+        values = result.values()
+        for value in values:
+            pass
 
     def k_means(self):
 
@@ -94,13 +98,15 @@ class cluster:
             print("the {0} data is :{1}".format(i, d))
             index = self.find_max_dist(d, u)
             value = result.get('C_{0}'.format(index)).append(d)
-            result.__setitem__('C_{0}'.format(index), value)
+            # result.__setitem__('C_{0}'.format(index), value)
             i += 1
+        return result
 D = num.random.random(size = [30, 2])
 if __name__ == "__main__":
 
     print("the source data is {0}".format(D))
 
     test = cluster(D, 3)
-    test.k_means()
+    result = test.k_means()
+    print(result)
     pass
