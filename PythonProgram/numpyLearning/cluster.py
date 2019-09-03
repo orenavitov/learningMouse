@@ -40,6 +40,9 @@ DB指数：
 DBI = (1 / k) * Sum(Max((avg(Ci) + avg(Cj)) / d_cen(u_i, u_j)))    1<=i<=k
 Dunn指数：
 DI = Min(Min(d_min(Ci, Cj) / Max(diam(Cl))))
+
+
+这个算法有可能在执行分类的时候不会执行指定的轮数
 '''
 
 class cluster:
@@ -72,15 +75,15 @@ class cluster:
     def update_u(self, u, result):
         i = 0
         for C in result:
-            items = C.items
-            lenght = len(items)
+            # items = C.items
+            lenght = len(C.items)
             if lenght > 0:
                 sum = [0, 0]
-                for item in items:
+                for item in C.items:
                     sum = sum + item
                 average = sum / lenght
                 u[i] = average
-            C.items = []
+            C.items.clear()
             i = i + 1
 
 
@@ -103,17 +106,17 @@ class cluster:
         Result_Item = namedtuple("result", ["type", "items"])
         i = 1
         time = 1
-        while(time <= self.loop):
-            for example in examples:
-                u.append(self.D[example])
-                type = 'C_{0}'.format(i)
-                item = Result_Item(type=type, items=[])
-                result.append(item)
-                i += 1
-            #
+        for example in examples:
+            u.append(self.D[example])
+            type = 'C_{0}'.format(i)
+            item = Result_Item(type=type, items=[])
+            result.append(item)
+            i += 1
+        while (time < self.loop):
             for d in self.D:
                 index = self.find_min_dist(d, u)
                 result[index - 1].items.append(d)
+            time = time + 1
             if (time != self.loop):
                 self.update_u(u, result)
         return result
@@ -123,4 +126,8 @@ if __name__ == "__main__":
     test = cluster(D, 3, 20)
     result = test.k_means()
     print("-------------------------------------------------")
-    print(result)
+    for type in result:
+        print("the type is {0}".format(type.type))
+        print("the number of {0} is {1}".format(type.type, len(type.items)))
+        print(type.items)
+
