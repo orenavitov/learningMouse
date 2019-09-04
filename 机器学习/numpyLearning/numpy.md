@@ -1,6 +1,6 @@
 # Numpy常用函数
 
-1. arange
+1. array
 
     生成一个数组， 函数原型：array(p_object, dtype=None, copy=True, order='K', subok=False, ndmin=0)
     其中dtype表示返回的数组中元素是什么类型（尽量不要乱设这个值）
@@ -64,3 +64,22 @@
 
     hstack(a, b) 将a, b 两个数组的最后一个维度合并, 假设a 是 a * b * c, b是 a * b * c, 结果是a * b * 2c
 
+16. numpy.matmul
+
+    numpy.matmul(a, b)计算a, b两个矩阵的乘积
+
+17. numpy.vdot
+
+    numpy.vdot(a, b)计算两个向量a, b的内积
+
+18. numpy.linalg.det
+
+    numpy.linalg.det(a)计算矩阵a的行列式
+
+19. numpy.linalg.inv
+
+    numpy.linalg.inv(a)计算矩阵a的逆矩阵
+
+20. numpy.array().T
+
+    numpy.array(a).T 求矩阵a的转置矩阵

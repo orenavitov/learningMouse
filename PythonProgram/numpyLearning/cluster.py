@@ -2,6 +2,7 @@
 import numpy as num
 import random
 from collections import namedtuple
+
 '''
 聚类算法：
 样本集: D = {x_1, x_2, ... , x_m} 每个样本都是无标记样本；
@@ -45,8 +46,8 @@ DI = Min(Min(d_min(Ci, Cj) / Max(diam(Cl))))
 这个算法有可能在执行分类的时候不会执行指定的轮数
 '''
 
-class cluster:
 
+class cluster:
 
     def __init__(self, D, k, loop):
         self.D = D
@@ -86,19 +87,15 @@ class cluster:
             C.items.clear()
             i = i + 1
 
-
-
     def k_means(self, ):
-
         # 随机选择样本点作为聚类的中心点
-        examples= []
-        while(len(examples) < self.k):
+        examples = []
+        while (len(examples) < self.k):
             example = random.randint(0, 30)
             if examples.__contains__(example):
                 continue
             else:
                 examples.append(example)
-
         # 初始均值
         u = []
         # 聚类结果, 结果中的元素使用nametuple表示
@@ -120,7 +117,45 @@ class cluster:
             if (time != self.loop):
                 self.update_u(u, result)
         return result
-D = num.random.random(size = [30, 2])
+
+# Gaussian分布
+class Gaussian:
+    def __init__(self, average, covariance_matrix):
+        self.average = average
+        self.covariance = covariance_matrix
+
+    @property
+    def average(self):
+        return self.average
+
+    @property
+    def covariance_matrix(self):
+        return self.covariance_matrix
+
+
+class Mixture_Gaussian_Cluster:
+    mixture_gaussian = []
+    # D表示训练数据集
+    # k表示要求最终模型由k个高斯分布混合而成
+    def __init__(self, D, k):
+        self.D = D,
+        self.k = k
+        self.weights = [1 / k for i in range(k)]
+        examples_index = []
+        for i in range(k):
+            example_index = num.random.randint(0, 30)
+            if example_index not in examples_index:
+                examples_index.append(example_index)
+        for i in range(k):
+            gaussian = Gaussian(D[examples_index[i], num.array([[0.1, 0], [0, 0.1]])])
+            self.mixture_gaussian.append(gaussian)
+
+    def train(self):
+        pass
+
+D = num.random.random(size=[30, 2])
+
+
 if __name__ == "__main__":
     print("the source data is\n {0}".format(D))
     test = cluster(D, 3, 20)
@@ -130,4 +165,3 @@ if __name__ == "__main__":
         print("the type is {0}".format(type.type))
         print("the number of {0} is {1}".format(type.type, len(type.items)))
         print(type.items)
-
