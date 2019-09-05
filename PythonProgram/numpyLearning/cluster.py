@@ -2,6 +2,7 @@
 import numpy as num
 import random
 from collections import namedtuple
+import math
 
 '''
 聚类算法：
@@ -118,6 +119,7 @@ class cluster:
                 self.update_u(u, result)
         return result
 
+
 # Gaussian分布
 class Gaussian:
     def __init__(self, average, covariance_matrix):
@@ -125,43 +127,118 @@ class Gaussian:
         self.covariance = covariance_matrix
 
     @property
-    def average(self):
+    def get_average(self):
         return self.average
 
     @property
-    def covariance_matrix(self):
+    def get_covariance_matrix(self):
         return self.covariance_matrix
 
+    def get_probability(self, x):
+        dimension = len(x)
 
-class Mixture_Gaussian_Cluster:
-    mixture_gaussian = []
+        result_1 = 1 / ((2 * math.pi) ** (dimension / 2) * num.linalg.det(self.covariance) ** 0.5)
+        result_2 = math.e ** ((-1 / 2) * num.matmul(
+            num.matmul(x - self.average, num.linalg.inv(self.covariance)),
+            (x - self.average).T)
+        )
+        return result_1 * result_2
+
+
+class MixtureGaussianCluster:
+    mixture_gaussians = []
+
     # D表示训练数据集
     # k表示要求最终模型由k个高斯分布混合而成
-    def __init__(self, D, k):
-        self.D = D,
+    # loop表示高斯混合模型训练多少次
+    def __init__(self, data, k, loop):
+        self.D = data
         self.k = k
+        self.loop = loop
         self.weights = [1 / k for i in range(k)]
+        self.averages = []
+        self.covariance_matrixs = []
         examples_index = []
+
+
+        self.averages.append(num.array([0.403, 0.237]))
+        self.averages.append(num.array([0.714, 0.346]))
+        self.averages.append(num.array([0.532, 0.472]))
+        self.covariance_matrixs.append(num.array([
+            [0.1, 0], [0, 0.1]
+        ]))
+        self.covariance_matrixs.append(num.array([
+            [0.1, 0], [0, 0.1]
+        ]))
+        self.covariance_matrixs.append(num.array([
+            [0.1, 0], [0, 0.1]
+        ]))
+        # for i in range(k):
+        #     example_index = num.random.randint(0, 30)
+        #     if example_index not in examples_index:
+        #         examples_index.append(example_index)
+        #         self.averages.append(D[example_index])
+        #         self.covariance_matrixs.append(num.array([[0.1, 0], [0, 0.1]]))
         for i in range(k):
-            example_index = num.random.randint(0, 30)
-            if example_index not in examples_index:
-                examples_index.append(example_index)
-        for i in range(k):
-            gaussian = Gaussian(D[examples_index[i], num.array([[0.1, 0], [0, 0.1]])])
-            self.mixture_gaussian.append(gaussian)
+            gaussian = Gaussian(self.averages[i], self.covariance_matrixs[i])
+            self.mixture_gaussians.append(gaussian)
 
     def train(self):
-        pass
+        # 二维矩阵， i行， j列表示第i个样本由第j个高斯分布产生的概率
+        probability = []
+        for time in range(self.loop):
+            for i in range(len(self.D)):
+                # 获取第i个样本
+                data = self.D[i]
+                probability_i = []
+                for j in range(self.k):
+                    gaussian = self.mixture_gaussians[j]
+                    probability_i.append(gaussian.get_probability(data))
+                for j in range(self.k):
+                    probability_i[j] = (self.weights[j] * probability_i[j]) / math.fsum(probability_i)
+                probability.append(probability_i)
+
+            for i in range(self.k):
+                sum = math.fsum(num.array(probability).T[i])
+                sum_1 = 0
+                sum_2 = 0
+                # 更新第i个高斯分布的均值
+                for j in range(len(self.D)):
+                    sum_1 += num.array(self.D[j]) * probability[j][i]
+                new_average = sum_1 / sum
+                self.averages[i] = new_average
+                # 更新第i个高斯分布的协方差矩阵
+                for j in range(len(self.D)):
+                    temp_1 = self.D[j] - new_average
+                    temp_2 = self.D[j] - new_average
+                    temp = num.matmul(temp_1.reshape(len(temp_1), 1), temp_2.reshape(1, len(temp_2)))
+                    sum_2 += probability[j][i] * temp
+                new_covariance_matrix = sum_2 / sum
+                self.covariance_matrixs[i] = new_covariance_matrix
+                # 更新第i个高斯分布的权值
+                self.weights[i] = sum / self.k
+                print("the average is : {0}".format(self.averages))
+                print("the covariance_matrixs is {0}".format(self.covariance_matrixs))
+                print("the weights is {0}".format(self.weights))
+            self.mixture_gaussians.clear()
+            for i in range(self.k):
+                gaussian = Gaussian(self.averages[i], self.covariance_matrixs[i])
+                self.mixture_gaussians.append(gaussian)
+    def cluster(self):
+        result = []
+        for i in range(len(self.D)):
+            probabilitys = []
+            for j in self.k:
+                probability = self.mixture_gaussians[j](self.averages[j], self.covariance_matrixs[j])
+                probabilitys.append(probability * self.weights[j])
+            max_probability = num.max(probabilitys)
+            result.append(probabilitys.index(max_probability))
+        return result
+
 
 D = num.random.random(size=[30, 2])
-
-
+D = [[0.697, 0.460]]
 if __name__ == "__main__":
-    print("the source data is\n {0}".format(D))
-    test = cluster(D, 3, 20)
-    result = test.k_means()
-    print("-------------------------------------------------")
-    for type in result:
-        print("the type is {0}".format(type.type))
-        print("the number of {0} is {1}".format(type.type, len(type.items)))
-        print(type.items)
+   gaussian_cluster = MixtureGaussianCluster(D, 3, 10)
+   gaussian_cluster.train()
+   print(gaussian_cluster.cluster())
