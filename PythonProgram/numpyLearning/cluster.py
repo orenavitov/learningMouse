@@ -139,7 +139,7 @@ class Gaussian:
 
         result_1 = 1 / ((2 * math.pi) ** (dimension / 2) * num.linalg.det(self.covariance) ** 0.5)
         result_2 = math.e ** ((-1 / 2) * num.matmul(
-            num.matmul(x - self.average, num.linalg.inv(self.covariance)),
+             num.matmul(x - self.average, num.linalg.inv(self.covariance)),
             (x - self.average).T)
         )
         return result_1 * result_2
@@ -161,25 +161,25 @@ class MixtureGaussianCluster:
         examples_index = []
 
 
-        self.averages.append(num.array([0.403, 0.237]))
-        self.averages.append(num.array([0.714, 0.346]))
-        self.averages.append(num.array([0.532, 0.472]))
-        self.covariance_matrixs.append(num.array([
-            [0.1, 0], [0, 0.1]
-        ]))
-        self.covariance_matrixs.append(num.array([
-            [0.1, 0], [0, 0.1]
-        ]))
-        self.covariance_matrixs.append(num.array([
-            [0.1, 0], [0, 0.1]
-        ]))
-        # for i in range(k):
-        #     example_index = num.random.randint(0, 30)
-        #     if example_index not in examples_index:
-        #         examples_index.append(example_index)
-        #         self.averages.append(D[example_index])
-        #         self.covariance_matrixs.append(num.array([[0.1, 0], [0, 0.1]]))
+        # self.averages.append(num.array([0.403, 0.237]))
+        # self.averages.append(num.array([0.714, 0.346]))
+        # self.averages.append(num.array([0.532, 0.472]))
+        # self.covariance_matrixs.append(num.array([
+        #     [0.1, 0], [0, 0.1]
+        # ]))
+        # self.covariance_matrixs.append(num.array([
+        #     [0.1, 0], [0, 0.1]
+        # ]))
+        # self.covariance_matrixs.append(num.array([
+        #     [0.1, 0], [0, 0.1]
+        # ]))
         for i in range(k):
+            example_index = num.random.randint(0, len(self.D))
+            if example_index not in examples_index:
+                examples_index.append(example_index)
+                self.averages.append(D[example_index])
+                self.covariance_matrixs.append(num.array([[0.1, 0], [0, 0.1]]))
+        for i in range(self.k):
             gaussian = Gaussian(self.averages[i], self.covariance_matrixs[i])
             self.mixture_gaussians.append(gaussian)
 
@@ -191,12 +191,13 @@ class MixtureGaussianCluster:
                 # 获取第i个样本
                 data = self.D[i]
                 probability_i = []
+                probability_i_copy = []
                 for j in range(self.k):
                     gaussian = self.mixture_gaussians[j]
-                    probability_i.append(gaussian.get_probability(data))
+                    probability_i.append(self.weights[j] * gaussian.get_probability(data))
                 for j in range(self.k):
-                    probability_i[j] = (self.weights[j] * probability_i[j]) / math.fsum(probability_i)
-                probability.append(probability_i)
+                    probability_i_copy.append((probability_i[j]) / math.fsum(probability_i))
+                probability.append(probability_i_copy)
 
             for i in range(self.k):
                 sum = math.fsum(num.array(probability).T[i])
@@ -228,17 +229,30 @@ class MixtureGaussianCluster:
         result = []
         for i in range(len(self.D)):
             probabilitys = []
-            for j in self.k:
-                probability = self.mixture_gaussians[j](self.averages[j], self.covariance_matrixs[j])
+            for j in range(self.k):
+                gaussian = self.mixture_gaussians[j]
+                probability = gaussian.get_probability(self.D[i])
                 probabilitys.append(probability * self.weights[j])
             max_probability = num.max(probabilitys)
             result.append(probabilitys.index(max_probability))
         return result
 
 
-D = num.random.random(size=[30, 2])
-D = [[0.697, 0.460]]
+# D = num.random.random(size=[30, 2])
+D = num.array(
+    [
+        [1.00, 1.00],
+        [1.01, 1.01],
+        [-1.00, -1.00],
+        [-1.01, -1.01],
+        [-1.00, 1.00],
+        [-1.01, 1.01],
+        [1.00, -1.00],
+        [1.01, -1.01]
+    ]
+)
+# D = [[0.697, 0.460]]
 if __name__ == "__main__":
-   gaussian_cluster = MixtureGaussianCluster(D, 3, 10)
+   gaussian_cluster = MixtureGaussianCluster(D, 4, 10)
    gaussian_cluster.train()
    print(gaussian_cluster.cluster())
