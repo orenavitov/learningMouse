@@ -15,14 +15,15 @@ class DecisionTree:
 
         self.attrs = attrs
         self.labels = labels
-
+        # 初始化信息熵
+        self.ent_D = 0.0
     def get_attrAndlabel_map(self, input_D, remain_attrs):
         attrs_size = len(remain_attrs)
         # attr_detial形式： {attr_name: {attr_value: {label_1 : n_1, label_2 : n_2, ... , label_n : n_n}}}
         attr_detial = {}
         # label_detial形式： {label_value: count}
         label_detial = {}
-        for i in range(remain_attrs):
+        for i in range(len(remain_attrs)):
             attr_class = remain_attrs[i]
             attr_detial[attr_class] = {}
             index = self.attrs.index(attr_class)
@@ -47,13 +48,17 @@ class DecisionTree:
                 label_detial[label] += 1
         return attr_detial, label_detial
 
-    # 计算第index个属性的
-    def ent(self, attr_class, attr_detial, label_detial):
+    # 计算第index个属性的信息增益
+    def Gain(self, attr_class, attr_detial, label_detial):
+        # 信息熵
         entValue = 0.0
-        if (attr_class == None):
+        # 条件信息熵
+        entValue_ = 0.0
+        if (self.ent_D == 0.0):
             for label in label_detial:
                 entValue += -(label_detial[label] / self.attrs_number) *\
                             math.log(label_detial[label] / self.attrs_number, 2)
+            self.ent_D = entValue
 
         else:
             attr_distritube = attr_detial[attr_class]
@@ -62,26 +67,30 @@ class DecisionTree:
                 for label in attr_distritube[attr_value].keys():
                     _sum += attr_distritube[attr_value][label]
                 for label in attr_distritube[attr_value].keys():
-                    entValue += -(attr_distritube[attr_value][label] / self.attrs_number) * math.log(
-                        attr_distritube[attr_value][label] / self.attrs_number, 2
+                    entValue += -(attr_distritube[attr_value][label] / _sum) * math.log(
+                        attr_distritube[attr_value][label] / _sum, 2
                     )
-        return entValue
+                entValue_ += (_sum / self.D_count) * entValue
+        return self.ent_D - entValue_
 
 
     def ID3_select_best_attr(self, input_D, remain_attrs):
         attr_detial, label_detial = self.get_attrAndlabel_map(input_D, remain_attrs)
-        max_ent = 0
+        max_gain = 0
         best_attr = remain_attrs[0]
         for attr_class in remain_attrs:
-            current_ent = self.ent(attr_class, attr_detial, label_detial)
-            if current_ent > max_ent:
+            currrnt_gain = self.Gain(attr_class, attr_detial, label_detial)
+            if currrnt_gain > max_gain:
                 best_attr = attr_class
-                max_ent = current_ent
+                max_gain = currrnt_gain
         return best_attr
 
     # ID3算法
     def ID3(self, input_D, remain_attrs, distritube_attr):
-        print("distritube attr is {0}".format(distritube_attr))
+        if distritube_attr == None:
+            print("start!")
+        else:
+            print("distritube attr is {0}".format(distritube_attr))
         remain_attrs = remain_attrs
         pre_label = input_D[0][-1]
         need_devision = False
@@ -141,3 +150,4 @@ if __name__ == '__main__':
     D = numpy.array(D).T
     print(D)
     decision_tree = DecisionTree(D, attrs, labels)
+    decision_tree.ID3(D, attrs, None)
