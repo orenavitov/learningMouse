@@ -56,21 +56,21 @@ class DecisionTree:
         entValue_ = 0.0
         if (self.ent_D == 0.0):
             for label in label_detial:
-                entValue += -(label_detial[label] / self.attrs_number) *\
-                            math.log(label_detial[label] / self.attrs_number, 2)
+                entValue -= (label_detial[label] / self.D_count) *\
+                            math.log(label_detial[label] / self.D_count, 2)
             self.ent_D = entValue
 
-        else:
-            attr_distritube = attr_detial[attr_class]
-            for attr_value in attr_distritube.keys():
-                _sum = 0
-                for label in attr_distritube[attr_value].keys():
-                    _sum += attr_distritube[attr_value][label]
-                for label in attr_distritube[attr_value].keys():
-                    entValue += -(attr_distritube[attr_value][label] / _sum) * math.log(
-                        attr_distritube[attr_value][label] / _sum, 2
-                    )
-                entValue_ += (_sum / self.D_count) * entValue
+        attr_distritube = attr_detial[attr_class]
+        for attr_value in attr_distritube.keys():
+            _sum = 0.0
+            each_attr_ent = 0.0
+            for label in attr_distritube[attr_value].keys():
+                _sum += attr_distritube[attr_value][label]
+            for label in attr_distritube[attr_value].keys():
+                each_attr_ent -= (attr_distritube[attr_value][label] / _sum) * math.log(
+                    attr_distritube[attr_value][label] / _sum, 2
+                )
+            entValue_ += (_sum / self.D_count) * each_attr_ent
         return self.ent_D - entValue_
 
 
@@ -83,14 +83,17 @@ class DecisionTree:
             if currrnt_gain > max_gain:
                 best_attr = attr_class
                 max_gain = currrnt_gain
-        return best_attr
+        return best_attr, attr_detial
 
     # ID3算法
-    def ID3(self, input_D, remain_attrs, distritube_attr):
+    def ID3(self, input_D, remain_attrs, distritube_attr, layer):
         if distritube_attr == None:
             print("start!")
+            print("layer{0}:{1}".format(layer, input_D))
         else:
-            print("distritube attr is {0}".format(distritube_attr))
+            print()
+            print("layer{0}:{1}:{2}".format(layer, distritube_attr, input_D))
+
         remain_attrs = remain_attrs
         pre_label = input_D[0][-1]
         need_devision = False
@@ -105,16 +108,16 @@ class DecisionTree:
                 need_devision =True
                 break
         if need_devision:
-            best_attr = self.ID3_select_best_attr(input_D, remain_attrs)
+            layer += 1
+            best_attr, attr_detial = self.ID3_select_best_attr(input_D, remain_attrs)
             best_attr_index = self.attrs.index(best_attr)
-            print("the best attr is ", best_attr)
-            remain_attrs = remain_attrs.remove(best_attr)
-            for remain_attr_value in remain_attrs[best_attr].keys():
+            remain_attrs.remove(best_attr)
+            for remain_attr_value in attr_detial[best_attr].keys():
                 next_input_d = []
                 for d in input_D:
                     if d[best_attr_index] == remain_attr_value:
                         next_input_d.append(d)
-                self.ID3(next_input_d, remain_attrs, best_attr_index)
+                self.ID3(next_input_d, remain_attrs, best_attr, layer)
 
 
 
@@ -150,4 +153,4 @@ if __name__ == '__main__':
     D = numpy.array(D).T
     print(D)
     decision_tree = DecisionTree(D, attrs, labels)
-    decision_tree.ID3(D, attrs, None)
+    decision_tree.ID3(D, attrs, None, 0)

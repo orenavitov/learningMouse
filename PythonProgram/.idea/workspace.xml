@@ -14,7 +14,7 @@
     <SUITE FILE_PATH="coverage/PythonProgram$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1567042875422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mihtest" />
     <SUITE FILE_PATH="coverage/PythonProgram$test4.coverage" NAME="test4 Coverage Results" MODIFIED="1550994079379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/numpyLearning" />
     <SUITE FILE_PATH="coverage/PythonProgram$gradientdescent.coverage" NAME="gradientdescent Coverage Results" MODIFIED="1564374239891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/machineLearningData" />
-    <SUITE FILE_PATH="coverage/PythonProgram$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1567945749966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/numpyLearning" />
+    <SUITE FILE_PATH="coverage/PythonProgram$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1568037046396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/numpyLearning" />
     <SUITE FILE_PATH="coverage/PythonProgram$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1567062308082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mihtest" />
     <SUITE FILE_PATH="coverage/PythonProgram$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1551930225310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/numpyLearning" />
     <SUITE FILE_PATH="coverage/PythonProgram$cluster.coverage" NAME="cluster Coverage Results" MODIFIED="1567435326980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/numpyLearning" />
@@ -57,11 +57,20 @@
       <file leaf-file-name="decision_tree.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/numpyLearning/decision_tree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-466">
-              <caret line="82" column="56" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="56" />
+            <state relative-caret-position="325">
+              <caret line="117" column="63" lean-forward="true" selection-start-line="117" selection-start-column="63" selection-end-line="117" selection-end-column="63" />
               <folding>
                 <element signature="e#9#20#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="math.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1540969729/math.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="293" column="4" selection-start-line="293" selection-start-column="4" selection-end-line="293" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -96,7 +105,7 @@
       <file leaf-file-name="mtrand.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1540969729/numpy/random/mtrand.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="808">
+            <state relative-caret-position="42105">
               <caret line="2009" column="4" selection-start-line="2009" selection-start-column="4" selection-end-line="2009" selection-end-column="4" />
             </state>
           </provider>
@@ -164,8 +173,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3" />
-    <option name="y" value="332" />
+    <option name="x" value="-28" />
+    <option name="y" value="370" />
     <option name="width" value="1271" />
     <option name="height" value="1012" />
   </component>
@@ -174,7 +183,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,6 +204,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,16 +354,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="332" width="1271" height="1012" extended-state="0" />
-    <editor active="true" />
+    <frame x="-28" y="370" width="1271" height="1012" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053936" side_tool="true" weight="0.36482084" />
-      <window_info anchor="right" x="0" y="0" width="267" height="812" id="Documentation" order="5" sideWeight="0.2674772" side_tool="true" weight="0.08366534" />
+      <window_info anchor="right" x="0" y="0" width="267" height="812" id="Documentation" order="5" sideWeight="0.2674772" side_tool="true" weight="0.05651238" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32928064" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946064" weight="0.34108528" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946064" weight="0.5116279" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32928064" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25737053" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -362,7 +370,7 @@
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.7325228" weight="0.5816474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5035461" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43465045" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -376,25 +384,25 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1683526" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36831483" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32928064" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.47225025" />
       <window_info anchor="right" x="0" y="0" width="300" height="900" id="Documentation" order="5" sideWeight="0.2674772" side_tool="true" weight="0.58092487" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.7325228" weight="0.5816474" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32928064" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,14 +415,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/numpyLearning/cluster.py</url>
-          <line>77</line>
-          <option name="timeStamp" value="63" />
+          <url>file://$PROJECT_DIR$/numpyLearning/decision_tree.py</url>
+          <line>155</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/numpyLearning/cluster.py</url>
-          <line>85</line>
-          <option name="timeStamp" value="64" />
+          <url>file://$PROJECT_DIR$/numpyLearning/decision_tree.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -427,20 +435,10 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="65" />
+      <option name="time" value="73" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/numpyLearning/decision_tree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="e#9#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/numpyLearning/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -764,15 +762,22 @@
     </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1540969729/numpy/random/mtrand.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="808">
+        <state relative-caret-position="42105">
           <caret line="2009" column="4" selection-start-line="2009" selection-start-column="4" selection-end-line="2009" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1540969729/math.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="293" column="4" selection-start-line="293" selection-start-column="4" selection-end-line="293" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/numpyLearning/decision_tree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-466">
-          <caret line="82" column="56" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="56" />
+        <state relative-caret-position="325">
+          <caret line="117" column="63" lean-forward="true" selection-start-line="117" selection-start-column="63" selection-end-line="117" selection-end-column="63" />
           <folding>
             <element signature="e#9#20#0" expanded="true" />
           </folding>
