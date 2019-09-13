@@ -2,7 +2,7 @@
 
 import math
 import numpy
-
+import copy
 class DecisionTree:
 
     # D: 数据集
@@ -73,7 +73,7 @@ class DecisionTree:
             entValue_ += (_sum / self.D_count) * each_attr_ent
         return self.ent_D - entValue_
 
-
+    # 计算每个属性的信息增益， 选择最好的划分属性
     def ID3_select_best_attr(self, input_D, remain_attrs):
         attr_detial, label_detial = self.get_attrAndlabel_map(input_D, remain_attrs)
         max_gain = 0
@@ -85,22 +85,48 @@ class DecisionTree:
                 max_gain = currrnt_gain
         return best_attr, attr_detial
 
-    # ID3算法
-    def ID3(self, input_D, remain_attrs, distritube_attr, layer):
-        if distritube_attr == None:
-            print("start!")
-            print("layer{0}:{1}".format(layer, input_D))
-        else:
-            print()
-            print("layer{0}:{1}:{2}".format(layer, distritube_attr, input_D))
+    def C4_5_select_best_attr(self, input_D, remain_attrs):
+        attr_detial, label_detial = self.get_attrAndlabel_map(input_D, remain_attrs)
+        # 保存每种属性的信息增益
+        attr_class_gain_map = {}
+        for attr_class in remain_attrs:
+            gain = self.Gain(attr_class, attr_detial, label_detial)
+            attr_class_gain_map[attr_class] = gain
+        ## 计算平均的信息增益
+        sum_gain = 0.0
+        for attr_class in attr_class_gain_map.keys():
+            sum_gain += attr_class_gain_map[attr_class]
+        average_gain = sum_gain / len(remain_attrs)
+        ## 找出高于平均信息增益的属性
+        remain_attrs_ = []
+        for attr_class in attr_class_gain_map.keys():
+            if attr_class_gain_map[attr_class_gain_map] > average_gain:
+                remain_attrs_.append(attr_class)
 
-        remain_attrs = remain_attrs
+
+
+
+    # ID3算法
+    # input_D: 输入的数据集
+    # remain_attrs: 待划分的属性
+    # distritube_attr:
+    # layer: 当前待划分节点是决策树的第几层
+    def ID3(self, input_D, remain_attrs, distritube_attr, layer):
+        # if distritube_attr == None:
+        #     print("start!")
+        #     print("layer{0}:{1}".format(layer, input_D))
+        # else:
+        #     print()
+        #     print("layer{0}:{1}:{2}".format(layer, distritube_attr, input_D))
+
+        # 对待划分属性机型保存
+        remain_attrs_copy = copy.copy(remain_attrs)
         pre_label = input_D[0][-1]
         need_devision = False
         # 没有属性可以继续划分了就返回
-        if len(remain_attrs) == 0:
+        if len(remain_attrs_copy) == 0:
             return
-
+        # 如果所有的训练数据属于同一个类别则停止划分
         for d in input_D:
             if d[-1] == pre_label:
                 continue
@@ -109,17 +135,19 @@ class DecisionTree:
                 break
         if need_devision:
             layer += 1
-            best_attr, attr_detial = self.ID3_select_best_attr(input_D, remain_attrs)
+            best_attr, attr_detial = self.ID3_select_best_attr(input_D, remain_attrs_copy)
             best_attr_index = self.attrs.index(best_attr)
-            remain_attrs.remove(best_attr)
+            remain_attrs_copy.remove(best_attr)
             for remain_attr_value in attr_detial[best_attr].keys():
                 next_input_d = []
                 for d in input_D:
                     if d[best_attr_index] == remain_attr_value:
                         next_input_d.append(d)
-                self.ID3(next_input_d, remain_attrs, best_attr, layer)
+                self.ID3(next_input_d, remain_attrs_copy, best_attr, layer)
 
+    def C4_5(self, input_D, remain_attrs, layer):
 
+        pass
 
 
 attr_1 = numpy.random.randint(1, 4, size = [1, 30])
