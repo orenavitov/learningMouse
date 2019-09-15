@@ -3,6 +3,41 @@
 import math
 import numpy
 import copy
+
+
+class Tree_node:
+
+    def __init__(self, context, childs, name, value):
+        self.name = name
+        self.context = context
+        self.childs = childs
+        self.value = value
+
+    def add_name(self, name):
+        self.name = name
+
+    def add_value(self, value):
+        self.value = value
+
+    def add_child(self, child):
+        if child != None:
+            if self.childs == None:
+                self.childs = []
+            self.childs.append(child)
+
+    def get_context(self):
+        return self.context
+
+    def get_childs(self):
+        return self.childs
+
+    def get_name(self):
+        return self.name
+
+    def get_value(self):
+        return self.value
+
+
 class DecisionTree:
 
     # D: 数据集
@@ -129,13 +164,16 @@ class DecisionTree:
     # input_D: 输入的数据集
     # remain_attrs: 待划分的属性
     # layer: 当前待划分节点是决策树的第几层
-    def ID3(self, input_D, remain_attrs, layer):
-        # if distritube_attr == None:
-        #     print("start!")
-        #     print("layer{0}:{1}".format(layer, input_D))
-        # else:
-        #     print()
-        #     print("layer{0}:{1}:{2}".format(layer, distritube_attr, input_D))
+    # distritube_name: 本节点名字， 依据什么属性被划分的
+    def ID3(self, input_D, remain_attrs, distritubed_name, distritube_value):
+
+        if distritubed_name == None:
+            node_name = "root"
+        else:
+            node_name = distritubed_name
+
+        # 初始化一个树节点
+        node = Tree_node(context=input_D, childs = None, name = node_name, value = distritube_value)
 
         # 对待划分属性机型保存
         remain_attrs_copy = copy.copy(remain_attrs)
@@ -152,7 +190,6 @@ class DecisionTree:
                 need_devision =True
                 break
         if need_devision:
-            layer += 1
             best_attr, attr_detial = self.ID3_select_best_attr(input_D, remain_attrs_copy)
             best_attr_index = self.attrs.index(best_attr)
             remain_attrs_copy.remove(best_attr)
@@ -161,8 +198,8 @@ class DecisionTree:
                 for d in input_D:
                     if d[best_attr_index] == remain_attr_value:
                         next_input_d.append(d)
-                self.ID3(next_input_d, remain_attrs_copy, layer)
-
+                node.add_child(self.ID3(next_input_d, remain_attrs_copy, best_attr, remain_attr_value))
+        return node
     def C4_5(self, input_D, remain_attrs, layer):
         # 对待划分属性机型保存
         remain_attrs_copy = copy.copy(remain_attrs)
@@ -192,35 +229,198 @@ class DecisionTree:
         pass
 
 
-attr_1 = numpy.random.randint(1, 4, size = [1, 30])
-attr_2 = numpy.random.randint(1, 3, size = [1, 30])
-attr_3 = numpy.random.randint(1, 4, size = [1, 30])
-attr_4 = numpy.random.randint(1, 3, size = [1, 30])
-attr_5 = numpy.random.randint(1, 4, size = [1, 30])
-attr_6 = numpy.random.randint(1, 3, size = [1, 30])
-label = numpy.random.randint(1, 3, size = [1, 30])
-D = []
-D.extend(attr_1)
-D.extend(attr_2)
-D.extend(attr_3)
-D.extend(attr_4)
-D.extend(attr_5)
-D.extend(attr_6)
-D.extend(label)
-attrs = [
-    'attr_1',
-    'attr_2',
-    'attr_3',
-    'attr_4',
-    'attr_5',
-    'attr_6',
-]
-labels = [
-    'label_1',
-    'label_2'
-]
+# attr_1 = numpy.random.randint(1, 4, size = [1, 30])
+# attr_2 = numpy.random.randint(1, 3, size = [1, 30])
+# attr_3 = numpy.random.randint(1, 4, size = [1, 30])
+# attr_4 = numpy.random.randint(1, 3, size = [1, 30])
+# attr_5 = numpy.random.randint(1, 4, size = [1, 30])
+# attr_6 = numpy.random.randint(1, 3, size = [1, 30])
+# label = numpy.random.randint(1, 3, size = [1, 30])
+# D = []
+# D.extend(attr_1)
+# D.extend(attr_2)
+# D.extend(attr_3)
+# D.extend(attr_4)
+# D.extend(attr_5)
+# D.extend(attr_6)
+# D.extend(label)
+# attrs = [
+#     'attr_1',
+#     'attr_2',
+#     'attr_3',
+#     'attr_4',
+#     'attr_5',
+#     'attr_6',
+# ]
+# labels = [
+#     'label_1',
+#     'label_2'
+# ]
+
+# 根据输入的数据产生一个一维的高斯分布
+def get_gaussian_distribution(D):
+    sum = 0.0
+    for d in D:
+        sum += d
+    # 均值
+    averge = sum / len(D)
+    sum_ = 0.0
+    for d in D:
+        sum_ += (d - averge) ** 2
+    # 方差
+    variance = sum_ / len(D)
+    return averge, variance
+# 一维的高斯分布
+gassian = lambda x, average, variance: (1 / ((2 * math.pi) ** 0.5 * variance ** 0.5)) * \
+                                    math.e ** (-(x - average) ** 2 / 2 * variance)
+
+# 数据集为鸢尾花数据
+# 特征值包括sepal length（萼片长度）， sepal width（萼片宽度）， petal length（花瓣长度）， petal width（花瓣宽度）
+# 标签为鸢尾花的种类：1：Iris Setosa， 2：Iris Versicolour， 3：Iris Virginica
+# def data_handle(D, attrs, labels):
+#     # 训练数据集
+#     train_data = {}
+#     for label in labels:
+#         train_data[label] = []
+#     # 测试数据集
+#     test_data = []
+#     with open(r"E:\train_data\Iris\bezdekIris.data", "r") as file:
+#         for line in file.readlines(""):
+#             # 去掉行尾的换行符
+#             line_ = line[:-1]
+#
+#             label = line_.split(",")[-1]
+#             d = [line_.split(",")[:-1]]
+#             if numpy.random.randint(0, 9) > 3:
+#                 train_data[label].append(d)
+#             else:
+#                 test_data.append(d)
+#     train_data = numpy.array(train_data)
+#     test_data = numpy.array(test_data)
+#     # 每个属性高斯分布的（均值， 方差）
+#     gassians = []
+#     for label in train_data.keys():
+#         label_gassian = []
+#         label_data = train_data[label]
+#         for label_attr_data in label_data.T:
+#             average, variance = get_gaussian_distribution(label_attr_data)
+#             label_gassian.append(tuple(average, variance))
+#     gassians.append(label_gassian)
+#
+#     D_ = []
+#     for d in D:
+#         d_ = []
+#         for attr_d in d:
+# 使用二分法， 将离散数据进行转化
+def transform_attr_data(attr_data):
+    list_attr_data = list(attr_data)
+    list_attr_data.sort()
+    split_number = list_attr_data[int(len(attr_data) / 2)]
+    for i in range(len(attr_data)):
+        # 如果不大于中位数则设为1，否者设为2
+        if attr_data[i] <= split_number:
+            attr_data[i] = 1
+        else:
+            attr_data[i] = 2
+    return attr_data
+
+# 数据集为鸢尾花数据
+# 特征值包括sepal length（萼片长度）， sepal width（萼片宽度）， petal length（花瓣长度）， petal width（花瓣宽度）
+# 标签为鸢尾花的种类：1：Iris Setosa， 2：Iris Versicolour， 3：Iris Virginica
+def data_handle():
+    data = []
+    train_data = []
+    test_data = []
+    with open(r"E:\train_data\Iris\bezdekIris.data", "r") as file:
+        for line in file.readlines():
+            # 去掉行尾的换行符
+            line_ = line[:-1]
+            d = line_.split(",")
+            if len(d) > 1:
+                data.append(d)
+    lines = len(data)
+    attr_with_label_count = len(data[0])
+    for i in range(attr_with_label_count):
+        if i == attr_with_label_count - 1:
+            for j in range(lines):
+                if data[j][i] == "Iris-setosa":
+                    data[j][i] = 1
+                    continue
+                if data[j][i] == "Iris-versicolor":
+                    data[j][i] = 2
+                    continue
+                if data[j][i] == "Iris-virginica":
+                    data[j][i] = 3
+                    continue
+        else:
+            temp_list = []
+            for j in range(lines):
+                temp_list.append(data[j][i])
+            temp_list.sort()
+            mid = temp_list[int(lines / 2)]
+            for j in range(lines):
+                value = data[j][i]
+                if value <= mid:
+                    data[j][i] = 1
+                else:
+                    data[j][i] = 2
+            temp_list.clear()
+    for i in range(lines):
+        flag = numpy.random.randint(0, 10)
+        if flag <= 6:
+            train_data.append(data[i])
+        else:
+            test_data.append(data[i])
+
+    return train_data, test_data
+
+def predict(root, test_data, attrs):
+    if root.get_childs() != None:
+        childs = root.get_childs()
+        for child in childs:
+            distritube_attr = child.get_name()
+            distritube_value = child.get_value()
+            data_value = test_data[attrs.index(distritube_attr)]
+            if data_value == distritube_value:
+                return predict(child, test_data, attrs)
+    else:
+        context = root.get_context()
+        leaf = {}
+        for item in context:
+            if item[-1] not in leaf.keys():
+                leaf[item[-1]] = 1
+            else:
+                leaf[item[-1]] += 1
+        result = 1
+        result_count = 0
+        for key in leaf.keys():
+            if leaf[key] >= result_count:
+                result = key
+                result_count = leaf[key]
+        return result
+
 if __name__ == '__main__':
-    D = numpy.array(D).T
-    print(D)
-    decision_tree = DecisionTree(D, attrs, labels)
-    decision_tree.ID3(D, attrs, None, 0)
+    train_data, test_data = data_handle()
+    attrs = [
+        "sepal length",
+        "sepal width",
+        "petal length",
+        "petal width"
+    ]
+    labels = [
+        "Iris Setosa",
+        "Iris Versicolour",
+        "Iris Virginica"
+    ]
+    decision_tree = DecisionTree(train_data, attrs, labels)
+    root = decision_tree.ID3(train_data, attrs, None, None)
+    right = 0
+    wrong = 0
+    for data in train_data:
+        result = predict(root, data, attrs)
+        print("the real result is {0}, the predict result is {1}".format(data[-1], result))
+        if data[-1] == result:
+            right += 1
+        else:
+            wrong += 1
+    print("the right rate is {0}".format(right / (right + wrong)))
