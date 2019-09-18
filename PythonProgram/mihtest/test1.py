@@ -183,31 +183,48 @@ def test():
 # A类中的b为类变量， B类中的a, b为实例变量
 # 通常来讲类变量不会在__dict__中存储， 实例变量会
 # 如果将实例变量放在__slot__, __dict__中就不会存储
-class A():
-    __a = 1
-    b = 2
+# class A():
+#     __a = 1
+#     b = 2
+#     def __init__(self):
+#         pass
+#     def test(self):
+#         pass
+#
+# class B(A):
+#     '''
+#     B
+#     '''
+#
+#     __slots__ = ["a", "b"]
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#     def _test(self):
+#         pass
+
+# @staticmethod @staticmethod
+class test:
     def __init__(self):
         pass
-    def test(self):
-        pass
+    @classmethod
+    def get_instance(cls, input_number):
+        if (input_number > 10 and input_number <= 100):
+            return saygood()
+        elif (input_number > 100):
+            return sayhello()
+        else:
+            return cls()
+class sayhello(test):
+    def say(self):
+        print("hello")
 
-class B(A):
-    '''
-    B
-    '''
-
-    __slots__ = ["a", "b"]
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
-    def _test(self):
-        pass
+class saygood(test):
+    def say(self):
+        print("good")
 
 if __name__ == '__main__':
-    print(A.__dict__)
-    print(B.__dict__)
-    a = A()
-    b = B(1, 2, 3)
-    print(a.__dict__)
-    print(b.__dict__)
+        t1 = test()
+        t2 = test()
+        t1.f(1)

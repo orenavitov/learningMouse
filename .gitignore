@@ -1,7 +1,6 @@
 ##ignore this file##
 *.iml
-/PythonProgram/.idea/
-/.vscode/
+PythonProgram/.idea/
 /algorithms/.vscode/
 /C++Program/.vs/
 /CProgram/.vscode/
