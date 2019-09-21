@@ -1,2 +1,0 @@
-# PythonProgram
-Python learn conde.

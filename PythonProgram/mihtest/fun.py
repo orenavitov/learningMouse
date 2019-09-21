@@ -1,29 +1,29 @@
+import array
+import numbers
+import reprlib
+import functools
+class test:
+    _typeCode = 'd'
+    def __init__(self, items):
+        self._list = array.array(self._typeCode, items)
 
-import math
-import numpy as num
-def test():
-    HD = -(6 / 15) * math.log(6 / 15, 2) - (9 / 15) * math.log(9 / 15, 2)
-    HD_X2_0 = (2 / 3) * (-(4 / 10) * math.log(4 / 10, 2) - (6 / 10) * math.log(6 / 10, 2))
-    return HD - HD_X2_0
+    def __iter__(self):
+        return iter(self._list)
 
-def aler(em):
-    return 0.5 * math.log((1 - em) / em, math.e)
+    def __repr__(self):
+        list = reprlib.repr(self._list)
+        list = list[list.find('['):-1]
+        return 'Vector({0})'.format(list)
 
-W_m_init = [0.1 for i in range(10)]
-def nextW_m(W_m, aler, wrongs, rights):
-    Z_m = 0.0
-    for index in wrongs:
-        Z_m = Z_m + W_m[index - 1] * math.e ** ((-aler) * (-1))
-    for index in rights:
-        Z_m += W_m[index - 1] * math.e ** ((-aler) * 1)
-    for index in wrongs:
-        W_m[index - 1] = (W_m[index - 1] / Z_m) * math.e ** ((-aler) * (-1))
-    for index in rights:
-        W_m[index - 1] = (W_m[index - 1] / Z_m) * math.e ** ((-aler) * 1)
-    return W_m
+    def __len__(self):
+        return len(self._list)
+    def __getitem__(self, index):
+        cls = type(self)
+        if isinstance(index, slice):
+            return cls(self._list[index])
+        elif isinstance(index, numbers.Integral):
+            return self._list[index]
+        return self._list[index]
+
 if __name__ == '__main__':
-    wrongs = [3, 4, 5]
-    rights = [1, 2, 6, 7, 8, 9, 10]
-    W_m = nextW_m(W_m_init, aler(0.3), wrongs, rights)
-    print(W_m)
-    print(W_m[6] + W_m[7] + W_m[8])
+    print(test._typeCode)
