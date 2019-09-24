@@ -46,6 +46,16 @@ class test():
     def __str__(self):
         return "str"
 
+class test1:
+    __a = 1
+    __b = 2
+
+    @property
+    def a(self):
+        return self.__a
+
+    @property
+    def b(self):
+        return self.__b
 if __name__ == '__main__':
-    v = Vector(2, 2)
-    print(format(v, ".2f"))
+    print(test1.__b)
