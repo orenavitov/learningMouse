@@ -89,3 +89,6 @@
 
 22. numpy.diag()
     numpy.diag(a) 根据a生成一个对角矩阵
+
+23. numpy.linalg.eig()
+    b = numpy.diag(a) 计算矩阵a的特征值和特征向量， 其中b[0]为特征值， b[1]为特征向量组成的矩阵
