@@ -2,6 +2,7 @@
 *.iml
 PythonProgram/.idea/
 PythonProgram/machineLearning/.idea/
+PythonProgram/mihtest/.pytest_cache/
 /algorithms/.vscode/
 /C++Program/.vs/
 /CProgram/.vscode/

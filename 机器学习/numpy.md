@@ -83,3 +83,9 @@
 20. numpy.array().T
 
     numpy.array(a).T 求矩阵a的转置矩阵
+
+21. numpy.dot()
+    numpy.dot(a, b) 求矩阵a, b的乘积
+
+22. numpy.diag()
+    numpy.diag(a) 根据a生成一个对角矩阵
