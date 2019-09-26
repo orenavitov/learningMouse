@@ -99,6 +99,14 @@ class demo_MNIST():
             conv1_biases = tf.get_variable(
                 "bias", [self.CONV1_DEEP], initializer = tf.constant_initializer(0.0)
             )
+            '''
+            conv2d(input, filter, strides, padding, use_cudnn_on_gpu=None,
+           data_format=None, name=None)
+           input:[batch, in_height, in_width, in_channels]
+           filter:[filter_height, filter_width, in_channels, out_channels]
+           输出:[batch, out_height, out_width, out_channels]
+           strides:[length_step_batch, lenght_step_height, length_step_width, length_channels]
+            '''
             # 卷积层前向传播
             # tensorflow 卷积层 & 池化层补零的方法
             # 假设输入层矩阵： W * W

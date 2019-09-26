@@ -184,14 +184,14 @@ def test():
 # 通常来讲类变量不会在__dict__中存储， 实例变量会
 # 如果将实例变量放在__slot__, __dict__中就不会存储
 # 类属性b 也可作为实例属性， 这是会在实例中覆盖原类属性， 但类本身的b并不会改变
-class A():
-    __a = 1
-    b = 2
-    c = []
-    def __init__(self):
-        pass
-    def test(self):
-        pass
+# class A():
+#     __a = 1
+#     b = 2
+#     c = []
+#     def __init__(self):
+#         pass
+#     def test(self):
+#         pass
 #
 # class B(A):
 #     '''
@@ -206,36 +206,22 @@ class A():
 #     def _test(self):
 #         pass
 
-# @staticmethod @staticmethod
-# class test:
-#     def __init__(self):
-#         pass
-#     @classmethod
-#     def get_instance(cls, input_number):
-#         if (input_number > 10 and input_number <= 100):
-#             return saygood()
-#         elif (input_number > 100):
-#             return sayhello()
-#         else:
-#             return cls()
-# class sayhello(test):
-#     def say(self):
-#         print("hello")
-#
-# class saygood(test):
-#     def say(self):
-#         print("good")
+class A():
 
-# class A:
-#     def __init__(self, a, b):
-#         self.a = a
-#         self.b = b
-#     def __eq__(self, other):
-#         if (self.a == other.a and self.b == other.b):
-#             return True
-#
-#         else:
-#             return False
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    @classmethod
+    def A1(cls):
+        print("a1")
+        return cls(10, 100)
+
+    def A2(self):
+        print("a2")
+
 if __name__ == '__main__':
-    a1 = A()
-    print(hash(a1))
+    instance_A = A.A1()
+    print("{}".format(instance_A.a))
+    A.A2()
+
