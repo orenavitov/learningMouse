@@ -179,9 +179,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="345" />
-    <option name="y" value="126" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="5" />
+    <option name="y" value="391" />
     <option name="width" value="1271" />
     <option name="height" value="1078" />
   </component>
@@ -405,7 +405,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="5" y="391" width="1271" height="1078" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -415,7 +415,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32928064" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946064" weight="0.5167173" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32928064" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18783638" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27808765" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32928064" />

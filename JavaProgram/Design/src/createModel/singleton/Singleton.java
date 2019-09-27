@@ -4,16 +4,16 @@ package createModel.singleton;
  * 普通单例模式， 无法保证线程安全
  */
 public class Singleton {
-    private static Persion persion = null;
+    private static Singleton singleton = null;
 
     private Singleton() {
 
     }
 
-    public static Persion getInstance() {
-        if (persion == null) {
-            persion = new Persion();
+    public static Singleton getInstance() {
+        if (singleton == null) {
+            singleton = new Singleton();
         }
-        return persion;
+        return singleton;
     }
 }
