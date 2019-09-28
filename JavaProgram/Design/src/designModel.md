@@ -129,6 +129,226 @@ class C extends A {
 
 ## 行为模式
 
+### 策略模式
+
+```
+// 所有策略的抽象接口
+interface Strategy {
+    // 要实现的策略方法
+    public void strategyMethod();
+}
+
+// 策略A
+class StrategyA implements Strategy {
+    public void strategyMethod() {}
+}
+
+// 策略B
+class StrategyB implements Strategy {
+    public void strategyMethod() {}
+}
+
+// 供外部调用的类
+class Context {
+    private Strategy strategy;
+    public Strategy getStrategy() {
+        return stratefy;
+    }
+    public void setStrategy() {
+        this.strategy = strategy;
+    }
+    public void strategyMethod() {
+        // 调用具体的策略
+        strategy.strategyMethod();
+    }
+}
+```
+
+### 命令模式
+
+```
+//抽象命令
+interface Command {
+    public void execute();
+}
+// 具体命令
+class CommandA implements Command {
+    // 每一个命令需要一个接收者
+    private Receiver receiver;
+    public CommandA() {
+        receiver = new Receiver();
+    }
+    // 接收者执行命令
+    public void execute() {
+        receiver.action();
+    }
+}
+// 接收者
+class Receiver {
+    public void action() {}
+}
+// 调用者， 发出命令的人
+class Invoker {
+    private Command command;
+    public Invoker(Command command) {
+        this.command = command;
+    }
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+    public void call() {
+        command.execute();
+    }
+}
+```
+
+### 责任链模式
+
+```
+// 抽象处理者（责任链上的一环）
+abstract class Handler {
+    private Handler next;
+    public void setNext(Handler next) {
+        this.next = next
+    }
+    public Handler getNext() {
+        return next;
+    }
+    // 待实现的处理方法
+    public abstract void Handle();
+}
+
+// 具体的处理者
+class HandlerA extend Handler {
+    public void Handle() {
+        // 如果能处理， 执行以下方法
+        if() {
+
+        }
+        else {
+            // 不能处理， 交给责任链上的下一环
+            if (getNext() != null) {
+                getNext().Handle();
+            }
+            // 没有下一环， 该请求无法处理
+            else {
+
+            }
+        }
+    }
+}
+
+// 具体的处理者
+class HandlerB extend Handler {
+    public void Handle() {
+        // 如果能处理， 执行以下方法
+        if() {
+
+        }
+        else {
+            // 不能处理， 交给责任链上的下一环
+            if (getNext() != null) {
+                getNext().Handle();
+            }
+            // 没有下一环， 该请求无法处理
+            else {
+
+            }
+        }
+    }
+}
+
+```
+
+### 状态模式
+
+```
+// 抽象状态类
+abstract class State {
+    // 在该状态下的处理方法， 同时在上下文中设置由此状态转移的下一个状态
+    public abstract void Handle(Context context);
+}
+
+// 状态类A
+class StateA extends State {
+    public void Handle(Context context) {
+        // 假设StateA的下一个状态是StateB
+        context.setState(new StateB());
+    }
+}
+
+// 状态类B
+class StateB extends State {
+    public void Handle(Context context) {
+        // 假设StateB的下一个状态是StateA
+        context.setState(new StateA());
+    }
+}
+
+class Context {
+    private State state;
+    public Context() {
+        // 假设初始状态为A
+        this.state = new StateA();
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return this.state;
+    }
+
+    public void Handle() {
+        state.Handle(this)
+    }
+}
+```
+
+### 观察者模式
+
+```
+class Subject {
+    // 保存订阅的观察者
+    protect List<Observer> observers = new ArrayList<Observer>()
+
+    //增加观察者
+    public void add(Oberver observer) {
+        this.observers.add(observer)
+    }
+
+    // 删除观察者
+    public void remove(Observer observer) {
+        this.observers.remove(observer)
+    }
+
+    // 通知观察者
+    public void notifyObserver() {
+        for (Observer observer : observers) {
+            observer.response()
+        }
+    }
+
+// 抽象观察者
+interface Observer {
+    // 收到通知时的动作
+    void respone();
+}
+
+// 具体观察者A
+class ObserverA implements Observer {
+    public void respone() {}
+}
+```
+
+### 迭代器模式
+
+```
+
+```
+
+
 ### 访问者模式
 
 ```
