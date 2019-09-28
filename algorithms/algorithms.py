@@ -96,15 +96,25 @@ def number_distritube_2(number):
     while(current_number <= number):
         sub_distritube(current_number)
         current_number += 1
+
+'''
+有1分，2分， 5分， 10分的硬币， 每种硬币无限多个， 输入n分钱， 有多少种方式组成这n分钱；
+思路：假设x1分钱有m中组成方式， 则x1+1有m种组成方式， x1+2有m中组成方式， x1+3有m种组成方式，
+上述只是使用1分硬币的情况下， 使用2分硬币， x1+3有m+m种组成方式
+'''
+def f(n):
+    V = [1,2,5,10]
+    C = [0 for _ in range(n+1)]
+    C[0] = 1
+    for v in V:
+        for i in range(v,n+1):
+            if i -v >=0:
+                C[i] += C[i-v]
+    return C
+
+
+
+
 if __name__ == '__main__':
-    number = 100
-    number_distritube_2(number)
-    for key in result.keys():
-        print("the number is : {0}".format(key))
-        lists = result[key]
-        length = number
-        while(length >= 1):
-            for list in lists:
-                if (len(list) == length):
-                    print("{0}:{1}".format(length, list))
-            length = length - 1
+    C = f(5)
+    print(C[n])

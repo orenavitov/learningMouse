@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include".\mihInclude\mihstring.h"
-#include".\mihInclude\mihdatastruct.h"
+#include".\mihstring.h"
+#include".\mihdatastruct.h"
 #define TEST 1
 
 
