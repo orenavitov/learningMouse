@@ -1,26 +1,21 @@
 package createModel.singleton;
 
 /**
- *
+ * 懒汉模式
  */
 public class SafeSingleton2 {
 
-    private static Persion persion = null;
+    private static volatile SafeSingleton2 safeSingleton2 = null;
 
     private SafeSingleton2() {
 
     }
 
-    private static synchronized void init() {
-        if (persion == null) {
-            persion = new Persion();
-        }
-    }
 
-    public static Persion getInstance() {
-        if (persion == null) {
-            init();
+    public static synchronized SafeSingleton2 getInstance() {
+        if (safeSingleton2 == null) {
+            safeSingleton2 = new SafeSingleton2();
         }
-        return persion;
+        return safeSingleton2;
     }
 }
