@@ -1,5 +1,6 @@
 import numpy
 import array
+from sklearn.metrics import roc_auc_score
 
 def find_neighbors(A, node):
     neighbors = array.array("i", [])
@@ -60,8 +61,23 @@ def random_walk():
 
 
 def AA(MatrixAdjacency_Train):
-    pass
+    # 节点数
+    N = MatrixAdjacency_Train.shape[0]
+    A_sqrt = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train)
+    A_score = A_sqrt - MatrixAdjacency_Train
+    # link标签， 存在为1， 不存在为0
+    link_label = []
+    # link得分
+    link_score =[]
+    for i in range(N):
+        for j in range(N):
+            if (i != j):
+                link_label.append(MatrixAdjacency_Train[i][j])
+                link_score.append(A_score[i][j])
+
+    auc = roc_auc_score(link_label, link_score)
+    return auc
 
 if __name__ == '__main__':
-    A = proper_data(r"C:\Users\mih\Desktop\bio-CE-GT.edges")
-
+    A = proper_data(r"C:\Users\mihao\Desktop\bio-CE-GT.edges")
+    print(AA(A))
