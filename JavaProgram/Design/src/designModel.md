@@ -345,9 +345,119 @@ class ObserverA implements Observer {
 ### 迭代器模式
 
 ```
+//抽象聚合类
+interface Aggregate {
+    public void add(Object obj);
+    public void remove(Object obj);
+    public Iterator getiterator();
+}
 
+// 具体聚合类
+class ConcreteAggregate implements Aggregate {
+    private List<Object> list = new ArrayList<Object>();
+    public void add(Object obj) {
+        this.list.ad(obj);
+    }
+    public void remove(Object obj) {
+        this.list.remove(obj);
+    }
+    // 返回迭代器
+    public Iterator getIterato() {
+        return newConcreteIterator(list)
+    }
+}
+
+// 抽象迭代器 
+interface Iterator {
+    Object first();
+    Object next();
+    boolean hasNext();
+}
+
+// 具体迭代器
+class ConreteIterator implements Iterator {
+    private List<Object> list = null;
+    private int index = -1;
+    public ConcreteIterator(List<Object> list) {
+        this.list = list;
+    }
+
+    public boolean hasNext() {
+        if (inex < list.size() - 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Object first() {
+        index = 0;
+        Object obj = list.get(index);
+        return obj;
+    }
+
+    public Object next() {
+        Object obj = null;
+        if (this.hasNext()) {
+            obj = list.get(++index)
+        }
+        return obj;
+    }
+}
 ```
 
+### 备忘录模式
+
+```
+// 备忘录， 存储一个过去的状态
+class Memento {
+    private String state;
+    public Memento(String state) {
+        this.state = state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
+}
+
+// 发起人， 有一个内部状态， 可通过创建备忘录保存这个状态， 然后使用备忘录中存储的过去状态恢复
+class originator {
+    private String state;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public Memento createMemento() {
+        return new Memento(state)
+    }
+
+    public void restoreMemento(Memento m) {
+        this.setState(m.getState());
+    }
+}
+
+// 管理者， 管理备忘录
+class Caretaker {
+    private Memento memento;
+    public void setMemento(Memento m) {
+        memento = m;
+    }
+
+    public Memento getMemento() {
+        return memento;
+    }
+}
+```
 
 ### 访问者模式
 
