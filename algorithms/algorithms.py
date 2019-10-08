@@ -1,5 +1,5 @@
 import collections
-
+import array
 '''
     问题： 对一个数字进行分解， 例如：
     1 = 1
@@ -8,6 +8,8 @@ import collections
     4 = 1+1+1+1 or 1+1+2 or 1+3 or 2+2 or 4
     ...
     '''
+
+
 def number_distritube_1(number):
     '''
     distritube_map: {
@@ -23,7 +25,7 @@ def number_distritube_1(number):
     current_number_map = dict([(1, [[1]])])
     distritube_map[1] = current_number_map
     current_number = 2
-    while(current_number <= number):
+    while (current_number <= number):
         sub_number_distritube_map = {}
         for i in range(int(current_number / 2) + 1):
 
@@ -51,7 +53,10 @@ def number_distritube_1(number):
         current_number += 1
     return distritube_map
 
+
 result = {}
+
+
 def sub_distritube(number):
     result.setdefault(number, [])
     distritube_number = number
@@ -91,30 +96,75 @@ def sub_distritube(number):
                     result[number].extend(temp_lists)
                     del temp_lists
         distritube_number -= 1
+
+
 def number_distritube_2(number):
     current_number = 1
-    while(current_number <= number):
+    while (current_number <= number):
         sub_distritube(current_number)
         current_number += 1
+
 
 '''
 有1分，2分， 5分， 10分的硬币， 每种硬币无限多个， 输入n分钱， 有多少种方式组成这n分钱；
 思路：假设x1分钱有m中组成方式， 则x1+1有m种组成方式， x1+2有m中组成方式， x1+3有m种组成方式，
 上述只是使用1分硬币的情况下， 使用2分硬币， x1+3有m+m种组成方式
 '''
+
+
 def f(n):
-    V = [1,2,5,10]
-    C = [0 for _ in range(n+1)]
+    V = [1, 2, 5, 10]
+    C = [0 for _ in range(n + 1)]
     C[0] = 1
     for v in V:
-        for i in range(v,n+1):
-            if i -v >=0:
-                C[i] += C[i-v]
+        for i in range(v, n + 1):
+            if i - v >= 0:
+                C[i] += C[i - v]
     return C
 
 
+'''
+堆排序实现
+tree表示输入的完全二叉树， 用数组表示
+'''
 
+def local_adjust(tree, r, L, R):
+    if L > len(tree) - 1:
+        return
+    temp = tree[r]
+    if R <= len(tree) - 1:
+        if tree[L] > tree[r] and tree[L] > tree[R]:
+            tree[r] = tree[L]
+            tree[L] = temp
+            r = L
+            L = L * 2 + 1
+            R = L * 2 + 2
+            local_adjust(tree, r, L, R)
+        elif tree[R] > tree[r] and tree[R] > tree[L]:
+            tree[r] = tree[R]
+            tree[R] = temp
+            r = R
+            L = R * 2 + 1
+            R = R * 2 + 2
+            local_adjust(tree, r, L, R)
+    else:
+        if tree[L] > tree[r]:
+            tree[r] = tree[L]
+            tree[L] = temp
 
+def adjust(tree):
+    # 最后一个叶子节点的索引
+    last_leaf_index = len(tree) - 1
+    # 最后一个非叶子节点索引
+    last_no_leaf_index = int(last_leaf_index / 2) if last_leaf_index % 2 == 1 else int(last_leaf_index / 2 - 1)
+    while last_no_leaf_index >= 0:
+        # temp = tree[last_no_leaf_index]
+        left_child_index = last_no_leaf_index * 2 + 1
+        right_child_index = last_no_leaf_index * 2 + 2
+        local_adjust(tree, last_no_leaf_index, left_child_index, right_child_index)
+        last_no_leaf_index -= 1
+    return tree
 if __name__ == '__main__':
-    C = f(5)
-    print(C[n])
+    tree = array.array("i", [5, 3, 7, 6, 4, 1, 9, 22, 10, 21, 11, 31, 11, 33, 41, 13, 15])
+    adjust(tree)
+    print(tree)
