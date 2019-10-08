@@ -14,7 +14,7 @@
 
 * 执行java字节码
 
-* 线程私有， 声明周期和线程相同
+* 线程私有， 生命周期和线程相同
 
 * 每个方法在执行时都会创建一个栈帧， 包含局部变量表， 操作数栈， 动态链接， 方法出口等信息
 
@@ -459,7 +459,13 @@ code 这里为： 2A B7 00 01 B1
 
 * Exceptions
 
+attribute_name_index u2
 
+number_of_exceptions u2 可能抛出的异常数量
+
+attritube_length u4
+
+exception_index_table u2 有number_of_exceptions个， 指向常量池中CONSTANT_Class_info型常量的索引
 
 * EnclosingMethod
 
@@ -467,7 +473,31 @@ code 这里为： 2A B7 00 01 B1
 
 * LineNumberTable
 
-* LovalVariaTable
+* LovalVariableTable
+
+用于描述栈帧中局部变量表中的变量与java源码中的变量之间的关系， 不是运行必须的属性。
+
+attribute_name_index u2
+
+attribute_length u4
+
+local_variable_table_length u2
+
+local_variable_table 是local_variable_info类型， 有local_variable_table_length个， local_variable_info结构如下：
+
+start_pc u2
+
+length u2
+
+name_index u2
+
+descriptor_index u2
+
+index u2
+
+start_pc和length描述这个局部变量的生命周期开始的字节码偏移量和覆盖范围的长度， 两者结合起来就是这个局部变量在字节码中的作用范围。
+name_index和descriptor_index指向常量池CONSTANT_Utf8_info型常量的索引，代表局部变量的名称和这个局部变量的描述符。
+
 
 * StackMapTable
 
