@@ -1,6 +1,8 @@
+import functools
 from abc import *
 import time
 from functools import singledispatch
+from functools import wraps
 import copy
 import weakref
 import gc
@@ -62,35 +64,39 @@ import gc
 
 # 下面展示一个复杂一些的修饰器情况
 # 修饰器函数在加载时只会执行外层代码， 不会执行里面的函数
-# def decorate(function):
-#     print("decorate function is running1!")
-#     time.sleep(5)
-#     # 使用修饰器后被修饰的函数decorated_function会变成inner_function, 如果想保存原函数的一些性质， 添加@functools.wraps(function)
-#     # @functools.wraps(function)
-#     def inner_function(*args):
-#         print("inner function is running1!")
-#         print("inner function is running2!")
-#         # function()
-#         print("inner function is running3!")
-#         print(('-').join(str(arg) for arg in args))
-#
-#     print("decorate function is running2!")
-#     return inner_function
-#
-# @decorate
-# def decorated_function():
-#     print("decorated function is running!")
+def decorate(function):
+    print("decorate function is running1!")
+    time.sleep(2)
+    # 使用修饰器后被修饰的函数decorated_function会变成inner_function, 如果想保存原函数的一些性质， 添加@functools.wraps(function)
+    # @functools.wraps(function)
+    def inner_function(*args):
+        print("inner function is running1!")
+        print("inner function is running2!")
+        function()
+        print("inner function is running3!")
+        print(('-').join(str(arg) for arg in args))
+
+    print("decorate function is running2!")
+    return inner_function
+
+@decorate
+def decorated_function():
+    print("decorated function is running!")
 
 # 下面展示如何在修饰器里面传递参数
-# def decorateOuter(text):
-#     def decorate(fun):
-#         print("hello {0}".format(text))
-#         return fun
-#     return decorate
-#
-# @decorateOuter(text="mihao")
-# def input():
-#     pass
+def decorateOuter(text):
+    print("decorateOuter1")
+    def decorate(fun):
+        print("hello {0}".format(text))
+        return fun
+
+    print("decorateOuter2")
+    return decorate
+
+
+@decorateOuter(text="mihao123")
+def input():
+    print("hello")
 
 # 使用@singledispatch实现方法重载
 # @singledispatch
@@ -171,7 +177,7 @@ import gc
 class MyList(list):
     def __init__(self, object):
         list(object)
-def test():
+def Test():
     a = MyList([1, 2, 3])
     a_ = weakref.ref(a)
     print("a_:{0}".format(a_))
@@ -221,7 +227,5 @@ class A():
         print("a2")
 
 if __name__ == '__main__':
-    instance_A = A.A1()
-    print("{}".format(instance_A.a))
-    A.A2()
+    print("start")
 

@@ -4,10 +4,31 @@ import math
 from sklearn.metrics import roc_auc_score
 
 neighbors = []
+commend_neighbors = []
+
+def auc(func):
+    def process(A):
+        # 节点数
+        N = A.shape[0]
+        # link标签， 存在为1， 不存在为0
+        link_label = []
+        # link得分
+        link_score = []
+        Matrix_similarity = func(A)
+        for i in range(N):
+            for j in range(N):
+                if i != j:
+                    link_label.append(A[i][j])
+                    link_score.append(Matrix_similarity[i][j])
+        auc = roc_auc_score(link_label, link_score)
+        return auc
+    return process
+
 def find_neighbors(A, node):
     for i in range(len(A[node - 1])):
         if A[node - 1][i] == 1:
             neighbors.append(i + 1)
+
 
 def proper_data(file):
     #
@@ -39,56 +60,49 @@ def proper_data(file):
                     A[srcNode - 1][dstNode - 1] = 1
                     A[dstNode - 1][srcNode - 1] = 1
         return A
-def random_walk():
-    D = numpy.diag([1 / 2, 1 / 2, 1, 1])
-    print("D:{0}".format(D))
-    A = numpy.array([
-        [0, 1, 0, 1],
-        [1, 0, 1, 0],
-        [0, 1, 0, 0],
-        [1, 0, 0, 0]
-    ])
-    print("A:{0}".format(A))
-    P_0 = numpy.array([
-        1, 0, 0, 0
-    ])
-    M = numpy.matmul(D, A)
-    print("M:{0}".format(M))
-    M_T = M.T
-    for i in range(4):
-        print("P_{0}:".format(i + 1))
-        print(numpy.matmul(M_T, P_0))
-        M_T = numpy.matmul(M_T, M_T)
+
+
+# Random_walk
+# auc: 0.9938454563903012
+@auc
+def RW(MatrixAdjacency_Train):
+    M = MatrixAdjacency_Train / sum(MatrixAdjacency_Train)
+    M = numpy.nan_to_num(M)
+    Matrix_similarity = numpy.zeros(M.shape)
+    # 只计算3步可以到达的情况
+    for i in range(3):
+        Matrix_similarity = Matrix_similarity + M
+        M = numpy.matmul(M, M)
+    return Matrix_similarity
+
+@auc
+def Other_RW(MatrixAdjacency_Train):
+    RA_Train = sum(MatrixAdjacency_Train)
+    RA_Train.shape = (RA_Train.shape[0], 1)
+    MatrixAdjacency_Train_Log = MatrixAdjacency_Train / RA_Train
+    MatrixAdjacency_Train_Log = numpy.nan_to_num(MatrixAdjacency_Train_Log)
+    Matrix_similarity = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train_Log)
+    return Matrix_similarity
+
 
 # CommonNeighbors
 # auc: 0.8021184857335069
+@auc
 def CN(MatrixAdjacency_Train):
-    # 节点数
-    N = MatrixAdjacency_Train.shape[0]
     A_sqrt = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train)
-    A_score = A_sqrt - MatrixAdjacency_Train
-    # link标签， 存在为1， 不存在为0
-    link_label = []
-    # link得分
-    link_score =[]
-    for i in range(N):
-        for j in range(N):
-            if (i != j):
-                link_label.append(MatrixAdjacency_Train[i][j])
-                link_score.append(A_score[i][j])
+    Matrix_similarity = A_sqrt - MatrixAdjacency_Train
+    return Matrix_similarity
 
-    auc = roc_auc_score(link_label, link_score)
-    return auc
 
 # Adamic-Adar Index
 # auc: 0.9626856751933148
-commend_neighbors = []
 def find_neighbors_between_two_nodes(MatrixAdjacency_Train, i, j):
     line_i = MatrixAdjacency_Train[i]
     line_j = MatrixAdjacency_Train[j]
     for index in range(len(line_i)):
         if line_i[index] == 1 and line_j[index] == 1:
             commend_neighbors.append(index + 1)
+
 
 def AA(MatrixAdjacency_Train):
     # 节点数
@@ -121,51 +135,91 @@ def AA(MatrixAdjacency_Train):
 
 
 def Other_AA(MatrixAdjacency_Train):
-    # 节点数
-    N = MatrixAdjacency_Train.shape[0]
     logTrain = numpy.log(sum(MatrixAdjacency_Train))
     logTrain = numpy.nan_to_num(logTrain)
     logTrain.shape = (logTrain.shape[0], 1)
     MatrixAdjacency_Train_Log = MatrixAdjacency_Train / logTrain
     MatrixAdjacency_Train_Log = numpy.nan_to_num(MatrixAdjacency_Train_Log)
-
     Matrix_similarity = numpy.dot(MatrixAdjacency_Train, MatrixAdjacency_Train_Log)
-    # link标签， 存在为1， 不存在为0
-    link_label = []
-    # link得分
-    link_score = []
-    for i in range(N):
-        for j in range(N):
-            if i != j:
-                link_label.append(MatrixAdjacency_Train[i][j])
-                link_score.append(Matrix_similarity[i][j])
-    auc = roc_auc_score(link_label, link_score)
-    return auc
-
     return Matrix_similarity
 
+
 # Katz
+@auc
 def Katz(MatrixAdjacency_Train):
-    # 节点数
-    N = MatrixAdjacency_Train.shape[0]
     # 影响因子, 影响因子越小auc越大， 当影响因子很小时其实就是CN
     parameter = 0.01
-    identity_matrix = numpy.eye(N)
+    identity_matrix = numpy.eye(MatrixAdjacency_Train.shape[0])
     temp_matrix = identity_matrix - parameter * MatrixAdjacency_Train
     inv_matrix = numpy.linalg.inv(temp_matrix)
     similarity_matrix = inv_matrix - identity_matrix
+    return similarity_matrix
+
+
+# AverageCommuteTime
+# auc: 0.8987037529479779
+def ACT(MatrixAdjacency_Train):
+    # 节点数
+    N = MatrixAdjacency_Train.shape[0]
     # link标签， 存在为1， 不存在为0
     link_label = []
     # link得分
     link_score = []
+    Matrix_D = numpy.diag(sum(MatrixAdjacency_Train))
+    Matrix_Laplacian = Matrix_D - MatrixAdjacency_Train
+    INV_Matrix_Laplacian = numpy.linalg.pinv(Matrix_Laplacian)
+    # Matrix_similarity = numpy.zeros(MatrixAdjacency_Train.shape)
     for i in range(N):
         for j in range(N):
             if i != j:
                 link_label.append(MatrixAdjacency_Train[i][j])
-                link_score.append(similarity_matrix[i][j])
+                score = 1 / (INV_Matrix_Laplacian[i][i] + INV_Matrix_Laplacian[j][j] -
+                             2 * INV_Matrix_Laplacian[i][j])
+                link_score.append(score)
     auc = roc_auc_score(link_label, link_score)
     return auc
 
+# The Hub Promoted Index
+# auc:0.9312839848633754
+def HPI(MatrixAdjacency_Train):
+    # 节点数
+    N = MatrixAdjacency_Train.shape[0]
+    # link标签， 存在为1， 不存在为0
+    link_label = []
+    # link得分
+    link_score = []
+    A_sqrt = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train)
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                link_label.append(MatrixAdjacency_Train[i][j])
+                score = 2 * A_sqrt[i][j] / min(sum(MatrixAdjacency_Train[i]), sum(MatrixAdjacency_Train[j]))
+                link_score.append(score)
+    auc = roc_auc_score(link_label, link_score)
+    return auc
+
+
+# TheHubDepressed Index
+# auc: 0.9210816798183674
+def HDI(MatrixAdjacency_Train):
+    # 节点数
+    N = MatrixAdjacency_Train.shape[0]
+    # link标签， 存在为1， 不存在为0
+    link_label = []
+    # link得分
+    link_score = []
+    A_sqrt = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train)
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                link_label.append(MatrixAdjacency_Train[i][j])
+                score = 2 * A_sqrt[i][j] / max(sum(MatrixAdjacency_Train[i]), sum(MatrixAdjacency_Train[j]))
+                link_score.append(score)
+    auc = roc_auc_score(link_label, link_score)
+    return auc
+
+
 if __name__ == '__main__':
     A = proper_data(r"C:\Users\mih\Desktop\bio-CE-GT.edges")
-    print(Other_AA(A))
+    print(HDI(A))
+
