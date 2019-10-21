@@ -3,8 +3,7 @@
 PythonProgram/.idea/
 PythonProgram/machineLearning/.idea/
 PythonProgram/mihtest/.pytest_cache/
-JavaProgram/Demons/.idea/
-JavaProgram/mih_spring/.idea/
+JavaProgram/SpringBootInstance/.idea/
 JavaProgram/Demons/*.iml
 /algorithms/.vscode/
 /C++Program/.vs/
