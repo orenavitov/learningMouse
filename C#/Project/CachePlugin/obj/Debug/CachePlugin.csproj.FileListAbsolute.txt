@@ -1,0 +1,9 @@
+D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\CachePlugin\Manifest.xml
+D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\CachePlugin\log4net.config
+D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\CachePlugin\CachePlugin.dll
+D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\CachePlugin\CachePlugin.pdb
+D:\gitLib\learningMouse\C#\Project\CachePlugin\obj\Debug\CachePlugin.csprojResolveAssemblyReference.cache
+D:\gitLib\learningMouse\C#\Project\CachePlugin\obj\Debug\CachePlugin.csproj.CoreCompileInputs.cache
+D:\gitLib\learningMouse\C#\Project\CachePlugin\obj\Debug\CachePlugin.csproj.CopyComplete
+D:\gitLib\learningMouse\C#\Project\CachePlugin\obj\Debug\CachePlugin.dll
+D:\gitLib\learningMouse\C#\Project\CachePlugin\obj\Debug\CachePlugin.pdb

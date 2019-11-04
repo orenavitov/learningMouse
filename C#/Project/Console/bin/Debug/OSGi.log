@@ -1,0 +1,73 @@
+2019-11-04 20:54:36,161 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架读取元数据信息！
+2019-11-04 20:54:36,224 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架初始化开始！
+2019-11-04 20:54:36,226 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架读取配置！
+2019-11-04 20:54:36,230 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架加载共享程序集！
+2019-11-04 20:54:36,235 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架关联共享程序集[Console]！
+2019-11-04 20:54:36,236 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架关联共享程序集[log4net]！
+2019-11-04 20:54:36,238 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架读取模块信息！
+2019-11-04 20:54:36,256 [1] DEBUG ConsoleDemo.Program [(null)] - 程序集[Mono.Cecil, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756]已加载到当前应用程序域
+2019-11-04 20:54:36,269 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块读取元数据信息！[LogPlugin]
+2019-11-04 20:54:36,350 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:LogPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:LogPlugin,Version:1.0.0.0]状态已改变为[INSTALLED]
+2019-11-04 20:54:36,352 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块读取元数据信息！[CachePlugin]
+2019-11-04 20:54:36,424 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:CachePlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:CachePlugin,Version:1.0.0.0]状态已改变为[INSTALLED]
+2019-11-04 20:54:36,426 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块读取元数据信息！[DBPlugin]
+2019-11-04 20:54:36,468 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:DBPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:DBPlugin,Version:1.0.0.0]状态已改变为[INSTALLED]
+2019-11-04 20:54:36,469 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架初始化结束！
+2019-11-04 20:54:36,470 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - OSGi.NET.Core.Root.Framework状态已改变为[RESOLVED]
+2019-11-04 20:54:36,472 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架启动开始！
+2019-11-04 20:54:36,473 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - OSGi.NET.Core.Root.Framework状态已改变为[STARTING]
+2019-11-04 20:54:36,475 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块LogPlugin启动开始！
+2019-11-04 20:54:36,476 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块LogPlugin加载开始！
+2019-11-04 20:54:36,479 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 加载相关依赖模块！
+2019-11-04 20:54:36,488 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块加载自身程序集！
+2019-11-04 20:54:36,549 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块关联共享库程序集[log4net]！
+2019-11-04 20:54:36,944 [1] DEBUG ConsoleDemo.Program [(null)] - 程序集[LogPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]已加载到当前应用程序域
+2019-11-04 20:54:36,948 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块搜索激活器！
+2019-11-04 20:54:36,949 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:LogPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:LogPlugin,Version:1.0.0.0]状态已改变为[RESOLVED]
+2019-11-04 20:54:36,952 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块LogPlugin加载结束！
+2019-11-04 20:54:36,953 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:LogPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:LogPlugin,Version:1.0.0.0]状态已改变为[STARTING]
+2019-11-04 20:54:36,957 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 激活器启动！
+2019-11-04 20:54:36,969 [1] DEBUG LogPlugin.Class1 [(null)] - LogPlugin Started!
+2019-11-04 20:54:36,971 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 加载扩展点数据！
+2019-11-04 20:54:36,976 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 扩展点加载开始！
+2019-11-04 20:54:36,985 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 扩展点加载结束！
+2019-11-04 20:54:36,987 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:LogPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:LogPlugin,Version:1.0.0.0]状态已改变为[STARTED]
+2019-11-04 20:54:36,994 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块LogPlugin启动结束！
+2019-11-04 20:54:36,995 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块CachePlugin启动开始！
+2019-11-04 20:54:36,999 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块CachePlugin加载开始！
+2019-11-04 20:54:37,000 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 加载相关依赖模块！
+2019-11-04 20:54:37,002 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块加载自身程序集！
+2019-11-04 20:54:37,004 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块关联引用模块[LogPlugin]！
+2019-11-04 20:54:37,006 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块关联共享库程序集[log4net]！
+2019-11-04 20:54:37,017 [1] DEBUG ConsoleDemo.Program [(null)] - 程序集[CachePlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]已加载到当前应用程序域
+2019-11-04 20:54:37,021 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块搜索激活器！
+2019-11-04 20:54:37,022 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:CachePlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:CachePlugin,Version:1.0.0.0]状态已改变为[RESOLVED]
+2019-11-04 20:54:37,026 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块CachePlugin加载结束！
+2019-11-04 20:54:37,028 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:CachePlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:CachePlugin,Version:1.0.0.0]状态已改变为[STARTING]
+2019-11-04 20:54:37,030 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 激活器启动！
+2019-11-04 20:54:37,073 [1] DEBUG CachePlugin.Class1 [(null)] - CachePlugin Started!
+2019-11-04 20:54:37,076 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 加载扩展点数据！
+2019-11-04 20:54:37,077 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 扩展点加载开始！
+2019-11-04 20:54:37,080 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 扩展点加载结束！
+2019-11-04 20:54:37,081 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:CachePlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:CachePlugin,Version:1.0.0.0]状态已改变为[STARTED]
+2019-11-04 20:54:37,083 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块CachePlugin启动结束！
+2019-11-04 20:54:37,085 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块DBPlugin启动开始！
+2019-11-04 20:54:37,086 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块DBPlugin加载开始！
+2019-11-04 20:54:37,088 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 加载相关依赖模块！
+2019-11-04 20:54:37,088 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块加载自身程序集！
+2019-11-04 20:54:37,090 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块关联引用模块[LogPlugin]！
+2019-11-04 20:54:37,091 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块关联共享库程序集[log4net]！
+2019-11-04 20:54:37,123 [1] DEBUG ConsoleDemo.Program [(null)] - 程序集[DBPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]已加载到当前应用程序域
+2019-11-04 20:54:37,128 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块搜索激活器！
+2019-11-04 20:54:37,130 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:DBPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:DBPlugin,Version:1.0.0.0]状态已改变为[RESOLVED]
+2019-11-04 20:54:37,133 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块DBPlugin加载结束！
+2019-11-04 20:54:37,134 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:DBPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:DBPlugin,Version:1.0.0.0]状态已改变为[STARTING]
+2019-11-04 20:54:37,138 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 激活器启动！
+2019-11-04 20:54:37,140 [1] DEBUG DBPlugin.Class1 [(null)] - DBPlugin Started!
+2019-11-04 20:54:37,141 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 加载扩展点数据！
+2019-11-04 20:54:37,142 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 扩展点加载开始！
+2019-11-04 20:54:37,143 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 扩展点加载结束！
+2019-11-04 20:54:37,147 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - Bundle[AssemblyName:DBPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,SymbolicName:DBPlugin,Version:1.0.0.0]状态已改变为[STARTED]
+2019-11-04 20:54:37,149 [1] DEBUG OSGi.NET.Core.Bundle [(null)] - 模块DBPlugin启动结束！
+2019-11-04 20:54:37,152 [1] DEBUG ConsoleDemo.ConsoleBundleListener [(null)] - OSGi.NET.Core.Root.Framework状态已改变为[STARTED]
+2019-11-04 20:54:37,157 [1] DEBUG OSGi.NET.Core.Root.Framework [(null)] - 框架启动完成！

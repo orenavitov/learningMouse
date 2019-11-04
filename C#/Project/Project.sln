@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachePlugin", "CachePlugin\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBPlugin", "DBPlugin\DBPlugin.csproj", "{27257A25-D3B1-4A77-AD32-A81D92C9AA15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDemo", "Console\ConsoleDemo.csproj", "{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{27257A25-D3B1-4A77-AD32-A81D92C9AA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27257A25-D3B1-4A77-AD32-A81D92C9AA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27257A25-D3B1-4A77-AD32-A81D92C9AA15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
