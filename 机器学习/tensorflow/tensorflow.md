@@ -78,6 +78,8 @@ with tf.Session() as sess:
 
 9. norm
 
+计算范数
+
 10. TensorArray
 相当于一个链表， 可以不断的向里添加张量
 
@@ -142,7 +144,7 @@ print((sess.run(tf.unsorted_segment_sum(data=a,segment_ids=[0,1,0],num_segments=
 
 ```
 
-14. cussum
+14. cumsum
 累计求和：沿着axis指定的轴， 结果的i个元素是输入张量的[:i]的和
 
 ```(python)
