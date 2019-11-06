@@ -11,5 +11,14 @@ namespace LogPlugin
     {
         ILog GetLogger(Type type);
 
+        void Debug(string debugMessage);
+
+        void Info(string infoMessage);
+
+        void Error(string errorMessage);
+
+        void Warn(string warnMessage);
     }
+
+    
 }

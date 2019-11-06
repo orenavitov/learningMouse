@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OSGi.NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\OSGi.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +56,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,10 +82,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="Lib\ICSharpCode.SharpZipLib.dll" />
     <Content Include="Lib\log4net.dll" />
+    <Content Include="Lib\Mono.Cecil.dll" />
     <Content Include="Lib\OSGi.NET.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CachePlugin\CachePlugin.csproj">
+      <Project>{5cfabac6-5375-498d-831c-a12cb9411ff3}</Project>
+      <Name>CachePlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBPlugin\DBPlugin.csproj">
+      <Project>{27257a25-d3b1-4a77-ad32-a81d92c9aa15}</Project>
+      <Name>DBPlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogPlugin\LogPlugin.csproj">
+      <Project>{c3a081f3-4314-4d2d-9513-d6599c6b6c25}</Project>
+      <Name>LogPlugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

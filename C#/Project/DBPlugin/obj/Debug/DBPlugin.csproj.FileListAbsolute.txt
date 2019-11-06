@@ -2,6 +2,10 @@ D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\DBPlugin\Manifest.x
 D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\DBPlugin\log4net.config
 D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\DBPlugin\DBPlugin.dll
 D:\gitLib\learningMouse\C#\Project\Console\bin\Debug\Bundles\DBPlugin\DBPlugin.pdb
+D:\gitLib\learningMouse\C#\Project\Project\bin\Debug\Bundles\DBPlugin\Manifest.xml
+D:\gitLib\learningMouse\C#\Project\Project\bin\Debug\Bundles\DBPlugin\log4net.config
+D:\gitLib\learningMouse\C#\Project\Project\bin\Debug\Bundles\DBPlugin\DBPlugin.dll
+D:\gitLib\learningMouse\C#\Project\Project\bin\Debug\Bundles\DBPlugin\DBPlugin.pdb
 D:\gitLib\learningMouse\C#\Project\DBPlugin\obj\Debug\DBPlugin.csprojResolveAssemblyReference.cache
 D:\gitLib\learningMouse\C#\Project\DBPlugin\obj\Debug\DBPlugin.csproj.CoreCompileInputs.cache
 D:\gitLib\learningMouse\C#\Project\DBPlugin\obj\Debug\DBPlugin.csproj.CopyComplete

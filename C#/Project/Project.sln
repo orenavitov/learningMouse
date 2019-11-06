@@ -12,6 +12,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBPlugin", "DBPlugin\DBPlugin.csproj", "{27257A25-D3B1-4A77-AD32-A81D92C9AA15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDemo", "Console\ConsoleDemo.csproj", "{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}"
+	ProjectSection(ProjectDependencies) = postProject
+		{27257A25-D3B1-4A77-AD32-A81D92C9AA15} = {27257A25-D3B1-4A77-AD32-A81D92C9AA15}
+		{5CFABAC6-5375-498D-831C-A12CB9411FF3} = {5CFABAC6-5375-498D-831C-A12CB9411FF3}
+		{C3A081F3-4314-4D2D-9513-D6599C6B6C25} = {C3A081F3-4314-4D2D-9513-D6599C6B6C25}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlePlugin", "EventHandlePlugin\EventHandlePlugin.csproj", "{36C17EC8-0291-4379-93D6-D1C41F2AE2D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +46,10 @@ Global
 		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{254EDD64-CBC2-4A83-ADB5-F5971DC0C559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C17EC8-0291-4379-93D6-D1C41F2AE2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C17EC8-0291-4379-93D6-D1C41F2AE2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C17EC8-0291-4379-93D6-D1C41F2AE2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C17EC8-0291-4379-93D6-D1C41F2AE2D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
