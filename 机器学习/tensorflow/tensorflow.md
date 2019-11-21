@@ -1,5 +1,5 @@
 # Tensorflow
-
+    https://tensorflow.google.cn/tutorials?hl=zh-CN
     Tensorflow中将所有的计算（Operation）、数据（常量， 变量，张量）都抽象成节点， 执行一个操作需要指定一个计算图（graph）和一个会话（session）, 一个计算图中包含多种计算资源（operation, constant, varible, tensor）, tensorflow指定计算流时是需要正向指定， 执行计算流时是反向执行
 
 ## 常用函数
