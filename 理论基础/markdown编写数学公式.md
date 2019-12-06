@@ -1,6 +1,8 @@
 # markdown 数学公式编写(LaTex使用)
 
 http://www.mohu.org/info/symbols/symbols.htm
+https://blog.csdn.net/dabokele/article/details/79577072
+须使用的插件： Markdown math; Markdown all in one;
 
 * "$" 行内式
 
