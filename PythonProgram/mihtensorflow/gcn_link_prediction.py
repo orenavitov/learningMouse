@@ -84,26 +84,7 @@ class model:
 
 # 模型构建
 def struct_model(A, input_shape):
-    # model = keras.models.Sequential()
-    # # 第一层有64个神经元
-    # layer1 = MyLayer(64)
-    # # A' = A + I, I 是单位矩阵
-    # A_I = self.A + numpy.eye(1);
-    # # D:度矩阵
-    # D = numpy.diag([sum(line) for line in A_I])
-    # input = tf.matmul(D ** 1 / 2, A_I)
-    # input = tf.matmul(input, D ** -1 / 2)
-    # layer1_outputs = layer1(input)
-    #
-    # # 第二层32个神经元
-    # layer2 = MyLayer(32)
-    # layer1_outputs = tf.matmul(D ** 1 / 2, layer1_outputs)
-    # layer1_outputs = tf.matmul(layer1_outputs, D ** -1 / 2)
-    # layer2_outputs = layer2(layer1_outputs)
-    #
-    # model.add(layer1, keras.layers.Activation("relu"))
-    # model.add(layer2, keras.layers.Activation("softmax"))
-    # 训练集数量
+
     N = input_shape[0]
     # 特征值数量
     m = input_shape[1]
@@ -114,8 +95,9 @@ def struct_model(A, input_shape):
     _A = numpy.matmul(D ** 1/2, A_I)
     _A = numpy.matmul(A_I, D ** -1/2)
     _A = tf.Variable(_A, dtype=tf.float32)
-    input = tf.keras.Input(shape=(100, ))
-    input_A = tf.matmul(_A, input)
+    input = tf.keras.Input(shape=(100, 1))
+    input_A = tf.matmul(_A, input).reshape((100, 1))
+
     layer1_output = tf.keras.layers.Dense(32, activation='relu')(input_A)
     layer1_output_A = tf.matmul(_A, layer1_output)
     output_y = tf.keras.layers.Dense(16, activation='softmax')(layer1_output_A)
@@ -126,24 +108,15 @@ def struct_model(A, input_shape):
     #               loss=tf.keras.losses.categorical_crossentropy,
     #               metrics=['accuracy'])
     # model.fit(train_x, train_y, batch_size=32, epochs=5)
-    model.summary()
+    # model.summary()
     return model
 
-def mihTest():
-    a = tf.Variable([1, 2, 3, 4])
-    a =tf.reshape(a, shape = (4, 1))
-    print(a)
+
 
 if __name__ == '__main__':
     # 邻接矩阵
     A = numpy.arange(0, 10000, dtype=int).reshape((100, 100))
-    # # 节点数
-    # N = 100
-    # # 特征值数量
-    # m = 1
-    # myModel = model(A, N, m).struct_model()
-    # myModel.summary()
+
     model = struct_model(A, (100, 100))
     model.compile(optimaizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics=['accuracy'])
 
-    mihTest()

@@ -1,5 +1,7 @@
 ## JAVA代码编译过程
 
+
+http://www.blogjava.net/xylz/archive/2010/07/08/325587.html
 JAVA类的编译过程就是.java文件到.class文件的过程：.java文件 -> 词法分析 -> 语法分析 -> 语义分析 -> 注解处理 -> .class文件
 
 ## 类加载机制
