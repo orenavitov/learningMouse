@@ -5,7 +5,7 @@
 '''
 
 import numpy
-from linkPrediction.Main import auc
+from Main import auc
 
 neighbors = []
 commend_neighbors = []

@@ -2,6 +2,7 @@
 
 
 http://www.blogjava.net/xylz/archive/2010/07/08/325587.html
+
 JAVA类的编译过程就是.java文件到.class文件的过程：.java文件 -> 词法分析 -> 语法分析 -> 语义分析 -> 注解处理 -> .class文件
 
 ## 类加载机制
@@ -142,7 +143,8 @@ Put操作如下：
 
 ## JAVA泛型
 
-## JAVA设计模式
+
+# JAVA 并发
 
 ## JAVA中的synchronized
 
@@ -236,8 +238,6 @@ public class JavaTest3 {
     }
 }
 ```
-
-## JAVA内部类
 
 ## JAVA中的LOCK
 
@@ -465,11 +465,3 @@ while(true) {
 ```
 Selectorkey.channel()
 ```
-
-# 设计模式
-
-## 创建型
-
-## 结构型
-
-## 行为型

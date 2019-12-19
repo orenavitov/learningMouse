@@ -1,5 +1,7 @@
 # GNN
 
+https://blog.csdn.net/weixin_35479108/article/details/86308808
+
 ## The Graph Neural Network Model
 
 > $$ x_n = f_w(l_n, l_{co[n]}, x_{ne[n]}, l_{ne[n]}) \\[2ex]
@@ -61,4 +63,6 @@ GNN中不必关注节点的初始化表示， 因为压缩映射保证存在一�
 
 $i, j$是将$h_v^{(T)}, x_v$作为输入的神经网络。
 
-GG-NN操作一个序列并且产生序列的输出$o^{(1)}...o^{(K)}$, 对于第$k^{th}$步的输出， 标记节点的声明矩阵为$X^{(k)} = [x_1^{(k)};...;x_{|V|}^{(k)}]^T \in \mathbb{R}^{|V| \times L_{V}}$
+GG-NN操作一个序列并且产生序列的输出$o^{(1)}...o^{(K)}$, 对于第$k^{th}$步的输出， 标记节点的声明矩阵为$X^{(k)} = [x_1^{(k)};...;x_{|V|}^{(k)}]^T \in \mathbb{R}^{|V| \times L_{V}}$, 使用两个GG-NNs
+
+## Deep Convolutional Networks on Graph-Structured Data
