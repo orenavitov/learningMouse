@@ -5,12 +5,13 @@
 '''
 
 import numpy
-from Main import auc
+from Tools import auc
+from Tools import process_gml_file
 
-neighbors = []
-commend_neighbors = []
-edge_number = 0
-node_number = 0
+G, A, edges, nodes, neighbors = process_gml_file(
+        r"D:\ComplexNetworkData\Complex Network Datasets\For Link Prediction\metabolic\metabolic.gml")
+node_number = len(nodes)
+
 
 # Random_walk
 # auc: 0.9938454563903012
@@ -74,3 +75,32 @@ def Other_RW(MatrixAdjacency_Train):
     MatrixAdjacency_Train_Log = numpy.nan_to_num(MatrixAdjacency_Train_Log)
     Matrix_similarity = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train_Log)
     return Matrix_similarity
+
+if __name__ == '__main__':
+    A_similarity, threshold = RWR(A)
+    TP = 0
+    TN = 0
+    FP = 0
+    FN = 0
+
+    for row in range(node_number):
+        for column in range(node_number):
+            if (row != column):
+                if (A_similarity[row][column] > threshold):
+                    if (A[row][column] == 1):
+                        TP = TP + 1
+                    if (A[row][column] == 0):
+                        TN = TN + 1
+                if (A_similarity[row][column] <= threshold):
+                    if (A[row][column] == 1):
+                        FP = FP + 1
+                    if (A[row][column] == 0):
+                        FN = FN + 1
+    right_number = TP + FN
+    right_radio = right_number / (node_number ** 2 - node_number)
+
+    print("TP: {0}\n".format(TP))
+    print("TN: {0}\n".format(TN))
+    print("FP: {0}\n".format(FP))
+    print("FN: {0}\n".format(FN))
+    print("准确率： {0}%".format(100 * right_radio))

@@ -1,20 +1,20 @@
-public class AQS {
-    public static void main(String[] args) {
+public class HappenBeforeTest {
+    private static volatile int a = 1;
 
+    public static void main(String args[]) {
         Thread thread1 = new Thread(new Runnable() {
             public void run() {
-                LockTest.writer();
+                a = 2;
             }
         });
 
         Thread thread2 = new Thread(new Runnable() {
             public void run() {
-                LockTest.reader();
+                System.out.println("a: " + a);
             }
         });
-        thread1.start();
         thread2.start();
+        thread1.start();
 
-        System.out.println("hello world!");
     }
 }

@@ -4,13 +4,10 @@
 @Des: 
 '''
 import numpy
-import networkx
 import array
 from sklearn.metrics import roc_auc_score
-import random
-import copy
+import networkx
 
-neighbors = []
 commend_neighbors = []
 edge_number = 0
 node_number = 0
@@ -65,13 +62,33 @@ def precision(A, Matrix_similarity, train_A, threshold):
         i += 1
         j = i + 1
     return T_P, T_N, F_P, F_N
-
+# 传入的node id从 1 开始标号
 def find_neighbors(A, node):
+    neighbors = []
     for i in range(len(A[node - 1])):
         if A[node - 1][i] == 1:
             neighbors.append(i + 1)
+    return neighbors
+# 传入的node id 从 0 开始标号
+def find_neighbors_(A, node):
+    neighbors = []
+    for i in range(len(A[node])):
+        if A[node][i] == 1:
+            neighbors.append(i)
+    return neighbors
+
+def process_gml_file(file):
+    G = networkx.read_gml(file)
+    A = numpy.array(networkx.adjacency_matrix(G).todense())
+    edges = G.edges()
+    nodes = G.nodes()
+    neighbors = {}
+    for node in nodes:
+        neighbors[node] = G[node]
+    return G, A, edges, nodes, neighbors
 
 def proper_data_(file):
+
     src_dst_node_tuples_list = []
     global node_number
     with open(file, "r") as f:
@@ -79,51 +96,19 @@ def proper_data_(file):
             srcNode, dstNode, weight = line.split(" ")
             srcNode = int(srcNode)
             dstNode = int(dstNode)
-            # weight = int(weight)
-            # if weight == 1:
+
             src_dst_node_tuples_list.append((srcNode, dstNode))
         srcNodes = [edge[0] for edge in src_dst_node_tuples_list]
         dstNodes = [edge[1] for edge in src_dst_node_tuples_list]
         # node_number: 节点数量
-        node_number = numpy.max([numpy.max(srcNodes), numpy.max(dstNodes)])
+        node_number = numpy.max([numpy.max(srcNodes), numpy.max(dstNodes)]) + 1
         # A_matrix: 邻接矩阵（无向图）
-        A_matrix = numpy.zeros(shape=[node_number + 1, node_number + 1])
+        A_matrix = numpy.zeros(shape=[node_number, node_number])
         for edge in src_dst_node_tuples_list:
             A_matrix[edge[0]][edge[1]] = 1
             A_matrix[edge[1]][edge[0]] = 1
-        A_matrix_ = copy.deepcopy(A_matrix)
-        # 节点度信息
-        d_info = []
-        # 初始化状态矩阵
-        hidden_state = []
-        for i in range(node_number):
-            d = numpy.sum(A_matrix[i])
-            d_info.append(d)
-            if d != 0:
-                for i_ in range(node_number):
-                    if (i_ != i and A_matrix[i][i_] == 0):
-                        A_matrix[i][i_] = 1 / (node_number - d - 1)
-            hidden_state.append(A_matrix[i])
-        # data: 完整数据
-        data = []
-        for i in range(node_number):
-            hidden_state_i = hidden_state[i]
-            for j in range(node_number):
-                # index = i * node_number + j
-                hidden_state_j = hidden_state[j]
-                label = A_matrix_[i][j]
-                data.append((hidden_state_i + hidden_state_j, label))
+        return A_matrix
 
-        # 打乱顺序
-        # random.shuffle(data)
-        data_size = len(data)
-        # 取70%的数据作为训练集， 30%的数据作为测试集， 暂时不错检验集
-        s = int(data_size * 0.7)
-        train_data = [d[0] for d in data][:s]
-        train_label = [d[1] for d in data][:s]
-        test_data = [d[0] for d in data][s:]
-        test_label = [d[1] for d in data][s:]
-        return train_data, train_label, test_data, test_label, d_info, node_number
 
 def proper_data(file):
     #
@@ -188,16 +173,3 @@ def get_D_information(A):
 def get_A_matrix(data):
     pass
 
-if __name__ == '__main__':
-    A = proper_data(r"C:\Users\mih\Desktop\文件\bio-CE-GT.edges")
-
-    # auc = Other_ACT(A);
-    # print("the auc is : {0}".format(auc));
-    # trainA = get_train_test_data(A)
-    # Matrix_similarity, threshold = Other_ACT(trainA)
-    # T_P, T_N, F_P, F_N = precision(A, Matrix_similarity, trainA, 0.001)
-    # print("Threshold:{0}".format(threshold))
-    # print("TP:{0}".format(T_P))
-    # print("TN:{0}".format(T_N))
-    # print("FP:{0}".format(F_P))
-    # print("FN:{0}".format(F_N))

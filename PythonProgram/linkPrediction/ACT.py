@@ -5,6 +5,11 @@
 '''
 import numpy
 from sklearn.metrics import roc_auc_score
+from Tools import process_gml_file
+
+G, A, edges, nodes, neighbors = process_gml_file(
+        r"D:\ComplexNetworkData\Complex Network Datasets\For Link Prediction\metabolic\metabolic.gml")
+node_number = len(nodes)
 
 # AverageCommuteTime
 # auc: 0.8987037529479779
@@ -40,7 +45,6 @@ def ACT_(MatrixAdjacency_Train):
         for j in range(N):
             if i != j:
                 temp = INV_Matrix_Laplacian[i][i] + INV_Matrix_Laplacian[j][j] - 2.0 * INV_Matrix_Laplacian[i][j]
-
                 matrix_similarity[i][j] = 1.0 / temp
     threhold = numpy.sum(matrix_similarity)
     return matrix_similarity, threhold
@@ -65,3 +69,32 @@ def Other_ACT(MatrixAdjacency_Train):
 
     threhold = numpy.sum(Matrix_similarity)
     return Matrix_similarity, threhold
+
+if __name__ == '__main__':
+    A_similarity, threshold = ACT_(A)
+    TP = 0
+    TN = 0
+    FP = 0
+    FN = 0
+
+    for row in range(node_number):
+        for column in range(node_number):
+            if (row != column):
+                if (A_similarity[row][column] > threshold):
+                    if (A[row][column] == 1):
+                        TP = TP + 1
+                    if (A[row][column] == 0):
+                        TN = TN + 1
+                if (A_similarity[row][column] <= threshold):
+                    if (A[row][column] == 1):
+                        FP = FP + 1
+                    if (A[row][column] == 0):
+                        FN = FN + 1
+    right_number = TP + FN
+    right_radio = right_number / (node_number ** 2 - node_number)
+
+    print("TP: {0}\n".format(TP))
+    print("TN: {0}\n".format(TN))
+    print("FP: {0}\n".format(FP))
+    print("FN: {0}\n".format(FN))
+    print("准确率： {0}%".format(100 * right_radio))
