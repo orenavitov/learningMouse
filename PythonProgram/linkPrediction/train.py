@@ -15,8 +15,8 @@ from NN import LineNetwork
 import numpy
 from GGNN import GGNN
 from NN import LineNetwork
-
-
+import json
+from Node2Vec import Node2vec
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
@@ -136,6 +136,38 @@ def deep_walk_train():
     # 评估模型
     eval(ln, test_loader)
 
+def node2Vec_train():
+    with open(r"./params.json", 'r') as f:
+        params = json.load(f)
+        node2vec_params = params["Node2Vec"]
+        walk_length = node2vec_params["walk_length"]
+        num_walker = node2vec_params["num_walks"]
+        walker = node2vec_params["walker"]
+        p = node2vec_params["p"]
+        q = node2vec_params["q"]
+        embed_size = node2vec_params["embed_size"]
+        iter = node2vec_params["iter"]
+        window_size = node2vec_params["window_size"]
+        worker = node2vec_params["workers"]
+        node2vec = Node2vec(G = G, A = A, walk_length = walk_length, num_walks = num_walker,
+                            walker = walker, p = p, q = q, embed_size = embed_size,
+                            iter = iter, window_size = window_size, workers = worker)
+        node2vec.train()
+        train_data, train_label, test_data, test_label = node2vec.get_data()
+        train_loader, test_loader = getDataLoader(train_data, train_label, test_data, test_label)
+        ln = LineNetwork(30, 61, 2)
+        # print("Network params: {0}".format(len(ln.parameters())))
+
+        if (use_gpu):
+            ln = ln.cuda()
+        # 定义损失函数
+        loss_function = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(ln.parameters(), lr=0.001)
+        # 训练模型
+        train(train_loader, ln, 30, loss_function, optimizer)
+        # 评估模型
+        eval(ln, test_loader)
+
 def ggnn_train():
     state_dim = 5
     epochs = 6
@@ -158,4 +190,4 @@ def ggnn_train():
 
 
 if __name__ == '__main__':
-    deep_walk_train()
+    node2Vec_train()
