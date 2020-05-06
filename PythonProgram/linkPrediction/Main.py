@@ -4,84 +4,55 @@
 @Des: 
 '''
 from Tools import process_gml_file
-import argparse
 import torch
 from DeepWalk import Deep_Walk
-import torch.utils.data as Data
 from torch import nn
-import torch.nn.functional as F
 import torch.optim as optim
-from NN import LineNetwork
-import numpy
 from GGNN import GGNN
 from NN import LineNetwork
 import json
 from Node2Vec import Node2vec
-
-parser = argparse.ArgumentParser()
-parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
-parser.add_argument('--lr', type=float, default=0.01, help='learning rate')
-parser.add_argument('--manualSeed', type=int, help='manual seed')
-parser.add_argument('--epoch', type=int, default=1000, help='epoch')
-opt = parser.parse_args()
-print(opt)
-
+from VanillaGNN import GNN
+from DeepWalk import getDataLoader as DeepWalk_getDataLoader
+from Node2Vec import getDataLoader as Node2Vec_getDataLoader
+from VanillaGNN import getDataLoader as VanillaGNN_getDataLoader
+from MihGNNEmbeddingTest import getDataLoader as MihGNNEmbeddingTest_getDataLoader
+from MihGNNEmbeddingTest import MihGNNEmbeddingTest1
 
 G, A, edges, nodes, neighbors = process_gml_file(
-        r"D:\ComplexNetworkData\Complex Network Datasets\For Link Prediction\metabolic\metabolic.gml")
-print("graph info: {0}".format(G.size()))
+        r"C:\Users\mihao\Desktop\米昊的东西\input.gml")
+shape = A.shape
+N = shape[0]
 node_number = len(G.nodes)
 use_gpu = torch.cuda.is_available()
+with open(r"./params.json", 'r') as f:
+    params = json.load(f)
+    batchSize = params["batchSize"]
+    epochs = params["epochs"]
 
-def getDataLoader(train_data, train_label, test_data, test_label):
-    train_data = torch.tensor(train_data, dtype=torch.float)
-    train_label = torch.tensor(train_label, dtype=torch.long)
-    train_dataSet = Data.TensorDataset(train_data, train_label)
-    train_loader = Data.DataLoader(
-        dataset=train_dataSet,
-        batch_size=48,  # 批大小
-        # 若dataset中的样本数不能被batch_size整除的话，最后剩余多少就使用多少
-        shuffle=True,  # 是否随机打乱顺序
-        # num_workers=2,  # 多线程读取数据的线程数
-    )
-    test_data = torch.tensor(test_data, dtype=torch.float)
-    test_label = torch.tensor(test_label, dtype=torch.long)
-    test_dataSet = Data.TensorDataset(test_data, test_label)
-    test_loader = Data.DataLoader(
-        dataset=test_dataSet,
-        batch_size=16,  # 批大小
-        # 若dataset中的样本数不能被batch_size整除的话，最后剩余多少就使用多少
-        shuffle=True,  # 是否随机打乱顺序
-        # num_workers=2,  # 多线程读取数据的线程数
-    )
-    return train_loader, test_loader
+
+
 
 def train(train_loader, module, epochs, loss_function, optimizer):
-    # 多批次循环
     for epoch in range(epochs):
         running_loss = 0.0
         for i, data in enumerate(train_loader, 0):
-            # 获取输入
             inputs, labels = data
             labels = labels.to(torch.long)
             if (use_gpu):
                 inputs = inputs.cuda()
                 labels = labels.cuda()
-
-            # 梯度置0
             optimizer.zero_grad()
-            # 正向传播，反向传播，优化
             outputs = module(inputs)
             loss = loss_function(outputs, labels)
             if (use_gpu):
                 loss.cuda()
             loss.backward(retain_graph=True)
             optimizer.step()
-            # 打印状态信息
             running_loss += loss.item()
             if i != 0 and i % 2000 == 0:  # 每2000批次打印一次
                 print('[%d, %5d] loss: %.3f' %
-                      (epoch + 1, i + 1, running_loss / 2000))
+                      (epoch + 1, i + 1, running_loss))
                 running_loss = 0.0
 
 def eval(module, test_loader):
@@ -93,7 +64,6 @@ def eval(module, test_loader):
     total = 0
     for test_data, test_label in test_loader:
         outputs = module(test_data)
-        # torch.max 返回ouputs中第dim个维度的最大值即索引
         _, predictions = torch.max(outputs.data, 1)
         total += test_label.size(0)
         for index in range(len(predictions)):
@@ -103,42 +73,45 @@ def eval(module, test_loader):
                 if (test == 1):
                     TP = TP + 1
                 if (test == 0):
-                    TN = TN + 1
+                    FP = FP + 1
             if (prediction == 0):
                 if (test == 1):
-                    FP = FP + 1
-                if (test == 0):
                     FN = FN + 1
-    correct = TP + FN
+                if (test == 0):
+                    TN = TN + 1
     print("TP: {0}\n".format(TP))
     print("TN: {0}\n".format(TN))
     print("FP: {0}\n".format(FP))
     print("FN: {0}\n".format(FN))
-    print('准确率: %.4f %%' % (100 * correct / total))
-    # print("prediction :\n{0}".format(prediction_result))
-    # print("real : \n{0}".format(reals))
+    print('准确率: %.4f %%' % (100 * (TP) / (TP + FP)))
+
 
 def deep_walk_train():
-    # DeepWalk获得嵌入表示
-    deep_walk = Deep_Walk(walk_length=40, G=G, A=A, embed_size=30)
-    train_data, train_label, test_data, test_label = deep_walk.get_data()
-    train_loader, test_loader = getDataLoader(train_data, train_label, test_data, test_label)
-    ln = LineNetwork(30, 61, 2)
-    # print("Network params: {0}".format(len(ln.parameters())))
 
-    if (use_gpu):
-        ln = ln.cuda()
-    # 定义损失函数
-    loss_function = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(ln.parameters(), lr=0.001)
-    # 训练模型
-    train(train_loader, ln, 30, loss_function, optimizer)
-    # 评估模型
-    eval(ln, test_loader)
+        deep_walk_params = params["DeepWalk"]
+        embed_size = deep_walk_params["embed_size"]
+        walk_length = deep_walk_params["walk_length"]
+        num_walks = deep_walk_params["num_walks"]
+        walker = deep_walk_params["walker"]
+        # DeepWalk获得嵌入表示
+        deep_walk = Deep_Walk(walk_length=walk_length, G=G, A=A, embed_size=embed_size)
+        train_data, train_label, test_data, test_label = deep_walk.get_data()
+        train_loader, test_loader = DeepWalk_getDataLoader(train_data, train_label, test_data, test_label, batchSize)
+        ln = LineNetwork(30, 61, 2)
+        # print("Network params: {0}".format(len(ln.parameters())))
+
+        if (use_gpu):
+            ln = ln.cuda()
+        # 定义损失函数
+        loss_function = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(ln.parameters(), lr=0.001)
+        # 训练模型
+        train(train_loader, ln, 30, loss_function, optimizer)
+        # 评估模型
+        eval(ln, test_loader)
 
 def node2Vec_train():
-    with open(r"./params.json", 'r') as f:
-        params = json.load(f)
+
         node2vec_params = params["Node2Vec"]
         walk_length = node2vec_params["walk_length"]
         num_walker = node2vec_params["num_walks"]
@@ -154,7 +127,7 @@ def node2Vec_train():
                             iter = iter, window_size = window_size, workers = worker)
         node2vec.train()
         train_data, train_label, test_data, test_label = node2vec.get_data()
-        train_loader, test_loader = getDataLoader(train_data, train_label, test_data, test_label)
+        train_loader, test_loader = Node2Vec_getDataLoader(train_data, train_label, test_data, test_label, batchSize)
         ln = LineNetwork(30, 61, 2)
         # print("Network params: {0}".format(len(ln.parameters())))
 
@@ -164,7 +137,7 @@ def node2Vec_train():
         loss_function = nn.CrossEntropyLoss()
         optimizer = optim.Adam(ln.parameters(), lr=0.001)
         # 训练模型
-        train(train_loader, ln, 30, loss_function, optimizer)
+        train(train_loader, ln, epochs, loss_function, optimizer)
         # 评估模型
         eval(ln, test_loader)
 
@@ -182,12 +155,26 @@ def ggnn_train():
     # 定义损失函数
     loss_function = nn.CrossEntropyLoss()
     optimizer = optim.Adam(ln.parameters(), lr=0.001)
-
     train(train_loader, ln, epochs, loss_function, optimizer)
-
     # 评估模型
     eval(ln, test_loader)
 
+def VanillaGNN_train():
+    VanillaGNN_params = params["VanillaGNN"]
+    embed_size = VanillaGNN_params["embed_size"]
+    gnn = GNN(G=G, A=A, neighbors=neighbors, embedding_size=embed_size)
+    loss_function = torch.nn.CrossEntropyLoss()
+    optimizer = optim.Adam(gnn.parameters(), lr=0.001)
+    train_loader, test_loader = VanillaGNN_getDataLoader(A, radio=0.6)
+    train(train_loader=train_loader, module=gnn, epochs=epochs, loss_function=loss_function, optimizer=optimizer)
+    eval(gnn, test_loader)
 
+def MihGNNEmbedding_train():
+    train_loader, test_loader = MihGNNEmbeddingTest_getDataLoader(A, radio=0.7)
+    module = MihGNNEmbeddingTest1(A=A, N=N, d=6, layers=3, steps=2, delay=[1, 0.5, 0.1])
+    loss_function = torch.nn.CrossEntropyLoss()
+    optimizer = optim.Adam(module.parameters(), lr=0.001)
+    train(train_loader, module, epochs, loss_function, optimizer)
+    eval(module, test_loader)
 if __name__ == '__main__':
-    node2Vec_train()
+    MihGNNEmbedding_train()

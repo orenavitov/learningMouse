@@ -5,8 +5,6 @@
 '''
 import torch
 import torch.nn as nn
-import torch.functional as F
-import numpy
 
 class LineNetwork(nn.Module):
     def __init__(self, feature_dim, hidden_layer_dim, output_dim):
@@ -23,39 +21,17 @@ class LineNetwork(nn.Module):
             nn.ReLU()
         )
 
+
         self.line3 = nn.Sequential(
-            nn.Linear(hidden_layer_dim, hidden_layer_dim, bias=True),
-            nn.Dropout(p=0.3),
-            nn.ReLU()
-        )
-
-        self.line4 = nn.Sequential(
-            nn.Linear(hidden_layer_dim, hidden_layer_dim, bias=False),
-            nn.Dropout(p=0.2),
-            nn.ReLU()
-        )
-
-        self.line5 = nn.Sequential(
-            nn.Linear(hidden_layer_dim, hidden_layer_dim, bias=False),
-            nn.Dropout(p=0.3),
-            nn.ReLU()
-        )
-
-        self.line6 = nn.Sequential(
             nn.Linear(hidden_layer_dim, output_dim, bias=False),
             nn.Dropout(p=0.2),
             nn.ReLU()
         )
-        # self.line1 = nn.Linear(feature_dim, hidden_layer_dim, bias=False)
-        # self.line2 = nn.Linear(hidden_layer_dim, output_dim)
 
     def forward(self, input):
         out = self.line1(input)
         out = self.line2(out)
         out = self.line3(out)
-        out = self.line4(out)
-        out = self.line5(out)
-        out = self.line6(out)
         return out
 
 

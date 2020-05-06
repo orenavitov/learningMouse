@@ -4,7 +4,7 @@ import math
 import numpy
 import copy
 
-
+# 数据集： http://archive.ics.uci.edu/ml/datasets/Iris
 class Tree_node:
 
     def __init__(self, context, childs, name, value):
@@ -226,36 +226,7 @@ class DecisionTree:
                     if d[best_attr_index] == remain_attr_value:
                         next_input_d.append(d)
                 self.C4_5(next_input_d, remain_attrs_copy, layer)
-        pass
 
-
-# attr_1 = numpy.random.randint(1, 4, size = [1, 30])
-# attr_2 = numpy.random.randint(1, 3, size = [1, 30])
-# attr_3 = numpy.random.randint(1, 4, size = [1, 30])
-# attr_4 = numpy.random.randint(1, 3, size = [1, 30])
-# attr_5 = numpy.random.randint(1, 4, size = [1, 30])
-# attr_6 = numpy.random.randint(1, 3, size = [1, 30])
-# label = numpy.random.randint(1, 3, size = [1, 30])
-# D = []
-# D.extend(attr_1)
-# D.extend(attr_2)
-# D.extend(attr_3)
-# D.extend(attr_4)
-# D.extend(attr_5)
-# D.extend(attr_6)
-# D.extend(label)
-# attrs = [
-#     'attr_1',
-#     'attr_2',
-#     'attr_3',
-#     'attr_4',
-#     'attr_5',
-#     'attr_6',
-# ]
-# labels = [
-#     'label_1',
-#     'label_2'
-# ]
 
 # 根据输入的数据产生一个一维的高斯分布
 def get_gaussian_distribution(D):
@@ -270,47 +241,12 @@ def get_gaussian_distribution(D):
     # 方差
     variance = sum_ / len(D)
     return averge, variance
+
 # 一维的高斯分布
 gassian = lambda x, average, variance: (1 / ((2 * math.pi) ** 0.5 * variance ** 0.5)) * \
                                     math.e ** (-(x - average) ** 2 / 2 * variance)
 
-# 数据集为鸢尾花数据
-# 特征值包括sepal length（萼片长度）， sepal width（萼片宽度）， petal length（花瓣长度）， petal width（花瓣宽度）
-# 标签为鸢尾花的种类：1：Iris Setosa， 2：Iris Versicolour， 3：Iris Virginica
-# def data_handle(D, attrs, labels):
-#     # 训练数据集
-#     train_data = {}
-#     for label in labels:
-#         train_data[label] = []
-#     # 测试数据集
-#     test_data = []
-#     with open(r"E:\train_data\Iris\bezdekIris.data", "r") as file:
-#         for line in file.readlines(""):
-#             # 去掉行尾的换行符
-#             line_ = line[:-1]
-#
-#             label = line_.split(",")[-1]
-#             d = [line_.split(",")[:-1]]
-#             if numpy.random.randint(0, 9) > 3:
-#                 train_data[label].append(d)
-#             else:
-#                 test_data.append(d)
-#     train_data = numpy.array(train_data)
-#     test_data = numpy.array(test_data)
-#     # 每个属性高斯分布的（均值， 方差）
-#     gassians = []
-#     for label in train_data.keys():
-#         label_gassian = []
-#         label_data = train_data[label]
-#         for label_attr_data in label_data.T:
-#             average, variance = get_gaussian_distribution(label_attr_data)
-#             label_gassian.append(tuple(average, variance))
-#     gassians.append(label_gassian)
-#
-#     D_ = []
-#     for d in D:
-#         d_ = []
-#         for attr_d in d:
+
 # 使用二分法， 将离散数据进行转化
 def transform_attr_data(attr_data):
     list_attr_data = list(attr_data)
@@ -331,7 +267,7 @@ def data_handle():
     data = []
     train_data = []
     test_data = []
-    with open(r"E:\train_data\Iris\bezdekIris.data", "r") as file:
+    with open(r".\data\bezdekIris.data", "r") as file:
         for line in file.readlines():
             # 去掉行尾的换行符
             line_ = line[:-1]

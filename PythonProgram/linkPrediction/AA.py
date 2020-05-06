@@ -7,7 +7,8 @@
 import math
 import numpy
 from sklearn.metrics import roc_auc_score
-from linkPrediction.Main import find_neighbors
+import Tools
+import networkx
 
 neighbors = []
 commend_neighbors = []
@@ -16,18 +17,11 @@ node_number = 0
 
 # Adamic-Adar Index
 # auc: 0.9626856751933148
-def find_neighbors_between_two_nodes(MatrixAdjacency_Train, i, j):
-    line_i = MatrixAdjacency_Train[i]
-    line_j = MatrixAdjacency_Train[j]
-    for index in range(len(line_i)):
-        if line_i[index] == 1 and line_j[index] == 1:
-            commend_neighbors.append(index + 1)
-
-
-def AA(MatrixAdjacency_Train):
+def AA(G):
     # 节点数
-    N = MatrixAdjacency_Train.shape[0]
-    A_sqrt = numpy.matmul(MatrixAdjacency_Train, MatrixAdjacency_Train)
+    A = numpy.array(networkx.adjacency_matrix(G).todense())
+    N = A.shape[0]
+    A_sqrt = numpy.matmul(A, A)
     # link标签， 存在为1， 不存在为0
     link_label = []
     # link得分
@@ -35,12 +29,13 @@ def AA(MatrixAdjacency_Train):
     for i in range(N):
         for j in range(N):
             if (i != j):
-                link_label.append(MatrixAdjacency_Train[i][j])
+                link_label.append(A[i][j])
                 if (A_sqrt[i][j] != 0):
                     score = 0.0
-                    find_neighbors_between_two_nodes(MatrixAdjacency_Train, i, j)
-                    for neighbor in commend_neighbors:
-                        find_neighbors(MatrixAdjacency_Train, neighbor)
+                    common_neighbors = Tools.find_common_neighbors(G, i, j)
+                    # find_neighbors_between_two_nodes(MatrixAdjacency_Train, i, j)
+                    for neighbor in common_neighbors:
+                        neighbors = G[neighbor]
                         if len(neighbors) != 0:
                             score = score + 1 / (math.log(len(neighbors), 2))
                         neighbors.clear()

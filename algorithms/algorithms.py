@@ -113,7 +113,7 @@ def number_distritube_2(number):
 
 
 def f(n):
-    V = [1, 2, 5, 10]
+    V = [1, 2, 5]
     C = [0 for _ in range(n + 1)]
     C[0] = 1
     for v in V:
@@ -164,7 +164,122 @@ def adjust(tree):
         local_adjust(tree, last_no_leaf_index, left_child_index, right_child_index)
         last_no_leaf_index -= 1
     return tree
+
+def Solution(m, n):
+
+    class state():
+        def __init__(self, s, step):
+            self.s = s
+            self.step = step
+
+        def set_s(self, s):
+            self.s = s
+            return self
+        def get_s(self):
+            return self.s
+
+        def set_step(self, step):
+            self.step = step
+
+        def get_step(self):
+            return self.step
+
+    count = 0
+    step = 0
+    """
+    状态1： 接下来有3种走法
+    状态2： 接下来有5种走法
+    状态3： 接下来有8种走法
+    """
+    current = state(s = 1, step = 1)
+
+    def next(current, stop, pre_count):
+        global  count
+        s = current.get_s()
+        step = current.get_step()
+        if step < stop:
+            if s == 1:
+                current_count = pre_count * 3
+                current.set_step(step + 1)
+                next(current = current.set_s(2), stop = stop, pre_count = current_count)
+                next(current = current.set_s(3), stop=stop, pre_count = current_count)
+
+            if s == 2:
+                current_count = pre_count * 5
+                current.set_step(step + 1)
+                next(current=current.set_s(1), stop=stop, pre_count = current_count)
+                next(current=current.set_s(3), stop=stop, pre_count = current_count)
+            if s == 3:
+                current_count = pre_count * 8
+                current.set_step(step + 1)
+                next(current=current.set_s(1), stop=stop, pre_count = current_count)
+                next(current=current.set_s(2), stop=stop, pre_count = current_count)
+        else:
+            count = count + pre_count
+
+    def get_ways(s):
+        global count
+        if (s == 1):
+            count = 9
+        else:
+            state_1 = state(s=1, step=1)
+            state_2 = state(s=2, step=1)
+            state_3 = state(s=3, step=1)
+            next(state_1, s, pre_count=4)
+            next(state_2, s, pre_count=4)
+            next(state_3, s, pre_count=1)
+
+    for i in range(m, n + 1):
+        get_ways(i)
+
+    return count
+
+def test1(n):
+    i = 1
+    sum_days = 0
+    sum_products = 0
+    while(sum_days <= n):
+
+        if (sum_days + i > n):
+            sum_products = sum_products + (n - sum_days) * i
+            break
+        else:
+            sum_days = sum_days + i
+            sum_products = sum_products + i * i
+            i = i + 1
+    return sum_products
+
+def test2(pre_state, step, stop, count):
+    if step < stop:
+        if pre_state == 1:
+            step = step + 1
+            return test2(2, step, stop, count * 2) + test2(3, step, stop, count * 1)
+
+
+        if pre_state == 2:
+            step = step + 1
+            return test2(1, step, stop, count * 2) + test2(3, step, stop, count * 1)
+
+
+        if pre_state == 3:
+            step = step + 1
+            return test2(1, step, stop, count * 4) + test2(2, step, stop, count * 4)
+
+    else:
+        return count
+
+def test_(stop):
+    count = 0
+    if stop == 1:
+        count = 9
+    else:
+        count = test2(1, 1, stop, 4) + test2(2, 1, stop, 4) + test2(3, 1, stop, 1)
+    return count
+
 if __name__ == '__main__':
-    tree = array.array("i", [5, 3, 7, 6, 4, 1, 9, 22, 10, 21, 11, 31, 11, 33, 41, 13, 15])
-    adjust(tree)
-    print(tree)
+    m = 1
+    n = 2
+    sum = 0
+    for stop in range(m, n + 1):
+        sum = sum + test_(stop)
+    print("sum is {0}".format(sum))

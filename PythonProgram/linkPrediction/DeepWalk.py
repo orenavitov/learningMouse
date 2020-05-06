@@ -4,11 +4,34 @@
 @Des: 
 '''
 import random
-import networkx
-import matplotlib.pyplot as plt
+import torch
 from gensim.models import Word2Vec
 import numpy
 from imblearn.over_sampling import SMOTE
+import torch.utils.data as Data
+
+def getDataLoader(train_data, train_label, test_data, test_label, batch_size):
+    train_data = torch.tensor(train_data, dtype=torch.float)
+    train_label = torch.tensor(train_label, dtype=torch.long)
+    train_dataSet = Data.TensorDataset(train_data, train_label)
+    train_loader = Data.DataLoader(
+        dataset=train_dataSet,
+        batch_size=batch_size,  # 批大小
+        # 若dataset中的样本数不能被batch_size整除的话，最后剩余多少就使用多少
+        shuffle=True,  # 是否随机打乱顺序
+        # num_workers=2,  # 多线程读取数据的线程数
+    )
+    test_data = torch.tensor(test_data, dtype=torch.float)
+    test_label = torch.tensor(test_label, dtype=torch.long)
+    test_dataSet = Data.TensorDataset(test_data, test_label)
+    test_loader = Data.DataLoader(
+        dataset=test_dataSet,
+        batch_size=batch_size,  # 批大小
+        # 若dataset中的样本数不能被batch_size整除的话，最后剩余多少就使用多少
+        shuffle=True,  # 是否随机打乱顺序
+        # num_workers=2,  # 多线程读取数据的线程数
+    )
+    return train_loader, test_loader
 
 class Deep_Walk():
     # walk_length: 随机游走的步数
@@ -69,6 +92,7 @@ class Deep_Walk():
 
     def get_data(self):
         data = []
+        labels = []
         embeddings = self.get_embedding()
         node_number = len(self.G.nodes)
         for i in range(node_number):
@@ -79,13 +103,14 @@ class Deep_Walk():
                 if i == j:
                     # _hidden_state_j = [item * 100 for item in hidden_state_j]
                     # data.append((numpy.concatenate((hidden_state_j, hidden_state_j)), 1))
-                    data.append((hidden_state_j - hidden_state_j, 1))
+                    data.append(hidden_state_j - hidden_state_j)
+                    labels.append(1)
                 else:
                     label = self.A[i][j]
                     # _hidden_state_j = [item * 100 for item in hidden_state_j]
                     # _hidden_state_i = [item * 100 for item in hidden_state_i]
-                    data.append((hidden_state_i - hidden_state_j, label))
-
+                    data.append(hidden_state_i - hidden_state_j)
+                    labels.append(label)
         data_size = len(data)
         s = int(data_size * 0.5)
         test_data = [item[0] for item in data][s:]
@@ -112,3 +137,4 @@ class Deep_Walk():
         # test_data = [item[0] for item in data][s:]
         # test_label = [item[1] for item in data][s:]
         return train_data, train_label, test_data, test_label
+

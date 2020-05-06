@@ -4,9 +4,33 @@
 @Des: 
 '''
 import numpy
-import random
+import torch
 from gensim.models import Word2Vec
 from imblearn.over_sampling import SMOTE
+import torch.utils.data as Data
+
+def getDataLoader(train_data, train_label, test_data, test_label, batch_size):
+    train_data = torch.tensor(train_data, dtype=torch.float)
+    train_label = torch.tensor(train_label, dtype=torch.long)
+    train_dataSet = Data.TensorDataset(train_data, train_label)
+    train_loader = Data.DataLoader(
+        dataset=train_dataSet,
+        batch_size=batch_size,  # 批大小
+        # 若dataset中的样本数不能被batch_size整除的话，最后剩余多少就使用多少
+        shuffle=True,  # 是否随机打乱顺序
+        # num_workers=2,  # 多线程读取数据的线程数
+    )
+    test_data = torch.tensor(test_data, dtype=torch.float)
+    test_label = torch.tensor(test_label, dtype=torch.long)
+    test_dataSet = Data.TensorDataset(test_data, test_label)
+    test_loader = Data.DataLoader(
+        dataset=test_dataSet,
+        batch_size=batch_size,  # 批大小
+        # 若dataset中的样本数不能被batch_size整除的话，最后剩余多少就使用多少
+        shuffle=True,  # 是否随机打乱顺序
+        # num_workers=2,  # 多线程读取数据的线程数
+    )
+    return train_loader, test_loader
 
 class Node2vec():
 
@@ -152,7 +176,7 @@ class Node2vec():
         model = Word2Vec(**kwargs)
         print("Learning embedding vectors done!")
         self.w2v_model = model
-        return model
+
 
     def get_embeddings(self):
         if self.w2v_model is None:
