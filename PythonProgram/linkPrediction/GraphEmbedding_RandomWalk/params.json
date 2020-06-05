@@ -1,0 +1,24 @@
+{
+  "batchSize": 48,
+  "epochs": 1,
+  "Node2Vec":{
+    "embed_size": 30,
+    "walk_length": 20,
+    "num_walks": 10,
+    "walker": 1,
+    "p":0.25,
+    "q":4,
+    "window_size": 5,
+    "iter": 5,
+    "workers":2
+  },
+  "DeepWalk": {
+    "embed_size": 30,
+    "walk_length": 20,
+    "num_walks": 10,
+    "walker": 1
+  },
+  "VanillaGNN": {
+    "embed_size": 6
+  }
+}

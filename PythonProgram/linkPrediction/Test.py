@@ -7,14 +7,14 @@ import scipy.sparse as sp
 import numpy
 import networkx
 import matplotlib.pyplot as plt
-import json
-from copy import deepcopy
+
 from copy import copy
 from Tools import get_test_matrix
-from Tools import process_gml_file
 import torch
-from NN import LineNetwork
-import math
+from GraphEmbedding_RandomWalk.NN import LineNetwork
+import openpyxl
+from openpyxl.styles import PatternFill
+
 # 定义一张用于测试的图, A表示改图的邻接矩阵
 A = numpy.array([
     [0, 1, 1, 1, 0, 0, 0],
@@ -58,13 +58,6 @@ def Test2():
     A_ = numpy.array(A).flatten()
     print(A_)
 
-def JsonRead():
-    with open(r"./params.json", 'r') as f:
-        params = json.load(f)
-        batchSize = params["batchSize"]
-        epochs = params["epochs"]
-        print("batchSize: {0}".format(batchSize))
-        print("epochs: {0}".format(epochs))
 
 def Test4():
     c_A = copy(A)
@@ -80,58 +73,22 @@ def Test4():
 def Test5():
     _A = get_test_matrix(A, 0.8)
     print(_A)
-
-def Test6():
-    G, X, edges, nodes, neighbors = process_gml_file(
-        r"C:\Users\mihao\Desktop\米昊的东西\input.gml")
-    A = []
-    with open(r"C:\Users\mihao\Desktop\米昊的东西\X_hat_file.txt", "r") as file:
-        context = file.read()
-        rows = context.split("]")
-        for row in rows:
-            if row == '':
-                continue
-            a = []
-            print("row: {0}".format(row))
-            _row = row.split('[')[1]
-            _row = list(_row.split(" "))
-            for element in _row:
-                if element == '':
-                    continue
-                if element.endswith("\n"):
-                    a.append(float(element[:-1]))
-                    continue
-                a.append(float(element))
-            A.append(a)
-    A = numpy.array(A)
-    shape = A.shape
-    rows = shape[0]
-    cols = shape[1]
-    for row in range(rows):
-        for col in range(cols):
-            if A[row][col] >= 0.01:
-                A[row][col] = 1
-            else:
-                A[row][col] = 0
-    TP = 0
-    TN = 0
-    FP = 0
-    FN = 0
-    for row in range(rows):
-        for col in range(cols):
-            if A[row][col] == 1 and X[row][col] == 1:
-                TP = TP + 1
-            if A[row][col] == 1 and X[row][col] == 0:
-                FP = TN + 1
-            if A[row][col] == 0 and X[row][col] == 1:
-                FN = FP + 1
-            if A[row][col] == 0 and X[row][col] == 0:
-                TN = FN + 1
-    print("TP: {0}".format(TP))
-    print("TN: {0}".format(TN))
-    print("FP: {0}".format(FP))
-    print("FN: {0}".format(FN))
-    print("精确率: {0}".format(TP / (TP + FP)))
+# 随机生成一幅图
+def Test6(N, density):
+    nodes = [i for i in range(N)]
+    edges = []
+    for src in range(N):
+        for dst in range(src + 1, N):
+            randomValue = numpy.random.random()
+            if (randomValue <= density):
+                edges.append([src, dst])
+    G = networkx.Graph()
+    G.add_nodes_from(nodes)
+    G.add_edges_from(edges)
+    networkx.draw(G, with_labels=True)
+    plt.show()
+    A = numpy.array(networkx.adjacency_matrix(G).todense())
+    return A
 
 def Test7():
     A = numpy.array(range(9)).reshape([3, 3])
@@ -158,17 +115,14 @@ def Test8():
     torch.save(ln.state_dict(), file)
 
 def Test9():
-    a = torch.tensor([
-        [1, 2],
-        [3, 4]
-    ],dtype = torch.float)
-    b = torch.tensor([
-        [1, 2],
-        [3, 4]
-    ], dtype = torch.float)
-    c = torch.cat([a, b], dim = 0)
-    print(c)
 
+    a = numpy.arange(1, 11).reshape([2, 5])
+    b = numpy.arange(10, 20).reshape([2, 5])
+    s = [a, b]
+    print("a:{0}".format(a))
+    print("b:{0}".format(b))
+    print(numpy.sum(s, axis = 0))
+    print(numpy.sum(s, axis = 1))
 def Test10():
     a = numpy.random.randn(3, 3)
     a = round(a, 2)
@@ -177,5 +131,75 @@ def Test10():
 
 # https://www.cnblogs.com/wanglle/p/11455758.html
 #
+def Test11():
+
+    numbers = numpy.random.randn(3, 3)
+    red_fill = PatternFill("solid", fgColor="FF0000")
+    excel_file = openpyxl.load_workbook(r'C:\Users\mihao\Desktop\米昊的东西\result\show.xlsx')
+    if (excel_file['A_star1'] == None):
+        excel_file.create_sheet("A_star1")
+    A_star1_sheet = excel_file['A_star1']
+
+    row_start = 1
+    col_start = 1
+    for col in range(1, 3 + 1):
+        A_star1_sheet.cell(row = row_start, column = col + 1, value = col)
+    for row in range(1, 3 + 1):
+        A_star1_sheet.cell(row = row + 1, column = col_start, value = row)
+
+    for row in range(3):
+        for col in range(3):
+            value = numbers[row][col]
+            if value <= 0:
+                A_star1_sheet.cell(row = row + 2, column = col + 2).fill = red_fill
+
+            A_star1_sheet.cell(row = row + 2, column = col + 2, value = numbers[row][col])
+
+    # 做了修改后要保存
+    excel_file.save(r'C:\Users\mihao\Desktop\米昊的东西\result\show.xlsx')
+    excel_file.close()
+
+# 展示一维卷积的过程
+# pytorch中一维tensor为（batch_size, channels, width）
+# 卷积的过程和二维一样
+def Test12():
+    a = numpy.arange(start = 0, stop = 40)
+    a = a.reshape([2, 4, 5])
+    a = torch.tensor(a, dtype = torch.float)
+    cov1d = torch.nn.Conv1d(in_channels = 4, out_channels = 2, kernel_size = 2)
+    pool = torch.nn.MaxPool1d(kernel_size = 3, stride = 2)
+    b = cov1d(a)
+    print(b)
+    print(b.shape)
+    b = pool(b)
+    print(b)
+    print(b.shape)
+
+def Test13():
+    b = 2
+    F_ = 4
+    input = numpy.arange(0, 8).reshape([b, F_]);
+    input = torch.tensor(input, dtype = torch.float)
+    input1 = input.repeat(1, b)
+    input2 = input1.view(b * b, -1)
+    input3 = input.repeat(b, 1)
+    print("input:\n {0}".format(input))
+    print("input1:\n {0}".format(input1))
+    print("input2:\n {0}".format(input2))
+    print("input3:\n {0}".format(input3))
+
+# unsqueeze(index) 会在tensor的index这个维度上增加一个维度， 大小为1；
+# squeeze(index) 会去掉tensor的index这维度上大小为1的维度， 如果大小不为1， 不会发生变化；
+def Test14():
+    input = numpy.arange(0, 8).reshape([2, 4])
+    input = torch.tensor(input, dtype = torch.float)
+    print("input:\n{0}".format(input))
+    input = input.unsqueeze(1)
+    print("input:\n{0}".format(input))
+    input = input.unsqueeze(1)
+    print("input:\n{0}".format(input))
+    input = input.squeeze(1)
+    print("input:\n{0}".format(input))
+
 if __name__ == '__main__':
-    Test10()
+    Test14()

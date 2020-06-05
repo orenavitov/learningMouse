@@ -7,8 +7,8 @@ import torch
 from torch import nn
 from torchviz import make_dot
 from torch.autograd import Variable
-from GGNN import GGNN
-from NN import LineNetwork
+from GraphEmbedding_DeepLearning.GGNN import GGNN
+from GraphEmbedding_RandomWalk.NN import LineNetwork
 import numpy
 
 def Test():

@@ -4,15 +4,16 @@
 @Des: 
 '''
 import numpy
-import array
 from sklearn.metrics import roc_auc_score
 import networkx
 from copy import deepcopy
-
-commend_neighbors = []
-edge_number = 0
-node_number = 0
-CN_threshold = 1
+import openpyxl
+from openpyxl.styles import colors, Font, PatternFill
+import matplotlib.pyplot as plt
+import copy
+import torch.utils.data as Data
+import torch
+import math
 
 # Auc 计算
 def auc(func):
@@ -64,7 +65,7 @@ def precision(A, Matrix_similarity, train_A, threshold):
         j = i + 1
     return T_P, T_N, F_P, F_N
 
-def process_gml_file(file):
+def process_gml_file(file = r'./Data/bio-GE-GT.gml'):
     G = networkx.read_gml(file)
     A = numpy.array(networkx.adjacency_matrix(G).todense())
     edges = G.edges()
@@ -75,6 +76,8 @@ def process_gml_file(file):
     return G, A, edges, nodes, neighbors
 
 # 生成GML文件
+# src file 为源文件， 源文件格式为边的信息， 如“src dst”
+# dstfile 为目标文件的地址， 后缀为.gml
 def generate_gml_file(srcfile, dstfile):
     G = networkx.Graph()
     edges = []
@@ -101,15 +104,215 @@ def get_test_matrix(A, keep_radio):
                 c_A[i][j] = 0
     return c_A
 
-def write_matrix(A, file):
+# 寻找介数为steps 的邻居节点
+def get_steps_neighbor(A, steps):
+    neighbors = []
+    for step in range(steps):
+        A_current = copy.deepcopy(A)
+        e = 1
+        while (e < (step + 1)):
+            A_current = numpy.matmul(A_current, A)
+            e = e + 1
+        neighbors_step = []
+        for row in A_current:
+            neighbors_i = []
+            for i, w in enumerate(row):
+                if w == 1:
+                    neighbors_i.append(i)
+            neighbors_step.append(neighbors_i)
+        neighbors.append(neighbors_step)
+    return neighbors
+
+
+# 将矩阵写入txt
+def write_matrix2txt(A, file):
     with open(file, 'w') as file:
         for row in A:
             file.write(str(row))
             file.write('\n')
+"""
+将矩阵写入excel
+A_star 为预测矩阵
+A 为真实矩阵
+file 为excel文件地址
+sheet_name 为excel工作表的名称
+"""
+def write_matrix2excel(A_star, A, file, sheet_name = 'A'):
+    N = A.shape[0]
+    red_fill = PatternFill("solid", fgColor="FF0000")
+    green_fill = PatternFill("solid", fgColor="B3EE3A")
+    excel_file = openpyxl.load_workbook(file)
+    sheets = excel_file.sheetnames
+    if (sheet_name not in sheets):
+        excel_file.create_sheet(sheet_name)
+    A_star1_sheet = excel_file[sheet_name]
 
-# 样本插值
-def insert_process(self):
-    pass
+    row_start = 1
+    col_start = 1
+    for col in range(1, N + 1):
+        A_star1_sheet.cell(row=row_start, column=col + 1, value=col - 1)
+    for row in range(1, N + 1):
+        A_star1_sheet.cell(row=row + 1, column=col_start, value=row - 1)
+
+    for row in range(N):
+        for col in range(N):
+            value = A[row][col]
+            if value == 1.0:
+                A_star1_sheet.cell(row=row + 2, column=col + 2).fill = red_fill
+            if value == 0.0:
+                A_star1_sheet.cell(row=row + 2, column=col + 2).fill = green_fill
+
+            A_star1_sheet.cell(row=row + 2, column=col + 2, value=A_star[row][col])
+
+    # 做了修改后要保存
+    excel_file.save(file)
+    excel_file.close()
+
+
+# 生成一个随机的图, N为节点数量， density为网络密度
+def generate_random_graph(N, density):
+    nodes = [i for i in range(N)]
+    edges = []
+    for src in range(N):
+        for dst in range(src + 1, N):
+            randomValue = numpy.random.random()
+            if (randomValue <= density):
+                edges.append([src, dst])
+    G = networkx.Graph()
+    G.add_nodes_from(nodes)
+    G.add_edges_from(edges)
+    networkx.draw(G, with_labels=True)
+    plt.show()
+    A = numpy.array(networkx.adjacency_matrix(G).todense())
+    return A
+
+# 获得训练集合测试集的DataLoader
+# A 为输入的邻接矩阵
+# radio 为0.0~1.0之间的float, 表示多少的数据用作训练集
+# batch_size 为批训练的数据量
+def get_data_loader(A, radio, batch_size = 32):
+    data = []
+    label = []
+    A_test = numpy.zeros_like(A)
+    N = len(A)
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                data.append([i, j])
+                label.append(A[i][j])
+    train_indexes = data[: int(N * (N - 1) * radio)]
+    train_label = label[: int(N * (N - 1) * radio)]
+    for i, index in enumerate(train_indexes):
+        row = index[0]
+        col = index[1]
+        A_test[row][col] = train_label[i]
+
+    train_data = torch.tensor(train_indexes)
+    train_label = torch.tensor(train_label)
+
+    test_data = torch.tensor(data[int(N * (N - 1) * radio):])
+    test_label = torch.tensor(label[int(N * (N - 1) * radio):])
+    train_dataset = Data.TensorDataset(train_data, train_label)
+    test_dataset = Data.TensorDataset(test_data, test_label)
+
+    train_loader = Data.DataLoader(
+        dataset=train_dataset,
+        batch_size=16,
+        shuffle=True,
+    )
+
+    test_loader = Data.DataLoader(
+        dataset=test_dataset,
+        batch_size=16,
+        shuffle=True,
+    )
+    return train_loader, test_loader, A_test
+
+# 计算介数为steps的邻接矩阵和
+def Matrix_pre_handle(A, steps, delay):
+    N = A.shape[0]
+    A_s = []
+    I = numpy.eye(N)
+    for step in range(steps):
+        A_current = copy.deepcopy(A)
+        e = 1
+        while (e < (step + 1)):
+            A_current = numpy.matmul(A_current, A)
+            e = e + 1
+        for i in range(N):
+            for j in range(N):
+                if (i == j):
+                    A_current[i][j] = 0
+                # if (A_current[i][j] != 1):
+                #     A_current[i][j] = 0
+        A_s.append(delay[step] * A_current)
+        result = numpy.sum(A_s, axis=0)
+        result = result + I
+    return result
+
+
+# 寻找图中的孤立点
+def finde_single_nodes(A):
+    single_nodes = []
+    D = numpy.sum(A, axis=1, keepdims=False)
+    for i in range(N):
+        if D[i] == 0:
+            single_nodes.append(i)
+    return single_nodes
+
+
+
+
+
+# 处理最终相似矩阵的孤立点和自连接
+def A_star_handle(A, A_star):
+    N = A.shape[0]
+    single_nodes = finde_single_nodes(A)
+    # 处理孤立点
+    for i in range(N):
+        if i in single_nodes:
+            for j in range(N):
+                A_star[i][j] = 0.0
+    # 处理自连接
+    for i in range(N):
+        A_star[i][i] = 0.0
+    # 相似矩阵中的取绝对值
+    for i in range(N):
+        for j in range(N):
+            A_star[i][j] = math.fabs(A_star[i][j])
+    # 将训练矩阵中的0 变为 -1
+    A_ = copy.deepcopy(A)
+    for i in range(N):
+        for j in range(N):
+            if A_[i][j] == 0:
+                A_[i][j] = -1
+
+    A_devide = A_ * A_star
+    return A_devide
+
+
+def find_devide_value(A_devide, trust_value):
+    positive = []
+    negitive = []
+    for i in range(N):
+        for j in range(N):
+            if A_devide[i][j] < 0.0:
+                negitive.append(A_devide[i][j])
+            if A_devide[i][j] > 0.0:
+                positive.append(A_devide[i][j])
+    large_value = numpy.min(positive)
+    small_value = numpy.max(negitive)
+    devide_value = large_value - (large_value - small_value) * trust_value
+    return devide_value
+
+
+def cal_cos_similary(src, dst):
+    result = numpy.matmul(src, dst.T)
+    x_1 = (numpy.sum(src ** 2, axis=1) ** 0.5).reshape([-1, 1])
+
+    x_2 = (numpy.sum(src ** 2, axis=1) ** 0.5).reshape([1, -1])
+    result = result / numpy.matmul(x_1, x_2)
+    return result
 
 if __name__ == '__main__':
     generate_gml_file(r'C:\Users\mihao\Desktop\米昊的东西\dataset\petster-friendships-hamster\out.petster-friendships-hamster-uniq',

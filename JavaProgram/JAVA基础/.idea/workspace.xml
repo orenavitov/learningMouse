@@ -2,129 +2,95 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95fc0932-a3dc-436b-a60d-4ed8e58e0c44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DaemonThreadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HappenBeforeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/LockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/AsynFuture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/Future.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/FutureService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/FutureTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/RequestQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ImmutableTest/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ImmutableTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ImmutableTest/UsePersonThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Converter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/LambdaTest/AddInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/LambdaTest/AddTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/READ" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/LifeCycleListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/ObserverableRunnable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/ThreadLifeCycleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/ThreadLifeCycleObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ReadWriteLock/RWLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ReadWriteLock/SharedData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ReadWriteLock/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SingletonGateTest/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SingletonGateTest/Gate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SingletonGateTest/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/CatchThreadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/StopThreadTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/StopThreadTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/Lock/MihLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/Lock/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/NotifyTest/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/ProduceAndConsume/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/ThreadPool/MIhThreadPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/VolatileTest/VolatileTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/day20200516.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/day20200518.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/AutoEnCodeTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AQS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AQS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AQS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AQS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AQS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/AQS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DaemonThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/DaemonThreadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HappenBeforeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/HappenBeforeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/LockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AQS$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AQS$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AQS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DaemonThreadTest$SubClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DaemonThreadTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/HappenBeforeTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/HappenBeforeTest$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/HappenBeforeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LockTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/NN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/NN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/RW.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/RW.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/MihGNNEmbeddingTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/MihGNNEmbeddingTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/mihtest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/mihtest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/mihtest/PictureHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/mihtest/PictureHandler.py" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/AQS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding>
-                <element signature="e#248#355#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DaemonThreadTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="797" column="35" lean-forward="true" selection-start-line="797" selection-start-column="35" selection-end-line="797" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#91524#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LockTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/HappenBeforeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-              <folding>
-                <element signature="e#243#244#0" expanded="true" />
-                <element signature="e#288#383#0" expanded="true" />
-                <element signature="e#382#383#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/Thread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18150">
-              <caret line="784" column="29" selection-start-line="784" selection-start-column="29" selection-end-line="784" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package-info" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/Item.java" />
-        <option value="$PROJECT_DIR$/src/main/java/AQS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LockTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DaemonThreadTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/HappenBeforeTest.java" />
-      </list>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -133,113 +99,116 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-513" />
-    <option name="y" value="126" />
-    <option name="width" value="1284" />
-    <option name="height" value="717" />
-  </component>
+  <component name="ProjectId" id="1c58wrxqtJfvyQ5FwHnCIH5IVeZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="JUC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA基础" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JUC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA基础" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JUC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA基础" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JUC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA基础" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578141265227" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.HappenBeforeTest">
-    <configuration name="AQS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AQS" />
+  <component name="RunManager" selected="Application.AddTest">
+    <configuration name="AddTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JAVA8.LambdaTest.AddTest" />
       <module name="JAVA基础" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JAVA8.LambdaTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DaemonThreadTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DaemonThreadTest" />
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SingletonGateTest.Client" />
       <module name="JAVA基础" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SingletonGateTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HappenBeforeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HappenBeforeTest" />
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FutureTest.Test" />
       <module name="JAVA基础" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FutureTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LockTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LockTest" />
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImmutableTest.Test" />
       <module name="JAVA基础" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ImmutableTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ReadWriteLock.Test" />
+      <module name="JAVA基础" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ReadWriteLock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HappenBeforeTest" />
-        <item itemvalue="Application.DaemonThreadTest" />
-        <item itemvalue="Application.AQS" />
-        <item itemvalue="Application.LockTest" />
+        <item itemvalue="Application.AddTest" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Test (2)" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -261,193 +230,85 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="8013000" />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-513" y="126" width="1284" height="717" extended-state="0" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49885583" visible="true" weight="0.15686275" />
-      <window_info id="Structure" order="1" sideWeight="0.5011442" side_tool="true" weight="0.14761905" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.57632935" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.36461538" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AQS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#248#355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18150">
-          <caret line="784" column="29" selection-start-line="784" selection-start-column="29" selection-end-line="784" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="797" column="35" lean-forward="true" selection-start-line="797" selection-start-column="35" selection-end-line="797" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#91524#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DaemonThreadTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LockTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/HappenBeforeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-          <folding>
-            <element signature="e#243#244#0" expanded="true" />
-            <element signature="e#288#383#0" expanded="true" />
-            <element signature="e#382#383#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="521" y="201" key="#Project_Structure" timestamp="1590481107696">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="521" y="201" key="#Project_Structure/0.0.1858.1080@0.0.1858.1080" timestamp="1590481107696" />
+    <state x="744" y="399" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591239569704">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="744" y="399" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591239569704" />
+    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1591269256079">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591269256079" />
+    <state width="1340" height="326" key="GridCell.Tab.0.bottom" timestamp="1591262013440">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1340" height="326" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1591262013440" />
+    <state width="1340" height="326" key="GridCell.Tab.0.center" timestamp="1591262013440">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1340" height="326" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1591262013440" />
+    <state width="1340" height="326" key="GridCell.Tab.0.left" timestamp="1591262013440">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1340" height="326" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1591262013440" />
+    <state width="1340" height="326" key="GridCell.Tab.0.right" timestamp="1591262013440">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1340" height="326" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1591262013440" />
+    <state width="1815" height="364" key="GridCell.Tab.1.bottom" timestamp="1590751059062">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1590751059062" />
+    <state width="1815" height="364" key="GridCell.Tab.1.center" timestamp="1590751059062">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1590751059062" />
+    <state width="1815" height="364" key="GridCell.Tab.1.left" timestamp="1590751059062">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1590751059062" />
+    <state width="1815" height="364" key="GridCell.Tab.1.right" timestamp="1590751059062">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1590751059062" />
+    <state x="409" y="117" key="SettingsEditor" timestamp="1590481670113">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="409" y="117" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1590481670113" />
+    <state x="650" y="281" width="540" height="524" key="StructurePopup" timestamp="1590746732586">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="650" y="281" width="540" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1590746732586" />
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1591341151631">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591341151631" />
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1591255490535">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1591255490535" />
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>JAVA基础</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ThreadTest/Lock/MihLock.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ThreadTest/Lock/MihLock.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

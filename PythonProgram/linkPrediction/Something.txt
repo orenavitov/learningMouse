@@ -1,0 +1,256 @@
+def test1(A):
+
+    N = A.shape[0]
+    module = MihGNNEmbedding1(A=A_test, N=N, d=128, layers=6, steps=2, delay=[1, 0.5])
+    epochs = 20
+
+    for epoch in range(epochs):
+        running_loss = 0.0
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer.zero_grad()
+            loss, _ = module(inputs, labels)
+            loss.backward(retain_graph=True)
+            optimizer.step()
+            running_loss += loss.item()
+            if i != 0 and i % 2000 == 0:  # 每2000批次打印一次
+                print('[%d, %5d] loss: %.3f' %
+                      (epoch + 1, i + 1, running_loss))
+                running_loss = 0.0
+
+    devide_value = 0.0
+    while (devide_value < 1.0):
+        TP = 0
+        FP = 0
+        TN = 0
+        FN = 0
+        print('-------------devide value: {0}----------------'.format(str(devide_value)))
+        for test_data, test_label in test_loader:
+            _, Y = module(test_data, test_label)
+            Y = Y.detach().numpy()
+            labels = test_label.numpy()
+            num = len(Y)
+            for i in range(num):
+                if Y[i] >= devide_value:
+                    if labels[i] == 1:
+                        TP = TP + 1
+                    if labels[i] == 0:
+                        FP = FP + 1
+                if Y[i] < devide_value:
+                    if labels[i] == 1:
+                        FN = FN + 1
+                    if labels[i] == 0:
+                        TN = TN + 1
+        print("TP: {0}".format(TP))
+        print("FP: {0}".format(FP))
+        print("TN: {0}".format(TN))
+        print("FN: {0}".format(FN))
+        devide_value = devide_value + 0.1
+def test1_(A):
+    train_loader, test_loader, A_test = get_data_loader(A, 0.8)
+    N = A.shape[0]
+    module1 = MihGNNEmbedding1(A=A_test, N=N, d=20, layers=6, steps=2, delay=[0.5, 0.01])
+    module2 = MihGNNEmbeddingTest2(A=A_test, N=N, d=20, layers=6, steps=2, delay=[0.5, 0.01])
+    module3 = MihGNNEmbeddingTest5(A=A_test, N=N, d=20, layers=6, steps=2, delays=[1, 1])
+    epochs = 250
+    optimizer1 = optim.Adam(module1.parameters(), lr=0.001)
+    indexs_1 = []
+    indexs_2 = []
+    indexs_3 = []
+    labels_1 = []
+    labels_2 = []
+    labels_3 = []
+    for epoch in range(epochs):
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer1.zero_grad()
+            loss, predictions = module1(inputs, labels)
+            loss.backward(retain_graph=True)
+            optimizer1.step()
+            if (epoch + 1) == epochs:
+                indexs_1.extend(inputs.numpy())
+                labels_1.extend(predictions.detach().numpy())
+    for test_data, test_label in test_loader:
+        predictions = module1.test(test_data)
+        indexs_1.extend(test_data.numpy())
+        labels_1.extend(predictions.detach().numpy())
+    for epoch in range(epochs):
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer1.zero_grad()
+            loss, predictions = module2(inputs, labels)
+            loss.backward(retain_graph=True)
+            optimizer1.step()
+            if (epoch + 1) == epochs:
+                indexs_2.extend(inputs.numpy())
+                labels_2.extend(predictions.detach().numpy())
+    for test_data, test_label in test_loader:
+        _, predictions = module2(test_data, test_label)
+        indexs_2.extend(test_data.numpy())
+        labels_2.extend(predictions.detach().numpy())
+    for epoch in range(epochs):
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer1.zero_grad()
+            loss, predictions = module3(inputs, labels)
+            loss.backward(retain_graph=True)
+            optimizer1.step()
+            if (epoch + 1) == epochs:
+                indexs_3.extend(inputs.numpy())
+                labels_3.extend(predictions.detach().numpy())
+    for test_data, test_label in test_loader:
+        predictions = module3.test(test_data)
+        indexs_3.extend(test_data.numpy())
+        labels_3.extend(predictions.detach().numpy())
+
+    print("test_data: {0}".format(test_data.numpy()))
+    print("label: {0}".format(test_label.numpy()))
+    A_star1 = numpy.zeros([N, N])
+    for i, index in enumerate(indexs_1):
+        A_star1[index[0]][index[1]] = labels_1[i]
+    A_star1 = numpy.array([round(number, 4) for row in A_star1 for number in row]).reshape([N, N])
+    A_star2 = numpy.zeros([N, N])
+    for i, index in enumerate(indexs_2):
+        A_star2[index[0]][index[1]] = labels_2[i]
+    A_star2 = numpy.array([round(number, 4) for row in A_star2 for number in row]).reshape([N, N])
+    A_star3 = numpy.zeros([N, N])
+    for i, index in enumerate(indexs_3):
+        A_star3[index[0]][index[1]] = labels_3[i]
+    A_star3 = numpy.array([round(number, 4) for row in A_star3 for number in row]).reshape([N, N])
+    write_matrix2excel(A_star1, A, file = r'C:\Users\mihao\Desktop\米昊的东西\result\show.xlsx', sheet_name = 'A_star1')
+    write_matrix2excel(A_star2, A, file = r'C:\Users\mihao\Desktop\米昊的东西\result\show.xlsx', sheet_name = 'A_star2')
+    write_matrix2excel(A_star3, A, file=r'C:\Users\mihao\Desktop\米昊的东西\result\show.xlsx', sheet_name='A_star3')
+
+def test2(A):
+    train_loader, test_loader, A_test = get_data_loader(A, 0.8)
+    N = A.shape[0]
+    module = MihGNNEmbeddingTest2(A=A_test, N=N, d=128, layers=6, steps=2, delay=[1, 0.5])
+    epochs = 20
+    optimizer = optim.Adam(module.parameters(), lr=0.001)
+    for epoch in range(epochs):
+        running_loss = 0.0
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer.zero_grad()
+            loss, _ = module(inputs, labels)
+            loss.backward(retain_graph=True)
+            optimizer.step()
+            running_loss += loss.item()
+            if i != 0 and i % 2000 == 0:  # 每2000批次打印一次
+                print('[%d, %5d] loss: %.3f' %
+                      (epoch + 1, i + 1, running_loss))
+                running_loss = 0.0
+
+    devide_value = 0.0
+    while (devide_value < 1.0):
+        TP = 0
+        FP = 0
+        TN = 0
+        FN = 0
+        print('-------------devide value: {0}----------------'.format(str(devide_value)))
+        for test_data, test_label in test_loader:
+            _, Y = module(test_data, test_label)
+            Y = Y.detach().numpy()
+            labels = test_label.numpy()
+            num = len(Y)
+            for i in range(num):
+                if Y[i] >= devide_value:
+                    if labels[i] == 1:
+                        TP = TP + 1
+                    if labels[i] == 0:
+                        FP = FP + 1
+                if Y[i] < devide_value:
+                    if labels[i] == 1:
+                        FN = FN + 1
+                    if labels[i] == 0:
+                        TN = TN + 1
+        print("TP: {0}".format(TP))
+        print("FP: {0}".format(FP))
+        print("TN: {0}".format(TN))
+        print("FN: {0}".format(FN))
+        devide_value = devide_value + 0.1
+
+def test3(A):
+    train_loader, test_loader, A_test = get_data_loader(A, 0.8)
+    N = A.shape[0]
+    module = MihGNNEmbeddingTest3(A=A_test, N=N, d=20, layers=4, steps=2, delay=[1.0, 0.5])
+    epochs = 20
+    optimizer = optim.Adam(module.parameters(), lr=0.001)
+    for epoch in range(epochs):
+        running_loss = 0.0
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer.zero_grad()
+            cos_similary = module(inputs)
+            loss = torch.sum((labels - cos_similary) ** 2)
+            loss.backward(retain_graph=True)
+            optimizer.step()
+            running_loss += loss.item()
+            if i != 0 and i % 2000 == 0:  # 每2000批次打印一次
+                print('[%d, %5d] loss: %.3f' %
+                      (epoch + 1, i + 1, running_loss))
+                running_loss = 0.0
+
+    devide_value = 0.0
+    while (devide_value < 1.0):
+        TP = 0
+        FP = 0
+        TN = 0
+        FN = 0
+        print('-------------devide value: {0}----------------'.format(str(devide_value)))
+        for test_data, test_label in train_loader:
+            cos_similary = module(test_data)
+            cos_similary = cos_similary.detach().numpy()
+            labels = test_label.numpy()
+
+            num = len(cos_similary)
+            for i in range(num):
+                if cos_similary[i] >= devide_value:
+                    if labels[i] == 1:
+                        TP = TP + 1
+                    if labels[i] == 0:
+                        FP = FP + 1
+                if cos_similary[i] < devide_value:
+                    if labels[i] == 1:
+                        FN = FN + 1
+                    if labels[i] == 0:
+                        TN = TN + 1
+        print("TP: {0}".format(TP))
+        print("FP: {0}".format(FP))
+        print("TN: {0}".format(TN))
+        print("FN: {0}".format(FN))
+        devide_value = devide_value + 0.1
+
+def Test5(A):
+    train_loader, test_loader, A_test = get_data_loader(A, 0.8)
+    N = A.shape[0]
+    module = MihGNNEmbeddingTest5(A=A_test, N=N, d=128, layers=6, steps=2, delays=[1, 0.5])
+    epochs = 20
+    optimizer = optim.Adam(module.parameters(), lr=0.001)
+    for epoch in range(epochs):
+        running_loss = 0.0
+        print("--------------epoch : {0} ------------------".format(epoch + 1))
+        for i, data in enumerate(train_loader, 0):
+            inputs, labels = data
+            labels = labels.to(torch.long)
+            optimizer.zero_grad()
+            loss, _ = module(inputs, labels)
+            loss.backward(retain_graph=True)
+            optimizer.step()
+            running_loss += loss.item()
+            if i != 0 and i % 2000 == 0:  # 每2000批次打印一次
+                print('[%d, %5d] loss: %.3f' %
+                      (epoch + 1, i + 1, running_loss))
+                running_loss = 0.0

@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e29743ad-89cc-477b-a6d5-a379d5946f29" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../LeCode/day.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../linkPrediction/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../linkPrediction/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linkPrediction/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../linkPrediction/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linkPrediction/.idea/other.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../linkPrediction/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../linkPrediction/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linkPrediction/MihGNNEmbeddingTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/../linkPrediction/MihGNNEmbeddingTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linkPrediction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../linkPrediction/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linkPrediction/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../linkPrediction/Tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../algorithms/algorithms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../algorithms/algorithms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../机器学习/NeuralNetwork.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../机器学习/NeuralNetwork.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PictureHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/PictureHandler.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +29,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../GCN" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SEAL-for-link-prediction" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -52,7 +44,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.PictureHandler">
     <configuration name="Cluster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mihtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,8 +66,46 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PictureHandler" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mihtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PictureHandler.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in PictureHandler.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="mihtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/PictureHandler.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PictureHandler" />
+        <item itemvalue="Python tests.pytest in PictureHandler.py" />
         <item itemvalue="Python.Cluster" />
       </list>
     </recent_temporary>
@@ -105,5 +135,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PictureHandler.py</url>
+          <line>100</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PictureHandler.py</url>
+          <line>146</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
