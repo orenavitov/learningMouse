@@ -21,6 +21,7 @@ class MihGNNEmbedding1(nn.Module):
         self.A_s = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
         self.layers = layers
         self.steps = steps
+        self.GPU = GPU
         self.delay = torch.tensor(delay, dtype=torch.float)
         self.embedding_state = numpy.random.randn(N, d)
         self.embedding_state = torch.tensor(data=self.embedding_state, dtype=torch.float)
@@ -41,18 +42,17 @@ class MihGNNEmbedding1(nn.Module):
 
     def forward(self, *input):
         # TODO
-        edges = input[0].numpy()
+        edges = input[0]
+        edges = edges.permute([1, 0])
 
-        src = [edge[0] for edge in edges]
-        dst = [edge[1] for edge in edges]
-        labels = input[1]
+        src = edges[0]
+        dst = edges[1]
+        labels = torch.Tensor.cpu(input[1])
         labels_scalar = labels.numpy()
 
-        src_tensor = torch.tensor(src, dtype=torch.long)
-        dst_tensor = torch.tensor(dst, dtype=torch.long)
 
-        neighbors_src = self.A_s.index_select(dim = 0, index = src_tensor)
-        neighbors_dst = self.A_s.index_select(dim = 0, index = dst_tensor)
+        neighbors_src = self.A_s.index_select(dim = 0, index = src)
+        neighbors_dst = self.A_s.index_select(dim = 0, index = dst)
 
         embedding_states_src_list = []
         embedding_states_dst_list = []
@@ -89,18 +89,17 @@ class MihGNNEmbedding1(nn.Module):
 
         differcences_sum = (embedding_states_src - embedding_states_dst) ** 2
         differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
-        predicts = torch.tensor(math.e) ** (-differcences_sum)
-        loss = 0.5 * (labels - predicts) ** 2
+        predicts = torch.tensor(math.e).cuda() ** (-differcences_sum)
+        loss = 0.5 * (labels.cuda() - predicts) ** 2
         loss = torch.sum(loss)
         return loss
 
     def test(self, edges):
         # TODO
-        edges = edges.numpy()
-        src = [edge[0] for edge in edges]
-        dst = [edge[1] for edge in edges]
-        src = torch.tensor(src, dtype = torch.long)
-        dst = torch.tensor(dst, dtype = torch.long)
+        edges = edges.permute([1, 0])
+
+        src = edges[0]
+        dst = edges[1]
         src_neighbors = self.A_s.index_select(dim = 0, index = src)
         dst_neighbors = self.A_s.index_select(dim = 0, index = dst)
         src_embeddings = torch.matmul(src_neighbors, self.embedding_state)
@@ -121,7 +120,7 @@ class MihGNNEmbedding1(nn.Module):
 
         differcences_sum = (embedding_states_src - embedding_states_dst) ** 2
         differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
-        predicts = torch.tensor(math.e) ** (-differcences_sum)
+        predicts = torch.tensor(math.e).cuda() ** (-differcences_sum)
         return predicts
 
 

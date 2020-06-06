@@ -193,7 +193,7 @@ def generate_random_graph(N, density):
 # A 为输入的邻接矩阵
 # radio 为0.0~1.0之间的float, 表示多少的数据用作训练集
 # batch_size 为批训练的数据量
-def get_data_loader(A, radio, batch_size = 32):
+def get_data_loader(A, radio, batch_size = 32, GPU = False):
     data = []
     label = []
     A_test = numpy.zeros_like(A)
@@ -204,32 +204,41 @@ def get_data_loader(A, radio, batch_size = 32):
                 data.append([i, j])
                 label.append(A[i][j])
     train_indexes = data[: int(N * (N - 1) * radio)]
-    train_label = label[: int(N * (N - 1) * radio)]
+    train_label_ = label[: int(N * (N - 1) * radio)]
     for i, index in enumerate(train_indexes):
         row = index[0]
         col = index[1]
-        A_test[row][col] = train_label[i]
+        A_test[row][col] = train_label_[i]
 
     train_data = torch.tensor(train_indexes)
-    train_label = torch.tensor(train_label)
+    train_label = torch.tensor(train_label_)
 
-    test_data = torch.tensor(data[int(N * (N - 1) * radio):])
-    test_label = torch.tensor(label[int(N * (N - 1) * radio):])
+    test_data = data[int(N * (N - 1) * radio):]
+    test_data = torch.tensor(test_data)
+    test_label_ = label[int(N * (N - 1) * radio):]
+    test_label = torch.tensor(test_label_)
+
+    if (GPU):
+        train_data = train_data.cuda()
+        train_label = train_label.cuda()
+        test_data = test_data.cuda()
+        test_label = test_label.cuda()
+
     train_dataset = Data.TensorDataset(train_data, train_label)
     test_dataset = Data.TensorDataset(test_data, test_label)
 
     train_loader = Data.DataLoader(
         dataset=train_dataset,
-        batch_size=16,
+        batch_size=batch_size,
         shuffle=True,
     )
 
     test_loader = Data.DataLoader(
         dataset=test_dataset,
-        batch_size=16,
+        batch_size=batch_size,
         shuffle=True,
     )
-    return train_loader, test_loader, A_test
+    return train_loader, test_loader, train_label_, test_label_, A_test
 
 # 计算介数为steps的邻接矩阵和
 def Matrix_pre_handle(A, steps, delay):
