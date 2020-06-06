@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fee31202-0e85-4947-a053-11437c6e6bc3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../JavaProgram/JAVA基础/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaProgram/JAVA基础/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/params.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MihGNNEmbeddingTest">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="AutoEnCodeTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="linkPrediction" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -76,7 +80,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="EmbeddingTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="linkPrediction" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,11 +88,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GraphEmbedding_DeepLearning" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_DeepLearning\EmbeddingTest.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -162,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Main" />
         <item itemvalue="Python.MihGNNEmbeddingTest" />
         <item itemvalue="Python.Test" />
         <item itemvalue="Python.AutoEnCodeTest" />
         <item itemvalue="Python.Tools" />
-        <item itemvalue="Python.EmbeddingTest" />
       </list>
     </recent_temporary>
   </component>
@@ -198,18 +202,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py</url>
-          <line>763</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py</url>
-          <line>805</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

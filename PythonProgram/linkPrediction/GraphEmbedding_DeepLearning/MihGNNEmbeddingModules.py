@@ -13,7 +13,7 @@ import GraphEmbedding_DeepLearning.BaseModules as base_modules
 GNN 优化的目标函数是：labaels - math.e ** (-sum((x_i - x_j) ** 2))
 改进负样本的嵌入状态更新
 """
-class MihGNNEmbedding1(base_modules):
+class MihGNNEmbedding1(nn.Module):
     def __init__(self, A, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding1, self).__init__()
         self.N = N
@@ -127,7 +127,7 @@ class MihGNNEmbedding1(base_modules):
 """
 GNN 优化的目标函数是：labaels - math.e ** (-sum((x_i - x_j) ** 2))
 """
-class MihGNNEmbedding2(base_modules):
+class MihGNNEmbedding2(nn.Module):
     def __init__(self, A, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding2, self).__init__()
         self.N = N

@@ -2,78 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95fc0932-a3dc-436b-a60d-4ed8e58e0c44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/AsynFuture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/Future.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/FutureService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/FutureTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FutureTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/RequestQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ImmutableTest/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ImmutableTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ImmutableTest/UsePersonThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Converter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/LambdaTest/AddInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/LambdaTest/AddTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/READ" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/LifeCycleListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/ObserverableRunnable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/ThreadLifeCycleClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Observer/ThreadLifeCycleObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReadWriteLock/RWLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReadWriteLock/SharedData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReadWriteLock/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Singleton7.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Singleton/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SingletonGateTest/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SingletonGateTest/Gate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SingletonGateTest/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/CatchThreadException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/StopThreadTest1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/StopThreadTest2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/Test1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/Lock/MihLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/Lock/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/NotifyTest/Test1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/ProduceAndConsume/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadTest/ThreadPool/MIhThreadPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/VolatileTest/VolatileTest1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../LeCode/day20200516.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../LeCode/day20200518.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/AutoEnCodeTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AQS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/AQS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DaemonThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/DaemonThreadTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HappenBeforeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/HappenBeforeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/LockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AQS$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AQS$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AQS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DaemonThreadTest$SubClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DaemonThreadTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HappenBeforeTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HappenBeforeTest$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HappenBeforeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LockTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/MihGNNEmbeddingTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/MihGNNEmbeddingTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/mihtest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/mihtest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/mihtest/PictureHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/mihtest/PictureHandler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,10 +216,10 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="650" y="281" width="540" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1590746732586" />
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1591341151631">
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1591404520324">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591341151631" />
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591404520324" />
     <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1591255490535">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
