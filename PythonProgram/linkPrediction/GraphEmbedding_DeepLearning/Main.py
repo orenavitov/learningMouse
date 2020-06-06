@@ -36,7 +36,7 @@ with open(r"./params.json", 'r') as file:
 if data_set_name == 'bio-CE-GT':
     file_address = r"../Data/bio-CE-GT.gml"
 if data_set_name == 'hamster':
-    file_address = r"./Data/hamster.gml"
+    file_address = r"../Data/hamster.gml"
 
 if torch.cuda.is_available():
     GPU = True
@@ -45,10 +45,8 @@ else:
 
 G, A, edges, nodes, neighbors = process_gml_file(file_address)
 # A = generate_random_graph(10, 0.1)
-train_loader, test_loader, A_test = get_data_loader(A, radio, batchSize)
-if GPU:
-    train_loader = train_loader.cuda()
-    test_loader = test_loader.cuda()
+train_loader, test_loader, train_label_, test_label_, A_test = get_data_loader(A, radio, batchSize, GPU)
+
 A_shape = A.shape
 N = A_shape[0]
 print("邻接矩阵尺寸：[{0}, {1}]".format(A_shape[0], A_shape[1]))
@@ -62,13 +60,14 @@ def Train(module, epochs):
         print("--------------epoch : {0} ------------------".format(epoch + 1))
         for i, data in enumerate(train_loader, 0):
             inputs, labels = data
+
             labels = labels.to(torch.long)
             optimizer.zero_grad()
             loss = module(inputs, labels)
             loss.backward(retain_graph=True)
             optimizer.step()
             running_loss += loss.item()
-            if i != 0 and i % 2000 == 0:
+            if i != 0 and i % 100 == 0:
                 print('[%d, %5d] loss: %.3f' %
                       (epoch + 1, i + 1, running_loss))
                 running_loss = 0.0
@@ -78,6 +77,7 @@ def Test(module):
     FP = 0
     TN = 0
     FN = 0
+    divide_value = 0.9
     predictionsList = []
     labelsList = []
     for i, data in enumerate(test_loader, 0):
@@ -86,22 +86,22 @@ def Test(module):
         labelsList.append(labels)
         predictionsList.append(predictions)
     predictionResult = torch.cat(predictionsList, dim = 0)
-    predictionResult = predictionResult.detach().numpy()
+    predictionResult = torch.Tensor.cpu(predictionResult).detach().numpy()
     labelResult = torch.cat(labelsList, dim = 0)
-    labelResult = labelResult.numpy()
+    labelResult = torch.Tensor.cpu(labelResult).numpy()
     if len(predictionResult) != len(labelResult):
         print("error! The size of prediction is not equal the size of real!")
     test_size = len(labelResult)
     for i in range(test_size):
         p = predictionResult[i]
         l = labelResult[i]
-        if (p >= 0.5 and l == 1):
+        if (p >= divide_value and l == 1):
             TP = TP + 1
-        if (p < 0.5 and l == 1):
+        if (p < divide_value and l == 1):
             FN = FN + 1
-        if (p >= 0.5 and l == 0):
+        if (p >= divide_value and l == 0):
             FP = FP + 1
-        if (p < 0.5 and l == 0):
+        if (p < divide_value and l == 0):
             TN = TN + 1
     print("TP: {0}".format(TP))
     print("FP: {0}".format(FP))
@@ -109,7 +109,7 @@ def Test(module):
     print("FN: {0}".format(FN))
 
 if __name__ == '__main__':
-    module = MihGNNEmbedding1(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = False)
+    module = MihGNNEmbedding1(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = True)
     Train(module, epochs)
     Test(module)
 

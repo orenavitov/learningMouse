@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fee31202-0e85-4947-a053-11437c6e6bc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../JavaProgram/JAVA基础/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaProgram/JAVA基础/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,10 +27,16 @@
   </component>
   <component name="ProjectId" id="1XEhNajlEdpZkYKRDEJm9fZ8lcU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../GCN-pytorch" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -45,18 +52,6 @@
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_DeepLearning" />
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\HeuristicAlgorithm" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.Main">
     <configuration name="AutoEnCodeTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -192,13 +187,34 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1837" height="400" key="GridCell.Tab.0.bottom" timestamp="1591428732469">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="400" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1591428732469" />
+    <state width="1837" height="400" key="GridCell.Tab.0.center" timestamp="1591428732469">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="400" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1591428732469" />
+    <state width="1837" height="400" key="GridCell.Tab.0.left" timestamp="1591428732469">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="400" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1591428732469" />
+    <state width="1837" height="400" key="GridCell.Tab.0.right" timestamp="1591428732469">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="400" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1591428732469" />
+    <state x="477" y="181" key="SettingsEditor" timestamp="1591412329260">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="477" y="181" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1591412329260" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
