@@ -80,13 +80,16 @@ def process_gml_file(file = r'./Data/bio-GE-GT.gml'):
 # dstfile 为目标文件的地址， 后缀为.gml
 def generate_gml_file(srcfile, dstfile):
     G = networkx.Graph()
-    edges = []
     with open(srcfile, "r") as file:
-        for line in file.readlines():
-            src = int(line.split(" ")[0])
-            dst = int(line.split(" ")[1])
-            edges.append((src, dst))
-    G.add_edges_from(edges)
+        edges = numpy.loadtxt(file, dtype = int, usecols = (0, 1))
+        min = edges.min()
+        max = edges.max()
+        if (min > 0) :
+            edges = edges - min
+            max = max - min
+        nodes = range(max + 1)
+        G.add_edges_from(edges.tolist())
+        G.add_nodes_from(nodes)
     networkx.write_gml(G, dstfile)
 
 def find_common_neighbors(G, node1, node2):
@@ -250,62 +253,6 @@ def Matrix_pre_handle(A, steps, delay):
         result = result + I
     return result
 
-
-# 寻找图中的孤立点
-def finde_single_nodes(A):
-    single_nodes = []
-    D = numpy.sum(A, axis=1, keepdims=False)
-    for i in range(N):
-        if D[i] == 0:
-            single_nodes.append(i)
-    return single_nodes
-
-
-
-
-
-# 处理最终相似矩阵的孤立点和自连接
-def A_star_handle(A, A_star):
-    N = A.shape[0]
-    single_nodes = finde_single_nodes(A)
-    # 处理孤立点
-    for i in range(N):
-        if i in single_nodes:
-            for j in range(N):
-                A_star[i][j] = 0.0
-    # 处理自连接
-    for i in range(N):
-        A_star[i][i] = 0.0
-    # 相似矩阵中的取绝对值
-    for i in range(N):
-        for j in range(N):
-            A_star[i][j] = math.fabs(A_star[i][j])
-    # 将训练矩阵中的0 变为 -1
-    A_ = copy.deepcopy(A)
-    for i in range(N):
-        for j in range(N):
-            if A_[i][j] == 0:
-                A_[i][j] = -1
-
-    A_devide = A_ * A_star
-    return A_devide
-
-
-def find_devide_value(A_devide, trust_value):
-    positive = []
-    negitive = []
-    for i in range(N):
-        for j in range(N):
-            if A_devide[i][j] < 0.0:
-                negitive.append(A_devide[i][j])
-            if A_devide[i][j] > 0.0:
-                positive.append(A_devide[i][j])
-    large_value = numpy.min(positive)
-    small_value = numpy.max(negitive)
-    devide_value = large_value - (large_value - small_value) * trust_value
-    return devide_value
-
-
 def cal_cos_similary(src, dst):
     result = numpy.matmul(src, dst.T)
     x_1 = (numpy.sum(src ** 2, axis=1) ** 0.5).reshape([-1, 1])
@@ -315,5 +262,5 @@ def cal_cos_similary(src, dst):
     return result
 
 if __name__ == '__main__':
-    generate_gml_file(r'C:\Users\mihao\Desktop\米昊的东西\dataset\petster-friendships-hamster\out.petster-friendships-hamster-uniq',
-                      r'C:\Users\mihao\Desktop\米昊的东西\dataset\petster-friendships-hamster\hamster.gml')
+    generate_gml_file(r'C:\Users\mihao\Desktop\米昊的东西\USAir.txt',
+                      r'C:\Users\mihao\Desktop\米昊的东西\USAir.gml')

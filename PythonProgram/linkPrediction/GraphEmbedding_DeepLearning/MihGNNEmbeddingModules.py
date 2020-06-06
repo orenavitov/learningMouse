@@ -29,6 +29,7 @@ class MihGNNEmbedding1(nn.Module):
         for layer in range(self.layers):
             self.layer_lines.add_module(name='layer_line{0}'.format(layer + 1),
                                         module=nn.Linear(in_features=self.d, out_features=self.d))
+            # self.layer_lines.add_module(name='drop_out{0}'.format(layer + 1), module = nn.Dropout(0.5))
         self.relu = nn.ReLU()
         if GPU:
             self.A_s = self.A_s.cuda()

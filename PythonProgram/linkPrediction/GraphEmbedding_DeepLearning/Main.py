@@ -36,7 +36,9 @@ with open(r"./params.json", 'r') as file:
 if data_set_name == 'bio-CE-GT':
     file_address = r"../Data/bio-CE-GT.gml"
 if data_set_name == 'hamster':
-    file_address = r"./Data/hamster.gml"
+    file_address = r"../Data/hamster.gml"
+if data_set_name == 'USAir':
+    file_address = r"../Data/USAir.gml"
 
 if torch.cuda.is_available():
     GPU = True

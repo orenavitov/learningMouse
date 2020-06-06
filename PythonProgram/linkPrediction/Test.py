@@ -201,5 +201,14 @@ def Test14():
     input = input.squeeze(1)
     print("input:\n{0}".format(input))
 
+def Test15():
+    a = numpy.array([
+        [1, 2],
+        [2, 3],
+        [3, 4]
+    ])
+    a = a - 1
+    print(a)
+
 if __name__ == '__main__':
-    Test14()
+    Test15()

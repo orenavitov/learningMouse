@@ -1,13 +1,13 @@
 {
-  "data_set": "bio-CE-GT",
-  "radio": 0.7,
+  "data_set": "USAir",
+  "radio": 0.9,
   "batchSize": 32,
   "epochs": 20,
   "module_name": "MihGNNEmbedding1",
   "MihGNNEmbedding1": {
     "embedding_size": 128,
     "layers": 6,
-    "steps": 2,
-    "delays": [0.5, 0.01]
+    "steps": 1,
+    "delays": [0.1]
   }
 }

@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fee31202-0e85-4947-a053-11437c6e6bc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../JavaProgram/JAVA基础/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaProgram/JAVA基础/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/USAir.gml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/GraphEmbedding_DeepLearning/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,22 +30,22 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../GCN-pytorch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Data" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\Data" />
-      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_RandomWalk" />
-      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_Factorization" />
-      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_DeepLearning" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_RandomWalk" />
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_Factorization" />
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\AutoEnCode" />
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_DeepLearning" />
       <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\HeuristicAlgorithm" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\Data" />
+      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_RandomWalk" />
+      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_Factorization" />
+      <recent name="E:\GitLib\learningMouse\PythonProgram\linkPrediction\GraphEmbedding_DeepLearning" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -167,10 +169,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
-        <item itemvalue="Python.MihGNNEmbeddingTest" />
-        <item itemvalue="Python.Test" />
-        <item itemvalue="Python.AutoEnCodeTest" />
         <item itemvalue="Python.Tools" />
+        <item itemvalue="Python.Test" />
+        <item itemvalue="Python.MihGNNEmbeddingTest" />
+        <item itemvalue="Python.AutoEnCodeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -202,6 +204,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Tools.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
