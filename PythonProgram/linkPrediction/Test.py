@@ -207,8 +207,10 @@ def Test15():
         [2, 3],
         [3, 4]
     ])
-    a = a - 1
-    print(a)
+    a = torch.tensor(a, dtype = torch.float)
+    values, index = torch.max(a, dim = 1)
+    print("values:{0}".format(values))
+    print("index:{0}".format(index))
 
 if __name__ == '__main__':
     Test15()
