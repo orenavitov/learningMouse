@@ -91,5 +91,4 @@ class Deep_Walk(nn.Module):
         output = self.line(edge_embeddings)
         return output
 
-    def get_data(A, radio, sample_method):
-        pass
+

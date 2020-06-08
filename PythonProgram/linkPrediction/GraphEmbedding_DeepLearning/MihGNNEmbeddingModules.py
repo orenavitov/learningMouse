@@ -6,7 +6,7 @@ from Tools import Matrix_pre_handle
 import math
 from Tools import get_steps_neighbor
 import GraphEmbedding_DeepLearning.BaseModules as base_modules
-
+from GraphEmbedding_DeepLearning.NN import LineNetwork
 
 
 """
@@ -32,12 +32,14 @@ class MihGNNEmbedding1(nn.Module):
                                         module=nn.Linear(in_features=self.d, out_features=self.d))
             # self.layer_lines.add_module(name='drop_out{0}'.format(layer + 1), module = nn.Dropout(0.5))
         self.relu = nn.ReLU()
+        self.e = torch.tensor(math.e)
         if GPU:
             self.A_s = self.A_s.cuda()
             self.delay = self.delay.cuda()
             self.embedding_state = self.embedding_state.cuda()
             self.layer_lines = self.layer_lines.cuda()
             self.relu = self.relu.cuda()
+            self.e = torch.tensor(math.e).cuda()
         self.embedding_state = Parameter(self.embedding_state, requires_grad=True)
 
     def forward(self, *input):
@@ -47,7 +49,7 @@ class MihGNNEmbedding1(nn.Module):
 
         src = edges[0]
         dst = edges[1]
-        labels = torch.Tensor.cpu(input[1])
+        labels = input[1]
         labels_scalar = labels.numpy()
 
 
@@ -89,15 +91,14 @@ class MihGNNEmbedding1(nn.Module):
 
         differcences_sum = (embedding_states_src - embedding_states_dst) ** 2
         differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
-        predicts = torch.tensor(math.e).cuda() ** (-differcences_sum)
-        loss = 0.5 * (labels.cuda() - predicts) ** 2
+        predicts = self.e ** (-differcences_sum)
+        loss = 0.5 * (labels - predicts) ** 2
         loss = torch.sum(loss)
         return loss
 
     def test(self, edges):
         # TODO
         edges = edges.permute([1, 0])
-
         src = edges[0]
         dst = edges[1]
         src_neighbors = self.A_s.index_select(dim = 0, index = src)
@@ -120,7 +121,7 @@ class MihGNNEmbedding1(nn.Module):
 
         differcences_sum = (embedding_states_src - embedding_states_dst) ** 2
         differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
-        predicts = torch.tensor(math.e).cuda() ** (-differcences_sum)
+        predicts = self.e ** (-differcences_sum)
         return predicts
 
 
@@ -138,21 +139,27 @@ class MihGNNEmbedding2(nn.Module):
         self.delay = torch.tensor(delay, dtype=torch.float)
         self.embedding_state = numpy.random.randn(N, d)
         self.embedding_state = torch.tensor(data=self.embedding_state, dtype=torch.float)
-        self.embedding_state = Parameter(self.embedding_state, requires_grad=True)
+
         self.layer_lines = nn.Sequential()
         for layer in range(self.layers):
             self.layer_lines.add_module(name='layer_line{0}'.format(layer + 1),
                                         module=nn.Linear(in_features=self.d, out_features=self.d))
         self.relu = nn.ReLU()
+        self.e = torch.tensor(math.e)
+        if (GPU):
+            self.A_s = self.A_s.cuda()
+            self.embedding_state = self.embedding_state.cuda()
+            self.layer_lines = self.layer_lines.cuda()
+            self.relu = self.relu.cuda()
+            self.e = self.e.cuda()
+        self.embedding_state = Parameter(self.embedding_state, requires_grad=True)
 
     def forward(self, *input):
         edges = input[0]
+        edges = edges.permute([1, 0])
+        src = edges[0]
+        dst = edges[1]
         labels = input[1]
-        src = [edge[0] for edge in edges]  # [batch_size, ]
-        dst = [edge[1] for edge in edges]  # [batch_size, ]
-        src = torch.tensor(src, dtype=torch.long)
-        dst = torch.tensor(dst, dtype=torch.long)
-
         neighbors_src = self.A_s.index_select(dim=0, index=src)
         neighbors_dst = self.A_s.index_select(dim=0, index=dst)
         embedding_states_src = torch.matmul(neighbors_src, self.embedding_state)
@@ -172,15 +179,40 @@ class MihGNNEmbedding2(nn.Module):
         embedding_states_dst_list = torch.stack(embedding_states_dst_list, dim=0)
         embedding_states_src = torch.sum(embedding_states_src_list, dim=0)
         embedding_states_dst = torch.sum(embedding_states_dst_list, dim=0)
-        # embedding_states_src = embedding_states_src / torch.sum(embedding_states_src)
-        # embedding_states_dst = embedding_states_dst / torch.sum(embedding_states_dst)
+
         differcences_sum = (embedding_states_src - embedding_states_dst) ** 2
         differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
-        predicts = torch.tensor(math.e) ** (-differcences_sum)
+        predicts = self.e ** (-differcences_sum)
         loss = 0.5 * (labels - predicts) ** 2
         loss = torch.sum(loss)
         return loss
 
+    def test(self, edges):
+        edges = edges.permute([1, 0])
+        src = edges[0]
+        dst = edges[1]
+        src_neighbors = self.A_s.index_select(dim = 0, index = src)
+        dst_neighbors = self.A_s.index_select(dim = 0, index = dst)
+        src_embeddings = torch.matmul(src_neighbors, self.embedding_state)
+        dst_embeddings = torch.matmul(dst_neighbors, self.embedding_state)
+        embedding_states_src_list_ = []
+        embedding_states_dst_list_ = []
+        for line in self.layer_lines:
+            current_embedding_states_src = line(src_embeddings)
+            current_embedding_states_src = self.relu(current_embedding_states_src)
+            embedding_states_src_list_.append(current_embedding_states_src)
+            current_embedding_states_dst = line(dst_embeddings)
+            current_embedding_states_dst = self.relu(current_embedding_states_dst)
+            embedding_states_dst_list_.append(current_embedding_states_dst)
+        embedding_states_src_list_ = torch.stack(embedding_states_src_list_, dim=0)
+        embedding_states_dst_list_ = torch.stack(embedding_states_dst_list_, dim=0)
+        embedding_states_src = torch.sum(embedding_states_src_list_, dim=0)
+        embedding_states_dst = torch.sum(embedding_states_dst_list_, dim=0)
+
+        differcences_sum = (embedding_states_src - embedding_states_dst) ** 2
+        differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
+        predicts = self.e ** (-differcences_sum)
+        return predicts
 
 # GNN 使用余弦相似度作为目标函数
 class MihGNNEmbedding3(nn.Module):
@@ -355,3 +387,77 @@ class Attention(nn.Module):
                 nodes_embeding_step.append(node_embedding)
         nodes_embeding_step = torch.stack(nodes_embeding_step, dim = 0)
         return torch.sum(nodes_embeding_step, dim = 0)
+
+class MihGNNEmbedding5(nn.Module):
+    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+        super(MihGNNEmbedding5, self).__init__()
+        self.N = N
+        self.d = d
+        self.A_s = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        self.layers = layers
+        self.steps = steps
+        self.delay = torch.tensor(delay, dtype=torch.float)
+        self.embedding_state = numpy.random.randn(N, d)
+        self.embedding_state = torch.tensor(data=self.embedding_state, dtype=torch.float)
+
+        self.layer_lines = nn.Sequential()
+        for layer in range(self.layers):
+            self.layer_lines.add_module(name='layer_line{0}'.format(layer + 1),
+                                        module=nn.Linear(in_features=self.d, out_features=self.d))
+        self.relu = nn.ReLU()
+        self.output_layers = LineNetwork(feature_dim = self.d * 2, hidden_layer_dim = self.d, output_dim = 2)
+        self.cross_entropy = nn.CrossEntropyLoss()
+    def forward(self, *input):
+        edges = input[0]
+        edges = edges.permute([1, 0])
+        src = edges[0]
+        dst = edges[1]
+        labels = input[1]
+        neighbors_src = self.A_s.index_select(dim=0, index=src)
+        neighbors_dst = self.A_s.index_select(dim=0, index=dst)
+        embedding_states_src = torch.matmul(neighbors_src, self.embedding_state)
+        embedding_states_dst = torch.matmul(neighbors_dst, self.embedding_state)
+        embedding_states_src_list = []
+        embedding_states_dst_list = []
+        current_embedding_states_src = embedding_states_src
+        current_embedding_states_dst = embedding_states_dst
+        for line in self.layer_lines:
+            current_embedding_states_src = line(current_embedding_states_src)
+            current_embedding_states_src = self.relu(current_embedding_states_src)
+            embedding_states_src_list.append(current_embedding_states_src)
+            current_embedding_states_dst = line(current_embedding_states_dst)
+            current_embedding_states_dst = self.relu(current_embedding_states_dst)
+            embedding_states_dst_list.append(current_embedding_states_dst)
+        embedding_states_src_list = torch.stack(embedding_states_src_list, dim=0)
+        embedding_states_dst_list = torch.stack(embedding_states_dst_list, dim=0)
+        embedding_states_src = torch.sum(embedding_states_src_list, dim=0)
+        embedding_states_dst = torch.sum(embedding_states_dst_list, dim=0)
+        output = torch.cat([embedding_states_src, embedding_states_dst], dim = 1)
+        output = self.output_layers(output)
+        loss = self.cross_entropy(output, labels)
+        return loss
+    def test(self, edges):
+        # TODO
+        edges = edges.permute([1, 0])
+        src = edges[0]
+        dst = edges[1]
+        src_neighbors = self.A_s.index_select(dim = 0, index = src)
+        dst_neighbors = self.A_s.index_select(dim = 0, index = dst)
+        src_embeddings = torch.matmul(src_neighbors, self.embedding_state)
+        dst_embeddings = torch.matmul(dst_neighbors, self.embedding_state)
+        embedding_states_src_list_ = []
+        embedding_states_dst_list_ = []
+        for line in self.layer_lines:
+            current_embedding_states_src = line(src_embeddings)
+            current_embedding_states_src = self.relu(current_embedding_states_src)
+            embedding_states_src_list_.append(current_embedding_states_src)
+            current_embedding_states_dst = line(dst_embeddings)
+            current_embedding_states_dst = self.relu(current_embedding_states_dst)
+            embedding_states_dst_list_.append(current_embedding_states_dst)
+        embedding_states_src_list_ = torch.stack(embedding_states_src_list_, dim=0)
+        embedding_states_dst_list_ = torch.stack(embedding_states_dst_list_, dim=0)
+        embedding_states_src = torch.sum(embedding_states_src_list_, dim=0)
+        embedding_states_dst = torch.sum(embedding_states_dst_list_, dim=0)
+        output = torch.cat([embedding_states_src, embedding_states_dst], dim = 1)
+        predictions = self.output_layers(output)
+        return predictions

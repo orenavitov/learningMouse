@@ -28,7 +28,7 @@ def getDataLoader(A, radio, batch_size, sample_method):
         train_positives = positives[ : int(edges_size * radio)]
         test_positives = positives[int(edges_size * radio) : ]
         train_negatives = negavives[ : int(edges_size * radio)]
-        test_negatives = negavives[int(edges_size * radio) : ]
+        test_negatives = negavives[int(edges_size * radio) : edges_size]
         train_positives.extend(train_negatives)
         train_data = train_positives
         test_positives.extend(test_negatives)
@@ -77,6 +77,10 @@ with open(r"./params.json", 'r') as file:
         module_params = params["DeepWalk"]
     if module_name == "Node2Vec":
         module_params = params["Node2Vec"]
+        p = module_params["p"]
+        q = module_params["q"]
+        print("p: {0}".format(p))
+        print("q: {0}".format(q))
     embed_size = module_params["embed_size"]
     walk_length = module_params["walk_length"]
     num_walks = module_params["num_walks"]
@@ -114,7 +118,7 @@ if module_name == 'DeepWalk':
     module = Deep_Walk(G=G, A=A_test, walk_length=walk_length, embed_size=embed_size, window_size=window_size,
                        workers=workers)
 if module_name == 'Node2Vec':
-    pass
+    module = Node2vec(G = G, A = A_test, walk_length = walk_length, p = p, q = q, embed_size = embed_size, iter = iter, window_size = window_size, workers = workers)
 
 
 def Train(module):
@@ -128,7 +132,7 @@ def Train(module):
             loss = module(inputs, labels)
             optimizer.step()
             running_loss += loss.item()
-            if i != 0 and i % 2000 == 0:  # 每2000批次打印一次
+            if i != 0 and i % 10 == 0:
                 print('[%d, %5d] loss: %.3f' %
                       (epoch + 1, i + 1, running_loss))
                 running_loss = 0.0
@@ -159,63 +163,6 @@ def Test(module):
     print("TN: {0}".format(TN))
     print("FP: {0}".format(FP))
     print("FN: {0}".format(FN))
-
-
-def deep_walk_train():
-    pass
-    # deep_walk_params = params["DeepWalk"]
-    # embed_size = deep_walk_params["embed_size"]
-    # walk_length = deep_walk_params["walk_length"]
-    # num_walks = deep_walk_params["num_walks"]
-    # walker = deep_walk_params["walker"]
-    # # DeepWalk获得嵌入表示
-    # deep_walk = Deep_Walk(walk_length=walk_length, G=G, A=A, embed_size=embed_size)
-    # train_data, train_label, test_data, test_label = deep_walk.get_data()
-    # train_loader, test_loader = DeepWalk_getDataLoader(train_data, train_label, test_data, test_label, batchSize)
-    # ln = LineNetwork(30, 61, 2)
-    # # print("Network params: {0}".format(len(ln.parameters())))
-    #
-    # if (GPU):
-    #     ln = ln.cuda()
-    # # 定义损失函数
-    # loss_function = nn.CrossEntropyLoss()
-    # optimizer = optim.Adam(ln.parameters(), lr=0.001)
-    # # 训练模型
-    # train(train_loader, ln, 30, loss_function, optimizer)
-    # # 评估模型
-    # eval(ln, test_loader)
-
-
-def node2Vec_train():
-    pass
-    # node2vec_params = params["Node2Vec"]
-    # walk_length = node2vec_params["walk_length"]
-    # num_walker = node2vec_params["num_walks"]
-    # walker = node2vec_params["walker"]
-    # p = node2vec_params["p"]
-    # q = node2vec_params["q"]
-    # embed_size = node2vec_params["embed_size"]
-    # iter = node2vec_params["iter"]
-    # window_size = node2vec_params["window_size"]
-    # worker = node2vec_params["workers"]
-    # node2vec = Node2vec(G=G, A=A, walk_length=walk_length, num_walks=num_walker,
-    #                     walker=walker, p=p, q=q, embed_size=embed_size,
-    #                     iter=iter, window_size=window_size, workers=worker)
-    # node2vec.train()
-    # train_data, train_label, test_data, test_label = node2vec.get_data()
-    # train_loader, test_loader = Node2Vec_getDataLoader(train_data, train_label, test_data, test_label, batchSize)
-    # ln = LineNetwork(30, 61, 2)
-    # # print("Network params: {0}".format(len(ln.parameters())))
-    #
-    # if (GPU):
-    #     ln = ln.cuda()
-    # # 定义损失函数
-    # loss_function = nn.CrossEntropyLoss()
-    # optimizer = optim.Adam(ln.parameters(), lr=0.001)
-    # # 训练模型
-    # train(train_loader, ln, epochs, loss_function, optimizer)
-    # # 评估模型
-    # eval(ln, test_loader)
 
 if __name__ == '__main__':
     Train(module)

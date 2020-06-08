@@ -4,7 +4,10 @@ from torch import optim
 from Tools import process_gml_file
 from Tools import get_data_loader
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding1
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding2
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding5
 from Tools import generate_random_graph
+
 with open(r"./params.json", 'r') as file:
 
     params = json.load(file)
@@ -16,10 +19,10 @@ with open(r"./params.json", 'r') as file:
     print("module_name: {0}".format(module_name))
     if module_name == "MihGNNEmbedding1":
         module_params = params["MihGNNEmbedding1"]
-
-
-
-
+    if module_name == "MihGNNEmbedding2":
+        module_params = params["MihGNNEmbedding2"]
+    if module_name == "MihGNNEmbedding5":
+        module_params = params["MihGNNEmbedding5"]
     embedding_size = module_params["embedding_size"]
     layers = module_params["layers"]
     steps = module_params["steps"]
@@ -49,14 +52,18 @@ else:
 
 G, A, edges, nodes, neighbors = process_gml_file(file_address)
 # A = generate_random_graph(10, 0.1)
-train_loader, test_loader, train_label_, test_label_, A_test = get_data_loader(A, radio, batchSize, GPU)
+train_loader, test_loader, A_test = get_data_loader(A, radio, batchSize, "under_sample", GPU)
 
 A_shape = A.shape
 N = A_shape[0]
 print("邻接矩阵尺寸：[{0}, {1}]".format(A_shape[0], A_shape[1]))
 
-
-
+if module_name == "MihGNNEmbedding1":
+    module = MihGNNEmbedding1(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding2":
+    module = MihGNNEmbedding2(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding5":
+    module = MihGNNEmbedding5(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
 def Train(module, epochs):
     optimizer = optim.Adam(module.parameters(), lr=0.001)
     for epoch in range(epochs):
@@ -76,12 +83,8 @@ def Train(module, epochs):
                       (epoch + 1, i + 1, running_loss))
                 running_loss = 0.0
 
-def Test(module):
-    TP = 0
-    FP = 0
-    TN = 0
-    FN = 0
-    divide_value = 0.9
+def Test1(module):
+
     predictionsList = []
     labelsList = []
     for i, data in enumerate(test_loader, 0):
@@ -96,25 +99,58 @@ def Test(module):
     if len(predictionResult) != len(labelResult):
         print("error! The size of prediction is not equal the size of real!")
     test_size = len(labelResult)
-    for i in range(test_size):
-        p = predictionResult[i]
-        l = labelResult[i]
-        if (p >= divide_value and l == 1):
-            TP = TP + 1
-        if (p < divide_value and l == 1):
-            FN = FN + 1
-        if (p >= divide_value and l == 0):
-            FP = FP + 1
-        if (p < divide_value and l == 0):
-            TN = TN + 1
+    devide_values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    for devide_value in devide_values:
+        TP = 0
+        FP = 0
+        TN = 0
+        FN = 0
+        for i in range(test_size):
+            p = predictionResult[i]
+            l = labelResult[i]
+            if (p >= devide_value and l == 1):
+                TP = TP + 1
+            if (p < devide_value and l == 1):
+                FN = FN + 1
+            if (p >= devide_value and l == 0):
+                FP = FP + 1
+            if (p < devide_value and l == 0):
+                TN = TN + 1
+        print("-------------devide value : {0} ---------------".format(devide_value))
+        print("TP: {0}".format(TP))
+        print("FP: {0}".format(FP))
+        print("TN: {0}".format(TN))
+        print("FN: {0}".format(FN))
+
+def Test2(module):
+    TP = 0
+    TN = 0
+    FP = 0
+    FN = 0
+    total = 0
+    for test_data, test_label in test_loader:
+        output = module.test(test_data)
+        _, predictions = torch.max(output.data, dim=1)
+        total += test_label.size(0)
+        for index in range(len(predictions)):
+            prediction = predictions[index]
+            test = test_label[index]
+            if (prediction == 1 and test == 1):
+                TP = TP + 1
+            if (prediction == 1 and test == 0):
+                FP = FP + 1
+            if (prediction == 0 and test == 1):
+                FN = FN + 1
+            if (prediction == 0 and test == 0):
+                TN = TN + 1
     print("TP: {0}".format(TP))
-    print("FP: {0}".format(FP))
     print("TN: {0}".format(TN))
+    print("FP: {0}".format(FP))
     print("FN: {0}".format(FN))
 
+
 if __name__ == '__main__':
-    module = MihGNNEmbedding1(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = True)
     Train(module, epochs)
-    Test(module)
+    Test2(module)
 
 

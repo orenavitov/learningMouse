@@ -193,52 +193,61 @@ def generate_random_graph(N, density):
 # A 为输入的邻接矩阵
 # radio 为0.0~1.0之间的float, 表示多少的数据用作训练集
 # batch_size 为批训练的数据量
-def get_data_loader(A, radio, batch_size = 32, GPU = False):
-    data = []
-    label = []
-    A_test = numpy.zeros_like(A)
-    N = len(A)
-    for i in range(N):
-        for j in range(N):
+def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', GPU = False):
+    node_number = A.shape[0]
+    positives = []
+    negavives = []
+    for i in range(node_number):
+        for j in range(node_number):
             if i != j:
-                data.append([i, j])
-                label.append(A[i][j])
-    train_indexes = data[: int(N * (N - 1) * radio)]
-    train_label_ = label[: int(N * (N - 1) * radio)]
-    for i, index in enumerate(train_indexes):
+                label = A[i][j]
+                if label == 1:
+                    positives.append([i, j, 1])
+                if label == 0:
+                    negavives.append([i, j, 0])
+    edges_size = len(positives)
+    if sample_method == 'under_sample':
+        numpy.random.shuffle(positives)
+        numpy.random.shuffle(negavives)
+        train_positives = positives[: int(edges_size * radio)]
+        test_positives = positives[int(edges_size * radio):]
+        train_negatives = negavives[: int(edges_size * radio)]
+        test_negatives = negavives[int(edges_size * radio):]
+        # test_negatives = negavives[int(edges_size * radio): edges_size]
+        train_positives.extend(train_negatives)
+        train_data = train_positives
+        test_positives.extend(test_negatives)
+        test_data = test_positives
+        numpy.random.shuffle(train_data)
+        numpy.random.shuffle(test_data)
+    if sample_method == 'over_sample':
+        pass
+    A_test = numpy.zeros(shape=[node_number, node_number])
+    for i, index in enumerate(positives):
         row = index[0]
         col = index[1]
-        A_test[row][col] = train_label_[i]
-
-    train_data = torch.tensor(train_indexes)
-    train_label = torch.tensor(train_label_)
-
-    test_data = data[int(N * (N - 1) * radio):]
-    test_data = torch.tensor(test_data)
-    test_label_ = label[int(N * (N - 1) * radio):]
-    test_label = torch.tensor(test_label_)
-
-    if (GPU):
-        train_data = train_data.cuda()
-        train_label = train_label.cuda()
-        test_data = test_data.cuda()
-        test_label = test_label.cuda()
-
-    train_dataset = Data.TensorDataset(train_data, train_label)
-    test_dataset = Data.TensorDataset(test_data, test_label)
-
+        A_test[row][col] = 1
+    train_pairs = [pair[: 2] for pair in train_data]
+    train_labels = [pair[-1] for pair in train_data]
+    test_pairs = [pair[: 2] for pair in test_data]
+    test_labels = [pair[-1] for pair in test_data]
+    train_pairs = torch.tensor(train_pairs, dtype=torch.long)
+    train_label = torch.tensor(train_labels, dtype=torch.long)
+    train_dataSet = Data.TensorDataset(train_pairs, train_label)
     train_loader = Data.DataLoader(
-        dataset=train_dataset,
+        dataset=train_dataSet,
         batch_size=batch_size,
         shuffle=True,
     )
-
+    test_pairs = torch.tensor(test_pairs, dtype=torch.long)
+    test_label = torch.tensor(test_labels, dtype=torch.long)
+    test_dataSet = Data.TensorDataset(test_pairs, test_label)
     test_loader = Data.DataLoader(
-        dataset=test_dataset,
+        dataset=test_dataSet,
         batch_size=batch_size,
         shuffle=True,
     )
-    return train_loader, test_loader, train_label_, test_label_, A_test
+    return train_loader, test_loader, A_test
 
 # 计算介数为steps的邻接矩阵和
 def Matrix_pre_handle(A, steps, delay):

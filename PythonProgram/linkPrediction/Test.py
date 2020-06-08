@@ -85,10 +85,9 @@ def Test6(N, density):
     G = networkx.Graph()
     G.add_nodes_from(nodes)
     G.add_edges_from(edges)
-    networkx.draw(G, with_labels=True)
-    plt.show()
-    A = numpy.array(networkx.adjacency_matrix(G).todense())
-    return A
+    A = networkx.adjacency_matrix(G)
+    print(A.todense())
+    print(A.diagonal())
 
 def Test7():
     A = numpy.array(range(9)).reshape([3, 3])
@@ -212,5 +211,12 @@ def Test15():
     print("values:{0}".format(values))
     print("index:{0}".format(index))
 
+def Test16():
+    a = numpy.arange(0, 6).reshape([2, 3])
+    a = torch.tensor(a, dtype = torch.float)
+    print(a)
+    f = torch.nn.Softmax(dim = 1)
+    print(f(a))
+
 if __name__ == '__main__':
-    Test15()
+    Test16()
