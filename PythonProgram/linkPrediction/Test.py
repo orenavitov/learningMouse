@@ -48,9 +48,45 @@ def draw_graph(A):
 
 def Test3():
     G = networkx.Graph()
-    G.add_edges_from([[1, 2], [2, 1]])
-    for edge in G.edges:
-        print(edge)
+    nodes = numpy.arange(start = 1, stop = 6)
+    print("nodes: {0}".format(nodes))
+    edges = numpy.array([
+        [1, 2], [1, 3], [2, 3], [2, 4], [3, 4], [4, 5]
+    ])
+    print("edges: {0}".format(edges))
+    G.add_edges_from(edges)
+    A = networkx.adjacency_matrix(G).todense()
+    A = torch.tensor(A, dtype = torch.float)
+    print("A: {0}".format(A))
+    A_sum = torch.sum(A, dim = 1).reshape([-1, ])
+    D = torch.diag(A_sum)
+    print("A_sum: {0}".format(A_sum))
+    print("D: {0}".format(D))
+    L = D - A
+    eval, evecs = torch.eig(L.t(), eigenvectors=True)
+    print("eval: {0}".format(eval))
+    print("evecs: {0}".format(evecs))
+
+def Test3_():
+    G = networkx.Graph()
+    nodes = numpy.arange(start=1, stop=6)
+    print("nodes: {0}".format(nodes))
+    edges = numpy.array([
+        [1, 2], [1, 3], [2, 3], [2, 4], [3, 4], [4, 5]
+    ])
+    print("edges: {0}".format(edges))
+    G.add_edges_from(edges)
+    A = networkx.adjacency_matrix(G).todense()
+    A = numpy.array(A)
+    print("A type: {0}".format(type(A)))
+    print("A: {0}".format(A))
+    A_sum = numpy.sum(A, axis = 1).reshape([-1, ])
+    D = numpy.diag(A_sum)
+    print("D: {0}".format(D))
+    L = D - A
+    eval, evecs = numpy.linalg.eig(L)
+    print('特征值：{0}'.format(eval))
+    print('特征向量：{0}'.format(evecs))
 def Test1():
     A_ = sp.csr_matrix(A, dtype=int)
     print(A_)
@@ -165,7 +201,8 @@ def Test12():
     a = numpy.arange(start = 0, stop = 40)
     a = a.reshape([2, 4, 5])
     a = torch.tensor(a, dtype = torch.float)
-    cov1d = torch.nn.Conv1d(in_channels = 4, out_channels = 2, kernel_size = 2)
+    cov1d = torch.nn.Conv1d(in_channels = 4, out_channels = 2, kernel_size = 1)
+
     pool = torch.nn.MaxPool1d(kernel_size = 3, stride = 2)
     b = cov1d(a)
     print(b)
@@ -179,10 +216,13 @@ def Test13():
     F_ = 4
     input = numpy.arange(0, 8).reshape([b, F_]);
     input = torch.tensor(input, dtype = torch.float)
+    print("input:\n {0}".format(input))
+    input = input.permute([1, 0])
+    print("after permute input:\n {0}".format(input))
     input1 = input.repeat(1, b)
     input2 = input1.view(b * b, -1)
     input3 = input.repeat(b, 1)
-    print("input:\n {0}".format(input))
+
     print("input1:\n {0}".format(input1))
     print("input2:\n {0}".format(input2))
     print("input3:\n {0}".format(input3))
@@ -212,11 +252,66 @@ def Test15():
     print("index:{0}".format(index))
 
 def Test16():
-    a = numpy.arange(0, 6).reshape([2, 3])
+    a = numpy.arange(0, 8).reshape([4, 2])
     a = torch.tensor(a, dtype = torch.float)
     print(a)
-    f = torch.nn.Softmax(dim = 1)
-    print(f(a))
+    b = torch.ones_like(a)
 
+    print(b)
+
+# 对tensor的第i个维度进行排序并返回索引
+# 对tensor的第i个维度进行排序，返回top_k， 并返回其索引
+def Test17():
+    a = numpy.array([
+        [2, 4, 5, 1, 7],
+        [2, 8, 1, 3, 4]
+    ])
+    a = torch.tensor(a, dtype = torch.float)
+    a_sort, indexs_sort = a.sort(dim = 1, descending = True)
+    a_top3, indexs_top3 = torch.topk(a, k = 3, dim = 1)
+    print("a_sort:{0}".format(a_sort))
+    print("indexs_sort:{0}".format(indexs_sort))
+
+    print("a_top3:{0}".format(a_top3))
+    print("indexs_top3:{0}".format(indexs_top3))
+
+def Test18():
+
+    a = numpy.random.randn(3, 3, 3)
+    print("a:\n {0}".format(a))
+    a = torch.tensor(a, dtype=torch.float)
+    index_X, index_Y, index_Z = torch.where(a > 0)
+    print("index_X:\n {0}".format(index_X))
+    print("index_Y:\n {0}".format(index_Y))
+    print("index_Z:\n {0}".format(index_Z))
+    # index_X = index_X.reshape([-1, 1])
+    # index_Y = index_Y.reshape([-1, 1])
+    # index = torch.cat([index_X, index_Y], dim = 1)
+    # print("index:\n {0}".format(index))
+
+def Test19():
+    a = numpy.arange(0, 3).reshape([1, 3])
+    b = numpy.arange(3, 6).reshape([1, 3])
+    a = torch.tensor(a, dtype = torch.float)
+    print(a)
+    b = torch.tensor(b, dtype = torch.float)
+    print(b)
+    a1 = a.repeat([3, 1])
+    print(a1)
+    a1 = a1.reshape([-1, 3, 3])
+    print(a1)
+    b1 = b.repeat([1, 3])
+    print(b1)
+    b1 = b1.reshape([-1, 3, 3])
+    print(b1)
+
+def Test20():
+    a = numpy.array([
+        1, 2
+    ])
+    a = torch.tensor(a, dtype = torch.float)
+    index = torch.where(a == 3)[-1]
+    print(index)
+    print(len(index) == 0)
 if __name__ == '__main__':
-    Test16()
+    Test20()

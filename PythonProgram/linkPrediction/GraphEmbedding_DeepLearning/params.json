@@ -2,25 +2,51 @@
 
   "data_set": "USAir",
   "radio": 0.9,
-  "batchSize": 128,
+  "batchSize": 64,
   "epochs": 100,
-  "module_name": "MihGNNEmbedding5",
+  "learning_rate": 0.001,
+  "module_name": "MihGNNEmbedding4",
   "MihGNNEmbedding1": {
     "embedding_size": 128,
     "layers": 6,
-    "steps": 1,
-    "delays": [0.1]
+    "steps": 3,
+    "delays": [0.1, 0.01, 0.001]
   },
   "MihGNNEmbedding2": {
     "embedding_size": 128,
+    "layers": 6,
+    "steps": 1,
+    "delays": [1.0]
+  },
+  "MihGNNEmbedding3": {
+    "embedding_size": 128,
     "layers": 3,
-    "steps": 2,
-    "delays": [0.5, 0.01]
+    "steps": 1,
+    "delays": [1.0]
+  },
+  "MihGNNEmbedding4": {
+    "embedding_size": 32,
+    "layers": 3,
+    "steps": 1,
+    "delays": [1.0]
   },
   "MihGNNEmbedding5": {
     "embedding_size": 128,
+    "layers": 6,
+    "steps": 1,
+    "delays": [1.0]
+  },
+  "MihGNNEmbedding6": {
+    "embedding_size": 128,
     "layers": 3,
     "steps": 2,
-    "delays": [0.5, 0.01]
+    "delays": [0.01, 0.001]
+  },
+  "PolysemousNetworkEmbedding": {
+    "embedding_size": 64,
+    "layers": 3,
+    "K": 4,
+    "alpha": 0.3,
+    "P_epochs": 2000
   }
 }

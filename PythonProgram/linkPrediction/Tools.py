@@ -198,7 +198,7 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
     positives = []
     negavives = []
     for i in range(node_number):
-        for j in range(node_number):
+        for j in range(i, node_number):
             if i != j:
                 label = A[i][j]
                 if label == 1:
@@ -206,14 +206,30 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
                 if label == 0:
                     negavives.append([i, j, 0])
     edges_size = len(positives)
+    none_edges_size = len(negavives)
+    if sample_method == 'all_sample':
+        numpy.random.shuffle(positives)
+        numpy.random.shuffle(negavives)
+
+        train_positives = positives[: int(edges_size * radio)]
+        test_positives = positives[int(edges_size * radio):]
+        train_negatives = negavives[: int(none_edges_size * radio)]
+        test_negatives = negavives[int(none_edges_size * radio):]
+
+        train_positives.extend(train_negatives)
+        train_data = train_positives
+        test_positives.extend(test_negatives)
+        test_data = test_positives
+        numpy.random.shuffle(train_data)
+        numpy.random.shuffle(test_data)
     if sample_method == 'under_sample':
         numpy.random.shuffle(positives)
         numpy.random.shuffle(negavives)
         train_positives = positives[: int(edges_size * radio)]
         test_positives = positives[int(edges_size * radio):]
         train_negatives = negavives[: int(edges_size * radio)]
-        test_negatives = negavives[int(edges_size * radio):]
-        # test_negatives = negavives[int(edges_size * radio): edges_size]
+        # test_negatives = negavives[int(edges_size * radio):]
+        test_negatives = negavives[int(edges_size * radio): edges_size]
         train_positives.extend(train_negatives)
         train_data = train_positives
         test_positives.extend(test_negatives)
@@ -227,6 +243,7 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
         row = index[0]
         col = index[1]
         A_test[row][col] = 1
+        A_test[col][row] = 1
     train_pairs = [pair[: 2] for pair in train_data]
     train_labels = [pair[-1] for pair in train_data]
     test_pairs = [pair[: 2] for pair in test_data]
@@ -253,6 +270,8 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
 def Matrix_pre_handle(A, steps, delay):
     N = A.shape[0]
     A_s = []
+    # D = numpy.sum(A, axis = 1, keepdims = False)
+    # D = numpy.diag(D)
     I = numpy.eye(N)
     for step in range(steps):
         A_current = copy.deepcopy(A)
@@ -267,8 +286,9 @@ def Matrix_pre_handle(A, steps, delay):
                 # if (A_current[i][j] != 1):
                 #     A_current[i][j] = 0
         A_s.append(delay[step] * A_current)
-        result = numpy.sum(A_s, axis=0)
-        result = result + I
+    result = numpy.sum(A_s, axis=0)
+    result = result + I
+    # result = result + D
     return result
 
 def cal_cos_similary(src, dst):

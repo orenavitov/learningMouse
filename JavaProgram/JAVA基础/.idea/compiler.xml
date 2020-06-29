@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JAVA基础" />
+        <module name="MutliThread" />
+        <module name="ClassLoader" />
+        <module name="JCU" />
       </profile>
     </annotationProcessing>
   </component>

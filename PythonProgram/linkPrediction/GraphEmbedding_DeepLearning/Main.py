@@ -1,12 +1,16 @@
 import json
 import torch
 from torch import optim
+import numpy
+from GraphEmbedding_DeepLearning.PolysemousNetworkEmbedding import PolysemousNetwork
 from Tools import process_gml_file
 from Tools import get_data_loader
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding1
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding2
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding3
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding4
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding5
-from Tools import generate_random_graph
+from tqdm import tqdm
 
 with open(r"./params.json", 'r') as file:
 
@@ -16,25 +20,44 @@ with open(r"./params.json", 'r') as file:
     batchSize = params["batchSize"]
     epochs = params["epochs"]
     radio = params["radio"]
+    learning_rate = params["learning_rate"]
     print("module_name: {0}".format(module_name))
     if module_name == "MihGNNEmbedding1":
         module_params = params["MihGNNEmbedding1"]
     if module_name == "MihGNNEmbedding2":
         module_params = params["MihGNNEmbedding2"]
+    if module_name == "MihGNNEmbedding3":
+        module_params = params["MihGNNEmbedding3"]
+    if module_name == "MihGNNEmbedding4":
+        module_params = params["MihGNNEmbedding4"]
     if module_name == "MihGNNEmbedding5":
         module_params = params["MihGNNEmbedding5"]
+    if module_name == "MihGNNEmbedding6":
+        module_params = params["MihGNNEmbedding6"]
+    if module_name == "PolysemousNetworkEmbedding":
+        module_params = params["PolysemousNetworkEmbedding"]
+
     embedding_size = module_params["embedding_size"]
     layers = module_params["layers"]
-    steps = module_params["steps"]
-    delays = module_params["delays"]
+    if module_name != 'PolysemousNetworkEmbedding':
+        steps = module_params["steps"]
+        delays = module_params["delays"]
+        print("steps: {0}".format(steps))
+        print("delays: {0}".format(delays))
+    if module_name == 'PolysemousNetworkEmbedding':
+        K = module_params["K"]
+        alpha = module_params["alpha"]
+        P_epochs = module_params["P_epochs"]
+        print("K: {0}".format(K))
+        print("alpha: {0}".format(alpha))
+        print("P_epochs: {0}".format(P_epochs))
     print("dataSet: {0}".format(data_set_name))
     print("radio: {0}".format(radio))
     print("batchSize: {0}".format(batchSize))
     print("epochs: {0}".format(epochs))
     print("embedding_size: {0}".format(embedding_size))
     print("layers: {0}".format(layers))
-    print("steps: {0}".format(steps))
-    print("delays: {0}".format(delays))
+
 
 if data_set_name == 'bio-CE-GT':
     file_address = r"../Data/bio-CE-GT.gml"
@@ -58,33 +81,29 @@ A_shape = A.shape
 N = A_shape[0]
 print("邻接矩阵尺寸：[{0}, {1}]".format(A_shape[0], A_shape[1]))
 
-if module_name == "MihGNNEmbedding1":
-    module = MihGNNEmbedding1(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
-if module_name == "MihGNNEmbedding2":
-    module = MihGNNEmbedding2(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
-if module_name == "MihGNNEmbedding5":
-    module = MihGNNEmbedding5(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
-def Train(module, epochs):
-    optimizer = optim.Adam(module.parameters(), lr=0.001)
-    for epoch in range(epochs):
-        running_loss = 0.0
-        print("--------------epoch : {0} ------------------".format(epoch + 1))
-        for i, data in enumerate(train_loader, 0):
-            inputs, labels = data
 
+
+
+def Train(module, epochs):
+    print("module parameters:")
+    for name, parameter in module.named_parameters():
+        print("name:{0}\nparameter:{1}".format(name, parameter))
+    optimizer = optim.Adam(module.parameters(), lr=learning_rate)
+    for epoch in tqdm(range(epochs)):
+        sum_loss = 0.0
+        for data in train_loader:
+            inputs, labels = data
             labels = labels.to(torch.long)
             optimizer.zero_grad()
             loss = module(inputs, labels)
             loss.backward(retain_graph=True)
             optimizer.step()
-            running_loss += loss.item()
-            if i != 0 and i % 100 == 0:
-                print('[%d, %5d] loss: %.3f' %
-                      (epoch + 1, i + 1, running_loss))
-                running_loss = 0.0
+            sum_loss = sum_loss + loss
+        print("epochs : {0} loss : {1}".format(epoch, sum_loss))
 
 def Test1(module):
-
+    for name, parameter in module.named_parameters():
+        print("name:{0}\nparameter:{1}".format(name, parameter))
     predictionsList = []
     labelsList = []
     for i, data in enumerate(test_loader, 0):
@@ -123,6 +142,8 @@ def Test1(module):
         print("FN: {0}".format(FN))
 
 def Test2(module):
+    for name, parameter in module.named_parameters():
+        print("name:{0}\nparameter:{1}".format(name, parameter))
     TP = 0
     TN = 0
     FP = 0
@@ -148,9 +169,34 @@ def Test2(module):
     print("FP: {0}".format(FP))
     print("FN: {0}".format(FN))
 
+if module_name == "MihGNNEmbedding1":
+    module = MihGNNEmbedding1(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding2":
+    module = MihGNNEmbedding2(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding3":
+    module = MihGNNEmbedding3(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding4":
+    module = MihGNNEmbedding4(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding5":
+    module = MihGNNEmbedding5(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "PolysemousNetworkEmbedding":
+    A_test = A_test + numpy.eye(N)
+    # P_module = PriorDistribution(A = A_test, K = K, alpha = alpha, GPU = GPU)
+    # optimizer = optim.Adam(P_module.parameters(), lr=0.001)
+    # for epoch in range(P_epochs):
+    #     optimizer.zero_grad()
+    #     loss = P_module()
+    #     print("epoch : {0}   loss : {1}".format(epoch + 1, loss))
+    #     loss.backward(retain_graph=True)
+    #     optimizer.step()
+    # P = P_module.state_dict()["prior_distribution_matrix"]
+    module = PolysemousNetwork(A = A_test, embedding_size = embedding_size, layers = layers, K = K, GPU = GPU)
 
 if __name__ == '__main__':
     Train(module, epochs)
-    Test2(module)
+    if (module_name == "MihGNNEmbedding4" or module_name == "MihGNNEmbedding5"):
+        Test2(module)
+    else:
+        Test1(module)
 
 

@@ -5,8 +5,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mih</groupId>
-    <artifactId>JUC</artifactId>
+    <artifactId>JAVALearning</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
+        <module>MutliThread</module>
+        <module>ClassLoader</module>
+        <module>JCU</module>
+    </modules>
 
 
 </project>
