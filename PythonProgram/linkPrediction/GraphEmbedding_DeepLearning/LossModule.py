@@ -3,10 +3,11 @@ from torch import nn
 import math
 
 class MihOutputModule1(nn.Module):
-    def __init__(self, d, e):
+    def __init__(self, d, e, layers):
         super(MihOutputModule1, self).__init__()
         self.d = d
         self.e = e
+        self.layers = layers
     # input[0] : labels
     # input[1] : src_node_embeddings
     # input[2] : dst_node_embeddings
@@ -15,7 +16,7 @@ class MihOutputModule1(nn.Module):
         src_node_embeddings = input[1]
         dst_node_embeddings = input[2]
         differcences_sum = (src_node_embeddings - dst_node_embeddings) ** 2
-        differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
+        differcences_sum = torch.sum(differcences_sum, dim=1) / (self.d * self.layers)
         predicts = self.e ** (-differcences_sum)
         loss = 0.5 * (labels - predicts) ** 2
         loss = torch.sum(loss)

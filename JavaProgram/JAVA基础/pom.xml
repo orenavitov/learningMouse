@@ -23,7 +23,7 @@
     <modules>
         <module>MutliThread</module>
         <module>ClassLoader</module>
-        <module>JCU</module>
+        <module>JUC</module>
     </modules>
 
 

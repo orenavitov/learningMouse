@@ -2,7 +2,9 @@ import json
 import torch
 from torch import optim
 import numpy
+from GraphEmbedding_DeepLearning.PolysemousNetworkEmbedding import PriorDistribution
 from GraphEmbedding_DeepLearning.PolysemousNetworkEmbedding import PolysemousNetwork
+from GraphEmbedding_DeepLearning.PolysemousNetworkEmbedding import MihPolysemousNetwork
 from Tools import process_gml_file
 from Tools import get_data_loader
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding1
@@ -10,6 +12,11 @@ from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding2
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding3
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding4
 from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding5
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding6
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding7
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding8
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding9
+from GraphEmbedding_DeepLearning.MihGNNEmbeddingModules import MihGNNEmbedding10
 from tqdm import tqdm
 
 with open(r"./params.json", 'r') as file:
@@ -34,17 +41,34 @@ with open(r"./params.json", 'r') as file:
         module_params = params["MihGNNEmbedding5"]
     if module_name == "MihGNNEmbedding6":
         module_params = params["MihGNNEmbedding6"]
+    if module_name == "MihGNNEmbedding7":
+        module_params = params["MihGNNEmbedding7"]
+    if module_name == "MihGNNEmbedding8":
+        module_params = params["MihGNNEmbedding8"]
+    if module_name == "MihGNNEmbedding9":
+        module_params = params["MihGNNEmbedding9"]
+    if module_name == "MihGNNEmbedding10":
+        module_params = params["MihGNNEmbedding10"]
     if module_name == "PolysemousNetworkEmbedding":
         module_params = params["PolysemousNetworkEmbedding"]
+    if module_name == "MihPolysemousNetworkEmbedding":
+        module_params = params["MihPolysemousNetworkEmbedding"]
 
     embedding_size = module_params["embedding_size"]
     layers = module_params["layers"]
-    if module_name != 'PolysemousNetworkEmbedding':
+    if module_name != 'PolysemousNetworkEmbedding' and module_name != "MihPolysemousNetworkEmbedding":
         steps = module_params["steps"]
         delays = module_params["delays"]
         print("steps: {0}".format(steps))
         print("delays: {0}".format(delays))
     if module_name == 'PolysemousNetworkEmbedding':
+        K = module_params["K"]
+        alpha = module_params["alpha"]
+        P_epochs = module_params["P_epochs"]
+        print("K: {0}".format(K))
+        print("alpha: {0}".format(alpha))
+        print("P_epochs: {0}".format(P_epochs))
+    if module_name == 'MihPolysemousNetworkEmbedding':
         K = module_params["K"]
         alpha = module_params["alpha"]
         P_epochs = module_params["P_epochs"]
@@ -58,14 +82,7 @@ with open(r"./params.json", 'r') as file:
     print("embedding_size: {0}".format(embedding_size))
     print("layers: {0}".format(layers))
 
-
-if data_set_name == 'bio-CE-GT':
-    file_address = r"../Data/bio-CE-GT.gml"
-if data_set_name == 'hamster':
-    file_address = r"../Data/hamster.gml"
-
-if data_set_name == 'USAir':
-    file_address = r"../Data/USAir.gml"
+file_address = r"../Data/{0}.gml".format(data_set_name)
 
 
 if torch.cuda.is_available():
@@ -73,7 +90,7 @@ if torch.cuda.is_available():
 else:
     GPU = False
 
-G, A, edges, nodes, neighbors = process_gml_file(file_address)
+G, A, nodes, all_nodes_neighbors, As = process_gml_file(file_address)
 # A = generate_random_graph(10, 0.1)
 train_loader, test_loader, A_test = get_data_loader(A, radio, batchSize, "under_sample", GPU)
 
@@ -140,6 +157,8 @@ def Test1(module):
         print("FP: {0}".format(FP))
         print("TN: {0}".format(TN))
         print("FN: {0}".format(FN))
+        print("AP: {0}".format((TP + TN) / (TP + FP + TN + FN)))
+        print("AC: {0}".format((TP) / (TP + FP)))
 
 def Test2(module):
     for name, parameter in module.named_parameters():
@@ -168,33 +187,70 @@ def Test2(module):
     print("TN: {0}".format(TN))
     print("FP: {0}".format(FP))
     print("FN: {0}".format(FN))
+    print("AP: {0}".format((TP + TN) / (TP + FP + TN + FN)))
+    print("AC: {0}".format((TP) / (TP + FP)))
 
 if module_name == "MihGNNEmbedding1":
-    module = MihGNNEmbedding1(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+    module = MihGNNEmbedding1(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
 if module_name == "MihGNNEmbedding2":
-    module = MihGNNEmbedding2(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+    module = MihGNNEmbedding2(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
 if module_name == "MihGNNEmbedding3":
-    module = MihGNNEmbedding3(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+    module = MihGNNEmbedding3(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
 if module_name == "MihGNNEmbedding4":
-    module = MihGNNEmbedding4(A = A, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+    module = MihGNNEmbedding4(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
 if module_name == "MihGNNEmbedding5":
-    module = MihGNNEmbedding5(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+    module = MihGNNEmbedding5(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding6":
+    module = MihGNNEmbedding6(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding7":
+    module = MihGNNEmbedding7(A = A_test, N = N, d = embedding_size, layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding8":
+    module = MihGNNEmbedding8(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding9":
+    module = MihGNNEmbedding9(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
+if module_name == "MihGNNEmbedding10":
+    module = MihGNNEmbedding10(A = A_test, As = As, all_nodes_neighbors = all_nodes_neighbors, N = N, d = embedding_size,
+                              layers = layers, steps = steps, delay = delays, GPU = GPU)
 if module_name == "PolysemousNetworkEmbedding":
     A_test = A_test + numpy.eye(N)
-    # P_module = PriorDistribution(A = A_test, K = K, alpha = alpha, GPU = GPU)
-    # optimizer = optim.Adam(P_module.parameters(), lr=0.001)
-    # for epoch in range(P_epochs):
-    #     optimizer.zero_grad()
-    #     loss = P_module()
-    #     print("epoch : {0}   loss : {1}".format(epoch + 1, loss))
-    #     loss.backward(retain_graph=True)
-    #     optimizer.step()
-    # P = P_module.state_dict()["prior_distribution_matrix"]
-    module = PolysemousNetwork(A = A_test, embedding_size = embedding_size, layers = layers, K = K, GPU = GPU)
+    P_module = PriorDistribution(A = A_test, K = K, alpha = alpha, GPU = GPU)
+    optimizer = optim.Adam(P_module.parameters(), lr=0.001)
+    for epoch in range(P_epochs):
+        optimizer.zero_grad()
+        loss = P_module()
+        print("epoch : {0}   loss : {1}".format(epoch + 1, loss))
+        loss.backward(retain_graph=True)
+        optimizer.step()
+    P = P_module.state_dict()["prior_distribution_matrix"]
+    module = PolysemousNetwork(P = P, A = A_test, embedding_size = embedding_size, layers = layers, K = K, GPU = GPU)
+if module_name == "MihPolysemousNetworkEmbedding":
+    A_test = A_test + numpy.eye(N)
+    P_module = PriorDistribution(A = A_test, K = K, alpha = alpha, GPU = GPU)
+    optimizer = optim.Adam(P_module.parameters(), lr=0.001)
+    for epoch in range(P_epochs):
+        optimizer.zero_grad()
+        loss = P_module()
+        print("epoch : {0}   loss : {1}".format(epoch + 1, loss))
+        loss.backward(retain_graph=True)
+        optimizer.step()
+    P = P_module.state_dict()["prior_distribution_matrix"]
+    module = MihPolysemousNetwork(P = P, A = A_test, embedding_size = embedding_size, layers = layers, K = K, GPU = GPU)
+
+
+cross_entropy_loss_function_Modules = ["MihGNNEmbedding4", "MihGNNEmbedding5", "MihGNNEmbedding6", "MihGNNEmbedding7",
+                                       "MihGNNEmbedding9", "MihGNNEmbedding10", "MihPolysemousNetworkEmbedding"]
 
 if __name__ == '__main__':
     Train(module, epochs)
-    if (module_name == "MihGNNEmbedding4" or module_name == "MihGNNEmbedding5"):
+    if (module_name in cross_entropy_loss_function_Modules):
         Test2(module)
     else:
         Test1(module)

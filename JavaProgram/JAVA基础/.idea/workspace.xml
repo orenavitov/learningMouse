@@ -2,183 +2,178 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95fc0932-a3dc-436b-a60d-4ed8e58e0c44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ClassLoader/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClassLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/read.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JCU/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JCU/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JCU/src/main/java/AtomicIntegerTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JCU/src/main/java/AtomicReferenceTest/Sample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JCU/src/main/java/AtomicReferenceTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JCU/src/main/java/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/ActivationQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/ActiveObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/ActiveObjectFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/ActiveObjectProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/DisplayClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/DisplayTextRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/FutureResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/MakeStringResquest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/MakerClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/MethodRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/RealResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/SchedulerThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/Servant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ActiveObjectsTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/BalkingTest/BalkingData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/CountDownTest/CountDown.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/CountDownTest/CountDownTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/CountDownTest/JDKCountDown.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadContextTest/Action1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadContextTest/Action2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadContextTest/ActionContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadContextTest/Context.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadContextTest/Execution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadContextTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadPerMessageTest/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadPerMessageTest/MessageHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadPerMessageTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/TwoPhaseTerminationTest/MihThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/TwoPhaseTerminationTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/WorkerThreadTest/Channel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/WorkerThreadTest/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/WorkerThreadTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/WorkerThreadTest/TransportThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/WorkerThreadTest/WorkThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVAIO/StandIOTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JAVAIO/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/AggregationModule.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/LossModule.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/PolysemousNetworkEmbedding.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ConcurrentHashMapTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ConditionTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CountDownLatchTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CyclicBarrierTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExchangerTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExchangerTest/Example2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExchangerTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/LockTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/LockTest/Example2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/LockTest/Example3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/PhaserTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/SemaphoreTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/UnSafeTest/SomeInterestingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/UnSafeTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/SleepTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/Celegans.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/PB.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/Router.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/Yeast.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/facebook_combined.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/karate.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/power.gml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicIntegerTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicReferenceTest/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicReferenceTest/Sample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicReferenceTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicReferenceTest/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicIntegerTest/CompareAndSetLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/CompareAndSetLock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicIntegerTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicReferenceTest/Sample.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Sample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicReferenceTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FutureTest/AsynFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/FutureTest/AsynFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FutureTest/Future.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/FutureTest/Future.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FutureTest/FutureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/FutureTest/FutureService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FutureTest/FutureTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/FutureTest/FutureTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FutureTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/FutureTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/GuardedSuspensionTest/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/GuardedSuspensionTest/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/RequestQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/GuardedSuspensionTest/RequestQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GuardedSuspensionTest/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/GuardedSuspensionTest/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ImmutableTest/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ImmutableTest/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ImmutableTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ImmutableTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ImmutableTest/UsePersonThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ImmutableTest/UsePersonThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Observer/LifeCycleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Observer/LifeCycleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Observer/ObserverableRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Observer/ObserverableRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Observer/ThreadLifeCycleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Observer/ThreadLifeCycleClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Observer/ThreadLifeCycleObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Observer/ThreadLifeCycleObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReadWriteLock/RWLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ReadWriteLock/RWLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReadWriteLock/SharedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ReadWriteLock/SharedData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReadWriteLock/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ReadWriteLock/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton2.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton3.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton4.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton5.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton6.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Singleton7.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleton/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SingletonGateTest/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/SingletonGateTest/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SingletonGateTest/Gate.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/SingletonGateTest/Gate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SingletonGateTest/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/SingletonGateTest/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/AQS.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Tests/AQS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/DaemonThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Tests/DaemonThreadTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/HappenBeforeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Tests/HappenBeforeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Tests/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/LockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Tests/LockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/CatchThreadException.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/CatchThreadException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/StopThreadTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/InterruptedTest/StopThreadTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/StopThreadTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/InterruptedTest/StopThreadTest2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/InterruptedTest/Test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/InterruptedTest/Test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/Lock/MihLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/Lock/MihLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/Lock/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/Lock/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/NotifyTest/Test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/NotifyTest/Test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/ProduceAndConsume/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/ProduceAndConsume/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadTest/ThreadPool/MIhThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/ThreadPool/MIhThreadPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VolatileTest/VolatileTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/VolatileTest/VolatileTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/AsynFuture.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FutureTest/AsynFuture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/Future.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FutureTest/Future.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/FutureService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FutureTest/FutureService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/FutureTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FutureTest/FutureTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FutureTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImmutableTest/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImmutableTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/UsePersonThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImmutableTest/UsePersonThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActivationQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActiveObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActiveObjectFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActiveObjectProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/DisplayClientThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/DisplayTextRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/FutureResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/MakeStringResquest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/MakerClientThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/MethodRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/RealResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/SchedulerThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/Servant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/BalkingTest/BalkingData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ClassLoaderTest/MyClassLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ClassLoaderTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/CountDown.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/CountDownTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/CountDownTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/JDKCountDown$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/JDKCountDown.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/AsynFuture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/Future.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/FutureService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/FutureTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/Request.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/RequestQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/UsePersonThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Converter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/LifeCycleListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/LifeCycleListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/RWLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReadWriteLock/RWLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/SharedData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReadWriteLock/SharedData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Reader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Writer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Writer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton6$Singleton6Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton6$Singleton6Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton7$Builer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton7$Builer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Singleton7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Test$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Singleton/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SingletonGateTest/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/Gate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SingletonGateTest/Gate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SingletonGateTest/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/AQS$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/AQS$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/AQS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest$SubClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest$SubClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/LockTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tests/LockTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/MihLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/MihLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Consumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Producer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$MihThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$MihThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$ThreadState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$ThreadState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/BaseModules.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JAVAIO/StandIOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVAIO/StandIOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/LifeCycleListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/RWLock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/SharedData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Reader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Writer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton6$Singleton6Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton7$Builer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Test$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/Gate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest$SubClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tests/LockTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Action1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Action2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/ActionContext$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/ActionContext$ContextBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/ActionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Context.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Execution.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/MessageHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/MessageHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/MihLock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Consumer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Producer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$MihThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$ThreadState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TwoPhaseTerminationTest/MihThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TwoPhaseTerminationTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/Channel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/Request.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/TransportThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/WorkThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAVA虚拟机详解/java虚拟机.md" beforeDir="false" afterPath="$PROJECT_DIR$/../JAVA虚拟机详解/java虚拟机.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/AggregationModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/AggregationModule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/LossModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/LossModule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MVGCN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MVGCN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/NN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/NN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/PolysemousNetworkEmbedding.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/PolysemousNetworkEmbedding.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/ACT.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/ACT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/CN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/CN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Katz.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Katz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/RW.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/RW.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" afterDir="false" />
     </list>
@@ -224,7 +219,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ClassLoader/src/main/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -239,7 +234,7 @@
       <recent name="ThreadLocalTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test (2)">
+  <component name="RunManager" selected="Application.Example3">
     <configuration name="ClassLoaderTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ClassLoaderTest.Test" />
       <module name="JAVA基础" />
@@ -261,12 +256,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AtomicIntegerTest.Test" />
-      <module name="JCU" />
+    <configuration name="Example1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SemaphoreTest.Example1" />
+      <module name="JUC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="AtomicIntegerTest.*" />
+          <option name="PATTERN" value="SemaphoreTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -274,12 +269,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AtomicReferenceTest.Test" />
-      <module name="JCU" />
+    <configuration name="Example1 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ConcurrentHashMapTest.Example1" />
+      <module name="JUC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="AtomicReferenceTest.*" />
+          <option name="PATTERN" value="ConcurrentHashMapTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Example1 (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ConditionTest.Example1" />
+      <module name="JUC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ConditionTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Example3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LockTest.Example3" />
+      <module name="JUC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="LockTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -288,24 +309,11 @@
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadPerMessageTest.Test" />
+      <option name="MAIN_CLASS_NAME" value="JAVA8.FunctionalInterfaceTest.Test" />
       <module name="JAVA基础" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ThreadPerMessageTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadContextTest.Test" />
-      <module name="JAVA基础" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ThreadContextTest.*" />
+          <option name="PATTERN" value="JAVA8.FunctionalInterfaceTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -315,10 +323,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test (2)" />
-        <item itemvalue="Application.Test (1)" />
-        <item itemvalue="Application.ClassLoaderTest" />
+        <item itemvalue="Application.Example3" />
+        <item itemvalue="Application.Example1 (3)" />
+        <item itemvalue="Application.Example1 (2)" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Example1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -370,10 +379,10 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="744" y="399" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591239569704" />
-    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1593306359833">
+    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1594031381545">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1593306359833" />
+    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1594031381545" />
     <state x="658" y="329" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1592907619999">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -398,22 +407,22 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="709" y="297" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1592921475656" />
-    <state width="1340" height="206" key="GridCell.Tab.0.bottom" timestamp="1593313494756">
+    <state width="1340" height="238" key="GridCell.Tab.0.bottom" timestamp="1594032392336">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1593313494756" />
-    <state width="1340" height="206" key="GridCell.Tab.0.center" timestamp="1593313494756">
+    <state width="1340" height="238" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
+    <state width="1340" height="238" key="GridCell.Tab.0.center" timestamp="1594032392336">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1593313494756" />
-    <state width="1340" height="206" key="GridCell.Tab.0.left" timestamp="1593313494756">
+    <state width="1340" height="238" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
+    <state width="1340" height="238" key="GridCell.Tab.0.left" timestamp="1594032392336">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1593313494756" />
-    <state width="1340" height="206" key="GridCell.Tab.0.right" timestamp="1593313494756">
+    <state width="1340" height="238" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
+    <state width="1340" height="238" key="GridCell.Tab.0.right" timestamp="1594032392336">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1593313494756" />
+    <state width="1340" height="238" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
     <state width="1815" height="366" key="GridCell.Tab.1.bottom" timestamp="1592922817963">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -430,34 +439,34 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="366" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1592922817963" />
-    <state x="385" y="223" key="SettingsEditor" timestamp="1592921347600">
+    <state x="385" y="223" key="SettingsEditor" timestamp="1594000857811">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="385" y="223" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1592921347600" />
-    <state x="650" y="281" width="549" height="524" key="StructurePopup" timestamp="1592965347407">
+    <state x="385" y="223" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1594000857811" />
+    <state x="650" y="281" width="549" height="524" key="StructurePopup" timestamp="1594028648717">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="650" y="281" width="549" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1592965347407" />
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1593305880076">
+    <state x="650" y="281" width="549" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1594028648717" />
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1594083077789">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1593305880076" />
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1594083077789" />
     <state x="558" y="347" key="new project wizard" timestamp="1592960691451">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="558" y="347" key="new project wizard/0.0.1858.1080@0.0.1858.1080" timestamp="1592960691451" />
-    <state x="671" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1592528226407">
+    <state x="671" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1593527215765">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="671" y="163" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1592528226407" />
+    <state x="671" y="163" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1593527215765" />
     <state x="585" y="250" key="run.anything.popup" timestamp="1592904190738">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="585" y="250" key="run.anything.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1592904190738" />
-    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1592965094015">
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1594000402365">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1592965094015" />
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1594000402365" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

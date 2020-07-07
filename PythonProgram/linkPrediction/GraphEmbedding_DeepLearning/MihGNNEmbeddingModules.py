@@ -4,11 +4,12 @@ import numpy
 from torch.nn import Parameter
 from Tools import Matrix_pre_handle
 import math
-from Tools import get_steps_neighbor
 from GraphEmbedding_DeepLearning.NN import LineNetwork
 from GraphEmbedding_DeepLearning.AggregationModule import GNNAggregationModule
+from GraphEmbedding_DeepLearning.AggregationModule import MihGNNAggregationModule
 from GraphEmbedding_DeepLearning.AggregationModule import GNNAggregationForNegativeModule
-from GraphEmbedding_DeepLearning.AggregationModule import GNNAggregationWithAttention
+from GraphEmbedding_DeepLearning.AggregationModule import GNNAggregationWithAttentionModule
+from GraphEmbedding_DeepLearning.AggregationModule import GCNAggregationModule
 from GraphEmbedding_DeepLearning.LossModule import MihOutputModule1
 from GraphEmbedding_DeepLearning.LossModule import MihOutputModule2
 """
@@ -16,16 +17,20 @@ GNN 优化的目标函数是：labaels - math.e ** (-sum((x_i - x_j) ** 2))
 改进负样本的嵌入状态更新
 """
 class MihGNNEmbedding1(nn.Module):
-    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+    def __init__(self,A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding1, self).__init__()
+        self.A = Matrix_pre_handle(A, steps, delay)
+        self.A = torch.tensor(self.A, dtype = torch.float)
         self.d = d
         self.e = torch.tensor(math.e, dtype=torch.float)
-        A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        self.layers = layers
         embedding_state = numpy.random.randn(N, d)
         embedding_state = torch.tensor(data=embedding_state, dtype=torch.float)
-        self.aggregationModule = GNNAggregationForNegativeModule(A=A, convolution_layers=layers, d=d,
+        self.aggregationModule = GNNAggregationForNegativeModule(A=self.A, As = As,
+                                                                 all_nodes_neighbors = all_nodes_neighbors,
+                                                                 convolution_layers=layers, d=d,
                                                                  embedding_states=embedding_state)
-        self.lossFunction = MihOutputModule1(d = self.d, e = self.e)
+        self.lossFunction = MihOutputModule1(d = self.d, e = self.e, layers = layers)
 
 
     def forward(self, *input):
@@ -40,7 +45,7 @@ class MihGNNEmbedding1(nn.Module):
         loss = self.lossFunction(ordered_labels, src_node_embeddings, dst_node_embeddings)
         return loss
 
-    def test(self, edges, preference="negative"):
+    def test(self, edges, preference="positive"):
         edges = edges.permute([1, 0])
         src_node_indexes = edges[0]
         dst_node_indexes = edges[1]
@@ -51,7 +56,7 @@ class MihGNNEmbedding1(nn.Module):
         _, src_node_embeddings = self.aggregationModule(preference_labels, src_node_indexes)
         _, dst_node_embeddings = self.aggregationModule(preference_labels, dst_node_indexes)
         differcences_sum = (src_node_embeddings - dst_node_embeddings) ** 2
-        differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
+        differcences_sum = torch.sum(differcences_sum, dim=1) / (self.d * self.layers)
         predicts = self.e ** (-differcences_sum)
         return predicts
 
@@ -60,24 +65,29 @@ class MihGNNEmbedding1(nn.Module):
 GNN 优化的目标函数是：labaels - math.e ** (-sum((x_i - x_j) ** 2))
 """
 class MihGNNEmbedding2(nn.Module):
-    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+    def __init__(self,A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding2, self).__init__()
+        self.A = Matrix_pre_handle(A, steps, delay)
+        self.A = torch.tensor(self.A, dtype = torch.float)
         self.d = d
         self.e = torch.tensor(math.e, dtype=torch.float)
-        A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        self.layers = layers
+        self.As = As
+        self.all_nodes_neighbors = all_nodes_neighbors
         embedding_state = numpy.random.randn(N, d)
         embedding_state = torch.tensor(data=embedding_state, dtype=torch.float)
-        self.aggregationModule = GNNAggregationModule(A=A, convolution_layers=layers, d=d,
-                                                                 embedding_states=embedding_state)
-        self.lossFunction = MihOutputModule1(d = self.d, e = self.e)
+        self.aggregationModule = GNNAggregationModule(A = self.A, As=As, all_nodes_neighbors = all_nodes_neighbors,
+                                                      convolution_layers=layers, d=d,
+                                                      embedding_states=embedding_state)
+        self.lossFunction = MihOutputModule1(d = self.d, e = self.e, layers = layers)
 
     def forward(self, *input):
         pairs = input[0]
         labels = input[1]
 
         node_indexes = pairs.permute([1, 0])
-        src_node_indexes = node_indexes[0]
-        dst_node_indexes = node_indexes[1]
+        src_node_indexes = node_indexes[0].numpy()
+        dst_node_indexes = node_indexes[1].numpy()
         src_node_embeddings = self.aggregationModule(src_node_indexes)
         dst_node_embeddings = self.aggregationModule(dst_node_indexes)
         loss = self.lossFunction(labels, src_node_embeddings, dst_node_embeddings)
@@ -91,18 +101,19 @@ class MihGNNEmbedding2(nn.Module):
         src_node_embeddings = self.aggregationModule(src_node_indexes)
         dst_node_embeddings = self.aggregationModule(dst_node_indexes)
         differcences_sum = (src_node_embeddings - dst_node_embeddings) ** 2
-        differcences_sum = torch.sum(differcences_sum, dim=1) / self.d
+        differcences_sum = torch.sum(differcences_sum, dim=1) / (self.d * self.layers)
         predicts = self.e ** (-differcences_sum)
         return predicts
 
 # GNN 使用余弦相似度作为目标函数
 class MihGNNEmbedding3(nn.Module):
-    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+    def __init__(self, A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding3, self).__init__()
-        A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        self.A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
         embedding_state = numpy.random.randn(N, d)
         embedding_state = torch.tensor(data=embedding_state, dtype=torch.float)
-        self.aggregationModule = GNNAggregationModule(A=A, convolution_layers=layers, d=d,
+        self.aggregationModule = GNNAggregationModule(A=self.A, As= As, all_nodes_neighbors = all_nodes_neighbors,
+                                                      convolution_layers=layers, d=d,
                                                       embedding_states=embedding_state)
         self.lossFunction = MihOutputModule2()
         self.relu = nn.ReLU()
@@ -130,13 +141,15 @@ class MihGNNEmbedding3(nn.Module):
 
 # 引入注意力机制节点j对节点i的注意力为f(h_i, h_j), h_i, h_j为嵌入状态， f可以是一个全连接层， 输入维度是2 * D， 输出维度是1
 class MihGNNEmbedding4(nn.Module):
-    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+    def __init__(self, A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding4, self).__init__()
-        A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        self.A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
         embedding_state = numpy.random.randn(N, d)
         embedding_state = torch.tensor(data=embedding_state, dtype=torch.float)
-        self.aggregationModule = GNNAggregationWithAttention(A=A, convolution_layers=layers, d=d,
-                                                      embedding_states=embedding_state)
+        self.aggregationModule = GNNAggregationWithAttentionModule(A=self.A, As = As,
+                                                                   all_nodes_neighbors = all_nodes_neighbors,
+                                                                   convolution_layers=layers, d=d,
+                                                                   embedding_states=embedding_state)
         self.liner = LineNetwork(input_features=d * 2, output_features=2, hidden_features=d)
         self.cross_entropy = nn.CrossEntropyLoss()
         self.add_module(name="AggregationModule", module=self.aggregationModule)
@@ -166,13 +179,17 @@ class MihGNNEmbedding4(nn.Module):
 
 # 使用cross_entry损失函数， 前提保证训练数据的正负样本数量相同
 class MihGNNEmbedding5(nn.Module):
-    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+    def __init__(self, A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
         super(MihGNNEmbedding5, self).__init__()
-        A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
-        embedding_state = numpy.ones(shape = [N, d])
+        self.A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        embedding_state = numpy.random.randn(N, d)
         embedding_state = torch.tensor(data = embedding_state, dtype=torch.float)
-        self.aggregationModule = GNNAggregationForNegativeModule(A = A, convolution_layers = layers, d = d, embedding_states = embedding_state)
-        self.liner = LineNetwork(input_features = d * layers * 2, output_features = 2, hidden_features = d)
+        self.aggregationModule = GNNAggregationForNegativeModule(A = self.A, As = As,
+                                                                 all_nodes_neighbors = all_nodes_neighbors,
+                                                                 convolution_layers = layers, d = d,
+                                                                 embedding_states = embedding_state)
+        self.liner = LineNetwork(input_features = d * 2, output_features = 2, hidden_features = d)
+        self.soft_max = nn.Softmax(dim = 1)
         self.cross_entropy = nn.CrossEntropyLoss()
         self.add_module(name = "AggregationModule", module = self.aggregationModule)
         self.add_module(name = "FullConnectionLiner", module = self.liner)
@@ -188,6 +205,7 @@ class MihGNNEmbedding5(nn.Module):
         ordered_labels, dst_node_embeddings = self.aggregationModule(labels, dst_node_indexes)
         liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
         output = self.liner(liner_input)
+        output = self.soft_max(output)
         loss = self.cross_entropy(output, labels)
         return loss
 
@@ -203,5 +221,236 @@ class MihGNNEmbedding5(nn.Module):
         _, src_node_embeddings = self.aggregationModule(preference_labels, src_node_indexes)
         _, dst_node_embeddings = self.aggregationModule(preference_labels, dst_node_indexes)
         liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        predictions = self.soft_max(liner_input)
         predictions = self.liner(liner_input)
         return predictions
+"""
+GNN 模型 + cross_entory损失函数
+将所有卷积层相加
+"""
+class MihGNNEmbedding6(nn.Module):
+    def __init__(self,A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
+        super(MihGNNEmbedding6, self).__init__()
+        self.A = torch.tensor(Matrix_pre_handle(A, steps=steps, delay=delay), dtype=torch.float)
+        embedding_states = numpy.random.randn(N, d)
+        embedding_states = torch.tensor(data = embedding_states, dtype=torch.float)
+        self.aggregationModule = GNNAggregationModule(A = self.A, As = As, all_nodes_neighbors = all_nodes_neighbors,
+                                                      convolution_layers = layers, d = d,
+                                                      embedding_states = embedding_states)
+        self.liner = LineNetwork(input_features = d * 2, output_features = 2, hidden_features = d)
+        self.soft_max = nn.Softmax(dim=1)
+        self.cross_entropy = nn.CrossEntropyLoss()
+        self.add_module(name = "AggregationModule", module = self.aggregationModule)
+        self.add_module(name = "FullConnectionLiner", module = self.liner)
+
+
+    def forward(self, *input):
+        pairs = input[0]
+        labels = input[1]
+        node_indexes = pairs.permute([1, 0])
+        src_node_indexes = node_indexes[0]
+        dst_node_indexes = node_indexes[1]
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        output = self.liner(liner_input)
+        output = self.soft_max(output)
+        loss = self.cross_entropy(output, labels)
+        return loss
+
+
+    def test(self, edges):
+        edges = edges.permute([1, 0])
+        src_node_indexes = edges[0]
+        dst_node_indexes = edges[1]
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        predictions = self.soft_max(liner_input)
+        predictions = self.liner(liner_input)
+        return predictions
+
+# 使用谱域的GCN模型
+class MihGNNEmbedding7(nn.Module):
+    def __init__(self, A, N, d, layers, steps, delay, GPU = False):
+        super(MihGNNEmbedding7, self).__init__()
+        I = numpy.eye(N)
+        A = torch.tensor(A + I, dtype=torch.float)
+        embedding_state = numpy.random.randn(N, d)
+        embedding_state = torch.tensor(data = embedding_state, dtype=torch.float)
+        self.aggregationModule = GCNAggregationModule(A = A, convolution_layers = layers, d = d, embedding_states = embedding_state)
+        self.liner = LineNetwork(input_features = d * 2, output_features = 2, hidden_features = d)
+        self.cross_entropy = nn.CrossEntropyLoss()
+        self.add_module(name = "AggregationModule", module = self.aggregationModule)
+        self.add_module(name = "FullConnectionLiner", module = self.liner)
+
+
+    def forward(self, *input):
+        pairs = input[0]
+        labels = input[1]
+        node_indexes = pairs.permute([1, 0])
+        src_node_indexes = node_indexes[0]
+        dst_node_indexes = node_indexes[1]
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        output = self.liner(liner_input)
+        loss = self.cross_entropy(output, labels)
+        return loss
+
+
+    def test(self, edges):
+        edges = edges.permute([1, 0])
+        src_node_indexes = edges[0]
+        dst_node_indexes = edges[1]
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        predictions = self.liner(liner_input)
+        return predictions
+
+"""
+GNN 优化的目标函数是：labaels - math.e ** (-sum((x_i - x_j) ** 2))
+"""
+class MihGNNEmbedding8(nn.Module):
+    def __init__(self,A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
+        super(MihGNNEmbedding8, self).__init__()
+        self.A = Matrix_pre_handle(A, steps, delay)
+        self.A = torch.tensor(self.A, dtype = torch.float)
+        self.d = d
+        self.e = torch.tensor(math.e, dtype=torch.float)
+        self.layers = layers
+        self.As = As
+        self.all_nodes_neighbors = all_nodes_neighbors
+        embedding_state = numpy.random.randn(N, d)
+        embedding_state = torch.tensor(data=embedding_state, dtype=torch.float)
+        self.aggregationModule = MihGNNAggregationModule(A = self.A, As=As, all_nodes_neighbors = all_nodes_neighbors,
+                                                      convolution_layers=layers, d=d,
+                                                      embedding_states=embedding_state)
+        self.lossFunction = MihOutputModule1(d = self.d, e = self.e, layers = layers)
+
+    def forward(self, *input):
+        pairs = input[0]
+        labels = input[1]
+
+        node_indexes = pairs.permute([1, 0])
+        src_node_indexes = node_indexes[0]
+        dst_node_indexes = node_indexes[1]
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        loss = self.lossFunction(labels, src_node_embeddings, dst_node_embeddings)
+        return loss
+
+    def test(self, edges):
+        edges = edges.permute([1, 0])
+        src_node_indexes = edges[0]
+        dst_node_indexes = edges[1]
+
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        differcences_sum = (src_node_embeddings - dst_node_embeddings) ** 2
+        differcences_sum = torch.sum(differcences_sum, dim=1) / (self.d * self.layers)
+        predicts = self.e ** (-differcences_sum)
+        return predicts
+
+# 使用谱域的GCN模型
+class MihGNNEmbedding9(nn.Module):
+    def __init__(self, A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
+        super(MihGNNEmbedding9, self).__init__()
+        I = numpy.eye(N)
+        self.A = torch.tensor(A + 2 * I, dtype=torch.float)
+        # self.A = self.pre_handle(A)
+        self.layers = layers
+        embedding_state = numpy.random.randn(N, d)
+        embedding_state = torch.tensor(data = embedding_state, dtype=torch.float)
+
+        self.tanh = nn.Tanh()
+        self.embedding_state = embedding_state
+        self.aggregationLayers = nn.Sequential()
+        for layer in range(layers):
+            aggregation_layer = nn.Linear(in_features = d, out_features = d)
+            self.aggregationLayers.add_module(name = "aggregation_layer_{0}".format(layer + 1), module = aggregation_layer)
+            self.embedding_state = aggregation_layer(self.embedding_state)
+            self.embedding_state = torch.matmul(self.A, self.embedding_state)
+            self.embedding_state = self.tanh(self.embedding_state)
+
+        self.liner = LineNetwork(input_features = d * 2, output_features = 2, hidden_features = d)
+        self.cross_entropy = nn.CrossEntropyLoss()
+
+
+
+    def pre_handle(self, A):
+        D = torch.sum(A, dim = -1, keepdim = False)
+        D = D ** (-1 / 2)
+        D = torch.diag(D)
+
+        L = torch.matmul(D, A)
+        L = torch.matmul(L, D)
+        return L
+
+    def forward(self, *input):
+        pairs = input[0]
+        labels = input[1]
+        node_indexes = pairs.permute([1, 0])
+        src_node_indexes = node_indexes[0]
+        dst_node_indexes = node_indexes[1]
+        src_node_embeddings = self.embedding_state.index_select(dim = 0, index = src_node_indexes)
+        dst_node_embeddings = self.embedding_state.index_select(dim = 0, index = dst_node_indexes)
+        liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        output = self.liner(liner_input)
+        loss = self.cross_entropy(output, labels)
+        return loss
+
+
+    def test(self, edges):
+        edges = edges.permute([1, 0])
+        src_node_indexes = edges[0]
+        dst_node_indexes = edges[1]
+        src_node_embeddings = self.embedding_state.index_select(dim=0, index=src_node_indexes)
+        dst_node_embeddings = self.embedding_state.index_select(dim=0, index=dst_node_indexes)
+        liner_input = torch.cat([src_node_embeddings, dst_node_embeddings], dim = 1)
+        predictions = self.liner(liner_input)
+        return predictions
+
+class MihGNNEmbedding10(nn.Module):
+    def __init__(self,A, As, all_nodes_neighbors, N, d, layers, steps, delay, GPU = False):
+        super(MihGNNEmbedding10, self).__init__()
+        self.A = Matrix_pre_handle(A, steps, delay)
+        self.A = torch.tensor(self.A, dtype = torch.float)
+        self.d = d
+        self.e = torch.tensor(math.e, dtype=torch.float)
+        self.layers = layers
+        self.As = As
+        self.all_nodes_neighbors = all_nodes_neighbors
+        embedding_state = numpy.random.randn(N, d)
+        embedding_state = torch.tensor(data=embedding_state, dtype=torch.float)
+        self.aggregationModule = MihGNNAggregationModule(A = self.A, As=As, all_nodes_neighbors = all_nodes_neighbors,
+                                                      convolution_layers=layers, d=d,
+                                                      embedding_states=embedding_state)
+        self.liner = LineNetwork(input_features=d * 2, output_features=2, hidden_features=d)
+        self.soft_max = nn.Softmax(dim = -1)
+        self.cross_entropy = nn.CrossEntropyLoss()
+
+    def forward(self, *input):
+        pairs = input[0]
+        labels = input[1]
+        node_indexes = pairs.permute([1, 0])
+        src_node_indexes = node_indexes[0]
+        dst_node_indexes = node_indexes[1]
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        node_embeddings = torch.cat([src_node_embeddings, dst_node_embeddings], dim = -1)
+        predictions = self.soft_max(node_embeddings)
+        loss = self.cross_entropy(predictions, labels)
+        return loss
+
+    def test(self, edges):
+        edges = edges.permute([1, 0])
+        src_node_indexes = edges[0]
+        dst_node_indexes = edges[1]
+
+        src_node_embeddings = self.aggregationModule(src_node_indexes)
+        dst_node_embeddings = self.aggregationModule(dst_node_indexes)
+        node_embeddings = torch.cat([src_node_embeddings, dst_node_embeddings], dim=-1)
+        predicts = self.soft_max(node_embeddings)
+        return predicts

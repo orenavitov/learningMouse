@@ -112,7 +112,7 @@ if torch.cuda.is_available():
 else:
     GPU = False
 
-G, A, edges, nodes, neighbors = process_gml_file(file_address)
+G, A, nodes, all_neighbors, As = process_gml_file(file_address)
 train_loader, test_loader, A_test = getDataLoader(A, radio=radio, batch_size=batchSize, sample_method=sample_method)
 if module_name == 'DeepWalk':
     module = Deep_Walk(G=G, A=A_test, walk_length=walk_length, embed_size=embed_size, window_size=window_size,

@@ -9,7 +9,7 @@ import numpy
 from Tools import process_gml_file
 
 
-G, A, edges, nodes, neighbors = process_gml_file(
+G, A, nodes, all_neighbors, As = process_gml_file(
         r"D:\ComplexNetworkData\Complex Network Datasets\For Link Prediction\metabolic\metabolic.gml")
 node_number = len(nodes)
 # CommonNeighbors

@@ -6,7 +6,7 @@ from torch.utils import data as Data
 from Tools import process_gml_file
 import torch.optim as optim
 
-G, A, edges, nodes, neighbors = process_gml_file(
+G, A, nodes, all_neighbors, As = process_gml_file(
         r"C:\Users\mihao\Desktop\米昊的东西\input.gml")
 
 def getDataLoader(A, radio):

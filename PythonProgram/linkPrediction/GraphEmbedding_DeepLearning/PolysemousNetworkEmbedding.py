@@ -2,6 +2,7 @@ import torch
 from torch import nn
 import numpy
 from torch.nn import Parameter
+from GraphEmbedding_DeepLearning.NN import LineNetwork
 
 class PriorDistribution(nn.Module):
     def __init__(self, A, K, alpha, GPU = False):
@@ -51,7 +52,7 @@ class PolysemousGcnLayer(nn.Module):
         self.relu = nn.ReLU()
     # input : [K, batch_size, d]
     def forward(self, input):
-        output = []
+        # output = []
         for layer in range(self.layers):
             layer_output = []
             layer_weight = self.weights[layer]
@@ -63,15 +64,15 @@ class PolysemousGcnLayer(nn.Module):
                 layer_output.append(layer_k_output)
             layer_output = torch.stack(layer_output, dim = 0) # [K, batch_size, d]
             input = layer_output
-            layer_output = layer_output.permute([1, 0, 2]) #[batch_size, K, d]
-            output.append(layer_output)
-        output = torch.stack(output, dim = 0)  # [layer, batch_size, K, d]
-        output = torch.mean(output, dim = 0)
-
+            # layer_output = layer_output.permute([1, 0, 2]) #[batch_size, K, d]
+            # output.append(layer_output)
+        # output = torch.stack(output, dim = 0)  # [layer, batch_size, K, d]
+        # output = torch.sum(output, dim = 0)   # [batch_size, K, d]
+        output = input.permute([1, 0, 2])
         return output
 
 class PolysemousNetwork(nn.Module):
-    def __init__(self, A, embedding_size, layers, K, GPU = False):
+    def __init__(self, P, A, embedding_size, layers, K, GPU = False):
         super(PolysemousNetwork, self).__init__()
         N = A.shape[0]
         self.A = torch.tensor(A, dtype = torch.float)
@@ -79,9 +80,7 @@ class PolysemousNetwork(nn.Module):
         self.K = K
         self.layers = layers
         self.GPU = GPU
-        self.prior_distribution_matrix = torch.randn([N, K])
-        self.prior_distribution_matrix = self.prior_distribution_matrix / torch.sum(self.prior_distribution_matrix, dim = 1, keepdim = True)
-        self.prior_distribution_matrix = Parameter(self.prior_distribution_matrix, requires_grad = True)
+        self.prior_distribution_matrix = P
         self.embedding_state = torch.randn(size = [K, N, embedding_size], dtype = torch.float)
         self.GCN_layer = PolysemousGcnLayer(layers = self.layers, K = self.K, embedding_size = self.embedding_size)
         self.add_module(name = "GCN_layer", module = self.GCN_layer)
@@ -108,8 +107,8 @@ class PolysemousNetwork(nn.Module):
             src_nodes_embeddings.append(src_nodes_k_embeddings) #[K, batch_size, d]
             dst_nodes_k_embeddings = torch.matmul(dst_nodes_neighbors, self.embedding_state[k])
             dst_nodes_embeddings.append(dst_nodes_k_embeddings) #[K, batch_size, d]
-        src_nodes_embeddings = self.GCN_layer(src_nodes_embeddings)
-        dst_nodes_embeddings = self.GCN_layer(dst_nodes_embeddings)
+        src_nodes_embeddings = self.GCN_layer(src_nodes_embeddings) # [batch_size, K, d]
+        dst_nodes_embeddings = self.GCN_layer(dst_nodes_embeddings) # [batch_size, K, d]
         src_nodes_embeddings = src_nodes_embeddings.unsqueeze(dim = 2)
         src_nodes_embeddings = src_nodes_embeddings.repeat([1, 1, self.K, 1]).reshape(-1, self.K, self.K, self.embedding_size) #[batch_size, K, K, d]
         dst_nodes_embeddings = dst_nodes_embeddings.repeat([1, self.K, 1]).reshape(-1, self.K, self.K, self.embedding_size) #[batch_size, K, K, d]
@@ -160,3 +159,104 @@ class PolysemousNetwork(nn.Module):
         similarity = torch.sum(similarity, dim=-1, keepdim=False)  # [batch_size, K]
         similarity = torch.sum(similarity, dim=-1, keepdim=False)  # [batch_size, ]
         return similarity
+
+class MihPolysemousNetwork(nn.Module):
+    def __init__(self, P, A, embedding_size, layers, K, GPU = False):
+        super(MihPolysemousNetwork, self).__init__()
+        N = A.shape[0]
+        self.A = torch.tensor(A, dtype = torch.float)
+        self.embedding_size = embedding_size
+        self.K = K
+        self.layers = layers
+        self.GPU = GPU
+        self.prior_distribution_matrix = P
+        self.embedding_state = torch.randn(size = [K, N, embedding_size], dtype = torch.float)
+        self.GCN_layer = PolysemousGcnLayer(layers = self.layers, K = self.K, embedding_size = self.embedding_size)
+        self.add_module(name = "GCN_layer", module = self.GCN_layer)
+        self.relu = nn.ReLU()
+
+        self.weight1 = torch.randn(size = [K, embedding_size], dtype = torch.float)
+        self.weight1 = Parameter(self.weight1, requires_grad = True)
+        self.weight2 = torch.randn(size=[K, embedding_size], dtype=torch.float)
+        self.weight2 = Parameter(self.weight2, requires_grad=True)
+        self.outputLinerNetwork = LineNetwork(input_features = self.embedding_size * 2, hidden_features = self.embedding_size, output_features = 2)
+        self.cross_entropy = nn.CrossEntropyLoss()
+
+
+    def forward(self, *input):
+        pairs = input[0]
+        labels = input[1]
+        pairs = pairs.permute([1, 0])
+        src_nodes = pairs[0] #[batch_size, ]
+        dst_nodes = pairs[1] #[batch_size, ]
+        src_nodes_prior_distribution = self.prior_distribution_matrix.index_select(dim = 0, index = src_nodes) #[batch_size, K]
+        src_nodes_prior_distribution = src_nodes_prior_distribution.repeat([1, self.embedding_size])\
+                                                                   .view([-1, self.K, self.embedding_size]) #[batch_size, K, d]
+        dst_nodes_prior_distribution = self.prior_distribution_matrix.index_select(dim = 0, index = dst_nodes) #[batch_size, K]
+        dst_nodes_prior_distribution = dst_nodes_prior_distribution.repeat([1, self.embedding_size])\
+                                                                   .view([-1, self.K, self.embedding_size])  # [batch_size, K, d]
+        src_nodes_neighbors = self.A.index_select(dim = 0, index = src_nodes)
+        dst_nodes_neighbors = self.A.index_select(dim = 0, index = dst_nodes)
+
+        src_nodes_embeddings = []
+        dst_nodes_embeddings = []
+
+        for k in range(self.K):
+            src_nodes_k_embeddings = torch.matmul(src_nodes_neighbors, self.embedding_state[k])
+            src_nodes_embeddings.append(src_nodes_k_embeddings) #[K, batch_size, d]
+            dst_nodes_k_embeddings = torch.matmul(dst_nodes_neighbors, self.embedding_state[k])
+            dst_nodes_embeddings.append(dst_nodes_k_embeddings) #[K, batch_size, d]
+        src_nodes_embeddings = self.GCN_layer(src_nodes_embeddings) # [batch_size, K, d]
+        dst_nodes_embeddings = self.GCN_layer(dst_nodes_embeddings) # [batch_size, K, d]
+
+        src_nodes_embeddings = torch.mul(src_nodes_embeddings, self.weight1) # [batch_Size, K, d]
+        src_nodes_embeddings = torch.mul(src_nodes_embeddings, self.weight2)  # [batch_Size, K, d]
+        src_nodes_embeddings = torch.mul(src_nodes_embeddings, src_nodes_prior_distribution) # [batch_Size, K, d]
+        src_nodes_embeddings = torch.sum(src_nodes_embeddings, dim = 1, keepdim = False) # [batch_Size, d]
+        dst_nodes_embeddings = torch.mul(dst_nodes_embeddings, self.weight1)  # [batch_Size, K, d]
+        dst_nodes_embeddings = torch.mul(dst_nodes_embeddings, self.weight2)
+        dst_nodes_embeddings = torch.mul(dst_nodes_embeddings, dst_nodes_prior_distribution)  # [batch_Size, K, d]
+        dst_nodes_embeddings = torch.sum(dst_nodes_embeddings, dim=1, keepdim=False)  # [batch_Size, d]
+        edges_embeddings = torch.cat([src_nodes_embeddings, dst_nodes_embeddings], dim = -1)
+        output = self.outputLinerNetwork(edges_embeddings)
+        loss = self.cross_entropy(output, labels)
+        return loss
+
+    def test(self, *input):
+        pairs = input[0]
+        pairs = pairs.permute([1, 0])
+        src_nodes = pairs[0]  # [batch_size, ]
+        dst_nodes = pairs[1]  # [batch_size, ]
+        src_nodes_prior_distribution = self.prior_distribution_matrix.index_select(dim=0,
+                                                                                   index=src_nodes)  # [batch_size, K]
+        src_nodes_prior_distribution = src_nodes_prior_distribution.repeat([1, self.embedding_size]) \
+            .view([-1, self.K, self.embedding_size])  # [batch_size, K, d]
+        dst_nodes_prior_distribution = self.prior_distribution_matrix.index_select(dim=0,
+                                                                                   index=dst_nodes)  # [batch_size, K]
+        dst_nodes_prior_distribution = dst_nodes_prior_distribution.repeat([1, self.embedding_size]) \
+            .view([-1, self.K, self.embedding_size])  # [batch_size, K, d]
+        src_nodes_neighbors = self.A.index_select(dim=0, index=src_nodes)
+        dst_nodes_neighbors = self.A.index_select(dim=0, index=dst_nodes)
+
+        src_nodes_embeddings = []
+        dst_nodes_embeddings = []
+
+        for k in range(self.K):
+            src_nodes_k_embeddings = torch.matmul(src_nodes_neighbors, self.embedding_state[k])
+            src_nodes_embeddings.append(src_nodes_k_embeddings)  # [K, batch_size, d]
+            dst_nodes_k_embeddings = torch.matmul(dst_nodes_neighbors, self.embedding_state[k])
+            dst_nodes_embeddings.append(dst_nodes_k_embeddings)  # [K, batch_size, d]
+        src_nodes_embeddings = self.GCN_layer(src_nodes_embeddings)  # [batch_size, K, d]
+        dst_nodes_embeddings = self.GCN_layer(dst_nodes_embeddings)  # [batch_size, K, d]
+
+        src_nodes_embeddings = torch.mul(src_nodes_embeddings, self.weight1)  # [batch_Size, K, d]
+        src_nodes_embeddings = torch.mul(src_nodes_embeddings, self.weight2)
+        src_nodes_embeddings = torch.mul(src_nodes_embeddings, src_nodes_prior_distribution)  # [batch_Size, K, d]
+        src_nodes_embeddings = torch.sum(src_nodes_embeddings, dim=1, keepdim=False)  # [batch_Size, d]
+        dst_nodes_embeddings = torch.mul(dst_nodes_embeddings, self.weight1)  # [batch_Size, K, d]
+        dst_nodes_embeddings = torch.mul(dst_nodes_embeddings, self.weight2)
+        dst_nodes_embeddings = torch.mul(dst_nodes_embeddings, dst_nodes_prior_distribution)  # [batch_Size, K, d]
+        dst_nodes_embeddings = torch.sum(dst_nodes_embeddings, dim=1, keepdim=False)  # [batch_Size, d]
+        edges_embeddings = torch.cat([src_nodes_embeddings, dst_nodes_embeddings], dim=-1)
+        predictions = self.outputLinerNetwork(edges_embeddings)
+        return predictions

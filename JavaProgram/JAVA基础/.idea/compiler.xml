@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MutliThread" />
+        <module name="JUC" />
         <module name="ClassLoader" />
-        <module name="JCU" />
       </profile>
     </annotationProcessing>
   </component>

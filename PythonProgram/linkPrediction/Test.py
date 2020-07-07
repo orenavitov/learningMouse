@@ -41,11 +41,15 @@ def draw_graph(A):
     G = networkx.Graph()
     G.add_nodes_from(nodes)
     G.add_edges_from(edges)
-    for edge in G.edges:
-        print(edge)
-    networkx.draw(G, with_labels=True)
-    plt.show()
-
+    # for edge in G.edges:
+    #     print(edge)
+    # networkx.draw(G, with_labels=True)
+    # plt.show()
+    A = networkx.adjacency_matrix(G).todense()
+    neighbors = [i-1 for i in G.neighbors(1)]
+    sub_A = A[neighbors, :][:, neighbors]
+    print(neighbors)
+    print(sub_A)
 def Test3():
     G = networkx.Graph()
     nodes = numpy.arange(start = 1, stop = 6)
@@ -290,28 +294,24 @@ def Test18():
     # print("index:\n {0}".format(index))
 
 def Test19():
-    a = numpy.arange(0, 3).reshape([1, 3])
-    b = numpy.arange(3, 6).reshape([1, 3])
+    a = numpy.arange(0, 18).reshape([3, 2, 3])
     a = torch.tensor(a, dtype = torch.float)
     print(a)
+    b = numpy.arange(0, 6).reshape([3, 2])
     b = torch.tensor(b, dtype = torch.float)
     print(b)
-    a1 = a.repeat([3, 1])
-    print(a1)
-    a1 = a1.reshape([-1, 3, 3])
-    print(a1)
-    b1 = b.repeat([1, 3])
-    print(b1)
-    b1 = b1.reshape([-1, 3, 3])
-    print(b1)
+    c = torch.mul(a, b)
+    print(c)
 
 def Test20():
     a = numpy.array([
-        1, 2
+        [1, 2, 3],
+        [4, 5]
     ])
-    a = torch.tensor(a, dtype = torch.float)
-    index = torch.where(a == 3)[-1]
-    print(index)
-    print(len(index) == 0)
+    print(a)
+    a = [torch.tensor(i, dtype = torch.float).unsqueeze(dim = 0) for i in a]
+    print(a)
+    a = torch.cat(a, dim = 0)
+    print(a)
 if __name__ == '__main__':
-    Test20()
+    Test19()

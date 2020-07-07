@@ -68,12 +68,26 @@ def precision(A, Matrix_similarity, train_A, threshold):
 def process_gml_file(file = r'./Data/bio-GE-GT.gml'):
     G = networkx.read_gml(file)
     A = numpy.array(networkx.adjacency_matrix(G).todense())
-    edges = G.edges()
-    nodes = G.nodes()
-    neighbors = {}
+    N = A.shape[0]
+    nodes = range(0, N)
+    all_neighbors = []
     for node in nodes:
-        neighbors[node] = G[node]
-    return G, A, edges, nodes, neighbors
+        node_neighbors = []
+        for index, value in enumerate(A[node]):
+            if value > 0:
+                node_neighbors.append(index)
+        node_neighbors.append(node)
+        all_neighbors.append(node_neighbors)
+    all_neighbors = numpy.array(all_neighbors)
+    As = []
+    for node in nodes:
+        node_neighbors = all_neighbors[node]
+        n = len(node_neighbors)
+        sub_A = A[node_neighbors, :][ : , node_neighbors]
+        sub_A = sub_A + numpy.eye(n)
+        As.append(sub_A)
+    As = numpy.array(As)
+    return G, A, nodes, all_neighbors, As
 
 # 生成GML文件
 # src file 为源文件， 源文件格式为边的信息， 如“src dst”
@@ -108,12 +122,12 @@ def get_test_matrix(A, keep_radio):
     return c_A
 
 # 寻找介数为steps 的邻居节点
-def get_steps_neighbor(A, steps):
+def get_steps_neighbor(A, hops):
     neighbors = []
-    for step in range(steps):
+    for hop in range(hops):
         A_current = copy.deepcopy(A)
         e = 1
-        while (e < (step + 1)):
+        while (e < (hop + 1)):
             A_current = numpy.matmul(A_current, A)
             e = e + 1
         neighbors_step = []
@@ -299,6 +313,8 @@ def cal_cos_similary(src, dst):
     result = result / numpy.matmul(x_1, x_2)
     return result
 
+
+
 if __name__ == '__main__':
-    generate_gml_file(r'C:\Users\mihao\Desktop\米昊的东西\USAir.txt',
-                      r'C:\Users\mihao\Desktop\米昊的东西\USAir.gml')
+    generate_gml_file(r'C:\Users\mihao\Desktop\米昊的东西\dataset\Yeast.txt',
+                      r'C:\Users\mihao\Desktop\米昊的东西\Yeast.gml')

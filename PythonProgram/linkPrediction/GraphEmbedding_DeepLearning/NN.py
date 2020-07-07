@@ -22,8 +22,8 @@ class LineNetwork(nn.Module):
 
         self.line3 = nn.Sequential(
             nn.Linear(hidden_features, output_features, bias=False),
-            nn.Dropout(p=0.5),
-            nn.ReLU()
+            # nn.Dropout(p=0.5),
+            nn.Softmax(dim = -1)
         )
 
 
