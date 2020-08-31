@@ -231,6 +231,28 @@ foreign key(id) references table1(id)
 constraint 外键名 foreign key(id) references table1(id)
 
 ````
+
+### 查看表的结构
+
+```
+DESC table
+```
+
+### 查看表的相关信息
+
+```
+show table status like 'employees';
+```
+
+### 查看数据库中所有表的信息
+```
+use information_schema;
+
+select table_name, table_rows from tables where table_schema = 'employees' order by table_rows desc;
+```
+
+employees为数据库名
+
 ### alter操作
 
 1. change (与modify相比可以改名字)
@@ -271,6 +293,29 @@ alter table table1 alter col1 set default n;
 ### default value
 
 
+### 创建索引
+
+```
+alter tableName add index indexName(columnList)
+
+create index indexName on tableName(columnList)
+
+```
+
+### 删除索引
+
+```
+drop index indexName on tableName
+
+alter table tableName drop index indexName
+
+```
+
+### 查看索引
+
+```
+show index from tableName;
+```
 
 ## Mysql运算表达式与函数
 

@@ -10,14 +10,24 @@ public class MyClassLoader extends ClassLoader {
 
     private String dir;
 
+    private String classPath;
+
+    private final String name = "MyClassLoader";
+
     public MyClassLoader() {
         super();
     }
 
-    public MyClassLoader(String classLoaderName) {
-        super();
-        this.classLoaderName = classLoaderName;
+    public MyClassLoader(String classPath) {
+//        super();
+        this.classPath = classPath;
+
     }
+
+//    public MyClassLoader(String classLoaderName) {
+//        super();
+//        this.classLoaderName = classLoaderName;
+//    }
 
     public MyClassLoader(String classLoaderName, ClassLoader parent) {
         super(parent);
@@ -40,8 +50,8 @@ public class MyClassLoader extends ClassLoader {
     @Override
     protected Class<?> findClass(String name) {
         try {
-            String classPath = name.replace('.', '/');
-            File classFile = new File(classPath + ".class");
+
+            File classFile = new File(classPath);
             if (!classFile.exists()) {
                 throw new ClassNotFoundException(dir + name + " not found!");
             }
@@ -72,5 +82,10 @@ public class MyClassLoader extends ClassLoader {
             return null;
         }
 
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

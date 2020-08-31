@@ -11,7 +11,8 @@ class LineNetwork(nn.Module):
         super(LineNetwork, self).__init__()
         self.line1 = nn.Sequential(
             nn.Linear(input_features, hidden_features, bias=True),
-            nn.Dropout(p=0.5),
+            # nn.Dropout(p=0.5),
+            nn.BatchNorm1d(num_features = hidden_features),
             nn.ReLU()
         )
         self.line2 = nn.Sequential(
@@ -22,8 +23,8 @@ class LineNetwork(nn.Module):
 
         self.line3 = nn.Sequential(
             nn.Linear(hidden_features, output_features, bias=False),
-            # nn.Dropout(p=0.5),
-            nn.Softmax(dim = -1)
+            nn.BatchNorm1d(num_features = output_features),
+            nn.ReLU()
         )
 
 

@@ -9,7 +9,7 @@ from sklearn.metrics import roc_auc_score
 
 # TheHubDepressed Index
 # auc: 0.9210816798183674
-def HDI(MatrixAdjacency_Train):
+def HDI(MatrixAdjacency_Train, MatrixAdjacency_Real):
     # 节点数
     N = MatrixAdjacency_Train.shape[0]
     # link标签， 存在为1， 不存在为0
@@ -20,8 +20,12 @@ def HDI(MatrixAdjacency_Train):
     for i in range(N):
         for j in range(N):
             if i != j:
-                link_label.append(MatrixAdjacency_Train[i][j])
-                score = 2 * A_sqrt[i][j] / max(sum(MatrixAdjacency_Train[i]), sum(MatrixAdjacency_Train[j]))
-                link_score.append(score)
+                link_label.append(MatrixAdjacency_Real[i][j])
+                temp = max(sum(MatrixAdjacency_Train[i]), sum(MatrixAdjacency_Train[j]))
+                if (temp == 0):
+                    link_score.append(0)
+                else:
+                    score = 2 * A_sqrt[i][j] / temp
+                    link_score.append(score)
     auc = roc_auc_score(link_label, link_score)
     return auc

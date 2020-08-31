@@ -69,6 +69,58 @@ class MihGNNAggregationModule(GNNAggregationBaseModule):
 
         return current_aggregation_embedding_states
 
+# name: GNNAggregationModule
+class MihGNNAggregationModule2(GNNAggregationBaseModule):
+    def __init__(self, A, As, all_nodes_neighbors, convolution_layers, d, embedding_states):
+        super(MihGNNAggregationModule2, self).__init__(A, As, all_nodes_neighbors, convolution_layers, d, embedding_states)
+        self.tanh = nn.Tanh()
+        self.relu = nn.ReLU()
+
+    def forward(self, *input):
+        node_indexes = input[0]
+        nodes_neighbors = self.A.index_select(dim = 0, index = node_indexes)
+
+        current_aggregation_embedding_states = torch.matmul(nodes_neighbors, self.embedding_states)
+        node_embeddings = []
+        for layer in range(self.convolution_layers):
+            line = self.layer_lines[layer]
+            layer_node_embeddings = line(current_aggregation_embedding_states)
+            layer_node_embeddings = self.tanh(layer_node_embeddings)
+            node_embeddings.append(layer_node_embeddings)
+        node_embeddings = torch.stack(node_embeddings, dim = 0)
+        node_embeddings = torch.sum(node_embeddings, dim = 0)
+        return node_embeddings
+
+# name: GNNAggregationModule
+class MihGNNAggregationModuleWithConv1d(GNNAggregationBaseModule):
+    def __init__(self, A, As, all_nodes_neighbors, convolution_layers, d, embedding_states):
+        super(MihGNNAggregationModuleWithConv1d, self).__init__(A, As, all_nodes_neighbors, convolution_layers, d, embedding_states)
+        self.d = d
+        self.cov1d1 = nn.Conv1d(in_channels = 1, out_channels = 4, kernel_size = 2, stride = 2) # [batch_size, 4, d / 2]
+        self.pool1d1 = nn.MaxPool1d(kernel_size = 2, stride = 2)                                # [batch_size, 4, d / 4]
+        self.cov1d2 = nn.Conv1d(in_channels = 4, out_channels = 8, kernel_size = 2, stride = 2) # [batch_size, 8, d / 8]
+        self.pool1d2 = nn.MaxPool1d(kernel_size=2, stride=2)                                    # [batch_size, 8, d / 16]
+        self.tanh = nn.Tanh()
+        self.relu = nn.ReLU()
+
+    def forward(self, *input):
+        node_indexes = input[0]
+        nodes_neighbors = self.A.index_select(dim = 0, index = node_indexes)
+
+        current_aggregation_embedding_states = torch.matmul(nodes_neighbors, self.embedding_states)
+        for layer in range(self.convolution_layers):
+            line = self.layer_lines[layer]
+            current_aggregation_embedding_states = line(current_aggregation_embedding_states)
+            current_aggregation_embedding_states = self.tanh(current_aggregation_embedding_states)
+        current_aggregation_embedding_states = current_aggregation_embedding_states.unsqueeze(dim = 1)
+        current_aggregation_embedding_states = self.cov1d1(current_aggregation_embedding_states)
+        current_aggregation_embedding_states = self.pool1d1(current_aggregation_embedding_states)
+        current_aggregation_embedding_states = self.cov1d2(current_aggregation_embedding_states)
+        current_aggregation_embedding_states = self.pool1d2(current_aggregation_embedding_states)
+        current_aggregation_embedding_states = current_aggregation_embedding_states.view([-1, int(self.d / 2)])
+        return current_aggregation_embedding_states
+
+
 class GNNAggregationForNegativeModule(GNNAggregationBaseModule):
     def __init__(self, A, As, all_nodes_neighbors, convolution_layers, d, embedding_states):
         super(GNNAggregationForNegativeModule, self).__init__(A, As, all_nodes_neighbors, convolution_layers, d, embedding_states)
@@ -122,6 +174,7 @@ class GNNAggregationWithAttentionModule(GNNAggregationBaseModule):
     # input: node
     # output: embedding
     def forward(self, *input):
+
         node_indexes = input[0]
         input_nodes_result_embeddings = []
         neighbors_information = self.A.index_select(index = node_indexes, dim = 0)
@@ -129,18 +182,18 @@ class GNNAggregationWithAttentionModule(GNNAggregationBaseModule):
             center_node_index = node_indexes[i]
             center_node_embedding = self.embedding_states.index_select(index = center_node_index, dim = 0).squeeze()
             neighbors_indexes = torch.where(each_node_neighbors_information > 0)[0]
-            if (len(neighbors_indexes) == 0):
+            neighbors_size = neighbors_indexes.shape[0]
+            if (neighbors_size == 0):
                 input_nodes_result_embeddings.append(center_node_embedding)
             else:
-                neighbors_embedding = self.embedding_states.index_select(index = neighbors_indexes, dim = 0)
-                node_result_embeddings = []
-                for neighbor_embedding in neighbors_embedding:
-                    embedding = torch.cat([center_node_embedding, neighbor_embedding], dim = -1)
-                    attention_score = self.fc(embedding)
-                    attention_score = self.leakyRelu(attention_score)
-                    node_result_embeddings.append(attention_score * neighbor_embedding)
-                node_result_embeddings = torch.stack(node_result_embeddings, dim = 0)
-                node_result_embeddings = torch.sum(node_result_embeddings, dim = 0)
+                neighbors_embedding = self.embedding_states.index_select(index=neighbors_indexes, dim=0)
+                repeated_center_node_embedding = center_node_embedding.unsqueeze(dim = 0).repeat([neighbors_size, 1])
+                embedding = torch.cat([repeated_center_node_embedding, neighbors_embedding], dim = -1)
+                attention_score = self.fc(embedding)
+                attention_score = self.leakyRelu(attention_score)
+                neighbors_embedding = attention_score * neighbors_embedding
+                node_result_embeddings = torch.sum(neighbors_embedding, dim=0)
+
                 node_result_embeddings = node_result_embeddings + center_node_embedding
                 input_nodes_result_embeddings.append(node_result_embeddings)
         input_nodes_result_embeddings = torch.stack(input_nodes_result_embeddings, dim = 0)

@@ -7,13 +7,15 @@ import scipy.sparse as sp
 import numpy
 import networkx
 import matplotlib.pyplot as plt
-
+from torch import nn
 from copy import copy
 from Tools import get_test_matrix
 import torch
 from GraphEmbedding_RandomWalk.NN import LineNetwork
 import openpyxl
+import math
 from openpyxl.styles import PatternFill
+from matplotlib.pyplot import MultipleLocator
 
 # 定义一张用于测试的图, A表示改图的邻接矩阵
 A = numpy.array([
@@ -39,6 +41,7 @@ def draw_graph(A):
             j = j + 1
     # 绘制无向图
     G = networkx.Graph()
+    edges = G.edges
     G.add_nodes_from(nodes)
     G.add_edges_from(edges)
     # for edge in G.edges:
@@ -304,14 +307,49 @@ def Test19():
     print(c)
 
 def Test20():
-    a = numpy.array([
-        [1, 2, 3],
-        [4, 5]
-    ])
-    print(a)
-    a = [torch.tensor(i, dtype = torch.float).unsqueeze(dim = 0) for i in a]
-    print(a)
-    a = torch.cat(a, dim = 0)
-    print(a)
+    a = [1, 2]
+    weight = [10, 1]
+    label = [1]
+    label_tensor = torch.tensor(label, dtype = torch.long)
+    weight_tensor = torch.tensor(weight, dtype = torch.float)
+    a_tensor = torch.tensor(a, dtype = torch.float).unsqueeze(dim = 0)
+    # soft_max = nn.Softmax(dim = -1)
+    cross_entropy = nn.CrossEntropyLoss(weight = weight_tensor, reduction = 'sum')
+    cross_entropy_result = cross_entropy(a_tensor, target = label_tensor)
+    print("cross_entropy_result : {0}".format(cross_entropy_result))
+
+def Test21():
+    # X = [
+    #     [1, 2],
+    #     [3, 4]
+    # ]
+    # file = r"C:\Users\mihao\Desktop\test.txt"
+    # numpy.savetxt(fname = file, X = X, fmt = '%d')
+    file = r".\Data\USAir.gml"
+    G = networkx.read_gml(file)
+    edges = G.edges
+    print(edges)
+
+def Test22():
+    X_names = ["A", "B"]
+    Y_values = [95.1, 96.2]
+    Y_values_2 = [90.2, 91.5]
+    Y_values_3 = [93.2, 96.1]
+    index = numpy.arange(len(X_names))
+    plt.bar(x = index - 0.2, height = Y_values, width = 0.2, fc = 'b', label = 'b')
+    plt.bar(x=index, height=Y_values_2, width = 0.2, fc='g', label = 'g')
+    plt.bar(x=index + 0.2, height=Y_values_3, width = 0.2, fc='r', label = 'r')
+    plt.legend()
+    # 设置Y轴的刻度范围【90， 100】
+    plt.ylim(90, 100)
+    # 设置Y轴的最小刻度1
+    y_major_locator = MultipleLocator(1)
+    ax = plt.gca()
+    ax.yaxis.set_major_locator(y_major_locator)
+    plt.legend()
+    x = range(len(X_names))
+    plt.xticks(x, ["A", "B"])
+    plt.show()
+
 if __name__ == '__main__':
-    Test19()
+    Test20()

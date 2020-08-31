@@ -12,20 +12,20 @@ class LineNetwork(nn.Module):
 
         self.line1 = nn.Sequential(
             nn.Linear(feature_dim, hidden_layer_dim, bias=True),
-            nn.Dropout(p=0.3),
-            nn.ReLU()
+            # nn.Dropout(p=0.3),
+            nn.Tanh()
         )
         self.line2 = nn.Sequential(
             nn.Linear(hidden_layer_dim, hidden_layer_dim, bias=True),
-            nn.Dropout(p=0.2),
-            nn.ReLU()
+            # nn.Dropout(p=0.2),
+            nn.Tanh()
         )
 
 
         self.line3 = nn.Sequential(
             nn.Linear(hidden_layer_dim, output_dim, bias=False),
-            nn.Dropout(p=0.2),
-            nn.ReLU()
+            # nn.Dropout(p=0.2),
+            nn.Tanh()
         )
 
     def forward(self, input):

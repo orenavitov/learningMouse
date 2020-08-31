@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MutliThread" />
-        <module name="JUC" />
         <module name="ClassLoader" />
+        <module name="JUC" />
+        <module name="Some" />
+        <module name="MutliThread" />
       </profile>
     </annotationProcessing>
   </component>

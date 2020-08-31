@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+       Copyright 2015-2019 the original author or authors.
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace对应接口全限定名 -->
+<mapper namespace="Mih.demo.Mappers.StudentMapper">
+    <resultMap id="Student" type="Mih.demo.Modules.Student" >
+        <result column="s_id" jdbcType="VARCHAR" property="number" />
+        <result column="s_name" jdbcType="VARCHAR" property="name" />
+        <result column="s_birth" jdbcType="VARCHAR" property="birthday" />
+        <result column="s_sex" jdbcType="VARCHAR" property="sex" />
+    </resultMap>
+    <!-- id 与接口中方法的名称必须一致 -->
+    <select id="getStudentByNumber" parameterType="string" resultMap="Student">
+        select a.* from student as a where a.s_id = #{s_id}
+    </select>
+</mapper>

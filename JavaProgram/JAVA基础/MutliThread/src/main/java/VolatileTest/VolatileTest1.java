@@ -10,7 +10,7 @@ package VolatileTest;
  */
 public class VolatileTest1 {
 
-    private static volatile int INIT_VALUE = 0;
+    private static int INIT_VALUE = 0;
 
     private final static int MAX_LIMIT = 30;
 
@@ -20,18 +20,19 @@ public class VolatileTest1 {
             @Override
             public void run() {
                 int localValue = INIT_VALUE;
-                while (localValue <= MAX_LIMIT) {
+                while (localValue < MAX_LIMIT) {
                     int j = INIT_VALUE;
                     if (localValue != j) {
                         System.out.println(Thread.currentThread().getName() + ":" + "The value upated to " + INIT_VALUE);
                         localValue = INIT_VALUE;
+                        System.out.println("localValue : " + localValue);
                     }
 
-//                    try {
-//                        Thread.sleep(50);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
@@ -45,11 +46,11 @@ public class VolatileTest1 {
 
                     System.out.println(Thread.currentThread().getName() + ":" + "Update the value to " + (++localValue));
                     INIT_VALUE = localValue;
-//                    try {
-//                        Thread.sleep(50);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };

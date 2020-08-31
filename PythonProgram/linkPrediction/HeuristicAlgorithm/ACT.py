@@ -5,15 +5,10 @@
 '''
 import numpy
 from sklearn.metrics import roc_auc_score
-from Tools import process_gml_file
 
-G, A, nodes, all_neighbors, As = process_gml_file(
-        r"D:\ComplexNetworkData\Complex Network Datasets\For Link Prediction\metabolic\metabolic.gml")
-node_number = len(nodes)
 
 # AverageCommuteTime
-# auc: 0.8987037529479779
-def ACT(MatrixAdjacency_Train):
+def ACT(MatrixAdjacency_Train, MatrixAdjacency_Real):
     # 节点数
     N = MatrixAdjacency_Train.shape[0]
     # link标签， 存在为1， 不存在为0
@@ -27,7 +22,7 @@ def ACT(MatrixAdjacency_Train):
     for i in range(N):
         for j in range(N):
             if i != j:
-                link_label.append(MatrixAdjacency_Train[i][j])
+                link_label.append(MatrixAdjacency_Real[i][j])
                 score = 1 / (INV_Matrix_Laplacian[i][i] + INV_Matrix_Laplacian[j][j] -
                              2 * INV_Matrix_Laplacian[i][j])
                 link_score.append(score)

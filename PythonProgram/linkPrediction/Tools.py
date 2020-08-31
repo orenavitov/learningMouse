@@ -106,6 +106,19 @@ def generate_gml_file(srcfile, dstfile):
         G.add_nodes_from(nodes)
     networkx.write_gml(G, dstfile)
 
+def generate_txt_file(srcfile, dstfile):
+    G = networkx.read_gml(srcfile)
+    edges = G.edges
+    X = []
+    for edge in edges:
+        line = []
+        line.append(int(edge[0]))
+        line.append(int(edge[1]))
+        X.append(line)
+    numpy.savetxt(fname = dstfile, X = X, fmt = '%d')
+
+
+
 def find_common_neighbors(G, node1, node2):
     return networkx.common_neighbors(G, node1, node2)
 
@@ -236,6 +249,7 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
         test_data = test_positives
         numpy.random.shuffle(train_data)
         numpy.random.shuffle(test_data)
+        weight = [1, int(none_edges_size / edges_size)]
     if sample_method == 'under_sample':
         numpy.random.shuffle(positives)
         numpy.random.shuffle(negavives)
@@ -250,6 +264,7 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
         test_data = test_positives
         numpy.random.shuffle(train_data)
         numpy.random.shuffle(test_data)
+        weight = [1, 1]
     if sample_method == 'over_sample':
         pass
     A_test = numpy.zeros(shape=[node_number, node_number])
@@ -278,7 +293,7 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
         batch_size=batch_size,
         shuffle=True,
     )
-    return train_loader, test_loader, A_test
+    return train_loader, test_loader, A_test, weight
 
 # 计算介数为steps的邻接矩阵和
 def Matrix_pre_handle(A, steps, delay):
@@ -316,5 +331,5 @@ def cal_cos_similary(src, dst):
 
 
 if __name__ == '__main__':
-    generate_gml_file(r'C:\Users\mihao\Desktop\米昊的东西\dataset\Yeast.txt',
-                      r'C:\Users\mihao\Desktop\米昊的东西\Yeast.gml')
+    A = generate_random_graph(10, 0.2)
+    print(A)

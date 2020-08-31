@@ -1,10 +1,10 @@
 # shell指令
 
-* pwd 显示当前工作目录
+## pwd 显示当前工作目录
 
 ![imagetext](./pictures/p1.png)
 
-* ls -l
+## ls -l
 
 ![imagetext](./pictures/p2.png)
 
@@ -24,15 +24,15 @@ Jun 29 2018表示文件最后修改的时间；
 ls -l filename 可直接查看文件的信息
 
 
-* file 查看文件类型
+## file 查看文件类型
 
 ![imagetext](./pictures/p3.png)
 
-* less 查看文件内容（q键退出）
+## less 查看文件内容（q键退出）
 
 ![imagetext](./pictures/p4.png)
 
-* cp 复制文件
+## cp 复制文件
 
 cp [options] 文件名  目标文件
 
@@ -48,9 +48,9 @@ cp [options] 文件名  目标文件
 
 3. -a: 复制文件所有属性；
 
-* mv 移动或者重命名文件
+## mv 移动或者重命名文件
 
-宠用操作：
+常用操作：
 
 1. -u 将文件从一个目录移动到另一个目录只移动另一个目录中没有的或者目标目录中相应的更新的文件
 
@@ -58,7 +58,7 @@ mv file1 file2: 如果file2存在则覆盖file2， 如果file2不存在则相当
 
 mv dir1 dir2: 
 
-* rm删除文件
+## rm删除文件
 
 常用操作：
 
@@ -66,13 +66,13 @@ mv dir1 dir2:
 
 删除文件名带空格的文件： rm 'file name';
 
-* ln 创建链接
+## ln 创建链接
 
 ln file link 创建硬链接
 
 ln -s file link 创建软链接（符号链接）
 
-* 重定向
+## 重定向
 
 1. ">" : 此重定向会覆盖输出文件中的内容， 如果输入文件不存在则创建输出文件
 
@@ -88,7 +88,7 @@ ln -s file link 创建软链接（符号链接）
 
 3. 重定向中 0> 表示标准输入重定向， 1> 表示标准输出重定向， 2> 表示标准错误重定向；
 
-* cat 将输入文件(可以有多个输入文件)重定向(默认是标准输出)， 如果没有输入文件， 则默认键盘为输入文件
+## cat 将输入文件(可以有多个输入文件)重定向(默认是标准输出)， 如果没有输入文件， 则默认键盘为输入文件
 
 cat file 将查看文件的内容
 
@@ -100,7 +100,7 @@ cat file1 file2 将查看file1 和 file2的内容
 
 cat file1 file2 > file3 将file1 file2的内容输出到file3
 
-* 管道 “|”
+## 管道 “|”
 
 原test.txt中的内容：
 
@@ -110,17 +110,17 @@ cat file1 file2 > file3 将file1 file2的内容输出到file3
 
 ![imagetext](./pictures/p11.png)
 
-* wc 统计一个文件的行数、字数、字节数
+## wc 统计一个文件的行数、字数、字节数
 
 ![imagetext](./pictures/p12.png)
 
-* grep 用于匹配内容
+## grep 用于匹配内容
 
 首先ls指令将目录内容进行标准输出， “|” 将ls的输出与"grep"的输入进行连接， 匹配出包含“.txt”的文件；
 
 ![imagetext](./pictures/p13.png)
 
-* head/tail 打印文件的开头/结尾部分
+## head/tail 打印文件的开头/结尾部分
 
 head fileName 默认显示file的前10行内容， 使用“-n count”显示前count行内容
 
@@ -128,11 +128,11 @@ head fileName 默认显示file的前10行内容， 使用“-n count”显示前
 
 ![imagetext](./pictures/p15.png)
 
-* tee file 从标准输入读取数据， 输出到file(覆盖原内容)， 同时输出到标准输出
+## tee file 从标准输入读取数据， 输出到file(覆盖原内容)， 同时输出到标准输出
 
 ![imagetext](./pictures/p16.png)
 
-* 参数扩展
+## 参数扩展
 
 1. “*” 路径扩展
 
@@ -144,7 +144,7 @@ head fileName 默认显示file的前10行内容， 使用“-n count”显示前
 
 ![imagetext](./pictures/p18.png)
 
-* which file 显示可执行文件的路径， 注意参数一定是一个可执行文件
+## which file 显示可执行文件的路径， 注意参数一定是一个可执行文件
 
 ![imagetext](./pictures/p19.png)
 
@@ -158,7 +158,7 @@ head fileName 默认显示file的前10行内容， 使用“-n count”显示前
 
 3. ctrl + r将搜索之前使用的指令， 继续按ctrl + r将显示下一个匹配项， ctrl + j将搜索到的指令复制到终端， ctrl + c退出搜索
 
-* 三种引号："", '', `
+## 三种引号："", '', `
 
 1. 双引号""将除了 `, $之外的字符均作为普通字符
 
@@ -170,11 +170,11 @@ head fileName 默认显示file的前10行内容， 使用“-n count”显示前
 
 3. ``命令替换符
 
-* id 获取用户身份标识的相关信息
+## id 获取用户身份标识的相关信息
 
 ![imagetext](./pictures/p21.png)
 
-* chmod 更改文件的权限（只有超级用户和文件所有者可以更改权限）
+## chmod 更改文件的权限（只有超级用户和文件所有者可以更改权限）
 
 1. 八进制表示法: chmod 八进制数 fileName
 
@@ -184,7 +184,7 @@ head fileName 默认显示file的前10行内容， 使用“-n count”显示前
 
 ![imagetext](./pictures/p23.png)
 
-* umask 设置文件的默认权限
+## umask 设置文件的默认权限
 
 首先一个文件默认的权限是“-rw-rw-rw-”， umask后跟4位八进制数（第一位用于设置特殊权限）， 后3位， 转化成二进制1出现的位置将取消该权限；
 
@@ -206,15 +206,15 @@ chown ower:group 将fileName文件所有者改为ower， 将fileName所属组改
 
 * “~”  ~用户名， 将显示该用户的主目录
 
-* ps: 显示当前所有进程的运行情况
+## ps: 显示当前所有进程的运行情况
 
 直接使用ps指令输出的内容很少， 可以使用 ps aux 将输出所有用户的所有进程
 
-* top: 实时显示当前所有任务的资源占用情况
+## top: 实时显示当前所有任务的资源占用情况
 
 ![imagetext](./pictures/p25.png)
 
-* 控制进程运行
+## 控制进程运行
 
 以gedit程序为例
 
@@ -253,6 +253,8 @@ printenv只能打印环境变量;
 * export: 将环境导出到随后要运行的程序中
 
 * alias: 为命令创建一个别名
+
+
 
 ## 软件包系统
 

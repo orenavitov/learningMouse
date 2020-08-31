@@ -30,18 +30,20 @@ class Deep_Walk(nn.Module):
         self.get_embedding(embed_size=embed_size, window_size=window_size, workers=workers, iter=iter)
 
         self.line = LineNetwork(feature_dim = self.embed_size * 2, hidden_layer_dim = self.embed_size, output_dim = 2)
+        self.softMax = nn.Softmax(dim = -1)
         self.loss = nn.CrossEntropyLoss()
 
     def forward(self, *input):
         edges = input[0]
         labels = input[1]
-        edges = edges.view([2, -1])
+        edges = edges.permute([1, 0])
         src_nodes = edges[0]
         dst_nodes = edges[1]
         src_embeddings = self.word_embeddings.index_select(index=src_nodes, dim=0)
         dst_embeddings = self.word_embeddings.index_select(index=dst_nodes, dim=0)
         edge_embeddings = torch.cat([src_embeddings, dst_embeddings], dim=1)
         output = self.line(edge_embeddings)
+        output = self.softMax(output)
         loss = self.loss(output, labels)
         return loss
 
@@ -81,14 +83,15 @@ class Deep_Walk(nn.Module):
                 self.word_embeddings.append([0.0] * self.embed_size)
         self.word_embeddings = torch.tensor(self.word_embeddings, dtype=torch.float)
 
-    def test(self, input):
-        edges = input.view([2, -1])
+    def test(self, edges):
+        edges = edges.permute([1, 0])
         src_nodes = edges[0]
         dst_nodes = edges[1]
         src_embeddings = self.word_embeddings.index_select(index=src_nodes, dim=0)
         dst_embeddings = self.word_embeddings.index_select(index=dst_nodes, dim=0)
         edge_embeddings = torch.cat([src_embeddings, dst_embeddings], dim=1)
         output = self.line(edge_embeddings)
+        output = self.softMax(output)
         return output
 
 

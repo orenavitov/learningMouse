@@ -1,20 +1,20 @@
 {
 
-  "data_set": "USAir",
+  "data_set": "hamster",
   "radio": 0.9,
-  "batchSize": 32,
-  "epochs": 100,
+  "batchSize": 128,
+  "epochs": 50,
   "learning_rate": 0.0001,
-  "module_name": "MihGNNEmbedding5",
+  "module_name": "MihGNNEmbedding9",
   "MihGNNEmbedding1": {
-    "embedding_size": 128,
+    "embedding_size": 64,
     "layers": 2,
     "steps": 2,
-    "delays": [1, 0.1]
+    "delays": [0.001, 0.0001]
   },
   "MihGNNEmbedding2": {
     "embedding_size": 64,
-    "layers": 2,
+    "layers": 1,
     "steps": 3,
     "delays": [1.0, 0.1, 0.01]
   },
@@ -50,7 +50,7 @@
   },
   "MihGNNEmbedding8": {
     "embedding_size": 64,
-    "layers": 6,
+    "layers": 2,
     "steps": 2,
     "delays": [1.0, 0.1]
   },
@@ -61,7 +61,51 @@
     "delays": [1.0, 0.1]
   },
   "MihGNNEmbedding10": {
-    "embedding_size": 64,
+    "embedding_size": 128,
+    "layers": 5,
+    "steps": 2,
+    "delays": [1.0, 0.1]
+  },
+  "MihGNNEmbedding11": {
+    "embedding_size": 128,
+    "layers": 2,
+    "steps": 2,
+    "delays": [1.0, 0.1]
+  },
+  "MihGNNEmbedding12": {
+    "embedding_size": 128,
+    "layers": 2,
+    "steps": 2,
+    "delays": [1.0, 0.5]
+  },
+  "MihGNNEmbedding12WithNoAggregation": {
+    "embedding_size": 128,
+    "layers": 2,
+    "steps": 2,
+    "delays": [1.0, 0.5]
+  },
+  "MihGNNEmbedding12WithTrainWeight": {
+    "embedding_size": 128,
+    "layers": 2,
+    "steps": 2,
+    "delays": [1.0, 0.5]
+  },
+  "MihGNNEmbedding12AferRandomWalk": {
+    "embedding_size": 128,
+    "layers": 3,
+    "steps": 2,
+    "delays": [1.0, 0.5],
+    "walk_length": 100,
+    "num_walks": 10,
+    "walker": 1,
+    "p":0.25,
+    "q":4,
+    "window_size": 10,
+    "iter": 5,
+    "workers":1
+  },
+  "MihGNNEmbedding13": {
+    "embedding_size": 128,
     "layers": 2,
     "steps": 2,
     "delays": [1.0, 0.1]
@@ -79,5 +123,11 @@
     "K": 6,
     "alpha": 0.3,
     "P_epochs": 2000
+  },
+  "CovE": {
+    "embedding_size": 64,
+    "layers": 2,
+    "steps": 2,
+    "delays": [1.0, 0.1]
   }
 }

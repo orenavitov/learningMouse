@@ -1,181 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="95fc0932-a3dc-436b-a60d-4ed8e58e0c44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ConcurrentHashMapTest/Example1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ConditionTest/Example1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CountDownLatchTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CyclicBarrierTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExchangerTest/Example1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExchangerTest/Example2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExchangerTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/LockTest/Example1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/LockTest/Example2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/LockTest/Example3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/PhaserTest/Example1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/SemaphoreTest/Example1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/UnSafeTest/SomeInterestingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/UnSafeTest/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadTest/SleepTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/Celegans.gml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/PB.gml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/Router.gml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/Yeast.gml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/facebook_combined.gml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/karate.gml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Data/power.gml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Child.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Parent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/BlockQue/ArrayBlockingQue/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/BlockQue/LinkedBlockingQue/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/BlockQue/PriorityBlockingQueueTest/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CompletableFuture/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CompletableFuture/Example2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CompletableFuture/Example3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CompletableFuture/Example4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/CompletionServiceTest/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExexutorTest/ExecutorPoolTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExexutorTest/ExecutorServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ExexutorTest/ExecutorsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ForkJoinTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ForkJoinTest/Example2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/FutureTest/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/FutureTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ListTest/MihLinkList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ListTest/MihSkipLinkList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ListTest/MihSortLinkList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ListTest/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/PhaserTest/Example2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/PhaserTest/Example3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ScheduleExecutorService/Example1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JUC/src/main/java/ScheduleExecutorService/Example2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Some/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Some/src/main/java/Child.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Some/src/main/java/Other.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Some/src/main/java/Parent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Some/src/main/java/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JAVA8/SomeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/Bilibli.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/MeiTuan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/Safe360.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/TEST.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200801.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200802.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200803.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200804.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200805.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200806.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200807.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200808.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200809.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200810.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200811.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200813.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200815.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200816.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200817.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200818.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200819.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200820.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200821.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/July/day20200729.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/July/day20200730.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/July/day20200731.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/RestfulTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/StudentImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Mappers/StudentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/resources/Mappers/StudentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200716.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200717.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200718.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200719.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200720.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200722.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200723.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200725.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200726.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200727.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/20200728.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../LeCode/ali20200717.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Draw.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/CovENetwork.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demons/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demons/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demons/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demons/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demons/src/main/java/ClassLoaderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demons/target/classes/ClassLoaderTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicIntegerTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicReferenceTest/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicReferenceTest/Sample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/AtomicReferenceTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicReferenceTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/src/main/java/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicIntegerTest/CompareAndSetLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/CompareAndSetLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicIntegerTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicReferenceTest/Sample.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Sample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JCU/target/classes/AtomicReferenceTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MutliThread/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClassLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/MyClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/MyClassLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/MyClassLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JUC/src/main/java/PhaserTest/Example1.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/PhaserTest/Example1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/src/main/java/VolatileTest/VolatileTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/VolatileTest/VolatileTest1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/target/classes/VolatileTest/VolatileTest1.class" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/target/classes/VolatileTest/VolatileTest1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JAVA8/FunctionalInterfaceTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActivationQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActiveObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActiveObjectFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/ActiveObjectProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/DisplayClientThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/DisplayTextRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/FutureResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/MakeStringResquest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/MakerClientThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/MethodRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/RealResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/Result.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/SchedulerThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/Servant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ActiveObjectsTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/BalkingTest/BalkingData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClassLoaderTest/MyClassLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClassLoaderTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/CountDown.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/CountDownTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/CountDownTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/JDKCountDown$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CountDownTest/JDKCountDown.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/AsynFuture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/Future.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/FutureService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/FutureTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FutureTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/RequestQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GuardedSuspensionTest/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImmutableTest/UsePersonThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Converter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/FunctionalInterfaceTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVA8/LambdaTest/AddTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JAVAIO/StandIOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JAVAIO/StandIOTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/LifeCycleListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable$RunnableState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ObserverableRunnable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer/ThreadLifeCycleObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/RWLock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/SharedData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Reader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test$Writer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReadWriteLock/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton6$Singleton6Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton7$Builer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Singleton7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Test$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Singleton/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/Gate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingletonGateTest/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/AQS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest$SubClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/DaemonThreadTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/HappenBeforeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tests/LockTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Action1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Action2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/ActionContext$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/ActionContext$ContextBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/ActionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Context.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Execution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadContextTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/MessageHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/MessageHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPerMessageTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/CatchThreadException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2$ThreadService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/StopThreadTest2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/InterruptedTest/Test1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/MihLock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/Lock/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/NotifyTest/Test1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Consumer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test$Producer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ProduceAndConsume/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$MihThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool$ThreadState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ThreadTest/ThreadPool/MIhThreadPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TwoPhaseTerminationTest/MihThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TwoPhaseTerminationTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VolatileTest/VolatileTest1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/Channel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/TransportThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WorkerThreadTest/WorkThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAVA虚拟机详解/java虚拟机.md" beforeDir="false" afterPath="$PROJECT_DIR$/../JAVA虚拟机详解/java虚拟机.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/Mih.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/Solution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/Twitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Mih.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Solution.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Twitter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Twitter$Tweet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Twitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LeCode/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../LeCode/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LeCode/day.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../LeCode/day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MySql/mySql.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../MySql/mySql.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/AggregationModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/AggregationModule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/LossModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/LossModule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MVGCN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MVGCN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/NN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/NN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/PolysemousNetworkEmbedding.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/PolysemousNetworkEmbedding.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/DeepWalk.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/DeepWalk.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/NN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/NN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/Node2Vec.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/Node2Vec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_RandomWalk/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/AA.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/AA.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/ACT.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/ACT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/CN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/CN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/HDI.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/HDI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/HPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/HPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Jaccard.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Jaccard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Katz.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/Katz.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/RW.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/HeuristicAlgorithm/RW.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Temp.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/algorithms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../algorithms/algorithms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../linux/linux.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../linux/linux.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,10 +182,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="F:\idea\IntelliJ IDEA Community Edition 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="1c58wrxqtJfvyQ5FwHnCIH5IVeZ" />
@@ -207,16 +194,17 @@
   </component>
   <component name="ProjectViewState">
     <option name="foldersAlwaysOnTop" value="false" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578141265227" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ClassLoader/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -234,10 +222,10 @@
       <recent name="ThreadLocalTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Example3">
+  <component name="RunManager" selected="Application.VolatileTest1">
     <configuration name="ClassLoaderTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ClassLoaderTest.Test" />
-      <module name="JAVA基础" />
+      <module name="ClassLoader" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -256,12 +244,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Example1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SemaphoreTest.Example1" />
+    <configuration name="Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BlockQue.PriorityBlockingQueueTest.Example" />
       <module name="JUC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="SemaphoreTest.*" />
+          <option name="PATTERN" value="BlockQue.PriorityBlockingQueueTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -269,12 +257,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Example1 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ConcurrentHashMapTest.Example1" />
+    <configuration name="Example1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BlockQue.ArrayBlockingQue.Example1" />
       <module name="JUC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ConcurrentHashMapTest.*" />
+          <option name="PATTERN" value="BlockQue.ArrayBlockingQue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -282,38 +270,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Example1 (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ConditionTest.Example1" />
-      <module name="JUC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ConditionTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Example3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LockTest.Example3" />
-      <module name="JUC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="LockTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="Some" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JAVA8.FunctionalInterfaceTest.Test" />
-      <module name="JAVA基础" />
+      <option name="MAIN_CLASS_NAME" value="ListTest.Test" />
+      <module name="JUC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="JAVA8.FunctionalInterfaceTest.*" />
+          <option name="PATTERN" value="ListTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -321,28 +290,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VolatileTest1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="VolatileTest.VolatileTest1" />
+      <module name="MutliThread" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="VolatileTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ClassLoaderTest" />
+      <item itemvalue="Application.Example" />
+      <item itemvalue="Application.Example1" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Test (1)" />
+      <item itemvalue="Application.VolatileTest1" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Example3" />
-        <item itemvalue="Application.Example1 (3)" />
-        <item itemvalue="Application.Example1 (2)" />
+        <item itemvalue="Application.VolatileTest1" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Example" />
+        <item itemvalue="Application.Example1" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Example1 (1)" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -357,32 +336,72 @@
       <workItem from="1577433261762" duration="3780000" />
       <workItem from="1577522215528" duration="896000" />
       <workItem from="1578122096674" duration="2202000" />
+      <workItem from="1594639954782" duration="1435000" />
+      <workItem from="1594650991598" duration="1408000" />
+      <workItem from="1594691550736" duration="3903000" />
+      <workItem from="1594776065186" duration="3354000" />
+      <workItem from="1594798190294" duration="3138000" />
+      <workItem from="1594821602821" duration="3279000" />
+      <workItem from="1595423571509" duration="335000" />
+      <workItem from="1595423926438" duration="146000" />
+      <workItem from="1595510185037" duration="1722000" />
+      <workItem from="1595515584558" duration="537000" />
+      <workItem from="1595669856629" duration="6407000" />
+      <workItem from="1595812897585" duration="6029000" />
+      <workItem from="1595844010351" duration="2516000" />
+      <workItem from="1595854878355" duration="3298000" />
+      <workItem from="1595899274743" duration="7571000" />
+      <workItem from="1595984421011" duration="57000" />
+      <workItem from="1596072701103" duration="3954000" />
+      <workItem from="1596099605519" duration="12000" />
+      <workItem from="1596101970624" duration="18000" />
+      <workItem from="1596116738263" duration="3122000" />
+      <workItem from="1596191661673" duration="2417000" />
+      <workItem from="1596201221651" duration="1856000" />
+      <workItem from="1596203427496" duration="600000" />
+      <workItem from="1596243933887" duration="8119000" />
+      <workItem from="1596283912844" duration="3239000" />
+      <workItem from="1596290510914" duration="118000" />
+      <workItem from="1596336988773" duration="2799000" />
+      <workItem from="1596415808668" duration="2290000" />
+      <workItem from="1596422723310" duration="6000" />
+      <workItem from="1596437479488" duration="5124000" />
+      <workItem from="1596509480307" duration="20000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8013000" />
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="521" y="201" key="#Project_Structure" timestamp="1590481107696">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="521" y="201" key="#Project_Structure/0.0.1858.1080@0.0.1858.1080" timestamp="1590481107696" />
-    <state x="385" y="327" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592921482488">
+    <state x="385" y="327" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597046148181">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="385" y="327" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1592921482488" />
+    <state x="385" y="327" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1597046148181" />
     <state x="744" y="399" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591239569704">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="744" y="399" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591239569704" />
-    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1594031381545">
+    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1597048731676">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1594031381545" />
+    <state x="734" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1597048731676" />
     <state x="658" y="329" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1592907619999">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -395,66 +414,86 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="713" y="428" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1858.1080@0.0.1858.1080" timestamp="1592918222662" />
-    <state x="682" y="97" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592357955826">
+    <state x="682" y="97" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596416470322">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="682" y="97" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1592357955826" />
-    <state width="438" height="466" key="DebuggerActiveHint" timestamp="1592922490512">
+    <state x="682" y="97" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1596416470322" />
+    <state width="447" height="466" key="DebuggerActiveHint" timestamp="1597047766431">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="438" height="466" key="DebuggerActiveHint/0.0.1858.1080@0.0.1858.1080" timestamp="1592922490512" />
-    <state x="709" y="297" key="FileChooserDialogImpl" timestamp="1592921475656">
+    <state width="447" height="466" key="DebuggerActiveHint/0.0.1858.1080@0.0.1858.1080" timestamp="1597047766431" />
+    <state x="709" y="297" key="FileChooserDialogImpl" timestamp="1595984470212">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="709" y="297" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1592921475656" />
-    <state width="1340" height="238" key="GridCell.Tab.0.bottom" timestamp="1594032392336">
+    <state x="709" y="297" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1595984470212" />
+    <state width="1340" height="488" key="GridCell.Tab.0.bottom" timestamp="1598171681531">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="238" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
-    <state width="1340" height="238" key="GridCell.Tab.0.center" timestamp="1594032392336">
+    <state width="1340" height="488" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
+    <state width="1340" height="488" key="GridCell.Tab.0.center" timestamp="1598171681531">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="238" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
-    <state width="1340" height="238" key="GridCell.Tab.0.left" timestamp="1594032392336">
+    <state width="1340" height="488" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
+    <state width="1340" height="488" key="GridCell.Tab.0.left" timestamp="1598171681531">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="238" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
-    <state width="1340" height="238" key="GridCell.Tab.0.right" timestamp="1594032392336">
+    <state width="1340" height="488" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
+    <state width="1340" height="488" key="GridCell.Tab.0.right" timestamp="1598171681531">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1340" height="238" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1594032392336" />
-    <state width="1815" height="366" key="GridCell.Tab.1.bottom" timestamp="1592922817963">
+    <state width="1340" height="488" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
+    <state width="1815" height="488" key="GridCell.Tab.1.bottom" timestamp="1598171609166">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="366" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1592922817963" />
-    <state width="1815" height="366" key="GridCell.Tab.1.center" timestamp="1592922817962">
+    <state width="1815" height="488" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
+    <state width="1815" height="488" key="GridCell.Tab.1.center" timestamp="1598171609166">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="366" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1592922817962" />
-    <state width="1815" height="366" key="GridCell.Tab.1.left" timestamp="1592922817962">
+    <state width="1815" height="488" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
+    <state width="1815" height="488" key="GridCell.Tab.1.left" timestamp="1598171609166">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="366" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1592922817962" />
-    <state width="1815" height="366" key="GridCell.Tab.1.right" timestamp="1592922817963">
+    <state width="1815" height="488" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
+    <state width="1815" height="488" key="GridCell.Tab.1.right" timestamp="1598171609166">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="366" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1592922817963" />
-    <state x="385" y="223" key="SettingsEditor" timestamp="1594000857811">
+    <state width="1815" height="488" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
+    <state width="1815" height="306" key="GridCell.Tab.2.bottom" timestamp="1596076051487">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="385" y="223" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1594000857811" />
-    <state x="650" y="281" width="549" height="524" key="StructurePopup" timestamp="1594028648717">
+    <state width="1815" height="306" key="GridCell.Tab.2.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1596076051487" />
+    <state width="1815" height="306" key="GridCell.Tab.2.center" timestamp="1596076051487">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="650" y="281" width="549" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1594028648717" />
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1594083077789">
+    <state width="1815" height="306" key="GridCell.Tab.2.center/0.0.1858.1080@0.0.1858.1080" timestamp="1596076051487" />
+    <state width="1815" height="306" key="GridCell.Tab.2.left" timestamp="1596076051487">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1594083077789" />
-    <state x="558" y="347" key="new project wizard" timestamp="1592960691451">
+    <state width="1815" height="306" key="GridCell.Tab.2.left/0.0.1858.1080@0.0.1858.1080" timestamp="1596076051487" />
+    <state width="1815" height="306" key="GridCell.Tab.2.right" timestamp="1596076051487">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="558" y="347" key="new project wizard/0.0.1858.1080@0.0.1858.1080" timestamp="1592960691451" />
+    <state width="1815" height="306" key="GridCell.Tab.2.right/0.0.1858.1080@0.0.1858.1080" timestamp="1596076051487" />
+    <state x="583" y="243" key="NewModule_or_Project.wizard" timestamp="1595984476935">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="583" y="243" key="NewModule_or_Project.wizard/0.0.1858.1080@0.0.1858.1080" timestamp="1595984476935" />
+    <state x="386" y="213" key="SettingsEditor" timestamp="1595903029032">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="386" y="213" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1595903029032" />
+    <state x="820" y="346" width="564" height="524" key="StructurePopup" timestamp="1597048541655">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="820" y="346" width="564" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1597048541655" />
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1594113938029">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1594113938029" />
+    <state x="278" y="246" key="new project wizard" timestamp="1595984456134">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="278" y="246" key="new project wizard/0.0.1858.1080@0.0.1858.1080" timestamp="1595984456134" />
     <state x="671" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1593527215765">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -463,10 +502,10 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="585" y="250" key="run.anything.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1592904190738" />
-    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1594000402365">
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1596681756426">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1594000402365" />
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1596681756426" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,13 +527,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/MyClassLoader.java</url>
-          <line>42</line>
+          <line>52</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/JUC/src/main/java/ForkJoinTest/Example2.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/JUC/src/main/java/FutureTest/Example1.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../JDK13/lib/src.zip!/java.base/java/util/concurrent/FutureTask.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/JUC/src/main/java/ListTest/MihSortLinkList.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Test.java</url>
           <line>6</line>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../JDK13/lib/src.zip!/java.base/java/lang/ClassLoader.java</url>
+          <line>1797</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../JDK13/lib/src.zip!/java.base/java/lang/ClassLoader.java</url>
+          <line>474</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../JDK13/lib/src.zip!/java.base/java/lang/ClassLoader.java</url>
+          <line>1932</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

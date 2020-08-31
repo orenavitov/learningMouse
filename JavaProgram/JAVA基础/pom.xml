@@ -24,6 +24,7 @@
         <module>MutliThread</module>
         <module>ClassLoader</module>
         <module>JUC</module>
+        <module>Some</module>
     </modules>
 
 
