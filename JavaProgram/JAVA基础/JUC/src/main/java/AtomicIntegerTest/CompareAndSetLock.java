@@ -1,5 +1,6 @@
 package AtomicIntegerTest;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -12,13 +13,11 @@ public class CompareAndSetLock {
     private Thread LOCKThread = null;
 
     public void tryLock() throws Exception {
-        boolean result = LOCK.compareAndSet(0, 1);
-        if (result) {
-            LOCKThread = Thread.currentThread();
+
+        while (!LOCK.compareAndSet(0, 1)) {
+
         }
-        if (!result) {
-            throw new Exception();
-        }
+        LOCKThread = Thread.currentThread();
     }
 
     public void unLock() {
@@ -30,5 +29,32 @@ public class CompareAndSetLock {
             LOCK.compareAndSet(1, 0);
         }
 
+    }
+
+    public static void main(String[] args) {
+        CompareAndSetLock lock = new CompareAndSetLock();
+        new Thread(() -> {
+            try {
+                lock.tryLock();
+                System.out.println(Thread.currentThread().getName() + " get the lock");
+                TimeUnit.SECONDS.sleep(2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unLock();
+            }
+        }).start();
+
+        new Thread(() -> {
+            try {
+                lock.tryLock();
+                System.out.println(Thread.currentThread().getName() + " get the lock");
+                TimeUnit.SECONDS.sleep(2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unLock();
+            }
+        }).start();
     }
 }

@@ -466,3 +466,47 @@ CREATE TEMPORARY TABLE 表名 (.......)
 临时表：表在内存， 数据在内存
 
 内存表：表在磁盘， 数据在内存
+
+# MySql索引即查询优化
+
+使用的数据库如下
+
+![image text](./picture/employees关系.png)
+
+MySql中各种数据类型所占大小
+
+![image text](./picture/p10.png)
+
+创建的testIndex索引内容
+
+![image text](./picture/p11.png)
+
+## or对索引使用的影响
+
+![image text](./picture/p12.png)
+
+![image text](./picture/p13.png)
+
+可以看出在组合索引中无法使用“or”进行索引查找
+
+## in对索引使用的影响
+
+![image text](./picture/p14.png)
+
+可以看出可以使用“in”对组合索引的使用没有影响
+
+## like对索引使用的影响
+
+![image text](./picture/p15.png)
+
+可以看到like 通配符放到最前面时才会使索引失效， 放到其他位置索引可以正常使用；
+
+## 范围查询对索引的影响
+
+![image text](./picture/p16.png)
+
+首先如果在查询的范围内可以筛选到的数据量比较大放弃使用索引；
+
+![image text](./picture/p17.png)
+
+可以看出范围查询后的索引并没有失效；
