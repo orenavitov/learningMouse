@@ -1,5 +1,67 @@
 # Mysql
 
+## MySql理论
+
+但是， MySQL最重要、 最与众不同的特性 是它的存储引擎架构， 这种架构的设计将查询处理（Query Processing）及其他系统任务（Server Task）和数据的存储/提取相分离。
+
+### 事务的特征
+
+1. 原子性（atomicity）
+2. 一致性（consistency）
+3. 隔离性（isolation）
+4. 持久性（durability）
+
+### 隔离级别
+
+1. read UnCommitted（未提交读）
+2. read Committed（提交读）
+3. repeatable Read（可重复读）
+4. serializable（可串行化）
+
+## MySql 服务端对客户端请求的处理过程
+
+![image text](./picture/p18.png)
+
+1. 连接管理主要负责服务端对连接线程的管理和对连接请求的验证， 如验证客户端的主机信息、用户名、密码等；
+2. 解析与优化
+   查询缓存即使用之前的查询结果，但由于要对缓存进行维护，MySql8.0中已经废弃了查询缓存；
+   解析即一个类似编译的过程；
+   优化即对我们的查询语句进行优化，结果是一个执行计划，可以使用EXPLAIN进行查看；
+3. 存储引擎主要负责数据的存取工作，
+   创建表时指定存储引擎：
+   ```
+    CREATE TABLE 表名(
+    建表语句;
+    ) ENGINE = 存储引擎名称;
+   ```
+   修改表的存储引擎：
+   ```
+    ALTER TABLE 表名 ENGINE = 存储引擎名称;
+   ```
+
+## InnoDB行格式
+
+4中不同的行格式：Compact、Redundant、Dynamic和Compressed
+
+## MySql索引的方法
+
+1. FULLTEXT， 只有MyISAM引擎支持， 只有CHAR、VARCHAR ，TEXT列上可以创建全文索引
+2. HASH， HASH索引可以一次定位，不需要像树形索引那样逐层查找,因此具有极高的效率。但是，这种高效是有条件的，即只在“=”和“in”条件下高效，对于范围查询、排序及组合索引仍然效率不高。
+3. BTREE
+4. RTREE， 支持该类型的存储引擎只有MyISAM、BDb、InnoDb、NDb、Archive几种
+   
+## 索引种类
+
+1. 普通索引：仅加速查询
+2. 唯一索引：加速查询 + 列值唯一（可以有null）
+   ```
+   create unique index index_name on table_name (column_name)
+
+   ```
+3. 主键索引：加速查询 + 列值唯一（不可以有null）+ 表中只有一个
+4. 组合索引：多列值组成一个索引，专门用于组合搜索，其效率大于索引合并
+5. 全文索引：对文本的内容进行分词，进行搜索
+
 ## MySql安装与配置（MySql-5.7.16）
 
 ![image text](./picture/p1.png)
@@ -17,7 +79,6 @@
 ![image text](./picture/p7.png)
 
 ![image text](./picture/p8.png)
-
 
 
 ## 索引

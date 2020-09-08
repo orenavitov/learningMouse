@@ -1,8 +1,6 @@
 package Sep;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 public class day20200907 {
 
@@ -97,11 +95,44 @@ public class day20200907 {
         return elements[0];
     }
 
-    public static void main(String[] args) {
-        int[] nums = new int[] {1,1,1,1, 2,2,3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 6};
-        int[] results = topKFrequent(nums, 3);
-        for (int i = 0; i < results.length; i ++) {
-            System.out.println(results[i] + " ");
+    /*
+     * 获取图的子图个数， 假设图是无向图；
+     */
+    private static int getSubGraphCount(int[][] graph) {
+        int n = graph.length;
+        int subGraphCount = 0;
+        List<Integer> visited = new ArrayList<>();
+        LinkedList<Integer> que = new LinkedList<>();
+        for (int i = 0; i < n; i ++) {
+            if(visited.contains(i)) {
+                continue;
+            }
+            que.addLast(i);
+            visited.add(i);
+            while (!que.isEmpty()) {
+                int node = que.poll();
+                int[] neighbors = graph[node];
+                for (int j = i; j < n; j ++) {
+                    if (neighbors[j] == 1 && !visited.contains(j)) {
+                        que.addLast(j);
+                        visited.add(j);
+                    }
+                }
+            }
+            subGraphCount ++;
         }
+        return subGraphCount;
+    }
+
+    public static void main(String[] args) {
+        int[][] graph = new int[][] {
+                {0, 1, 0, 0, 0},
+                {1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+        int subGraphCount = getSubGraphCount(graph);
+        System.out.println(subGraphCount);
     }
 }

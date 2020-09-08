@@ -23,145 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95fc0932-a3dc-436b-a60d-4ed8e58e0c44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/BaiDu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/day20200903.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/day20200904.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/day20200905.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/CompareAndSetLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/src/main/java/AtomicIntegerTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/CompareAndSetLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/CompareAndSetLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicIntegerTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Sample.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Sample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/AtomicReferenceTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/BlockQue/ArrayBlockingQue/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/BlockQue/ArrayBlockingQue/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/BlockQue/PriorityBlockingQueueTest/Example.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/BlockQue/PriorityBlockingQueueTest/Example.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example3.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example4.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CompletableFuture/Example4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CompletionServiceTest/Example.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CompletionServiceTest/Example.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConcurrentHashMapTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConditionTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConditionTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConditionTest/Example1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConditionTest/Example1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ConditionTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ConditionTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CountDownLatchTest/Test$SampleRunnableClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CountDownLatchTest/Test$SampleRunnableClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CountDownLatchTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CountDownLatchTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CyclicBarrierTest/Test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CyclicBarrierTest/Test$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/CyclicBarrierTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/CyclicBarrierTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example2$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example2$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Example2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExchangerTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorPoolTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorPoolTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorPoolTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorPoolTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ExexutorTest/ExecutorsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example1$CalculatedRecursiveTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example1$CalculatedRecursiveTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example2$CalculateRecursiveAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example2$CalculateRecursiveAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ForkJoinTest/Example2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/FutureTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/FutureTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/FutureTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/FutureTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/FutureTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/FutureTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihLinkList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihLinkList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihLinkList.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihLinkList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihSkipLinkList.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihSkipLinkList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihSortLinkList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihSortLinkList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihSortLinkList.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ListTest/MihSortLinkList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ListTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ListTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example3$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example3$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example3.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/LockTest/Example3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/META-INF/JUC.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1$Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1$Task.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example2$SportsMan.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example2$SportsMan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example3$Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example3$Task.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example3.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/PhaserTest/Example3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ScheduleExecutorService/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ScheduleExecutorService/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/ScheduleExecutorService/Example2.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/ScheduleExecutorService/Example2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/SemaphoreTest/Example1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/SemaphoreTest/Example1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/SemaphoreTest/Example1$SemaphoreLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/SemaphoreTest/Example1$SemaphoreLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/SemaphoreTest/Example1.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/SemaphoreTest/Example1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/SomeInterestingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/SomeInterestingTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$CASCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$CASCounter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$Counter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$CounterRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$CounterRunnable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$ErrorCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$ErrorCounter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$LockCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$LockCounter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$SynCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test$SynCounter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC/target/classes/UnSafeTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/August/TEST.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/TEST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200801.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200801.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200831.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/src/main/java/August/day20200831.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/Bilibli.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/Bilibli.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/MeiTuan$Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/MeiTuan$Task.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/MeiTuan.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/MeiTuan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/SXF.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/SXF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/Safe360.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/Safe360.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/TEST$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/TEST$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/TEST.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/TEST.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/TX.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/TX.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200801.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200801.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200802.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200802.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200803.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200803.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200804.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200804.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200805$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200805$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200805.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200805.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200806.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200806.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200807$Vector.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200807$Vector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200807.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200807.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200808.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200808.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200809.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200809.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200810.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200810.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200811.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200811.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200813.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200813.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200815$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200815$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200815.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200815.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200816$Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200816$Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200816.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200816.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200817$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200817$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200817.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200817.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200818$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200818$ListNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200818$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200818$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200818.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200818.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200819.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200819.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200820$Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200820$Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200820.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200820.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200821$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200821$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200821.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200821.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200824.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200824.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200825.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200825.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200826.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200826.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200827.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200827.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200828.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200828.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200829.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200829.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200830.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200830.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200831.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/August/day20200831.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200729.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200729.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200730$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200730$ListNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200730.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200730.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200731.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/July/day20200731.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/day20200908.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java基础.md" beforeDir="false" afterPath="$PROJECT_DIR$/java基础.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/day20200907.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/src/main/java/Sep/day20200907.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Sep/day20200907$element.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/Sep/day20200907$element.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Sep/day20200907.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/Sep/day20200907.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MySql/mySql.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../MySql/mySql.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../linux/通信协议.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../linux/通信协议.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

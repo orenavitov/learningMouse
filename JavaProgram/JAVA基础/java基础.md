@@ -78,7 +78,153 @@ String 通过byte[] value存储字节， 但是getBytes方法并不返回value�
 
 ### Method类及其方法
 
-### 
+### JAVA 深clone 和浅clone
+
+1. 浅clone会复制引用但不会复制引用对象；
+2. 深clone会复制引用并且会复制引用对象；
+
+实现浅拷贝, 其中name 不会重新开辟内存空间， address也不会重新开辟内存空间， 但是拷贝的person会重新开辟内存空间， 只是将name和address指向了原来的内存地址；
+
+```
+public class Person implements Cloneable{
+
+    private int age;
+    private String name;
+    private Address address;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAdderss() {
+        return address;
+    }
+
+    public void setAdderss(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public class Address implements Cloneable {
+
+    private String country;
+
+    private String sheng;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getSheng() {
+        return sheng;
+    }
+
+    public void setSheng(String sheng) {
+        this.sheng = sheng;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+}
+```
+
+实现深拷贝, name不会开辟新的内存空间， 但是address会开辟新的内存空间， 因为Address也实现了Cloneable
+
+```
+public class Person implements Cloneable{
+
+    private int age;
+    private String name;
+    private Address address;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAdderss() {
+        return address;
+    }
+
+    public void setAdderss(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        // 注意这里一定要用super, 不能使用this
+        Person copy = (Person) super.clone();
+        copy.address = (Address) this.address.clone();
+        return copy;
+    }
+}
+
+public class Address implements Cloneable {
+
+    private String country;
+
+    private String sheng;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getSheng() {
+        return sheng;
+    }
+
+    public void setSheng(String sheng) {
+        this.sheng = sheng;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+```
+
+### JAVA中的引用类型
+
+https://www.cnblogs.com/liyutian/p/9690974.html
 
 ## JAVA如何创建一个对象
 
