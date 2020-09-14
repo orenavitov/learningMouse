@@ -292,6 +292,35 @@ Put操作如下：
 
 # JAVA 并发
 
+## JAVA 线程的状态
+
+JAVA 中的线程一共有6种状态
+
+1. 初始（NEW）, 创建一个新的线程， 但还没有调用start()方法；
+2. 运行（RUNNABLE）, JAVA种线程就绪（READY在这种状态下线程运行的前提条件都已准备好， 就等CPU进行调度）和运行中（RUNNING, 获取到了CPU的执行权， 开始执行）统称为“运行”;
+3. 阻塞（BLOCKED）, 表示线程阻塞于锁(获取锁而阻塞)；
+4. 等待（WAITING）， 表示该线程需要其他线程做出一些特定的的动作（通知或中断）
+5. 超时等待（TIMED_WAITING）, 与WAITING不同的是， 在一定时间后自行返回
+6. 终止（TERMINATED）, 线程终止
+
+### 状态转换图
+
+![imagetext](./pictures/线程状态转化图.jpg)
+
+### 等待队列与同步队列
+
+处于同步队列种的线程是具备抢夺锁能力的线程， 处于等待队列的线程是使用了wait()方法的线程
+
+![imagetext](./pictures/等待队列与同步队列.jpg)
+
+### 几个线程方法比较
+
+1. Thread.sleep(long millis)，一定是当前线程调用此方法，当前线程进入TIMED_WAITING状态，但不释放对象锁，millis后线程自动苏醒进入就绪状态；
+2. Thread.yield()，一定是当前线程调用此方法，当前线程放弃获取的CPU时间片，但不释放锁资源，由运行状态变为就绪状态，让OS再次选择线程。作用：让相同优先级的线程轮流执行，但并不保证一定会轮流执行。实际中无法保证yield()达到让步目的，因为让步的线程还有可能被线程调度程序再次选中。Thread.yield()不会导致阻塞。该方法与sleep()类似，只是不能由用户指定暂停多长时间。
+3. t.join()/t.join(long millis)，当前线程里调用其它线程t的join方法，当前线程进入WAITING/TIMED_WAITING状态，当前线程不会释放已经持有的对象锁。线程t执行完毕或者millis时间到，当前线程进入就绪状态。
+4. obj.wait()，当前线程调用对象的wait()方法，当前线程释放对象锁，进入等待队列。依靠notify()/notifyAll()唤醒或者wait(long timeout) timeout时间到自动唤醒。
+5. obj.notify()唤醒在此对象监视器上等待的单个线程，选择是任意性的。notifyAll()唤醒在此对象监视器上等待的所有线程。
+
 ## JAVA中的synchronized
 
 简单的说synchronized(xxx), xxx可以是普通实例， Class对象， this, static修饰的静态成员变量；
