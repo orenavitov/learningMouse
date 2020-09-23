@@ -1,4 +1,4 @@
-# 运行时数据区域
+s# 运行时数据区域
 
 ## 程序计数器
 
@@ -65,6 +65,22 @@
 2. 分配内存
 
 3. 对对象进行必要的设置
+
+https://blog.csdn.net/xiaomingdetianxia/article/details/77688945?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.add_param_isCf&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.add_param_isCf
+
+
+
+## Metaspace
+
+
+
+## CodeHeap profiled nmethods
+
+## CodeHeap non-nmethods
+
+## Compressed Class Space
+
+## CodeHeap non-profiled nmethods
 
 # JAVA对象的内存布局
 

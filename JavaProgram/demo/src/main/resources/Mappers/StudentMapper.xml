@@ -17,13 +17,20 @@
 <!-- namespace对应接口全限定名 -->
 <mapper namespace="Mih.demo.Mappers.StudentMapper">
     <resultMap id="Student" type="Mih.demo.Modules.Student" >
-        <result column="s_id" jdbcType="VARCHAR" property="number" />
-        <result column="s_name" jdbcType="VARCHAR" property="name" />
-        <result column="s_birth" jdbcType="VARCHAR" property="birthday" />
-        <result column="s_sex" jdbcType="VARCHAR" property="sex" />
+        <result column="SId" jdbcType="VARCHAR" property="studentId" />
+        <result column="Sname" jdbcType="VARCHAR" property="name" />
+        <result column="Sage" jdbcType="TIMESTAMP" property="birthday" />
+        <result column="Ssex" jdbcType="VARCHAR" property="sex" />
     </resultMap>
     <!-- id 与接口中方法的名称必须一致 -->
     <select id="getStudentByNumber" parameterType="string" resultMap="Student">
-        select a.* from student as a where a.s_id = #{s_id}
+        select a.* from student as a where a.SId = #{SId}
+    </select>
+
+    <select id="getAllStudents" resultMap="Student">
+        select * from student
     </select>
 </mapper>
+
+
+

@@ -333,85 +333,44 @@ synchroniezed还可以放在方法声明前， 如果修饰的静态方法， �
 * 当前线程被阻塞， 如wait()
 注意：实例锁， 类锁是两种不通的锁
 
-```
-public class JavaTest3 {
-    final Object obj1 = new Object();
-    static final Object obj2 = new Object();
-    class synchronizedClass {
-        synchronized void synchronizedMethod1() {
-            for (int i = 0; i < 100; i ++) {
-                System.out.println(Thread.currentThread().getName() + " hi!");
-            }
+```(java)
+public class A {
 
-        }
-        synchronized void synchronizedMethod2() {
-            for (int i = 0; i < 100; i ++) {
-                System.out.println(Thread.currentThread().getName() + " hello!");
-            }
-        }
-
-        void synchronizedMethod3() {
-            synchronized(this) {
-                for (int i = 0; i < 100; i ++) {
-                    System.out.println(Thread.currentThread().getName() + " good!");
-                }
-
-            }
-        }
-
-    }
-
-    synchronized static void synchronizedMethod4() {
-        for (int i = 0; i < 100; i ++) {
-            System.out.println(Thread.currentThread().getName() + " goodBye!");
-        }
-    }
-
-    void synchronizedMethod5() {
+    public synchronized void method1() {
+        System.out.println(Thread.currentThread().getName() + "is excute method1.");
         try {
-            synchronized (obj1) {
-                for (int i = 0; i < 100; i ++) {
-                    System.out.println(Thread.currentThread().getName() + " good morning!");
-                }
-            }
-        } catch (Exception e) {
+            TimeUnit.SECONDS.sleep(20);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    void synchronizedMethod6() {
+    public synchronized void method2() {
+        System.out.println(Thread.currentThread().getName() + "is excute method2.");
         try {
-            synchronized (obj2) {
-                for (int i = 0; i < 100; i ++) {
-                    System.out.println(Thread.currentThread().getName() + " good night!");
-                }
-            }
-        } catch (Exception e) {
+            TimeUnit.SECONDS.sleep(20);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String args[]) {
-        JavaTest3 jt3 = new JavaTest3();
-        JavaTest3 jt3_ = new JavaTest3();
-        synchronizedClass synchronizedclass = jt3.new synchronizedClass();
-        synchronizedClass synchronizedclass_ = jt3.new synchronizedClass();
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronizedclass.synchronizedMethod1();
-            }
-        }, "t1");
-        Thread thread2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronizedclass.synchronizedMethod2();
-            }
-        }, "t2");
-        thread1.start();
-        thread2.start();
     }
 }
+
+public class Test {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+
+        A a = new A();
+        // A b = new A();
+        new Thread(() -> {
+            a.method1();
+        }).start();
+
+        new Thread(() -> {
+            // 会阻塞， 实例锁是锁这个实例
+            a.method2();
+        }).start();
+    }
+}
+
 ```
 
 ## JAVA中的LOCK

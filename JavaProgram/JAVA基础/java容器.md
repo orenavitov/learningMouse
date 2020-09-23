@@ -359,8 +359,9 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
                 return fv;
             else {
                 V oldVal = null;
+                // 注意这里只对链表的头节点进行的加锁， 因为多个线程进行put操作， 只有散列的hash值相同时才需要加锁
                 synchronized (f) {
-                    // ？
+                    // 判断当前的头节点仍然时链表的结构而不是已经转化成红黑树了
                     if (tabAt(tab, i) == f) {
                         if (fh >= 0) {
                             binCount = 1;

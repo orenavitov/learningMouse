@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class StudentImp implements StudentService {
     @Autowired
@@ -13,5 +15,10 @@ public class StudentImp implements StudentService {
 
     public Student findStudentByNumber(String number) {
         return studentMapper.getStudentByNumber(number);
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return studentMapper.getAllStudents();
     }
 }

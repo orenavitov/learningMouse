@@ -3,29 +3,27 @@ package Mih.demo.Modules;
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
 import java.util.Date;
-@Component
-@Alias("Student")
+
 public class Student {
 
-    private String number;
+    private String studentId;
 
     private String name;
 
-    private String birthday;
+    private Date birthday;
 
     private String sex;
 
     public Student() {
     }
 
-    public String getNumber() {
-        return number;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {
@@ -36,11 +34,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -54,7 +52,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "number: " + number + "\n" +
+        return "number: " + studentId + "\n" +
                 "name: " + name + "\n" +
                 "birthday: " + birthday + "\n" +
                 "sex: " + sex;
