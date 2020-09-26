@@ -1,22 +1,19 @@
 package Sep.Test;
 
-import Sep.quShi.A;
 
-public class D extends A {
+public class D {
+
+    public static void test(A a) {
+        System.out.println("a");
+    }
+
+    public static void test(B b) {
+        System.out.println("b");
+    }
+
     public static void main(String[] args) {
-        new Thread(() -> {
-            int i = 1;
-            while (true) {
-                i ++;
-            }
-        }).start();
-
-        new Thread(() -> {
-            int j = 1;
-            while (true) {
-                j ++;
-            }
-        }).start();
-
+        C c = new C();
+        A a = new B();
+        test(a);
     }
 }

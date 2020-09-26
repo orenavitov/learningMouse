@@ -2,12 +2,13 @@ package Mih.demo.Controllers;
 
 import Mih.demo.Dao.StudentService;
 import Mih.demo.Modules.Student;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,5 +34,26 @@ public class StudentController {
             result.append(student.toString() + "/n");
         });
         return result.toString();
+    }
+
+    @RequestMapping(value = "/createstudent", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public void createStudent(@RequestBody JSONObject jsonParam) {
+        Student student = jsonParam.toJavaObject(Student.class);
+        studentService.createStudent(student);
+    }
+
+    @RequestMapping(value = "/createstudents", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public void createStudents(@RequestBody JSONArray jsonParams) {
+        ArrayList<Student> students = (ArrayList<Student>)jsonParams.toJavaList(Student.class);
+//        ArrayList<Student> students = (ArrayList<Student>)JSONArray.parseArray(jsonParam.toJSONString(), Student.class);
+        studentService.createStudents(students);
+    }
+
+    @RequestMapping(value = "/deletestudentbyid", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void deleteStudentById(@RequestParam("id")String number) {
+        studentService.deleteStudentById(number);
     }
 }

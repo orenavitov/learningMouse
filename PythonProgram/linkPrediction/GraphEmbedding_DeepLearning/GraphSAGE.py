@@ -13,8 +13,8 @@ embedding_size = 128
 train_radio = 0.9
 sample_method = 'under_sample'
 batch_size = 32
-epochs = 30
-file = r'../Data/USAir.gml'
+epochs = 50
+file = r'../Data/hamster.gml'
 
 def process_gml_file(file = r'./Data/bio-GE-GT.gml'):
     G = networkx.read_gml(file)
@@ -292,8 +292,8 @@ if __name__ == '__main__':
         # output = output[:, 1]
         all_labels.extend(labels_batch)
         all_predictions.extend(predictions)
-    for prediction in all_predictions:
-        test = all_labels[index]
+    for i, prediction in enumerate(all_predictions):
+        test = all_labels[i]
         if (prediction == 1 and test == 1):
             TP = TP + 1
         if (prediction == 1 and test == 0):

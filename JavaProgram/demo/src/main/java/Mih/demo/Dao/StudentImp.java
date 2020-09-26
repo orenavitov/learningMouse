@@ -21,4 +21,25 @@ public class StudentImp implements StudentService {
     public List<Student> getAllStudents() {
         return studentMapper.getAllStudents();
     }
+
+    @Override
+    public void createStudent(Student student) {
+        studentMapper.createStudent(
+                student.getStudentId(),
+                student.getName(),
+                student.getBirthday(),
+                student.getSex());
+    }
+
+    @Override
+    public void createStudents(List<Student> students) {
+        studentMapper.createStudents(students);
+    }
+
+    @Override
+    public void deleteStudentById(String studentId) {
+        studentMapper.delStudentById(studentId);
+    }
+
+
 }

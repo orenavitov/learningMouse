@@ -30,6 +30,22 @@
     <select id="getAllStudents" resultMap="Student">
         select * from student
     </select>
+
+    <insert id="createStudent">
+        insert into student (SId, Sname, Sage, Ssex) values
+        (#{SId}, #{Sname}, #{Sage}, #{Ssex})
+    </insert>
+
+    <insert id="createStudents">
+        insert into student (SId, Sname, Sage, Ssex) values
+        <foreach collection="students" item="student" separator=",">
+            (#{student.studentId}, #{student.name}, #{student.birthday}, #{student.sex})
+        </foreach>
+    </insert>
+
+    <delete id="delStudentById">
+        delete from student where SId = #{SId}
+    </delete>
 </mapper>
 
 
