@@ -5,27 +5,27 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Score {
-    private int studentId;
-    private int classId;
+    private String studentId;
+    private String classId;
     private int score;
 
     public Score() {
         this.studentId = studentId;
     }
 
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
-    public int getClassId() {
+    public String getClassId() {
         return classId;
     }
 
-    public void setClassId(int classId) {
+    public void setClassId(String classId) {
         this.classId = classId;
     }
 

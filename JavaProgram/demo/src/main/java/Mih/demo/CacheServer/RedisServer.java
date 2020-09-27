@@ -13,4 +13,7 @@ public interface RedisServer {
     Object getMapValue(String key);
     // 获取元素
     Object getValue(String key);
+
+    // 删除元素
+    void delValue(String key);
 }

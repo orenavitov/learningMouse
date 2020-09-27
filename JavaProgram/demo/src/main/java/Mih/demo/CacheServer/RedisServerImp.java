@@ -45,4 +45,11 @@ public class RedisServerImp implements RedisServer {
         ValueOperations<String, String> vo = redisTemplate.opsForValue();
         return vo.get(key);
     }
+
+    @Override
+    public void delValue(String key) {
+        redisTemplate.delete(key);
+    }
+
+
 }

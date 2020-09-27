@@ -1,5 +1,7 @@
 package Mih.demo.Controllers;
 
+import Mih.demo.CacheServer.RedisServer;
+import Mih.demo.Dao.ScoreService;
 import Mih.demo.Dao.StudentService;
 import Mih.demo.Modules.Student;
 import com.alibaba.fastjson.JSONArray;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -16,6 +19,12 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
+
+    @Autowired
+    ScoreService scoreService;
+
+    @Autowired
+    RedisServer redisServer;
 
     @RequestMapping("/getstudentbyid")
     @ResponseBody
@@ -56,4 +65,33 @@ public class StudentController {
     public void deleteStudentById(@RequestParam("id")String number) {
         studentService.deleteStudentById(number);
     }
+
+    @RequestMapping(value = "/getScoreByStudentId", method = RequestMethod.GET)
+    @ResponseBody
+    public int getScoreByStudentId(@RequestParam("sid")String studentId, @RequestParam("cid")String classId) {
+//        HashMap<String, Object> scoreForStudent = (HashMap<String, Object>) redisServer.getMapValue(studentId);
+//        if (scoreForStudent != null) {
+//            return (Integer) scoreForStudent.get("score");
+//        } else {
+//            int score = scoreService.getScoreByStudentId(studentId, classId);
+//            scoreForStudent = new HashMap<>();
+//            scoreForStudent.put("sid", studentId);
+//            scoreForStudent.put("cid", classId);
+//            scoreForStudent.put("score", score);
+//            redisServer.setValue(studentId, scoreForStudent);
+//            return score;
+//        }
+        return scoreService.getScoreByStudentId(studentId, classId);
+
+    }
+
+    @RequestMapping(value = "/updateScoreByStudentId", method = RequestMethod.PUT)
+    @ResponseBody
+    public void updateScoreByStudentId(@RequestParam("sid")String studentId,
+                                       @RequestParam("cid")String classId,
+                                       @RequestParam("score") int score) {
+        scoreService.updateScoreByStudentId(studentId, classId, score);
+        redisServer.delValue(studentId);
+    }
+
 }
