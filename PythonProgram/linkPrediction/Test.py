@@ -351,5 +351,23 @@ def Test22():
     plt.xticks(x, ["A", "B"])
     plt.show()
 
+
+def Test23():
+    adj_matrix = numpy.array(
+        [
+            [0, 1, 1, 0, 0, 0, 0],
+            [1, 0, 0, 1, 1, 0, 0],
+            [1, 0, 0, 0, 0, 1, 1],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0]
+        ]
+
+    )
+    A = adj_matrix
+    adj_matrix = numpy.matmul(adj_matrix, A)
+    print(adj_matrix)
+
 if __name__ == '__main__':
-    Test20()
+    Test23()

@@ -2,6 +2,8 @@ from matplotlib.pyplot import MultipleLocator
 import matplotlib.pyplot as plt
 import numpy
 
+
+
 """
 颜色：
 
@@ -35,6 +37,12 @@ def drawBar(X_names, width, Y_values, Y_range, X_start = 10,  X_scale = 1, Y_sca
     plt.xticks(X_indexes, X_names)
     plt.show()
 
+# https://www.cnblogs.com/onemorepoint/p/7482644.html
+def drawLineChart(x_date, y_dates, colors, lineWidth, lineStyle, markers):
+    for index, y_date in enumerate(y_dates):
+        plt.plot(x_date, y_date, colors[index], lineWidth, lineStyle, marker = markers[index])
+    plt.show()
+
 # X_names = ["A", "B", "C", "D", "E"]
 # width = 5
 # Y_values = [
@@ -66,35 +74,44 @@ Y_values_heuristicAlgorithm = [
 #"Variant2":MihGNNEmbedding13
 #"Variant2_":MihGNNEmbedding12
 Y_AP_valus_embeddngs = [
-    [0.791, 0.810, 0.904, 0.904, 0.829, 0.899, 0.899, 0.913, 0.899],
-    [0.869, 0.873, 0.861, 0.880, 0.835, 0.910, 0.898, 0.906, 0.922],
-    [0.712, 0.939, 0.850, 0.864, 0.813, 0.909, 0.877, 0.904, 0.870],
-    [0.877, 0.881, 0.859, 0.875, 0.817, 0.872, 0.854, 0.879, 0.875],
-    [0.978, 0.984, 0.861, 0.906, 0.844, 0.913, 0.902, 0.931, 0.929]
+    [0.791, 0.810, 0.904, 0.904, 0.913, 0.910, 0.899],
+    [0.869, 0.873, 0.861, 0.880, 0.906, 0.936, 0.922],
+    [0.712, 0.939, 0.850, 0.864, 0.904, 0.915, 0.870],
+    [0.877, 0.881, 0.859, 0.875, 0.931, 0.840, 0.875],
+    [0.978, 0.984, 0.861, 0.906, 0.879, 0.967, 0.929]
 ]
 Y_AC_valus_embeddngs = [
-    [0.826, 0.817, 0.917, 0.894, 0.752, 0.929, 0.905, 0.944, 0.862],
-    [0.894, 0.935, 0.863, 0.887, 0.769, 0.918, 0.951, 0.917, 0.927],
-    [0.721, 0.927, 0.879, 0.858, 0.756, 0.918, 0.908, 0.923, 0.823],
-    [0.877, 0.877, 0.854, 0.862, 0.765, 0.868, 0.855, 0.865, 0.876],
-    [0.972, 0.982, 0.906, 0.920, 0.797, 0.942, 0.988, 0.952, 0.958]
+    [0.826, 0.817, 0.917, 0.894, 0.944, 0.888, 0.862],
+    [0.894, 0.935, 0.863, 0.887, 0.917, 0.924, 0.927],
+    [0.721, 0.927, 0.879, 0.858, 0.923, 0.902, 0.823],
+    [0.877, 0.877, 0.854, 0.862, 0.952, 0.819, 0.876],
+    [0.972, 0.982, 0.906, 0.920, 0.865, 0.964, 0.958]
 ]
 Y_AUC_valus_embeddngs = [
-    [0.791, 0.810, 0.904, 0.904, 0.925, 0.899, 0.951, 0.913, 0.954],
-    [0.869, 0.873, 0.861, 0.880, 0.936, 0.910, 0.974, 0.906, 0.973],
-    [0.712, 0.939, 0.850, 0.864, 0.916, 0.909, 0.950, 0.904, 0.937],
-    [0.877, 0.881, 0.859, 0.875, 0.909, 0.872, 0.933, 0.879, 0.943],
-    [0.978, 0.984, 0.861, 0.906, 0.948, 0.913, 0.982, 0.931, 0.967]
+    [0.791, 0.810, 0.904, 0.904, 0.913, 0.913, 0.954],
+    [0.869, 0.873, 0.861, 0.880, 0.906, 0.906, 0.973],
+    [0.712, 0.939, 0.850, 0.864, 0.904, 0.904, 0.937],
+    [0.877, 0.881, 0.859, 0.875, 0.931, 0.879, 0.943],
+    [0.978, 0.984, 0.861, 0.906, 0.879, 0.931, 0.967]
 ]
 Y_range = [0.4, 1.2]
 X_start = 20
 X_scale = 1
 Y_scale = 0.1
 labels_heuristic = ["AA", "ACT", "CN", "Jaccard", "Katz", "RW", "RWR"]
-labels_embedding = ["DeepWalk", "Node2Vec", "EmbeddingWithAttention", "GCN", "Variant1", "Variant1_", "Variant2", "Variant2_", "SEAL"]
+labels_embedding = ["DeepWalk", "Node2Vec", "EmbeddingWithAttention", "GCN", "MHE", "MHEAfterRW", "SEAL"]
 colors_heuristic = ["r", "g", "b", "k", "c", "m", "purple"]
-colors_embedding = ["r", "g", "b", "k", "c", "m", "purple", "pink", "orange"]
+colors_embedding = ["r", "g", "b", "k", "c", "purple", "orange"]
 if __name__ == '__main__':
-    drawBar(X_names = X_names, width = width, Y_values = Y_AUC_valus_embeddngs,
-            Y_range = Y_range, X_start = X_start,  X_scale = X_scale,
-            Y_scale = Y_scale, labels = labels_embedding, colors = colors_embedding)
+    # drawBar(X_names = X_names, width = width, Y_values = Y_AC_valus_embeddngs,
+    #         Y_range = Y_range, X_start = X_start,  X_scale = X_scale,
+    #         Y_scale = Y_scale, labels = labels_embedding, colors = colors_embedding)
+    x_data = ['2011', '2012', '2013', '2014', '2015', '2016', '2017']
+    y_dates = []
+    y_data = [58000, 60200, 63000, 71000, 84000, 90500, 107000]
+    y_data2 = [52000, 54200, 51500, 58300, 56800, 59500, 62700]
+    y_dates.append(y_data)
+    y_dates.append(y_data2)
+    colors = ["red", "blue"]
+    markers = ["*", "x"]
+    drawLineChart(x_data, y_dates, colors, 3.0, '--', markers)

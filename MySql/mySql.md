@@ -38,12 +38,44 @@
 
 ![image text](./picture/p56.png)
 
+
+
 ### 隔离级别
 
 1. read UnCommitted（未提交读）
 2. read Committed（提交读）
 3. repeatable Read（可重复读）
 4. serializable（可串行化）
+
+### MVCC 原理
+
+使用MVCC可以解决重复度、幻读的问题。
+每条行记录末尾有2个额外的字段“trx_id”, “roll_pointer”， 其中“trx_id”用来记录最后一次被修改的事务的id， “roll_pointer”用来表示每次会这条行记录进行修改时都会把旧版本写入undo日志中，“roll_pointer”相当于一个指针，指向undo日志中保存的旧版本。
+假设有这样两个事务：
+
+![image text](./picture/p58.png)
+
+形成的版本链如下：
+
+![image text](./picture/p59.png)
+
+每次进行查询时会形成一个ReadView结构， 这个结构有4个比较重要的内容：
+
+* m_ids: 表示在生成ReadView时当前系统中活跃的读写事务的事务id列表;
+* min_trx_id: 表示在生成ReadView时当前系统中活跃的读写事务中最小的事务id，也就是m_ids中的最小值;
+* max_trx_id: 表示生成ReadView时系统中应该分配给下一个事务的id值;
+* creator_trx_id: 表示生成该ReadView的事务的事务id;
+  
+判断版本链中哪个版本的行记录对查询可见的步骤：
+
+* 如果被访问版本的trx_id属性值与ReadView中的creator_trx_id值相同，意味着当前事务在访问它自己修改过的记录，所以该版本可以被当前事务访问;
+* 如果被访问版本的trx_id属性值小于ReadView中的min_trx_id值，表明生成该版本的事务在当前事务生成ReadView前已经提交，所以该版本可以被当前事务访问;
+* 如果被访问版本的trx_id属性值大于ReadView中的max_trx_id值，表明生成该版本的事务在当前事务生成ReadView后才开启，所以该版本不可以被当前事务访问;
+* 如果被访问版本的trx_id属性值在ReadView的min_trx_id和max_trx_id之间，那就需要判断一下trx_id属性值是不是在m_ids列表中，如果在，说明创建ReadView时生成该版本的事务还是活跃的，该版本不可以被访问；如果不在，说明创建ReadView时生成该版本的事务已经被提交，该版本可以被访问;
+
+对于READ COMMIT隔离级别， 事务中的每次查询都会形成一个新的READ VIEW， 而对于REPEAT READ隔离级别的事务来说只有第一次查询会生成一个READ VIEW， 之后的查询不会再生成READ VIEW。所以对READ COMMIT级别， 当有修改的事务提交后， 由于之后的查询会生成新的READ VIEW， 所以总会读到最新的记录， 而对于REPEAT READ隔离级别的事务来说由于只有在第一次读的时候生成了READ VIEW， 所以之后有事务提交了也看不到。
+
+
 
 ## MySql 服务端对客户端请求的处理过程
 
@@ -425,24 +457,6 @@ BTree在非叶子节点上也保存数据， 会导致一个页（Page）保存�
 
 ![image text](./picture/p52.png)
 
-## MySql安装与配置（MySql-5.7.16）
-
-![image text](./picture/p1.png)
-
-![image text](./picture/p2.png)
-
-![image text](./picture/p3.png)
-
-![image text](./picture/p4.png)
-
-![image text](./picture/p5.png)
-
-![image text](./picture/p6.png)
-
-![image text](./picture/p7.png)
-
-![image text](./picture/p8.png)
-
 
 ## MySQL数据目录
 
@@ -478,10 +492,25 @@ MySQL会把数据以及创建的索引都存储到表空间中
 ![image text](./picture/p42.png)
 
 
+## Buffer Pool
 
-## 索引
+## Redo日志
 
-http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html
+redo日志称为重做日志， 记录了对数据库进行的修改操作。
+
+![image text](./picture/p57.png)
+
+* type : redo日志的类型
+* space ID : 表空间ID
+* page number : 页号
+* data : 该条redo日志的具体内容
+
+### Mini-Transaction
+
+一个事务可能包含了多步操作， 每步操作可能会生成多条redo日志， 多条redo日志合在一起是不可分割的，即满足原子性。
+
+## undo日志
+
 
 ## Mysql数据库引擎
 
@@ -489,7 +518,16 @@ http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html
 
 #### 行级锁（row-loevel）
 
+* 记录锁(Record Lock), 也分为S型锁和X型锁；
+* 间隙锁(Gap Lock), 可用于解决幻读的问题， 当对某条记录加了间隙锁后，该记录和前一个记录之间不允许插入数据
+* Next-key Lock, 既想锁住某条记录，又想阻止其他事务在该记录前边的间隙插入新记录， 所以Next-key Lock = gap lock + record lock;
+* 插入意向锁(Insert Intention Lock), 一个事务在插入一条记录时需要判断一下插入位置是不是被别的事务加了所谓的gap锁或者next-key锁， 如果有的话，插入操作需要等待，直到拥有gap锁的那个事务提交， Mysql规定在等待的时候也需要在内存中生成一个锁结构，表明有事务想在某个间隙中插入新记录，但是现在在等待， 这就是插入意向锁；
+
 #### 表级锁（table-level）
+
+* 共享锁(S锁), 排他锁(X锁);
+* 意向锁(IS锁, IX锁), 当事务准备在某条记录上加S锁时，需要先在表级别加一个IS锁, 当事务准备在某条记录上加X锁时，需要先在表级别加一个IX锁;
+* 表级别的AUTO-INC锁;
 
 #### 页级锁（page-level）
 
@@ -499,460 +537,21 @@ http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html
 
 2. char
 
-### varchar(5)与varchar(200)存储“hello”有什么区别？
-
-首先char与varchar的区别在于除了一个定长，一个变长， varchar在存储时需要额外的字节保存最大的存储长度，如varchar(5)需要一个额外的字节（5 < 2^8 - 1），varchar(1000)需要两个额外的字节（2^8 < 5 < 2^16 -1）；
-varchar(5)与varchar(200)在磁盘上存储同一个字符串是没有区别的，关键在于加入如内存时，比如排序或建立临时表，varchar(5)会申请5个字节的磁盘块，varchar(200)会申请200个字节的磁盘块。 
-
 3. TEXT
 
 4. BLOB
 
-### TEXT与BLOB的比较？
-
-对于BLOB和TEXT列的索引，必须指定索引前缀的长度。对于CHAR和VARCHAR，前缀长度是可选的;
-
-Text被视为非二进制字符串, BLOB被视为二进制字符串, TEXT可视为为LONGVARCHAR， BLOB列视为能够足够大的VARBINARY列；
-
-BLOB 可以储存图片,TEXT不行，TEXT只能储存纯文本文件；
-
 5. DATETIME & TIMESTAMP
 
-DATETIME:从1001到9999年， 精度是秒， 使用8个字节的存储空间
+DATETIME: 从1001到9999年， 精度是秒， 使用8个字节的存储空间
 
-TIMESTAMP:从1970年1月1日开始的秒数， 精度是秒， 使用4个字节的存储空间
-
-如何存储比秒更小粒度的时间呢？
+TIMESTAMP: 从1970年1月1日开始的秒数， 精度是秒， 使用4个字节的存储空间
 
 6. BIT 
 
 7. SET
 
-## Mysql操作命令
-
-1. 登录
-````
-mysql -h [host] -u[用户名] -p
-````
-
-2. 数据库启动指令 && 数据库退出指令
-
-```
-net start MySql57(数据库服务名称)
-```
-
-```
-net stop MySql57
-```
-
-数据库服务名称在这里查找：
-
-![image text](./picture/p9.png)
-
-
-2. 退出
-````
-quit
-````
-
-3. 创建一个新的用户
-
-````
-create user '用户名'@'登录ip' indentified by '密码'
-````
-indentified by '密码'可以不加，表示登录不需要密码
-
-@'ip'可用@'%'表示没有登录ip限制
-
-4. 给用户授权
-
-````
-grant 权限 on 数据库名.表明 to 'test'@'%' 
-````
-被授权的用户无法对其他用户授权，如果想让被授权的用户能够对其他用户授权：
-
-````
-grant 权限 on 数据库名.表名 to 'test'@'%' with grant option
-````
-
-5. 查看用户权限
-
-````
-show grants for 'test'@'%';
-````
-
-6. 修改用户的权限
-
-````
-grant 权限 on 数据库名.表名 to 'test'@'%'
-````
-
-7. 修改用户密码
-
-````
-set password for 'test'@'%' = password('newpassword')
-````
-
-8. 撤销用户权限
-
-````
-revoke 权限 on *.* from 'test'@'%';
-````
-
-9. 删除用户
-
-````
-drop user 'test'@'%';
-````
-
-10. 载入数据
-
-````
-load data infile './pet.txt' int table pet fields terminated by ' ' lines terminated by '\r\n';
-````
-
-在执行这条指令的时候my.ini配置中的Secure File Priv 设置为：“secure-file-priv=”, secure-file-priv显示mysql载入数据与输出数据的路径，每次修改需要重启Mysql;
-fields terminated by指定每行数据以什么字符分割；
-lines terminated by指定每行数据以什么字符结尾；
-./pet.text表示在Date文件下（默认数据路径）；
-pet.txt中如果每行数据有空值用“\N”表示；
-
-11. 更新数据
-
-````
-update pet set birth = '1989-08-31' where name = 'xx'
-````
-
-12. 条件查询
-
-````
-select * from pet where name = 'xx'
-
-select * from pet where birth  >= 'xx'
-
-select * from pet where species = 'xx' and sex = 'xx'
-
-select * from pet where species = 'xx' or sex = 'xx'
-
-select * from pet where (speciees = 'xx' and sex = 'xx') or (speciese = 'xx' and sex = 'xx')
-
-select name, birth from pet
-
-select name from pet (查出的数据可能有重复的)
-
-select distinct name from pet (查出的数据没有重复的)
-
-select name from pet order by birth desc (对查询出来的数据按照birth进行排序, 默认升序 desc 表示降序， asc 表示升序)
-
-select name from pet order by birth, species desc (按照多个属性进行排序）
-
-````
-
-13. 多表查询
-
-````
-select a.id, a.name, a.address, a.date, b.math, b.english, b.chinese from table1 as a, table2 as b where a.id = b.id;
-
-select id, name, pwd from table1 UNION uid, price, date from table2; (union 会删除重复行)
-
-select id, name, pwd from table1 ALL uid price, date from table2; (ALL 不会删除重复行)
-````
-
-14. 分页查询
-
-````
-select * from table1 limit start, size;(start表示其实位置， size表示页大小， 起始位置从0算起)
-
-select * from table1 limit size;
-````
-
-15. 关联多个数据表查询（join）
-
-```
-SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo FROM Persons INNER JOIN Orders ON Persons.Id_P = Orders.Id_P ORDER BY Persons.LastName
-```
-
-不同的JOIN:
-
-JOIN: 如果表中有至少一个匹配，则返回行
-LEFT JOIN: 即使右表中没有匹配，也从左表返回所有的行
-RIGHT JOIN: 即使左表中没有匹配，也从右表返回所有的行
-FULL JOIN: 只要其中一个表中存在匹配，就返回行
-
-### 添加外键
-
-````
-//创建表时
-id varchar(40) references table1(id)
-
-foreign key(id) references table1(id)
-
-constraint 外键名 foreign key(id) references table1(id)
-
-````
-
-### 查看表的结构
-
-```
-DESC table
-```
-
-### 查看表的相关信息
-
-```
-show table status like 'employees';
-```
-
-### 查看数据库中所有表的信息
-```
-use information_schema;
-
-select table_name, table_rows from tables where table_schema = 'employees' order by table_rows desc;
-```
-
-employees为数据库名
-
-### alter操作
-
-1. change (与modify相比可以改名字)
-
-````
-alter table t1 change col1 newCol1 bigint;
-````
-
-2. modify (单独修改某一列的属性， 会丢掉原来的属性， 不能修改名字)
-````
-alter table t1 modify col1 bigint;
-````
-
-3. drop (删除某一列， 如果一个表中只有一个列， 删除失败)
-````
-alter table table1 drop col1;
-````
-
-4. add (添加列)
-````
-alter table table1 add col1 int;
-
-//将新加的属性放在第一列
-
-alter table table1 add col1 int First;
-
-//将新加的属性放在某一列后面
-
-alter table table1 add col1 int After coln;
-````
-
-5. 修改默认值
-
-````
-alter table table1 alter col1 set default n;
-````
-
-### default value
-
-
-### 创建索引
-
-```
-alter tableName add index indexName(columnList)
-
-create index indexName on tableName(columnList)
-
-```
-
-### 删除索引
-
-```
-drop index indexName on tableName
-
-alter table tableName drop index indexName
-
-```
-
-### 查看索引
-
-```
-show index from tableName;
-```
-
-## MySQL查询的过程实现
-
-### Join
-
-首先Join的执行流程为：
-
-1. 先执行From 对Join左右两边的表进行笛卡尔乘积， 假设第一张表有m行， 第二张表有n行， 则产生一个m*n行表的乘积t1；
-2. 再执行on， 对t1表中的每一行数据进行筛选，产生新的表t2;
-3. 添加外部行(如果是inner join 则没有这一步)， 如果是left join则遍历左表中的每一行， 如果不在t2中，则插入这行数据， 其余字段为Null， 形成t3;
-4. 对t3执行where进行筛选， 形成t4；
-5. 执行select， 取出t4中的字段到t5;
-
-### 联表算法
-
-#### Simple Nested-Loop(SNL)
-
-#### Block Nested-Loop(BNL)
-
-#### Index Nested-Loop(INL)
-
-#### Batched Key-Accress(BKA)
-
-### group by & having
-
-### union & union all
-
-## Mysql运算表达式与函数
-
-### 运算符
-
-1. 加(+): select 1 + 1
-
-2. 减(-): select 2 -1
-
-3. 乘(*): select 2 * 1
-
-4. 除(/): select 5 / 3
-
-5. 商(div): select 5 div 2
-
-6. 模(%或mod()): select 5 % 2 或 select mod(5, 2)
-
-7. 等于(=)
-
-8. 不等于(!= 或 <>)
-
-9. 小于(<)
-
-10. 小于等于(<=)
-
-11. 大于(>)
-
-12. 大于等于(>=)
-
-13. between: select 10 between 10 and 20
-
-14. in: select 1 in (1, 2, 3)
-
-15. is null: select o is null
-
-16. is not null: select 0 is not null
-
-17. like: select 123456 like '123%'
-
-18. regexp: select 'abcdef' regexp 'ab'
-
-19. 非(not 或 ！)
-
-20. 与(and 或 &&)
-
-21. 或(or 或 ||)
-
-22. 异或(xor 或 ^)
-
-### 函数
-
-1. concat() 字符链接
-
-2. concat_ws() 使用指定的分隔符进行字符链接
-
-3. format() 数字格式化
-
-4. lower() 转化小写字母
-
-5. upper() 转化大写字母
-
-6. left() 获取左侧字符
-
-7. right() 获取右侧字符
-
-8. length() 获取字符串长度
-
-9. ltrim() 删除前导空格
-
-10. rtrim() 删除后续空格
-
-11. trim() 删除空格
-
-12. substring() 字符串截取
-
-```
-str为要截取的字符串， pos从第几位开始截取， length表示截取的长度
-
-substring(str, pos)
-
-substring(str, pos, length)
-```
-
-
-13. [not] like 模式匹配
-
-14. replace() 字符串替换
-
-15. ceil() 进一取整
-
-16. div() 整数除法
-
-17. floor() 舍一取整
-
-18. Mod() 取余数
-
-19. power() 幂运算
-
-20. round() 四舍五入
-
-21. truncate() 数字截取
-
-22. now() 当前日期和时间
-
-23. curdate() 当前日期
-
-24. curtime() 当前时间
-
-25. date_add() 日期变化
-
-26. dateDiff() 日期差值
-
-27. date_format() 日期格式化
-
-28. avg() 平均值
-
-29. count() 计数
-
-````
-select count(*) from pet
-````
-
-20. max()
-
-21. min()
-
-22. sum() 求和
-
-## Question
-
-1. 字节码与字符的区别？
-
-字节码（Bytecode）是一种包含执行程序、由一序列 op 代码/数据对 组成的二进制文件。字节码是一种中间码，它比机器码更抽象，需要直译器转译后才能成为机器码的中间代码。
-通常情况下它是已经经过编译，但与特定机器码无关。字节码通常不像源码一样可以让人阅读，而是编码后的数值常量、引用、指令等构成的序列。
-字节码主要为了实现特定软件运行和软件环境、与硬件环境无关。字节码的实现方式是通过编译器和虚拟机器。编译器将源码编译成字节码，特定平台上的虚拟机器将字节码转译为可以直接执行的指令。字节码的典型应用为Java bytecode。
-字节码在运行时通过JVM（JAVA虚拟机）做一次转换生成机器指令，因此能够更好的跨平台运行。
-总结：字节码是一种中间状态（中间码）的二进制代码（文件）。需要直译器转译后才能成为机器码。
-
-2. 内存临时表与MYISAM临时表？
-
-https://www.cnblogs.com/jevo/p/3262227.html
-
-首先，临时表只在当前连接可见，当关闭连接时，Mysql会自动删除表并释放所有空间。因此在不同的连接中可以创建同名的临时表，并且操作属于本连接的临时表。
-创建临时表的语法与创建表语法类似，不同之处是增加关键字TEMPORARY，如：
-```
-CREATE TEMPORARY TABLE 表名 (.......)
-```
-临时表：表在内存， 数据在内存
-
-内存表：表在磁盘， 数据在内存
-
-# MySql索引即查询优化
+## MySql索引即查询优化
 
 使用的数据库如下
 
@@ -995,3 +594,37 @@ MySql中各种数据类型所占大小
 ![image text](./picture/p17.png)
 
 可以看出范围查询后的索引并没有失效；
+
+## Question
+
+1. 字节码与字符的区别？
+
+字节码（Bytecode）是一种包含执行程序、由一序列 op 代码/数据对 组成的二进制文件。字节码是一种中间码，它比机器码更抽象，需要直译器转译后才能成为机器码的中间代码。
+通常情况下它是已经经过编译，但与特定机器码无关。字节码通常不像源码一样可以让人阅读，而是编码后的数值常量、引用、指令等构成的序列。
+字节码主要为了实现特定软件运行和软件环境、与硬件环境无关。字节码的实现方式是通过编译器和虚拟机器。编译器将源码编译成字节码，特定平台上的虚拟机器将字节码转译为可以直接执行的指令。字节码的典型应用为Java bytecode。
+字节码在运行时通过JVM（JAVA虚拟机）做一次转换生成机器指令，因此能够更好的跨平台运行。
+总结：字节码是一种中间状态（中间码）的二进制代码（文件）。需要直译器转译后才能成为机器码。
+
+2. 内存临时表与MYISAM临时表？
+
+https://www.cnblogs.com/jevo/p/3262227.html
+
+首先，临时表只在当前连接可见，当关闭连接时，Mysql会自动删除表并释放所有空间。因此在不同的连接中可以创建同名的临时表，并且操作属于本连接的临时表。
+创建临时表的语法与创建表语法类似，不同之处是增加关键字TEMPORARY，如：
+```
+CREATE TEMPORARY TABLE 表名 (.......)
+```
+临时表：表在内存， 数据在内存
+
+内存表：表在磁盘， 数据在内存
+
+3. varchar(5)与varchar(200)存储“hello”有什么区别？
+
+首先char与varchar的区别在于除了一个定长，一个变长， varchar在存储时需要额外的字节保存最大的存储长度，如varchar(5)需要一个额外的字节（5 < 2^8 - 1），varchar(1000)需要两个额外的字节（2^8 < 5 < 2^16 -1）；
+varchar(5)与varchar(200)在磁盘上存储同一个字符串是没有区别的，关键在于加入如内存时，比如排序或建立临时表，varchar(5)会申请5个字节的磁盘块，varchar(200)会申请200个字节的磁盘块。 
+
+4. TEXT与BLOB的比较？
+
+对于BLOB和TEXT列的索引，必须指定索引前缀的长度。对于CHAR和VARCHAR，前缀长度是可选的;
+Text被视为非二进制字符串, BLOB被视为二进制字符串, TEXT可视为为LONGVARCHAR， BLOB列视为能够足够大的VARBINARY列；
+BLOB 可以储存图片,TEXT不行，TEXT只能储存纯文本文件；

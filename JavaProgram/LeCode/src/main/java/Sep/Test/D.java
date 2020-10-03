@@ -1,19 +1,17 @@
 package Sep.Test;
 
 
+import java.util.*;
+
 public class D {
 
-    public static void test(A a) {
-        System.out.println("a");
-    }
-
-    public static void test(B b) {
-        System.out.println("b");
+    private static void change(String str) {
+        str = str + " world!";
+//        str.replace('o', 'w');
     }
 
     public static void main(String[] args) {
-        C c = new C();
-        A a = new B();
-        test(a);
+        Set<String> set = new HashSet<>();
+        set.add(null);
     }
 }
