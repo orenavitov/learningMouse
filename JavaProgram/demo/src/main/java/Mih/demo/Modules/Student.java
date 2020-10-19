@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student implements InitializingBean, DisposableBean {
+public class Student implements InitializingBean, DisposableBean, Serializable {
 
     private String studentId;
 

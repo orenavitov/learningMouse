@@ -1,4 +1,4 @@
-package Mih.demo.Dao;
+package Mih.demo.Dao.Services;
 
 public interface ScoreService {
     int getScoreByStudentId(String studentId, String classId);

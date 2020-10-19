@@ -1,6 +1,8 @@
 package Mih.demo.Modules;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     private int classId;
     private int teacherId;
     private String className;

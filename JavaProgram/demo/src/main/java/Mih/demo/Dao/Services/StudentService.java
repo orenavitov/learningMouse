@@ -1,4 +1,4 @@
-package Mih.demo.Dao;
+package Mih.demo.Dao.Services;
 
 import Mih.demo.Modules.Student;
 

@@ -369,5 +369,47 @@ def Test23():
     adj_matrix = numpy.matmul(adj_matrix, A)
     print(adj_matrix)
 
+def Test24():
+    criterion = nn.CrossEntropyLoss()
+    output = torch.randn(3, 5, requires_grad=True)
+    label = torch.empty(3, dtype=torch.long).random_(5)
+    loss = criterion(output, label)
+
+    print("网络输出为3个5类:")
+    print(output)
+    print("要计算loss的类别:")
+    print(label)
+    print("计算loss的结果:")
+    print(loss)
+
+    first = [0, 0, 0]
+    for i in range(3):
+        first[i] = -output[i][label[i]]
+    second = [0, 0, 0]
+    for i in range(3):
+        for j in range(5):
+            second[i] += math.exp(output[i][j])
+    res = 0
+    for i in range(3):
+        res += (first[i] + math.log(second[i]))
+    print("自己的计算结果：")
+    print(res / 3)
+
+def Test25():
+    A = numpy.array([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ])
+    A = torch.tensor(A)
+    index = numpy.array([
+        [1, 1],
+        [2, 2]
+        ]
+    )
+    index = torch.tensor(index, dtype = torch.long)
+
+    print(A)
+
 if __name__ == '__main__':
-    Test23()
+    Test25()

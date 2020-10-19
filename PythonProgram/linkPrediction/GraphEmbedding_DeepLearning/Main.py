@@ -117,6 +117,8 @@ with open(r"./params.json", 'r') as file:
         K = module_params["K"]
         alpha = module_params["alpha"]
         P_epochs = module_params["P_epochs"]
+        steps = module_params["steps"]
+        delays = module_params["delays"]
         print("K: {0}".format(K))
         print("alpha: {0}".format(alpha))
         print("P_epochs: {0}".format(P_epochs))
@@ -205,17 +207,20 @@ def Test2(module):
     FN = 0
     all_labels = []
     all_predictions = []
+    all_score = []
     for test_data, test_label in test_loader:
         output = module.test(test_data)
-        output, predictions = torch.max(output.data, dim=1)
+        _, predictions = torch.max(output.data, dim=1)
         test_label = test_label.numpy()
         predictions = predictions.numpy()
         output = output.detach().numpy()
-        # output = output[:, 1]
+        scores = output[:, 1]
         all_labels.extend(test_label)
-        all_predictions.extend(output)
+        all_predictions.extend(predictions)
         for index in range(len(predictions)):
             prediction = predictions[index]
+            score = scores[index]
+            all_score.append(score)
             test = test_label[index]
             if (prediction == 1 and test == 1):
                 TP = TP + 1
@@ -231,7 +236,7 @@ def Test2(module):
     print("FN: {0}".format(FN))
     print("AP: {0}".format((TP + TN) / (TP + FP + TN + FN)))
     print("AC: {0}".format((TP) / (TP + FP)))
-    print("AUC: {0}".format(roc_auc_score(all_labels, all_predictions)))
+    print("AUC: {0}".format(roc_auc_score(all_labels, all_score)))
 
 
 
@@ -319,6 +324,7 @@ def create_module(name, A, As, all_nodes_neighbors, N, embedding_size, layers, s
         P = P_module.state_dict()["prior_distribution_matrix"]
         module = PolysemousNetwork(P=P, A=A_test, embedding_size=embedding_size, layers=layers, K=K, GPU=GPU)
     if name == "MihPolysemousNetworkEmbedding":
+        A_test = A + numpy.eye(N)
         A_test = A_test + numpy.eye(N)
         P_module = PriorDistribution(A=A_test, K=K, alpha=alpha, GPU=GPU)
         optimizer = optim.Adam(P_module.parameters(), lr=0.001)
@@ -334,7 +340,7 @@ def create_module(name, A, As, all_nodes_neighbors, N, embedding_size, layers, s
 
 if __name__ == '__main__':
 
-    for i in range(10):
+    for i in range(1):
         print("---------------------{0} time ----------------------".format(i + 1))
         train_loader, test_loader, A_test, weight = get_data_loader(A, radio, batchSize, "under_sample", GPU)
         module = create_module(name=module_name, A=A_test, As=As, all_nodes_neighbors=all_nodes_neighbors, N=N,

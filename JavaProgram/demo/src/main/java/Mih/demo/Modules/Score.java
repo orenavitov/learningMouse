@@ -1,10 +1,8 @@
 package Mih.demo.Modules;
 
-import org.springframework.stereotype.Component;
+import java.io.Serializable;
 
-
-@Component
-public class Score {
+public class Score implements Serializable {
     private String studentId;
     private String classId;
     private int score;

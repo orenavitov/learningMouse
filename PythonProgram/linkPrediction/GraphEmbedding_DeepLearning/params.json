@@ -1,11 +1,11 @@
 {
 
-  "data_set": "USAir",
+  "data_set": "PB",
   "radio": 0.9,
   "batchSize": 128,
-  "epochs": 100,
+  "epochs": 50,
   "learning_rate": 0.0001,
-  "module_name": "MihGNNEmbedding6",
+  "module_name": "MihGNNEmbedding12",
   "MihGNNEmbedding1": {
     "embedding_size": 64,
     "layers": 2,
@@ -120,8 +120,10 @@
   "MihPolysemousNetworkEmbedding": {
     "embedding_size": 64,
     "layers": 3,
-    "K": 6,
+    "K": 4,
     "alpha": 0.3,
+    "steps": 2,
+    "delays": [1.0, 0.1],
     "P_epochs": 2000
   },
   "CovE": {

@@ -1,10 +1,9 @@
 package Mih.demo.Modules;
 
-import org.apache.ibatis.type.Alias;
-import org.springframework.stereotype.Component;
+import java.io.Serializable;
 
 
-public class Teacher {
+public class Teacher implements Serializable {
     private String teacherId;
     private String teacherName;
 

@@ -446,7 +446,7 @@ class MihGNNEmbedding10(nn.Module):
                                                       convolution_layers=layers, d=d,
                                                       embedding_states=embedding_state)
         self.liner = LineNetwork(input_features=d * 2, output_features=2, hidden_features=d)
-        self.soft_max = nn.Softmax(dim = -1)
+        # self.soft_max = nn.Softmax(dim = -1)
         self.cross_entropy = nn.CrossEntropyLoss()
 
     def forward(self, *input):
@@ -459,7 +459,7 @@ class MihGNNEmbedding10(nn.Module):
         dst_node_embeddings = self.aggregationModule(dst_node_indexes)
         node_embeddings = torch.cat([src_node_embeddings, dst_node_embeddings], dim = -1)
         predictions = self.liner(node_embeddings)
-        predictions = self.soft_max(predictions)
+        # predictions = self.soft_max(predictions)
         loss = self.cross_entropy(predictions, labels)
         return loss
 
@@ -538,8 +538,8 @@ class MihGNNEmbedding12(nn.Module):
                                                       embedding_states=embedding_state)
         self.liner = LineNetwork(input_features=d * 2, output_features=2, hidden_features=d)
         # self.soft_max = nn.Softmax(dim = -1)
-        # self.cross_entropy = nn.CrossEntropyLoss(weight = self.weight, reduction = 'sum')
-        self.cross_entropy = nn.CrossEntropyLoss()
+        self.cross_entropy = nn.CrossEntropyLoss(weight = self.weight, reduction = 'sum')
+        # self.cross_entropy = nn.CrossEntropyLoss()
 
     def forward(self, *input):
         pairs = input[0]

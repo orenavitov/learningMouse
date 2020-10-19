@@ -5,7 +5,7 @@ package Singleton;
  */
 public class Singleton5 {
     // volatile 不仅可以保证在缓存的可见性， 还可以保证不会被重排序
-    private volatile static Singleton5 singleton5;
+    private static volatile Singleton5 singleton5;
 
     private Singleton5() {}
 

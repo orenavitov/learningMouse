@@ -1,7 +1,6 @@
 package Mih.demo.Controllers;
 
-import Mih.demo.Dao.TeacherService;
-import Mih.demo.Modules.Student;
+import Mih.demo.Dao.Services.TeacherService;
 import Mih.demo.Modules.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

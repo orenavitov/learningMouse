@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import copy
 import torch.utils.data as Data
 import torch
+from HeuristicAlgorithm import CN
 import math
 
 # Auc 计算
@@ -264,7 +265,7 @@ def get_data_loader(A, radio, batch_size = 32, sample_method = 'under_sample', G
         test_data = test_positives
         numpy.random.shuffle(train_data)
         numpy.random.shuffle(test_data)
-        weight = [1, 1]
+        weight = [2, 1]
     if sample_method == 'over_sample':
         pass
     A_test = numpy.zeros(shape=[node_number, node_number])
@@ -331,5 +332,7 @@ def cal_cos_similary(src, dst):
 
 
 if __name__ == '__main__':
-    A = generate_random_graph(10, 0.2)
-    print(A)
+    A = generate_random_graph(5, 0.2)
+    A_ = get_test_matrix(A, 0.8)
+    CN.CN(A, A)
+
