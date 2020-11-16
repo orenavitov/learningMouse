@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Student implements InitializingBean, DisposableBean, Serializable {
 
-    private String studentId;
+    private int studentId;
 
     private String name;
 
@@ -20,15 +20,21 @@ public class Student implements InitializingBean, DisposableBean, Serializable {
 
     private String sex;
 
+    private String telephoneNumber;
+
+    private String e_mailAddress;
+
+    private String address;
+
     public Student() {
         System.out.println("执行构造方法.");
     }
 
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 
@@ -94,4 +100,27 @@ public class Student implements InitializingBean, DisposableBean, Serializable {
         System.out.println("执行指定的 destroy().");
     }
 
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public String getE_mailAddress() {
+        return e_mailAddress;
+    }
+
+    public void setE_mailAddress(String e_mailAddress) {
+        this.e_mailAddress = e_mailAddress;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

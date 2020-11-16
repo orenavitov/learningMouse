@@ -14,7 +14,7 @@ train_radio = 0.9
 sample_method = 'under_sample'
 batch_size = 32
 epochs = 50
-file = r'../Data/hamster.gml'
+file = r'../Data/USAir.gml'
 
 def process_gml_file(file = r'./Data/bio-GE-GT.gml'):
     G = networkx.read_gml(file)

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class StudentAspect {
-    @Pointcut("execution(public * Mih.demo.Controllers.RestfulTest.*(..)))")
+    @Pointcut("execution(public * Mih.demo.Controllers.RestfulTest.hello(..)))")
     public void pointCut() {
 
     }

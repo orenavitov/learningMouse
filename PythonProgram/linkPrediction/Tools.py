@@ -200,6 +200,7 @@ def write_matrix2excel(A_star, A, file, sheet_name = 'A'):
     excel_file.close()
 
 
+
 # 生成一个随机的图, N为节点数量， density为网络密度
 def generate_random_graph(N, density):
     nodes = [i for i in range(N)]

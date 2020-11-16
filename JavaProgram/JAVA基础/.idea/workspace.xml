@@ -23,30 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95fc0932-a3dc-436b-a60d-4ed8e58e0c44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/October/day20201004.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/October/SafeChina/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/October/SafeChina/Test2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeCode/src/main/java/October/day20201020.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Annotation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/src/main/java/ClassLoaderTest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLoader/target/classes/ClassLoaderTest/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton5.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/Singleton/Singleton5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/Sep/Test/D.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/Sep/Test/D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/CacheServer/RedisServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/CacheServer/RedisServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/CacheServer/RedisServerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/CacheServer/RedisServerImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/ComponentA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/ComponentB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/ScoreImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/ScoreImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/Services/ScoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/StudentImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/StudentImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/Services/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/TeacherImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/TeacherImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/Services/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Modules/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadLocalTest/Test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/src/main/java/ThreadLocalTest/Test1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/target/classes/ThreadLocalTest/Test1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/target/classes/ThreadLocalTest/Test1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/target/classes/ThreadLocalTest/Test1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/target/classes/ThreadLocalTest/Test1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutliThread/target/classes/ThreadLocalTest/Test1.class" beforeDir="false" afterPath="$PROJECT_DIR$/MutliThread/target/classes/ThreadLocalTest/Test1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeCode/target/classes/October/QiAnXin/Test2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LeCode/target/classes/October/QiAnXin/Test2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/Mih/demo/Dao/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/GraphSAGE.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/GraphSAGE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/MihGNNEmbeddingModules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/GraphEmbedding_DeepLearning/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../PythonProgram/linkPrediction/Test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +100,7 @@
       <recent name="ThreadLocalTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClassLoaderTest">
+  <component name="RunManager" selected="Application.Test1">
     <configuration name="ClassLoaderTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ClassLoaderTest.Test" />
       <module name="ClassLoader" />
@@ -203,10 +197,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test1" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.ManyPrinter" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.Test1" />
         <item itemvalue="Application.Test (2)" />
       </list>
     </recent_temporary>
@@ -289,54 +283,54 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="682" y="97" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1596416470322" />
-    <state width="426" height="332" key="DebuggerActiveHint" timestamp="1601892481154">
+    <state width="469" height="332" key="DebuggerActiveHint" timestamp="1603331102287">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="426" height="332" key="DebuggerActiveHint/0.0.1304.768@0.0.1304.768" timestamp="1601892481154" />
+    <state width="469" height="332" key="DebuggerActiveHint/0.0.1304.768@0.0.1304.768" timestamp="1603331102287" />
     <state width="447" height="466" key="DebuggerActiveHint/0.0.1858.1080@0.0.1858.1080" timestamp="1597047766431" />
     <state x="709" y="297" key="FileChooserDialogImpl" timestamp="1595984470212">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="709" y="297" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1595984470212" />
-    <state width="1261" height="283" key="GridCell.Tab.0.bottom" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.0.bottom" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.0.bottom/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.0.bottom/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1340" height="488" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
-    <state width="1261" height="283" key="GridCell.Tab.0.center" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.0.center" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.0.center/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.0.center/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1340" height="488" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
-    <state width="1261" height="283" key="GridCell.Tab.0.left" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.0.left" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.0.left/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.0.left/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1340" height="488" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
-    <state width="1261" height="283" key="GridCell.Tab.0.right" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.0.right" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.0.right/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.0.right/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1340" height="488" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1598171681531" />
-    <state width="1261" height="283" key="GridCell.Tab.1.bottom" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.1.bottom" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.1.bottom/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.1.bottom/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1815" height="488" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
-    <state width="1261" height="283" key="GridCell.Tab.1.center" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.1.center" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.1.center/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.1.center/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1815" height="488" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
-    <state width="1261" height="283" key="GridCell.Tab.1.left" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.1.left" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.1.left/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.1.left/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1815" height="488" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
-    <state width="1261" height="283" key="GridCell.Tab.1.right" timestamp="1601892704637">
+    <state width="1224" height="250" key="GridCell.Tab.1.right" timestamp="1603332336276">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="283" key="GridCell.Tab.1.right/0.0.1304.768@0.0.1304.768" timestamp="1601892704637" />
+    <state width="1224" height="250" key="GridCell.Tab.1.right/0.0.1304.768@0.0.1304.768" timestamp="1603332336276" />
     <state width="1815" height="488" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1598171609166" />
     <state width="1815" height="306" key="GridCell.Tab.2.bottom" timestamp="1596076051487">
       <screen x="0" y="0" width="1858" height="1080" />
@@ -363,19 +357,15 @@
     </state>
     <state x="264" y="0" key="SettingsEditor/0.0.1304.768@0.0.1304.768" timestamp="1600226236826" />
     <state x="386" y="213" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1595903029032" />
-    <state x="576" y="246" width="564" height="373" key="StructurePopup" timestamp="1601892523539">
+    <state x="576" y="246" width="564" height="373" key="StructurePopup" timestamp="1603279148025">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state x="576" y="246" width="564" height="373" key="StructurePopup/0.0.1304.768@0.0.1304.768" timestamp="1601892523539" />
+    <state x="576" y="246" width="564" height="373" key="StructurePopup/0.0.1304.768@0.0.1304.768" timestamp="1603279148025" />
     <state x="820" y="346" width="564" height="524" key="StructurePopup/0.0.1858.1080@0.0.1858.1080" timestamp="1597048541655" />
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog" timestamp="1594113938029">
-      <screen x="0" y="0" width="1858" height="1080" />
-    </state>
-    <state x="640" y="556" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1594113938029" />
-    <state x="210" y="119" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601892410018">
+    <state x="210" y="119" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1603331025015">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state x="210" y="119" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1304.768@0.0.1304.768" timestamp="1601892410018" />
+    <state x="210" y="119" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1304.768@0.0.1304.768" timestamp="1603331025015" />
     <state x="708" y="0" width="596" height="768" key="find.popup" timestamp="1600226360674">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
@@ -384,23 +374,24 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="278" y="246" key="new project wizard/0.0.1858.1080@0.0.1858.1080" timestamp="1595984456134" />
-    <state x="671" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1593527215765">
-      <screen x="0" y="0" width="1858" height="1080" />
-    </state>
-    <state x="671" y="163" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1593527215765" />
-    <state x="415" y="167" width="672" height="483" key="search.everywhere.popup" timestamp="1600410174913">
+    <state x="415" y="167" width="672" height="483" key="search.everywhere.popup" timestamp="1603281313709">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state x="415" y="167" width="672" height="483" key="search.everywhere.popup/0.0.1304.768@0.0.1304.768" timestamp="1600410174913" />
+    <state x="415" y="167" width="672" height="483" key="search.everywhere.popup/0.0.1304.768@0.0.1304.768" timestamp="1603281313709" />
     <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1596681756426" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/ClassLoader.java</url>
-          <line>567</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/MutliThread/src/main/java/ThreadLocalTest/Test1.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/ThreadLocal.java</url>
+          <line>218</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

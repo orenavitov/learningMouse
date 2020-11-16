@@ -17,4 +17,6 @@ public interface StudentService {
     void createStudents(List<Student> students);
 
     void deleteStudentById(String studentId);
+    
+    void updateStudentById(Student student);
 }

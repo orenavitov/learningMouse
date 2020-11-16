@@ -14,9 +14,15 @@ public class RestfulTest {
     @RequestMapping("/hello")
     @ResponseBody
     public String hello() {
-        logger.debug("Request in /hello");
+//        logger.debug("Request in /hello");
         return "hello World";
     }
 
-
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test() {
+//        logger.debug("Request in /hello");
+        System.out.println(hello());
+        return "hello test";
+    }
 }

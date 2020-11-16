@@ -1,7 +1,11 @@
 package Mih.demo.Controllers;
 
+import Mih.demo.Dao.Services.ClassService;
 import Mih.demo.Dao.Services.ScoreService;
 import Mih.demo.Dao.Services.StudentService;
+import Mih.demo.Modules.Course;
+import Mih.demo.Modules.Response;
+import Mih.demo.Modules.Score;
 import Mih.demo.Modules.Student;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -21,12 +25,23 @@ public class StudentController {
     @Autowired
     ScoreService scoreService;
 
+    @Autowired
+    ClassService classService;
+
     @RequestMapping("/getstudentbyid")
     @ResponseBody
-    public String getStudentByNumber(@RequestParam("id")String number) {
-        Student student = studentService.findStudentByNumber(number);
-        String result = student.toString();
-        return result;
+    public Response getStudentByNumber(@RequestParam("id") String number) {
+        Response response = new Response();
+        try {
+            Student student = studentService.findStudentByNumber(number);
+            response.setObj(student);
+            response.setState(200);
+        } catch (Exception e) {
+            response.setState(500);
+            response.setMessage("error in find student by id!");
+        }
+
+        return response;
     }
 
     @RequestMapping("/getallstudents")
@@ -42,40 +57,45 @@ public class StudentController {
 
     @RequestMapping(value = "/createstudent", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public void createStudent(@RequestBody JSONObject jsonParam) {
-        Student student = jsonParam.toJavaObject(Student.class);
-        studentService.createStudent(student);
+    public Response createStudent(@RequestBody JSONObject jsonParam) {
+        Response response = new Response();
+        try {
+            Student student = jsonParam.toJavaObject(Student.class);
+            studentService.createStudent(student);
+            response.setState(200);
+        } catch (Exception e) {
+            response.setState(500);
+        }
+        return response;
     }
 
     @RequestMapping(value = "/createstudents", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public void createStudents(@RequestBody JSONArray jsonParams) {
-        ArrayList<Student> students = (ArrayList<Student>)jsonParams.toJavaList(Student.class);
-//        ArrayList<Student> students = (ArrayList<Student>)JSONArray.parseArray(jsonParam.toJSONString(), Student.class);
+        ArrayList<Student> students = (ArrayList<Student>) jsonParams.toJavaList(Student.class);
         studentService.createStudents(students);
     }
 
     @RequestMapping(value = "/deletestudentbyid", method = RequestMethod.DELETE)
     @ResponseBody
-    public void deleteStudentById(@RequestParam("id")String number) {
+    public void deleteStudentById(@RequestParam("id") String number) {
         studentService.deleteStudentById(number);
     }
 
-    @RequestMapping(value = "/getScoreByStudentId", method = RequestMethod.GET)
+    @RequestMapping(value = "/updatestudentbyid", method = RequestMethod.PUT)
     @ResponseBody
-    public int getScoreByStudentId(@RequestParam("sid")String studentId, @RequestParam("cid")String classId) {
-
-        return scoreService.getScoreByStudentId(studentId, classId);
-
+    public void updateStudent(@RequestParam("id") String number, @RequestBody JSONArray jsonParam) {
+        Student student = jsonParam.toJavaObject(Student.class);
+        studentService.updateStudentById(student);
     }
 
-    @RequestMapping(value = "/updateScoreByStudentId", method = RequestMethod.PUT)
+    @RequestMapping(value = "/selectcourse", method = RequestMethod.POST)
     @ResponseBody
-    public void updateScoreByStudentId(@RequestParam("sid")String studentId,
-                                       @RequestParam("cid")String classId,
-                                       @RequestParam("score") int score) {
-        scoreService.updateScoreByStudentId(studentId, classId, score);
-
+    public Response selectCourse(@RequestBody JSONObject jsonParam) {
+        Course course = (Course) jsonParam.toJavaObject(Course.class);
+        classService.selectCourse(course);
+        Response response = new Response();
+        return response;
     }
 
 }

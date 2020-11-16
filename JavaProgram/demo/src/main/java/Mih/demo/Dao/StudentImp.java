@@ -10,6 +10,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -46,7 +47,10 @@ public class StudentImp implements StudentService {
                 student.getStudentId(),
                 student.getName(),
                 student.getBirthday(),
-                student.getSex());
+                student.getSex(),
+                student.getTelephoneNumber(),
+                student.getE_mailAddress(),
+                student.getAddress());
     }
 
     /*
@@ -61,6 +65,20 @@ public class StudentImp implements StudentService {
     @CacheEvict(value = "student", key = "#studentId")
     public void deleteStudentById(String studentId) {
         studentMapper.delStudentById(studentId);
+    }
+
+    @Override
+    public void updateStudentById(Student student) {
+        int number = student.getStudentId();
+        String name = student.getName();
+        Date birthday = student.getBirthday();
+        String sex = student.getSex();
+        String telephoneNumber = student.getTelephoneNumber();
+        String e_mailAddress = student.getE_mailAddress();
+        String address = student.getAddress();
+        studentMapper.updateStudentById(
+                number, name, birthday, sex,
+                telephoneNumber, e_mailAddress, address);
     }
 
 

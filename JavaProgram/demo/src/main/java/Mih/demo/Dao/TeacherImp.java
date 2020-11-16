@@ -25,4 +25,20 @@ public class TeacherImp implements TeacherService {
     public List<Teacher> getAllTeachers() {
         return teacherMapper.getAllTeachers();
     }
+
+
+
+    @Override
+    public void createTeacher(Teacher teacher) {
+        teacherMapper.createTeacher(
+                teacher.getTelephoneNumber(),
+                teacher.getName(),
+                teacher.getBirthday(),
+                teacher.getSex(),
+                teacher.getTelephoneNumber(),
+                teacher.getE_mailAddress(),
+                teacher.getAddress());
+    }
+
+
 }

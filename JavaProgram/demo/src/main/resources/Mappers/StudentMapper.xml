@@ -17,10 +17,13 @@
 <!-- namespace对应接口全限定名 -->
 <mapper namespace="Mih.demo.Mappers.StudentMapper">
     <resultMap id="Student" type="Mih.demo.Modules.Student" >
-        <result column="SId" jdbcType="VARCHAR" property="studentId" />
+        <result column="SId" jdbcType="INTEGER" property="studentId" />
         <result column="Sname" jdbcType="VARCHAR" property="name" />
         <result column="Sage" jdbcType="TIMESTAMP" property="birthday" />
         <result column="Ssex" jdbcType="VARCHAR" property="sex" />
+        <result column="telephoneNumber" jdbcType="VARCHAR" property="telephoneNumber" />
+        <result column="e_mailAddress" jdbcType="VARCHAR" property="e_mailAddress" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
     </resultMap>
     <!-- id 与接口中方法的名称必须一致 -->
     <select id="getStudentByNumber" parameterType="string" resultMap="Student">
@@ -32,8 +35,8 @@
     </select>
 
     <insert id="createStudent">
-        insert into student (SId, Sname, Sage, Ssex) values
-        (#{SId}, #{Sname}, #{Sage}, #{Ssex})
+        insert into student (SId, Sname, Sage, Ssex, telephoneNumber, e_mailAddress, address) values
+        (#{SId}, #{Sname}, #{Sage}, #{Ssex}, #{telephoneNumber}, #{e_mailAddress}, #{address})
     </insert>
 
     <insert id="createStudents">
@@ -42,10 +45,21 @@
             (#{student.studentId}, #{student.name}, #{student.birthday}, #{student.sex})
         </foreach>
     </insert>
-
+    
     <delete id="delStudentById">
         delete from student where SId = #{SId}
     </delete>
+    
+    <update id="updateStudentById">
+        update student set
+            SId = #{SId},
+            Sname = #{Sname},
+            Sage = #{Sage},
+            Ssex = #{Ssex},
+            telephoneNumber = #{telephoneNumber}
+            e_mailAddress = #{e_mailAddress}
+            address = #{address}
+    </update>
 </mapper>
 
 

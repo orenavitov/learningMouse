@@ -1,12 +1,14 @@
 package Mih.demo.Controllers;
 
 import Mih.demo.Dao.Services.TeacherService;
+import Mih.demo.Modules.Annotation;
+import Mih.demo.Modules.Response;
+import Mih.demo.Modules.Student;
 import Mih.demo.Modules.Teacher;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,10 +21,16 @@ public class TeacherController {
 
     @RequestMapping("/getteacherbyid")
     @ResponseBody
-    public String getTeacherById(@RequestParam("id")String number) {
-        Teacher teacher = teacherService.findTeacherById(number);
-        String result = teacher.toString();
-        return result;
+    public Response getTeacherById(@RequestParam("id")String number) {
+        Response response = new Response();
+        try {
+            Teacher teacher = teacherService.findTeacherById(number);
+            response.setState(200);
+            response.setObj(teacher);
+        } catch (Exception e) {
+            response.setState(500);
+        }
+        return response;
     }
 
     @RequestMapping("/getallteachers")
@@ -36,4 +44,20 @@ public class TeacherController {
         return result.toString();
     }
 
+
+
+
+    @RequestMapping(value = "/createteacher", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Response createTeacher(@RequestBody JSONObject jsonParam) {
+        Response response = new Response();
+        try {
+            Teacher teacher = jsonParam.toJavaObject(Teacher.class);
+            teacherService.createTeacher(teacher);
+            response.setState(200);
+        } catch (Exception e) {
+            response.setState(500);
+        }
+        return response;
+    }
 }

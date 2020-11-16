@@ -16,13 +16,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Mih.demo.Mappers.ScoreMapper">
     <resultMap id="Score" type="Mih.demo.Modules.Score">
-        <result column="SId" jdbcType="VARCHAR" property="studentId" />
-        <result column="CId" jdbcType="VARCHAR" property="classId" />
-        <result column="score" jdbcType="DECIMAL" property="score" />
+        <result column="SId" jdbcType="INTEGER" javaType="java.lang.String" property="studentId" />
+        <result column="CId" jdbcType="INTEGER" javaType="java.lang.String" property="classId" />
+        <result column="score" jdbcType="DECIMAL" javaType="java.lang.Integer" property="score" />
     </resultMap>
-    
-    <select id="getScoreByStudentId" resultType="INT">
-        select score from sc where SId = #{SId} and CId = #{CId}
+
+    <select id="getScoreByStudentId" parameterType="java.lang.String" resultMap="Score">
+        select * from sc where SId = #{SId}
+    </select>
+
+    <select id="getScoreByClassId" parameterType="java.lang.String" resultMap="Score">
+        select * from sc where CId = #{CId}
+    </select>
+
+    <select id="getScoreByStudentIdAndClassId" resultType="Mih.demo.Modules.Score">
+        select * from sc where SId = #{SId} and CId = #{CId}
     </select>
 
     <update id="updateScoreByStudentId">

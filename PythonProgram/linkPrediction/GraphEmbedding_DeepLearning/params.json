@@ -1,6 +1,6 @@
 {
 
-  "data_set": "PB",
+  "data_set": "USAir",
   "radio": 0.9,
   "batchSize": 128,
   "epochs": 50,

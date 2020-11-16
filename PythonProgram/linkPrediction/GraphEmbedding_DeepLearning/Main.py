@@ -210,26 +210,31 @@ def Test2(module):
     all_score = []
     for test_data, test_label in test_loader:
         output = module.test(test_data)
-        _, predictions = torch.max(output.data, dim=1)
+        scores, predictions = torch.max(output.data, dim=1)
         test_label = test_label.numpy()
         predictions = predictions.numpy()
         output = output.detach().numpy()
-        scores = output[:, 1]
+        # scores = output[:, predictions]
         all_labels.extend(test_label)
         all_predictions.extend(predictions)
+
+        scores = scores.detach().numpy()
+        all_score.extend(scores)
         for index in range(len(predictions)):
             prediction = predictions[index]
-            score = scores[index]
-            all_score.append(score)
             test = test_label[index]
             if (prediction == 1 and test == 1):
                 TP = TP + 1
+
             if (prediction == 1 and test == 0):
                 FP = FP + 1
+
             if (prediction == 0 and test == 1):
                 FN = FN + 1
+
             if (prediction == 0 and test == 0):
                 TN = TN + 1
+
     print("TP: {0}".format(TP))
     print("TN: {0}".format(TN))
     print("FP: {0}".format(FP))

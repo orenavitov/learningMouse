@@ -16,6 +16,8 @@ import openpyxl
 import math
 from openpyxl.styles import PatternFill
 from matplotlib.pyplot import MultipleLocator
+from sklearn.metrics import roc_auc_score
+from torch import nn
 
 # 定义一张用于测试的图, A表示改图的邻接矩阵
 A = numpy.array([
@@ -411,5 +413,59 @@ def Test25():
 
     print(A)
 
+def Test26():
+    y_true = numpy.array([0, 0, 1, 1])
+    y_scores = numpy.array([0.1, 0.4, 0.35, 0.8])
+    auc = roc_auc_score(y_true, y_scores)
+    print(auc)
+
+def mihCrossEntropy(inputs, labels, weight):
+    result = 0
+    for index, input in enumerate(inputs):
+        input = math.e ** input
+        y_ = input[labels[index]]
+        sumVal = sum(input)
+        corss_entropy = y_ / sumVal
+        result = -math.log(corss_entropy, math.e) * weight[labels[index]] + result
+    print(result / sum(weight))
+
+def Test27():
+    inputs = numpy.array([
+        [0.3, 0.7],
+        [0.6, 0.4]
+    ])
+    labels = numpy.array([1, 0])
+    weight = numpy.array([1, 2])
+    mihCrossEntropy(inputs, labels, weight)
+    inputs = torch.tensor(inputs, dtype=torch.float)
+    labels = torch.tensor(labels, dtype=torch.long)
+    weight = torch.tensor(weight, dtype=torch.float)
+    cross_entropy = nn.CrossEntropyLoss(weight=weight)
+    loss = cross_entropy(inputs, labels)
+    print(loss)
+
+def Test28():
+    labels = numpy.array([1, 0])
+    labels = torch.tensor(labels, dtype=torch.long)
+    one_hot = nn.functional.one_hot(labels, 2)
+    print(one_hot)
+
+def Test29():
+    a = numpy.array([
+        [-1, 2, 3],
+        [2, -3, 4]
+    ])
+    a = torch.tensor(a)
+    x = numpy.array([1, 2])
+    # y = numpy.array([0, 1])
+    # x = torch.tensor(x, dtype = torch.long)
+    # y = torch.tensor(y, dtype = torch.long)
+    # a = a[x, y]
+    x = x.reshape((a.shape[0], -1))
+    x = x.repeat(a.shape[-1], axis = -1)
+    a = a - x
+
+    print(a)
+
 if __name__ == '__main__':
-    Test25()
+    Test29()

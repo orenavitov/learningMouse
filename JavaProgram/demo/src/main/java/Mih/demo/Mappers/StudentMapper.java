@@ -14,12 +14,23 @@ public interface StudentMapper {
 
     List<Student> getAllStudents();
 
-    void createStudent(@Param("SId") String number,
+    void createStudent(@Param("SId") int number,
                        @Param("Sname") String name,
                        @Param("Sage") Date birthday,
-                       @Param("Ssex") String sex);
+                       @Param("Ssex") String sex,
+                       @Param("telephoneNumber") String telephoneNumber,
+                       @Param("e_mailAddress") String e_mailAddress,
+                       @Param("address") String address);
 
     void createStudents(@Param("students") List<Student> students);
 
     void delStudentById(@Param("SId") String studentId);
+
+    void updateStudentById(@Param("SId") int number,
+                           @Param("Sname") String name,
+                           @Param("Sage") Date birthday,
+                           @Param("Ssex") String sex,
+                           @Param("telephoneNumber") String telephoneNumber,
+                           @Param("e_mailAddress") String e_mailAddress,
+                           @Param("address") String address);
 }
